@@ -1,0 +1,110 @@
+{
+  "FileName": "NFSTR_Server.exe",
+  "OriginalLength": 38027264,
+  "PatchedLength": 38028288,
+  "OriginalSha256": "198c0d478dab01898d3dd487e1ee483c8ae0fd6bf2ed3fb03d409de5b2f1fe5e",
+  "PatchedSha256": "a7c367d9128e16503189655c21c2ef9184b064c28b7a38dc86247c39185556ff",
+  "Changes": [
+    {
+      "Offset": 294,
+      "Before": "CQ==",
+      "After": "Cw=="
+    },
+    {
+      "Offset": 317,
+      "Before": "Cg==",
+      "After": "DA=="
+    },
+    {
+      "Offset": 321,
+      "Before": "BA==",
+      "After": "Bg=="
+    },
+    {
+      "Offset": 369,
+      "Before": "oA==",
+      "After": "wA=="
+    },
+    {
+      "Offset": 376,
+      "Before": "grtEAg==",
+      "After": "AAAAAA=="
+    },
+    {
+      "Offset": 896,
+      "Before": "AAAAAAAAAA==",
+      "After": "LmNvb3BmeA=="
+    },
+    {
+      "Offset": 904,
+      "Before": "AA==",
+      "After": "gQ=="
+    },
+    {
+      "Offset": 909,
+      "Before": "AAAA",
+      "After": "oHcC"
+    },
+    {
+      "Offset": 913,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 917,
+      "Before": "AAAA",
+      "After": "QEQC"
+    },
+    {
+      "Offset": 932,
+      "Before": "AA==",
+      "After": "IA=="
+    },
+    {
+      "Offset": 935,
+      "Before": "AAAAAAAAAAA=",
+      "After": "YC5jb29wZHQ="
+    },
+    {
+      "Offset": 944,
+      "Before": "AA==",
+      "After": "CA=="
+    },
+    {
+      "Offset": 949,
+      "Before": "AAAA",
+      "After": "sHcC"
+    },
+    {
+      "Offset": 953,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 957,
+      "Before": "AAAA",
+      "After": "QkQC"
+    },
+    {
+      "Offset": 972,
+      "Before": "AA==",
+      "After": "QA=="
+    },
+    {
+      "Offset": 975,
+      "Before": "AA==",
+      "After": "wA=="
+    },
+    {
+      "Offset": 10090182,
+      "Before": "Aw==",
+      "After": "AA=="
+    },
+    {
+      "Offset": 16752676,
+      "Before": "+MjD/w==",
+      "After": "2P93AQ=="
+    }
+  ],
+  "Append": "gTk02lsCD4VwAAAAoYBcjgKFwA+EYwAAAIE4UG1bAg+FVwAAAIN4EAAPhE0AAAD/BQCwtwKLRCQEowSwtwJVi+xWV4Pk8IPsQIv0i/lqAYvP6DoAiP6LzujjCG//VosNgFyOAujnX4X+i87ocGfN/ot9+It1/IvlXcIMAOmfyEv+zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+}

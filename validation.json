@@ -1,0 +1,18 @@
+{
+  "version": "0.1",
+  "date": "2026-10-29",
+  "runtimeConfirmedByUser": [
+    "Two drivable visible cars",
+    "Select road reset",
+    "Shared event restart on timeout",
+    "Shared event restart on Wrecked; rule accepted by user",
+    "Both visible timers count down"
+  ],
+  "twoPhysicalPcsTested": false,
+  "internetGameSessionTested": false,
+  "portableInstaller": "Windows PowerShell 5.1: apply, verified hashes, restore all five LAN baseline files, reject unsupported EXE without modification",
+  "knownIssues": [
+    "Under-map cutscene",
+    "Full campaign progression, finish and chapter changes untested"
+  ]
+}

@@ -1,0 +1,13 @@
+backups/
+outputs/
+__pycache__/
+*.pyc
+*.exe
+*.dll
+*.asi
+*.bin
+*.7z
+*.rar
+*.zip
+.env
+*session*.json

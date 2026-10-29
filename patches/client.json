@@ -1,0 +1,100 @@
+{
+  "FileName": "Need For Speed The Run.exe",
+  "OriginalLength": 38027264,
+  "PatchedLength": 38028288,
+  "OriginalSha256": "33853c17cb5850cc7deb9fb8e7d013815a60026be0ff3b3f6b70071cb56215e9",
+  "PatchedSha256": "0e23d0810df1261e59e76d23eb9a0fb997eea51f29f6342f8b70a768e9dbe303",
+  "Changes": [
+    {
+      "Offset": 294,
+      "Before": "CQ==",
+      "After": "Cw=="
+    },
+    {
+      "Offset": 317,
+      "Before": "Cg==",
+      "After": "DA=="
+    },
+    {
+      "Offset": 321,
+      "Before": "BA==",
+      "After": "Bg=="
+    },
+    {
+      "Offset": 369,
+      "Before": "oA==",
+      "After": "wA=="
+    },
+    {
+      "Offset": 376,
+      "Before": "grtEAg==",
+      "After": "AAAAAA=="
+    },
+    {
+      "Offset": 896,
+      "Before": "AAAAAAAAAAAA",
+      "After": "LmNvb3B0bXI8"
+    },
+    {
+      "Offset": 909,
+      "Before": "AAAA",
+      "After": "oHcC"
+    },
+    {
+      "Offset": 913,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 917,
+      "Before": "AAAA",
+      "After": "QEQC"
+    },
+    {
+      "Offset": 932,
+      "Before": "AA==",
+      "After": "IA=="
+    },
+    {
+      "Offset": 935,
+      "Before": "AAAAAAAAAAAAAA==",
+      "After": "YC5jb29wdG1kCA=="
+    },
+    {
+      "Offset": 949,
+      "Before": "AAAA",
+      "After": "sHcC"
+    },
+    {
+      "Offset": 953,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 957,
+      "Before": "AAAA",
+      "After": "QkQC"
+    },
+    {
+      "Offset": 972,
+      "Before": "AA==",
+      "After": "QA=="
+    },
+    {
+      "Offset": 975,
+      "Before": "AA==",
+      "After": "wA=="
+    },
+    {
+      "Offset": 5163649,
+      "Before": "ocwqiAI=",
+      "After": "6WoAAAA="
+    },
+    {
+      "Offset": 5820316,
+      "Before": "D4XsAAAA",
+      "After": "6V/QHgKQ"
+    }
+  ],
+  "Append": "D4ScL+H9gz4AD4V/MOH9ocwqiAKFwA+EcjDh/YO40AAAAAAPhmUw4f3/BQCwtwKLRgSjBLC3AukoMOH9zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+}

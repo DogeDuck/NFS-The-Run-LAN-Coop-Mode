@@ -1,0 +1,10 @@
+[
+  {
+    "RelativePath": "dinput8.dll",
+    "Sha256": "785fb89b3af54d8d02c75c967596d29c331c7655b3f6100198babc7cd5568e03"
+  },
+  {
+    "RelativePath": "Scripts\\NFSTR_LANOnlineHelper.asi",
+    "Sha256": "04c08719749bed0fd0f79d190dc02eb0ed85957677efaa1f5f54c825fcf85002"
+  }
+]
