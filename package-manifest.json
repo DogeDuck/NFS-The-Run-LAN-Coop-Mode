@@ -8,8 +8,8 @@
     },
     {
       "path": "Connect-Coop.ps1",
-      "sha256": "b693e629986eb8ebd87bd2cda1d286d06c91a2c60f187098e9790934b15fc001",
-      "bytes": 4851
+      "sha256": "8d9485b0a3bd71b84cc29cff25791b2693935670a63f40a00b59f2d4579a4afd",
+      "bytes": 5045
     },
     {
       "path": "Coop-Core.ps1",
@@ -33,8 +33,8 @@
     },
     {
       "path": "Koop-Starten.cmd",
-      "sha256": "d42bd2490515e01afcd95ae32cfa8af904b9727b749eba11e79314d26e93d590",
-      "bytes": 100
+      "sha256": "0a31216c7f82bfe9518169ba89116998a5375c5999abf8c7ab6610c6f9de71cb",
+      "bytes": 123
     },
     {
       "path": "LICENSE-LANOnlineHelper.txt",

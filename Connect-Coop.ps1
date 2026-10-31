@@ -1,4 +1,4 @@
-﻿param([switch]$CheckOnly)
+﻿param([switch]$CheckOnly,[switch]$ValidateForm)
 $ErrorActionPreference='Stop'
 $starter=Join-Path $PSScriptRoot 'Start-Coop.ps1'
 if(!(Test-Path -LiteralPath $starter)){throw 'Start-Coop.ps1 fehlt im Paket.'}
@@ -16,7 +16,7 @@ $guestOption=New-Object Windows.Forms.RadioButton
 $guestOption.Text='Spiel beitreten';$guestOption.Location=New-Object Drawing.Point(210,18);$guestOption.Size=New-Object Drawing.Size(170,25)
 $form.Controls.AddRange(@($hostOption,$guestOption))
 function Add-Field([string]$Caption,[int]$Y,[int]$Width=365){
- $label=New-Object Windows.Forms.Label;$label.Text=$Caption;$label.Location=New-Object Drawing.Point(20,$Y+3);$label.Size=New-Object Drawing.Size(160,23)
+ $label=New-Object Windows.Forms.Label;$label.Text=$Caption;$label.Location=New-Object Drawing.Point(20,($Y+3));$label.Size=New-Object Drawing.Size(160,23)
  $box=New-Object Windows.Forms.TextBox;$box.Location=New-Object Drawing.Point(185,$Y);$box.Size=New-Object Drawing.Size($Width,25)
  $form.Controls.AddRange(@($label,$box));return $box
 }
@@ -58,4 +58,8 @@ $start.Add_Click({
   $form.Close()
  }catch{[Windows.Forms.MessageBox]::Show($_.Exception.Message,'Koop-Verbindung')|Out-Null}
 })
-try{$form.ShowDialog()|Out-Null}finally{$form.Dispose()}
+try{
+ if($ValidateForm){
+  [ordered]@{Status='form-constructed';Controls=$form.Controls.Count;HostSelected=$hostOption.Checked;StartsGame=$false}|ConvertTo-Json
+ }else{$form.ShowDialog()|Out-Null}
+}finally{$form.Dispose()}

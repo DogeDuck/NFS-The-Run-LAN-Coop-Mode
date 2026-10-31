@@ -1,3 +1,10 @@
+# v0.3 TEST – launcher hotfix
+
+- Fix Windows PowerShell Point constructor argument parsing that closed the GUI immediately.
+- Add a hidden form-construction validation mode; verified all 11 controls without launching the game.
+- Keep the console open on a launcher startup error.
+- Game patches unchanged; existing users only need the updated starter files.
+
 # v0.3 TEST
 
 - Add portable Host/Guest GUI with Radmin IPv4 entry and German connection guide.

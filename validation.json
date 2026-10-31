@@ -6,9 +6,10 @@
     "PowerShell parse checks passed",
     "garage helper C# compile passed",
     "installer CheckOnly against supported local baseline passed",
-    "all delta paths reconstructed to exact target hash"
+    "all delta paths reconstructed to exact target hash",
+    "Windows PowerShell 5.1 STA full form construction passed, 11 controls, no game launched"
   ],
-  "zip_sha256": "13875bdfda599eecac07a7356579cd75bf56558a8c9bc112f5cb417e6f44e1ca",
+  "zip_sha256": "8a41331be21909c0415fa9c7d5254cfc9d2e504a0658c046891563a0ee7949bb",
   "game_installation_modified": false,
   "combined_package_gameplay_verified": false,
   "two_pc_verified": false
