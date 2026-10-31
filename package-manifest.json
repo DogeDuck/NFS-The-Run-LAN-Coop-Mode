@@ -1,0 +1,173 @@
+{
+  "version": "0.3-TEST",
+  "files": [
+    {
+      "path": "config/NFSTR_LANOnlineHelper.ini",
+      "sha256": "63a781fde245b7b8b79cd120a7d55549fe298dd924688b9e0babb5c19e71430b",
+      "bytes": 4291
+    },
+    {
+      "path": "Connect-Coop.ps1",
+      "sha256": "b693e629986eb8ebd87bd2cda1d286d06c91a2c60f187098e9790934b15fc001",
+      "bytes": 4851
+    },
+    {
+      "path": "Coop-Core.ps1",
+      "sha256": "dfb3b1412d959238809b4ab79ae4d154a6cc5ce93f01d7f118025fdd97bfbc61",
+      "bytes": 4499
+    },
+    {
+      "path": "Enable-HostFirewall.ps1",
+      "sha256": "173d4ae9ed049119ba91e296a8f9660175be211b8db327253b85bdb4de713185",
+      "bytes": 1383
+    },
+    {
+      "path": "Install-Coop.cmd",
+      "sha256": "b509f05e9368a8a945679f318c58379b770702fc8e720407c181586d76b33081",
+      "bytes": 102
+    },
+    {
+      "path": "Install-Coop.ps1",
+      "sha256": "a02784d4f30fc2c34e131a65b36966f5d4c95e5c9415419a24ca722fb35808a1",
+      "bytes": 6147
+    },
+    {
+      "path": "Koop-Starten.cmd",
+      "sha256": "d42bd2490515e01afcd95ae32cfa8af904b9727b749eba11e79314d26e93d590",
+      "bytes": 100
+    },
+    {
+      "path": "LICENSE-LANOnlineHelper.txt",
+      "sha256": "5a02d5b288da4ee4b338dd15e27425bc66a028753a66fd98a94b21c07d24456e",
+      "bytes": 1088
+    },
+    {
+      "path": "LIESMICH.md",
+      "sha256": "299fa4510441413b9d9607ecb08128cc093c817c870bd261b080537c35d4121a",
+      "bytes": 1773
+    },
+    {
+      "path": "patches/client-research-upgrade.json",
+      "sha256": "57215bc1cf646de159df4745af2f5b84d9318d0136008215f2a9253c3db074f3",
+      "bytes": 3920
+    },
+    {
+      "path": "patches/client-upgrade.json",
+      "sha256": "0bdc78276d4f186b37d22c2ad8f59fba6de2178e8520912e564cc82316d06f17",
+      "bytes": 7879
+    },
+    {
+      "path": "patches/client.json",
+      "sha256": "a05c9d3f747303c76795253c0bdbb4a8af93938be4b3f723653207a0f7616bdb",
+      "bytes": 9913
+    },
+    {
+      "path": "patches/server-research-upgrade.json",
+      "sha256": "283c1c340c6977cdeea37b0e732f7da20645cd16559e5a3f9724f28c1729be0f",
+      "bytes": 7291
+    },
+    {
+      "path": "patches/server-upgrade.json",
+      "sha256": "ec93d07d0069b586147e683f08275d210510632d8d325945e8652728f8f15f34",
+      "bytes": 11110
+    },
+    {
+      "path": "patches/server.json",
+      "sha256": "5cfa2d80d6ff1967e03abe37cc1cea69188e29949aae51947aa1b8677b7e0c12",
+      "bytes": 13183
+    },
+    {
+      "path": "patches/support-files.json",
+      "sha256": "28382f70cddba40c9094176a04756fc57c68626256232d14dd002bf456101094",
+      "bytes": 284
+    },
+    {
+      "path": "RADMIN-ANLEITUNG.md",
+      "sha256": "198a4d90018122db2ee34524e33a7d6212a23df7fbcb75f4c054d22310cba526",
+      "bytes": 3655
+    },
+    {
+      "path": "Restore-Installation.cmd",
+      "sha256": "1867e69cb126c9cc463847e4fb8d2676ac7e842e160200aa9437270cb4deeca4",
+      "bytes": 110
+    },
+    {
+      "path": "Restore-Installation.ps1",
+      "sha256": "bf937bcaaa34c8957423993bbcc627d47581db381c6c1341d07fd0b4424b5e1f",
+      "bytes": 2446
+    },
+    {
+      "path": "src/patch_checkpoint_retry.py",
+      "sha256": "a529649416a30cdbc34b9dc275be053583e6521ce51f4d823e5c36c7c3c01a1d",
+      "bytes": 8079
+    },
+    {
+      "path": "src/patch_headless_reset.py",
+      "sha256": "df795d4c101ae8632489bd087281604f1b51d9e0671cba7a1befccb3981e9420",
+      "bytes": 6650
+    },
+    {
+      "path": "src/patch_manual_road_reset.py",
+      "sha256": "3184e912440fa0e14809ab89fc075f91c689b1a653eb5446aeb67ce990178c9e",
+      "bytes": 4173
+    },
+    {
+      "path": "src/patch_shared_timer_hud.py",
+      "sha256": "6cc62f2754e396c81107234dff1f4788cadcdd18992a7e1983f53c0dd2f2cb37",
+      "bytes": 4781
+    },
+    {
+      "path": "src/pe_adapter.py",
+      "sha256": "514ca0b9635be44c333138139f3b3d078d41cb82b4e50a5e8b07785ff3b9d7ff",
+      "bytes": 2473
+    },
+    {
+      "path": "Start-Coop.ps1",
+      "sha256": "257282159eba911edd5f665a11c40a75d03b4e0e50ca38ba6a3d52e7d9d89329",
+      "bytes": 5841
+    },
+    {
+      "path": "Start-Guest.cmd",
+      "sha256": "2335a2a5f1aa9e2928f910bfd48c37b2d9b88f4727e47ec53560c6cff3dfcf1a",
+      "bytes": 112
+    },
+    {
+      "path": "Start-Host.cmd",
+      "sha256": "e05c5464a185b5bd92cdbaf859f9f47e289bc44bc9cf8f9304b6898312a68e4a",
+      "bytes": 111
+    },
+    {
+      "path": "Stop-Coop.cmd",
+      "sha256": "abae3a8c5b0942281f21ba735c837b2c955a3b018deee5071cb561d14b4d637f",
+      "bytes": 99
+    },
+    {
+      "path": "Stop-Coop.ps1",
+      "sha256": "90d72c7fb7199bdcd9c00484374e3177081e444274a9583dc67a3e8368cbc09f",
+      "bytes": 690
+    },
+    {
+      "path": "Unlock-Coop-Garage.ps1",
+      "sha256": "f67874cbcacc9c1c5f88a3ef7abaf6ac7af543f73c3617c046a0602fc6e3c7d8",
+      "bytes": 4237
+    }
+  ],
+  "limitations": [
+    "HOST checkpoint + both timers confirmed; GAST-led checkpoint not yet tested",
+    "Experimental manual reset policy; timeout, both-dead retry and story progression need live testing"
+  ],
+  "client": {
+    "base_sha256": "c9d48e500ef82efc642edf2db848a9072e56fbc114e283173d6e7e58bac634a6",
+    "patched_sha256": "2cb4570c34e46cc74ccded44f8f38338c12a0edfbb33a74572b72fc6e11ad249",
+    "layout": {
+      "adapter": 45613056,
+      "counter": 45617152,
+      "adapterSize": 1237
+    },
+    "site": "0xef21d7",
+    "scope": "Temporary1.51 two-player recovery after orphan actor binding; not an authored spawn resolver for every event.",
+    "manual_restart": true,
+    "installed": false,
+    "live_validation": "Prototype street position observed; broader testing pending"
+  }
+}

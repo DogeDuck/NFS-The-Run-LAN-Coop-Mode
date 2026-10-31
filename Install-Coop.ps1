@@ -1,8 +1,25 @@
-param([string]$GameDirectory,[string]$LanPackageDirectory,[switch]$CheckOnly)
+﻿param([string]$GameDirectory,[string]$LanPackageDirectory,[switch]$CheckOnly)
 . (Join-Path $PSScriptRoot 'Coop-Core.ps1')
 $game=Get-CoopGameDirectory $GameDirectory
 if(!$CheckOnly){Assert-CoopClosed}
 $deltas=@(foreach($name in @('client.json','server.json')){Get-Content -LiteralPath (Join-Path $PSScriptRoot "patches\$name") -Raw|ConvertFrom-Json})
+# Accept upgrades from the previous release and the verified local test baseline.
+$deltas=@(foreach($entry in $deltas){
+    $selected=$entry
+    $current=Join-Path $game $entry.FileName
+    if(Test-Path -LiteralPath $current){
+        $hash=Get-CoopFileHash $current
+        $stem=if($entry.FileName -eq 'NFSTR_Server.exe'){'server'}else{'client'}
+        foreach($suffix in @('-upgrade','-research-upgrade')){
+            $candidate=Join-Path $PSScriptRoot ("patches\"+$stem+$suffix+'.json')
+            if(Test-Path -LiteralPath $candidate){
+                $upgrade=Get-Content -LiteralPath $candidate -Raw|ConvertFrom-Json
+                if($hash -eq $upgrade.OriginalSha256){$selected=$upgrade;break}
+            }
+        }
+    }
+    $selected
+})
 $support=Get-Content -LiteralPath (Join-Path $PSScriptRoot 'patches\support-files.json') -Raw|ConvertFrom-Json
 if(!$LanPackageDirectory -and !$CheckOnly){
     $missingBase=$false
@@ -64,7 +81,7 @@ foreach($entry in $changes){
         if((Get-CoopFileHash $copy) -ne $entry.BeforeSha256){throw 'Originalsicherung konnte nicht verifiziert werden.'}
     }
 }
-$manifest=[ordered]@{Version='0.1';GameDirectory=$game;BackupDirectory=$backup;Timestamp=(Get-Date).ToString('o');Status='backed-up';Files=$changes}
+$manifest=[ordered]@{Version='0.3-TEST';GameDirectory=$game;BackupDirectory=$backup;Timestamp=(Get-Date).ToString('o');Status='backed-up';Files=$changes}
 $manifestPath=Join-Path $backup 'install-manifest.json'
 $manifest|ConvertTo-Json -Depth 6|Set-Content -LiteralPath $manifestPath -Encoding utf8
 foreach($entry in $changes){
