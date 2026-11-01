@@ -20,5 +20,13 @@
   "full_campaign_verified": false,
   "gas_station_fixed": false,
   "standalone_client_source_rebuild": true,
-  "shared_campaign_rank": false
+  "shared_campaign_rank": false,
+  "known_eliminator_issue": {
+    "event": "2_6",
+    "registered_humans": 2,
+    "registered_ai_kind1": 3,
+    "teammate_counted": true,
+    "rendered_spawn_verified": false,
+    "fixed": false
+  }
 }
