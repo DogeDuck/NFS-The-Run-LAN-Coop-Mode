@@ -1,0 +1,12 @@
+{
+  "manifest_files_verified": 65,
+  "delta_roundtrip": true,
+  "zip_crc": true,
+  "server_sha256": "4afb76c21d08439778dba038ad787618f752aa3c639a18a07a5b1672c0263c9d",
+  "zip_sha256": "9107f2e2749cc7b29180a2e84e2de5316808b2f85239a707844f92d39ac5108a",
+  "allowed_races": 38,
+  "gameplay_verified_events": [
+    "3_5"
+  ],
+  "combined_gameplay_verified": false
+}

@@ -1,3 +1,11 @@
+# v0.5 TEST – native AI racers and story start spawns
+
+- Add guarded native NPC fill while preserving original opponent count when grid capacity permits.
+- Add authored single-player start selection and authoritative8m second-human offset for38 explicitly listed races from Stage2 onward. Stage1 excluded from this new logic.
+- Spawn gameplay confirmed only in3.5 after full Retry; other37 entries and complete persistent package are not gameplay-verified.
+- Keep restricted Definitive Edition and idempotent +25dB music patch, v0.4 upgrade support, backups and Radmin/IP launchers.
+- Garage changes, pause AI takeover, newer team-result prototype and bridge fix are not included.
+
 # v0.3 TEST – launcher hotfix
 
 - Fix Windows PowerShell Point constructor argument parsing that closed the GUI immediately.
