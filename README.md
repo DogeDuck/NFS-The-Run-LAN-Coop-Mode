@@ -1,32 +1,33 @@
 # NFS: The Run LAN Coop Mode
 
-**v0.5 TEST – native AI racers and story start spawns. Experimental two-player co-op.**
+**v0.6 TEST – team-result adapter and optional starting-car selection. Experimental two-player story co-op.**
 
-[Download v0.5 installer ZIP](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/raw/refs/heads/main/downloads/TheRun-Coop-v0.5-TEST.zip) · [Deutsche Anleitung](LIESMICH.md) · [Radmin setup](RADMIN-ANLEITUNG.md)
+[Download v0.6 installer ZIP](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/raw/refs/heads/main/downloads/TheRun-Coop-v0.6-TEST.zip) · [Deutsche Anleitung](LIESMICH.md) · [Radmin setup](RADMIN-ANLEITUNG.md)
 
-Both players need their own compatible game installation and the supported LANScript v1 base package dated May29,2024. Extract the whole ZIP, close game/server, run Install-Coop.cmd and select the game **folder**. Updates from v0.3/v0.4 are supported. Run Koop-Starten.cmd: one Host, one Guest; the Guest enters the Host's Radmin IPv4. Only the Host starts the race.
+Both players need their own compatible game installation and the supported LANScript v1 base package dated May29,2024. Extract the complete ZIP, close game/server and run Install-Coop.cmd. Select the game **folder**, then use Koop-Starten.cmd. One player hosts; the other enters the host's Radmin IPv4. Only the host starts the event. Updates from supported v0.3/v0.4/v0.5 installations are included.
 
-## What changed
+## Included
 
-- Restore native story AI racer filling, with guards for free grid capacity. The second human should not displace an original NPC when capacity permits. Scripted police and world streaming remain separate.
-- Use the authored single-player start ordinal and native server spawn transform for an explicit list of **38 races from Stage2 onward**. The second processed human starts8m behind the same anchor; engine processing order determines which human is first. Original grid entities/ownership remain intact.
-- The new start-spawn logic excludes Stage1; the existing narrowly scoped1.51 client recovery remains unchanged.
-- Definitive Edition with the restricted co-op configuration and the +25dB music patch remain included. See ADDONS.md inside the ZIP.
+- **Team-result adapter:** normal Story mode0 finish-time/rank checks use the first real finished human for both players. Native win thresholds remain intact. The two humans are identified afresh on each check; bots are excluded. This is not a universal replacement for scripted failures, arrests, QTE outcomes or every progression condition. Shared overtaken HUD and shared overall Run Position / campaign rank are not included.
+- **Optional starting car:** each player can choose R35, M3 GTS, 370Z, V12 Vantage, R8, 911 Carrera S or Shelby Super Snake in the launcher. Open **VIEW CARS** once in the main menu before the host starts the race. Default: keep the Story car. The chosen car remains forced for the session; restart to change it. Use the default for scripted story car-selection sequences. See STARTAUTO.md in the ZIP.
+- Native AI-racer capacity/quota fix and authored starting positions for an explicit list of38Stage2+ races, carried over from v0.5. Second human starts8m behind; Stage1 is excluded from the new grid mechanism. The older narrow1.51 recovery remains.
+- Definitive Edition:240FPS target, engine-audio/particle fixes, QTE simulation clamp, faster-loading VSync bypass,4096shadows and600shadow distance. No difficulty/traffic/camera mode overrides.
+- Idempotent music+25dB patch; effects-2dB and original speech.
 
-## Actual validation and limits
+## Validation and known issues
 
-**Confirmed in game: both cars start correctly and are driveable in3.5 after a full Retry.** Native counters recorded two human grid selections and one spawn-matrix correction per car. Native AI racers and preservation of the original opponent count were separately confirmed in earlier local tests. The other37 spawn entries have not been tested in game. The combined disk package has not been tested as a complete campaign or on two PCs.
+R35 HOST and M3 GTS GUEST were confirmed driveable in3.5 using the new pre-start selection. Native AI counts and correct3.5start spawns were confirmed in earlier tests. The other37spawn entries and the full campaign remain unverified. In3.5, the user confirmed both players win and continue together with the dynamic team adapter. Other events and scripted failure paths remain unverified. See v0.6-validation.json.
 
-Tank-station vehicle changes are **not fixed**: missing preview/endless loading/softlock remain; avoid them for now. Pause-menu AI takeover, the newer team-win prototype, shared overtaken HUD and general cinematic fixes are not included. The1.51 bridge crash remains unresolved. Progression, audio and camera issues may still occur. No experimental garage-routing hooks or automatic diagnostic recordings are shipped.
+**Tank-station changes remain broken: avoid them.** No experimental garage-loading hooks are shipped. Pause-menu AI takeover, general cinematic fixes, the1.51bridge crash, shared overtaken HUD and complete story-progression support remain open. Cutscene characters, camera, audio and control transitions can still fail. Scripted police/world streaming are separate from the restored racer population.
 
-The ZIP includes SPAWN-EVENTS.json, GAMEPLAY-STATUS.json, the German Radmin guide and reversible installation scripts. No game or server executables are distributed. Installers back up changed installation files; launchers back up saves without automatically restoring old progress. Both players must use the same version.
+Installation backs up changed files; launchers back up current saves without restoring older progress. Both players must use the same version. No game/server executables or game assets are distributed; the ZIP contains deltas, scripts and the licensed Definitive Edition addon.
 
-ZIP SHA256: `9107f2e2749cc7b29180a2e84e2de5316808b2f85239a707844f92d39ac5108a`
+## Source and rollback
 
-## Sources and rollback
+[Team-result / starter source](src/story-coop-v0.6) · [Native AI/spawn source](src/story-coop-v0.5)
 
-[Native spawn/AI source](src/story-coop-v0.5) · [Changelog](CHANGELOG.md)
+Definitive Edition: [BadassBaboon/NFS-TheRun-DE](https://github.com/BadassBaboon/NFS-TheRun-DE), commit048ab8fadbe3938f5651e9dabf09b3db64a6dc7d; MIT license included. Vehicle references: [mRally2 research](https://github.com/mRally2/The-Run-Tools-Research).
 
-Definitive Edition: [BadassBaboon/NFS-TheRun-DE](https://github.com/BadassBaboon/NFS-TheRun-DE), commit048ab8fadbe3938f5651e9dabf09b3db64a6dc7d; MIT license included. The existing local music patch is bundled idempotently. Original game/LAN base files are still required.
+Restore-Installation.cmd restores backed-up installation files. Restore the audio mix separately as described in ADDONS.md; neither action restores saves.
 
-Restore-Installation.cmd restores files backed up by this installer. Restore the music mix separately as described in ADDONS.md inside the ZIP. Installation restores do not restore saves.
+ZIP SHA256: `f0dc47dcec46fceb680acb28fd01678d84c94505f78b8a515a5998e5fa59489a`

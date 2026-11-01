@@ -1,0 +1,57 @@
+[
+  {
+    "Id": "story",
+    "Name": "Story-Auto beibehalten",
+    "HelperHash": "0",
+    "VehicleKey": 0
+  },
+  {
+    "Id": "R35",
+    "Name": "Nissan GT-R R35",
+    "HelperHash": "FB9F5F4B",
+    "VehicleKey": 1264558075,
+    "DatabaseEntry": "nis_gtr_r35_08_pp_stock_1"
+  },
+  {
+    "Id": "M3",
+    "Name": "BMW M3 GTS",
+    "HelperHash": "9E7FF128",
+    "VehicleKey": 686915486,
+    "DatabaseEntry": "bmw_m3_gts_10_pp_stock_1"
+  },
+  {
+    "Id": "370Z",
+    "Name": "Nissan 370Z",
+    "HelperHash": "755298C0",
+    "VehicleKey": 3231208053,
+    "DatabaseEntry": "nis_370_z_09_pp_stock_1"
+  },
+  {
+    "Id": "Vantage",
+    "Name": "Aston Martin V12 Vantage",
+    "HelperHash": "3E3E59AA",
+    "VehicleKey": 2857975358,
+    "DatabaseEntry": "ast_van_v12_10_pp_stock_1"
+  },
+  {
+    "Id": "R8",
+    "Name": "Audi R8 V10",
+    "HelperHash": "81ED930D",
+    "VehicleKey": 227798401,
+    "DatabaseEntry": "aud_r8_v10_10_pp_stock_1"
+  },
+  {
+    "Id": "911",
+    "Name": "Porsche 911 Carrera S",
+    "HelperHash": "981E8B35",
+    "VehicleKey": 898309784,
+    "DatabaseEntry": "por_991_s_12_pp_stock_1"
+  },
+  {
+    "Id": "Mustang",
+    "Name": "Shelby Super Snake",
+    "HelperHash": "675306F1",
+    "VehicleKey": 4043723623,
+    "DatabaseEntry": "she_mus_snk_12_pp_stock_1"
+  }
+]

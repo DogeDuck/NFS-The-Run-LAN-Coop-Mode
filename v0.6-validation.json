@@ -1,0 +1,24 @@
+{
+  "files_verified": 70,
+  "zip_crc": true,
+  "v05_upgrades": true,
+  "user_ini_verified_in_zip": true,
+  "gameplay_tested": false,
+  "archive_sha256": "f0dc47dcec46fceb680acb28fd01678d84c94505f78b8a515a5998e5fa59489a",
+  "start_car_gameplay": {
+    "event": "3.5",
+    "host": "R35",
+    "guest": "M3 GTS",
+    "user_confirmed": true
+  },
+  "team_result_gameplay": {
+    "event": "3.5",
+    "both_win": true,
+    "both_continue": true,
+    "user_confirmed": true
+  },
+  "full_campaign_verified": false,
+  "gas_station_fixed": false,
+  "standalone_client_source_rebuild": true,
+  "shared_campaign_rank": false
+}

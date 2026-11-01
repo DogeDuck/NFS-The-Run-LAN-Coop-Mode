@@ -1,4 +1,4 @@
-# NFS: The Run LAN Coop Mode – v0.5 TEST
+# NFS: The Run LAN Coop Mode – v0.6-TEST
 
 Experimentelle Story-Koop-Mod fuer zwei Spieler. Beide benoetigen eine eigene
 passende Spielinstallation und das unterstuetzte LAN-Grundpaket v1 vom 29.05.2024.
@@ -52,9 +52,9 @@ Installationsdateien wieder her; fuer die Musik gilt zusaetzlich ADDONS.md.
 - Tankstellenwechsel ist NICHT repariert: fehlende Vorschau, Endlosladen und
   Softlock nach Auswahl oder Zurueck. Tankstellen vorerst meiden.
 - Pause-Menue mit KI-Uebernahme ist noch nicht enthalten.
-- Der neuere Teamwertungs-Prototyp und gemeinsame Overtaken-HUD sind nicht
-  Bestandteil dieser Version. Sieg/Verlust und Story-Fortschritt koennen weiter
-  abweichen oder ein Rennen wiederholen.
+- Dynamischer Teamwertungs-Kandidat fuer normale Story-Zielwertung enthalten.
+  In3.5 bestaetigt: beide gewinnen und wechseln weiter; keine Garantie fuer gescriptete Fehlschlaege,
+  Cutscene-Abschluesse oder Fortschritt. Gemeinsamer Overtaken-HUD fehlt.
 - Brueckenabsturz in 1.51 weiterhin offen. Cutscene-Figuren, Gastkamera,
   Fahrzeugton und Steuerungsuebergaben koennen fehlerhaft sein.
 - Kein vollstaendiger Verfolgungs-/Polizei-Fix: gescriptete Cops und Weltstreaming
@@ -63,3 +63,11 @@ Installationsdateien wieder her; fuer die Musik gilt zusaetzlich ADDONS.md.
 
 Keine Tankstellen-Diagnose, kein experimenteller Garagen-Routing-Hook und keine
 automatischen Prozessaufnahmen werden durch dieses Update gestartet.
+
+Teamwertung ist experimentell; nur mode0-Zielwertung, gescriptete Fehlschlaege nicht allgemein geloest.
+
+Optionale Autoauswahl im Starter: jeder waehlt fuer sich vor Spielstart. Vor dem Rennen im Hauptmenue einmal VIEW CARS / AUTOS ANSEHEN oeffnen, dann zurueck und Rennen starten. Die Wahl bleibt fuer diese Sitzung erzwungen; fuer ein anderes Auto Spiel neu starten. Gescriptete Story-Autos koennen abweichen. Kein Tankstellenfix, In3.5 mit HOST R35 und GAST M3 GTS bestaetigt.
+
+Spieltest v0.6: HOST R35 und GAST M3 GTS bestaetigt; beide gewinnen in3.5 und wechseln zusammen weiter. Weitere Rennen/gescriptete Ablaeufe nicht vollstaendig getestet.
+
+Die globale Run Position / Kampagnenplatzierung bleibt individuell (im Test138/139). Gemeinsamer Sieg synchronisiert diese Anzeige nicht.
