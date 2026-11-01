@@ -1,33 +1,34 @@
 # NFS: The Run LAN Coop Mode
 
-**v0.3 TEST: experimental two-player story co-op. Not a complete campaign mod.**
+## v0.4 TEST — Definitive Edition + Musik
 
-[Download portable test installer](downloads/TheRun-Coop-v0.3-TEST.zip?raw=true) · [Deutsche Anleitung](LIESMICH.md) · [Radmin verbinden](RADMIN-ANLEITUNG.md)
+[Installer-Paket herunterladen](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/raw/refs/heads/main/downloads/TheRun-Coop-v0.4-TEST.zip)
 
-Extract the ZIP completely. Both players need their own supported game installation
-and matching NFSTR LANScript v1 base package dated May 29, 2024. No game executables,
-server binaries, loader DLLs or game assets are distributed here.
+ZIP entpacken, Spiel und Server schliessen, Install-Coop.cmd starten und den Spielordner angeben. Vorhandene passende LAN-Grunddateien werden weiterhin benoetigt; das Paket enthaelt keine Spiel-EXE und kein vollstaendiges Spiel.
 
-Run `Install-Coop.cmd` with game and server closed, then use `Koop-Starten.cmd`.
-Choose Host or Guest; the guest enters the host's Radmin IPv4 in the IP box.
-The host presses Enter in the launcher once the guest game window is open.
-Keep the launcher console open. Only the host starts the story.
+Feste Bestandteile bei jeder Installation:
+- Bisheriger Zwei-Spieler-Story-Coop mit Checkpoint-/Timer- und gezielten Spawn-Aenderungen.
+- Definitive Edition, selbst aus MIT-Quellcode gebaut: Motor-Audio-/Partikelfixes, 144-FPS-Ziel und Cutscene/QTE-Clamp. Zusaetzliche Schwierigkeits-, Verkehrs-, Fahrzeug- und Renderaenderungen sind im Coop-Profil deaktiviert.
+- Musik +25dB, Effekte -2dB, Sprache original. Wiederholtes Installieren erhoeht den Pegel nicht weiter.
 
-This package combines shared checkpoint time, a narrowly scoped mission 1.51 spawn
-recovery, experimental reset handling and session-only garage unlocks. The spawn
-prototype and shared timer were tested locally. One recorded host wreck left the
-guest driving for over two minutes. **The combined disk package and separate-PC
-Internet gameplay have not yet been tested in game.**
+SHA256: `9ab143e26171011cbd22444ec0e4df58d4cf63b4fbac1824780af74ab4a3e7d7`
 
-Known problems include timeout/retry softlocks, incomplete story progression,
-missing racers/pursuit in the second tested mission, guest cinematic assets/camera,
-guest car selection and missing host audio/nitro effects. There is no shared pause.
-Manual `Next Challenge` is a diagnostic workaround that may skip story content.
-See the German instructions for the exact limits and rollback steps.
+**Experimentelle Testversion.** Installer-Vorpruefung, Paketpruefsummen und Win32-ASI geprueft. Das Zusammenspiel von Definitive Edition und LAN-Coop ist noch nicht ingame verifiziert.
 
-The installer checks exact SHA-256 baselines and backs up installation files.
-Launchers back up the current save profile before starting. Restore-Installation
-restores installation files, not your saves. Music mods are not included.
+### Bekannte offene Fehler und naechste Arbeit
 
-LAN foundation: [NFSTR_LANOnlineHelper](https://github.com/hypernucle/NFSTR_LANOnlineHelper),
-Hypercycle / And799 / mRally2, MIT; see LICENSE-LANOnlineHelper.txt.
+Die Bruecke/Straßensperre in Mission1.51 kann beide Clients zum Absturz bringen; alternativ fehlen Sprung-Cutscene und Folgestrecke. Dies ist NICHT behoben. Fehlende KI-Racer und ein gemeinsamer Rennabschluss (ein Mensch gewinnt fuer das ganze Team, danach natives Continue The Run) sind die naechsten Entwicklungsziele und noch NICHT in dieser Version umgesetzt.
+
+Die lokalen experimentellen SEC05-Vorlade-Hooks sind NICHT Bestandteil dieses Pakets. Ausgelieferte Spieldeltas behalten den bisherigen Entwicklungsstand.
+
+### Radmin
+
+Beide PCs ins gleiche Radmin-VPN-Netz verbinden. HOST startet Start-Host.cmd; GAST startet Start-Guest.cmd und gibt die Radmin-IP des Hosts ein. Ausfuehrliche Anleitung liegt im ZIP als RADMIN-ANLEITUNG.md bei. Beide Spieler benoetigen ihre eigene kompatible Spielinstallation und denselben Modstand.
+
+### Wiederherstellung
+
+Restore-Installation.cmd stellt die vom Coop-Installer gesicherten Dateien einschliesslich DE-ASI/INI wieder her. Der Audiomix wird separat ueber `addons/music25/NFS-Audio-Patch.ps1 -GamePath "SPIELORDNER" -Mode Restore` zurueckgesetzt. Siehe ADDONS.md im ZIP.
+
+### Quellen
+
+Definitive Edition: https://github.com/BadassBaboon/NFS-TheRun-DE, Commit048ab8fadbe3938f5651e9dabf09b3db64a6dc7d, MIT-Lizenz im Paket. Vorhandener lokaler Musikpatch in das Installationspaket integriert. Die Coop-LAN-Basis bleibt erforderlich; kein beliebiger AnyCoop-Downloader wird installiert.
