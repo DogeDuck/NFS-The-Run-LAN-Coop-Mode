@@ -1,33 +1,37 @@
-# NFS: The Run LAN Coop Mode
+# NFS: The Run LAN Coop Mode — v0.7 TEST
 
-**v0.6 TEST – team-result adapter and optional starting-car selection. Experimental two-player story co-op.**
+Experimental two-player story co-op using the original LAN multiplayer base.
 
-[Download v0.6 installer ZIP](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/raw/refs/heads/main/downloads/TheRun-Coop-v0.6-TEST.zip) · [Deutsche Anleitung](LIESMICH.md) · [Radmin setup](RADMIN-ANLEITUNG.md)
+**[Download v0.7 TEST](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/releases/tag/v0.7-TEST)** · [German setup guide](RADMIN-ANLEITUNG.md) · [Changes and limitations](LIESMICH.md)
 
-Both players need their own compatible game installation and the supported LANScript v1 base package dated May29,2024. Extract the complete ZIP, close game/server and run Install-Coop.cmd. Select the game **folder**, then use Koop-Starten.cmd. One player hosts; the other enters the host's Radmin IPv4. Only the host starts the event. Updates from supported v0.3/v0.4/v0.5 installations are included.
+Both players need their own supported game installation, the LAN base package v1
+from May 29, 2024, PowerShell 7, and the same mod version. Game/server executables
+and save files are not included. The ZIP includes an installer and file backups.
 
 ## Included
 
-- **Team-result adapter:** normal Story mode0 finish-time/rank checks use the first real finished human for both players. Native win thresholds remain intact. The two humans are identified afresh on each check; bots are excluded. This is not a universal replacement for scripted failures, arrests, QTE outcomes or every progression condition. Shared overtaken HUD and shared overall Run Position / campaign rank are not included. Battle/eliminator-style opponent-defeat events can still count the teammate as an opponent; this intermediate evaluation is not fixed by the mode0 finish adapter.
-- **Optional starting car:** each player can choose R35, M3 GTS, 370Z, V12 Vantage, R8, 911 Carrera S or Shelby Super Snake in the launcher. Open **VIEW CARS** once in the main menu before the host starts the race. Default: keep the Story car. The chosen car remains forced for the session; restart to change it. Use the default for scripted story car-selection sequences. See STARTAUTO.md in the ZIP.
-- Native AI-racer capacity/quota fix and authored starting positions for an explicit list of38Stage2+ races, carried over from v0.5. Second human starts8m behind; Stage1 is excluded from the new grid mechanism. The older narrow1.51 recovery remains.
-- Definitive Edition:240FPS target, engine-audio/particle fixes, QTE simulation clamp, faster-loading VSync bypass,4096shadows and600shadow distance. No difficulty/traffic/camera mode overrides.
-- Idempotent music+25dB patch; effects-2dB and original speech.
+- Native AI driving while the pause menu is open, with release on resume.
+- Native multiplayer player list replacing the Story clock/Autolog stage leader.
+- A reserved second-human start slot on supported events, keeping NPC slots free.
+- A separate Garage window for each client, launched with the game without a
+  persistent console. Select a car/style/variant for the next spawn or Retry.
+- Guest car requests sent through the host Garage on TCP25211; fixes the previous
+  ForeColor/null confirmation error. Keep both Garage windows open.
+- Existing AI population, listed Story start-position corrections, shared
+  checkpoint time bonuses, and normal race team-result handling.
+- Definitive Edition co-op profile and the +25dB music patch, with credits.
 
-## Validation and known issues
+Host pause-AI, the visible multiplayer HUD, and the first NPC in event2.6 have
+been confirmed locally. This is not a full campaign or two-PC validation.
 
-R35 HOST and M3 GTS GUEST were confirmed driveable in3.5 using the new pre-start selection. Native AI counts and correct3.5start spawns were confirmed in earlier tests. The other37spawn entries and the full campaign remain unverified. In3.5, the user confirmed both players win and continue together with the dynamic team adapter. Other events and scripted failure paths remain unverified. See v0.6-validation.json.
+## Known issues
 
-**Tank-station changes remain broken: avoid them.** No experimental garage-loading hooks are shipped. Pause-menu AI takeover, general cinematic fixes, the1.51bridge crash, shared overtaken HUD and complete story-progression support remain open. Cutscene characters, camera, audio and control transitions can still fail. Scripted police/world streaming are separate from the restored racer population.
+Eliminator/Battle results are still per-player: a guest may lose when only the
+host beats the NPC. Shared Battle opponent/phase/countdown/counters are unfinished.
+Avoid gas stations; use Garage instead. Guest cinematic/QTE/camera problems,
+the mission1.51 bridge crash, and some streaming/spawn/audio issues remain.
+Exact HUD gap values and the new Garage relay over Radmin need further testing.
 
-Installation backs up changed files; launchers back up current saves without restoring older progress. Both players must use the same version. No game/server executables or game assets are distributed; the ZIP contains deltas, scripts and the licensed Definitive Edition addon.
-
-## Source and rollback
-
-[Team-result / starter source](src/story-coop-v0.6) · [Native AI/spawn source](src/story-coop-v0.5)
-
-Definitive Edition: [BadassBaboon/NFS-TheRun-DE](https://github.com/BadassBaboon/NFS-TheRun-DE), commit048ab8fadbe3938f5651e9dabf09b3db64a6dc7d; MIT license included. Vehicle references: [mRally2 research](https://github.com/mRally2/The-Run-Tools-Research).
-
-Restore-Installation.cmd restores backed-up installation files. Restore the audio mix separately as described in ADDONS.md; neither action restores saves.
-
-ZIP SHA256: `f0dc47dcec46fceb680acb28fd01678d84c94505f78b8a515a5998e5fa59489a`
+Close the game/server before installing. Run Install-Coop.cmd, then
+Koop-Starten.cmd; the guest enters the host's Radmin IPv4. Only the host selects
+the mission. See the included guides for ports and backups. No automatic save restore.

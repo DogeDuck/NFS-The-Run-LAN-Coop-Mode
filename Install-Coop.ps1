@@ -10,7 +10,7 @@ $deltas=@(foreach($entry in $deltas){
     if(Test-Path -LiteralPath $current){
         $hash=Get-CoopFileHash $current
         $stem=if($entry.FileName -eq 'NFSTR_Server.exe'){'server'}else{'client'}
-        foreach($suffix in @('-upgrade','-research-upgrade')){
+        foreach($suffix in @('-upgrade','-research-upgrade','-v0_3-upgrade','-v0_4-upgrade','-v0_5-upgrade','-v0_6-upgrade')){
             $candidate=Join-Path $PSScriptRoot ("patches\"+$stem+$suffix+'.json')
             if(Test-Path -LiteralPath $candidate){
                 $upgrade=Get-Content -LiteralPath $candidate -Raw|ConvertFrom-Json
@@ -30,6 +30,14 @@ if(!$LanPackageDirectory -and !$CheckOnly){
     foreach($file in $support){$path=Join-Path $game $file.RelativePath;if(!(Test-Path -LiteralPath $path) -or (Get-CoopFileHash $path) -ne $file.Sha256){$missingBase=$true}}
     if($missingBase){$LanPackageDirectory=Read-Host 'Ordner des entpackten eigenen LAN-Grundpakets v1 vom 29.05.2024'}
 }
+$addonRoot=Join-Path $PSScriptRoot 'addons'
+$addonManifest=Get-Content -LiteralPath (Join-Path $addonRoot 'manifest.json') -Raw|ConvertFrom-Json
+foreach($item in $addonManifest.files.PSObject.Properties){
+ $file=Join-Path $addonRoot $item.Name
+ if((Get-CoopFileHash $file) -ne $item.Value){throw ('Addon-Pruefsumme stimmt nicht: '+$item.Name)}
+}
+$music=Join-Path $addonRoot 'music25\NFS-Audio-Patch.ps1'
+& $music -GamePath $game -CheckOnly
 $staged=@{}
 function Read-BaseFile([string]$Relative,[string[]]$AllowedHashes){
     $candidates=@((Join-Path $game $Relative))
@@ -52,6 +60,9 @@ foreach($delta in $deltas){
 }
 foreach($file in $support){$staged[$file.RelativePath]=Read-BaseFile $file.RelativePath @($file.Sha256)}
 $staged['Scripts\NFSTR_LANOnlineHelper.ini']=[IO.File]::ReadAllBytes((Join-Path $PSScriptRoot 'config\NFSTR_LANOnlineHelper.ini'))
+foreach($name in @('NFSTR_DefinitiveEdition.asi','NFSTR_DefinitiveEdition.ini')){
+ $staged[('Scripts\'+$name)]=[IO.File]::ReadAllBytes((Join-Path $addonRoot $name))
+}
 $specialK=Join-Path $game 'd3d11.dll'
 $removeSpecialK=$false
 if(Test-Path -LiteralPath $specialK){
@@ -65,7 +76,7 @@ $changes=@(foreach($relative in $staged.Keys|Sort-Object){
 })
 if($removeSpecialK){$changes += [ordered]@{RelativePath='d3d11.dll';AfterSha256=$null;AfterExists=$false}}
 if($CheckOnly){[ordered]@{Status='verified';GameDirectory=$game;Changes=$changes;ContainsGameExecutables=$false}|ConvertTo-Json -Depth 5;return}
-if(!$changes.Count){Save-CoopSettings $game;Write-Output 'Koop-Dateien sind bereits bereit.';return}
+if(!$changes.Count){& $music -GamePath $game -Mode Apply;Save-CoopSettings $game;Write-Output 'Koop-Dateien sind bereits bereit.';return}
 $stamp=(Get-Date -Format 'yyyyMMdd-HHmmss')+'-'+[Guid]::NewGuid().ToString('N').Substring(0,8)
 $backup=Join-Path $script:CoopStateRoot "InstallBackups\$stamp"
 New-Item -Path $backup -ItemType Directory -Force|Out-Null
@@ -81,7 +92,7 @@ foreach($entry in $changes){
         if((Get-CoopFileHash $copy) -ne $entry.BeforeSha256){throw 'Originalsicherung konnte nicht verifiziert werden.'}
     }
 }
-$manifest=[ordered]@{Version='0.3-TEST';GameDirectory=$game;BackupDirectory=$backup;Timestamp=(Get-Date).ToString('o');Status='backed-up';Files=$changes}
+$manifest=[ordered]@{Version='0.7-TEST';GameDirectory=$game;BackupDirectory=$backup;Timestamp=(Get-Date).ToString('o');Status='backed-up';Files=$changes}
 $manifestPath=Join-Path $backup 'install-manifest.json'
 $manifest|ConvertTo-Json -Depth 6|Set-Content -LiteralPath $manifestPath -Encoding utf8
 foreach($entry in $changes){
@@ -93,6 +104,7 @@ foreach($entry in $changes){
         if((Get-CoopFileHash $target) -ne $entry.AfterSha256){throw 'Installierte Datei stimmt nicht mit dem Patch ueberein.'}
     }else{Remove-Item -LiteralPath $target}
 }
+& $music -GamePath $game -Mode Apply
 $manifest.Status='installed'
 $manifest|ConvertTo-Json -Depth 6|Set-Content -LiteralPath $manifestPath -Encoding utf8
 Save-CoopSettings $game

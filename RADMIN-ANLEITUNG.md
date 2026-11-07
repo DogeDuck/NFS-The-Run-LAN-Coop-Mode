@@ -1,7 +1,8 @@
 ﻿# Mit einem Freund über Radmin spielen
 
-Diese Anleitung gehört zum experimentellen v0.3-Testpaket. Es ist noch nicht als
-Gesamtpaket im Spiel geprüft. Beide benötigen dieselbe unterstützte Spiel- und Mod-Version. Das Paket verteilt Patches und Starter, keine Spieldateien.
+Diese Anleitung gehört zum experimentellen Koop-Testpaket. Beide benötigen
+dieselbe unterstützte Spiel- und Mod-Version. Grenzen des jeweiligen Standes
+stehen in LIESMICH.md. Das Paket verteilt Patches und Starter, keine Spieldateien.
 
 ## 1. Radmin verbinden
 
@@ -53,9 +54,21 @@ vorgesehen. Bei `Start-Guest.cmd` wird die Host-IP als Text abgefragt.
 
 ## Grenzen des Teststands
 
-Der erste bestätigte Spawn-Fix ist auf Mission1.51 begrenzt. Einzelunfall mit
-Weiterfahrt des anderen wurde einmal positiv getestet. Zeitablauf/Retry, gemeinsamer
-Rennabschluss, weitere Missionen, Cutscenes und echte Internet-Verbindung sind noch
-nicht vollständig verifiziert. In der zweiten getesteten Mission fehlten außerdem
-Gegner und Verfolgung; nur gescriptete Cops waren sichtbar. Musik-Mod und separate Fahrzeugauswahl sind
-nicht automatisch Bestandteil der bisher vorbereiteten Patches.
+Aktuelle Features, Live-Belege und Fehler: LIESMICH.md. Vor allem Eliminator-
+Teamwertung und Gast-Cutscenes/QTEs sind noch nicht allgemein repariert.
+
+## Autoauswahl über die Garage
+
+Mit jedem Spiel öffnet das eigene Garage-Fenster. Es zeigt die eigene Spieler-
+Nummer; beide Garage-Fenster offen lassen. Auto wählen und „Fürs nächste Rennen
+übernehmen“ drücken. Es kommt beim nächsten Fahrzeug-Spawn/Retry, nicht sofort
+mitten im Rennen. Tankstellen meiden.
+
+Der Gast sendet seine Wahl an den Host auf **TCP25211**. Dieser Port muss auf dem
+Host für PowerShell7 aus dem Radmin-Netz erreichbar sein. Der Spielserver nutzt
+weiterhin **UDP25200**. Die Garage verwendet automatisch dieselbe Host-IP.
+
+Bei blockierter Verbindung kann der Host Enable-HostFirewall.cmd für die einzelne
+Radmin-IP seines Freundes verwenden; der gezielte Firewall-Schritt benötigt
+Administratorrechte. Er ergänzt Spiel- und Garage-Regel. Keine Ports am Router
+weiterleiten, wenn beide über das gemeinsame Radmin-Netz verbunden sind.

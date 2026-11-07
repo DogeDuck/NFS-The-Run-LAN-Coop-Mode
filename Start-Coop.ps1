@@ -1,9 +1,14 @@
-﻿param([ValidateSet('Host','Guest')][string]$Role='Host',[string]$GameDirectory,[string]$HostAddress,[string]$Nickname,[switch]$CheckOnly)
+﻿#requires -Version 7.0
+param([ValidateSet('Host','Guest')][string]$Role='Host',[string]$GameDirectory,[string]$HostAddress,[string]$Nickname,[string]$StartCarId,[switch]$CheckOnly)
 . (Join-Path $PSScriptRoot 'Coop-Core.ps1')
+. (Join-Path $PSScriptRoot 'Car-Choice.ps1')
+. (Join-Path $PSScriptRoot 'Car-Preferences.ps1')
 $game=Get-CoopGameDirectory $GameDirectory
 Test-CoopReady $game
-if(!$Nickname){$Nickname=if($Role -eq 'Host'){'CoopHost'}else{'CoopGuest'}}
+if(!$Nickname){$Nickname=(Get-CoopLastCarProfile -Role $Role).Nickname}
 if($Nickname -notmatch '^[A-Za-z0-9_-]{1,16}$'){throw 'Name: 1 bis 16 Buchstaben/Ziffern, _ oder -.'}
+if(!$StartCarId){$StartCarId=Get-CoopSavedStartCar $Role $Nickname}
+$startCar=Get-CoopStartCar $StartCarId
 if($Role -eq 'Host'){$HostAddress='127.0.0.1'}elseif(!$HostAddress){if($CheckOnly){throw 'Fuer die Gast-Pruefung HostAddress angeben.'};$HostAddress=Read-Host 'Radmin-/VPN-IPv4 des Hosts'}
 $address=$null
 if(![Net.IPAddress]::TryParse($HostAddress,[ref]$address) -or $address.AddressFamily -ne [Net.Sockets.AddressFamily]::InterNetwork){throw 'Gueltige IPv4-Adresse des Hosts angeben.'}
@@ -11,7 +16,7 @@ $clientExe=Join-Path $game 'Need For Speed The Run.exe'
 $serverExe=Join-Path $game 'NFSTR_Server.exe'
 $clientArgs="-Client.ServerIp ${HostAddress}:25200 -Client.QuitGameOnServerDisconnect False -Client.UseGlobalGamePadInput False"
 $serverArgs='-Server.ServerName StoryCoop -GamePort 25200 -Game.DefaultLayerInclusion StartupMode=Game;GameMode=StoryMode -NfsOnline.Backend Backend_Lan -NfsGame.CarSelectTimer 0.0'
-if($CheckOnly){[ordered]@{Status='verified';Role=$Role;GameDirectory=$game;Nickname=$Nickname;ClientArguments=$clientArgs;ServerArguments=$(if($Role -eq 'Host'){$serverArgs}else{$null})}|ConvertTo-Json;return}
+if($CheckOnly){[ordered]@{Status='verified';StartCar=$startCar.Name;StartCarHash=$startCar.HelperHash;Role=$Role;GameDirectory=$game;Nickname=$Nickname;ClientArguments=$clientArgs;ServerArguments=$(if($Role -eq 'Host'){$serverArgs}else{$null})}|ConvertTo-Json;return}
 Assert-CoopClosed
 $stamp=(Get-Date -Format 'yyyyMMdd-HHmmss')+'-'+[Guid]::NewGuid().ToString('N').Substring(0,8)
 $session=Join-Path $script:CoopStateRoot "Sessions\$stamp"
@@ -33,11 +38,15 @@ $originalConfig=[IO.File]::ReadAllBytes($configPath)
 [IO.File]::WriteAllBytes((Join-Path $session 'LANOnlineHelper-before.ini'),$originalConfig)
 $config=[IO.File]::ReadAllText((Join-Path $PSScriptRoot 'config\NFSTR_LANOnlineHelper.ini'))
 $config=$config -replace '(?m)^ClientName = .*',"ClientName = $Nickname"
+$config=Set-CoopStartCarConfig $config $StartCarId
+if($StartCarId -ne 'story'){$config=$config -replace '(?m)^ForceInitFlow = .*','ForceInitFlow = MainMenu'}
+Save-CoopCarPreference $Role $Nickname $StartCarId
 [IO.File]::WriteAllText($configPath,$config,[Text.Encoding]::ASCII)
 $launchConfigHash=Get-CoopFileHash $configPath
-$record=[ordered]@{Version='0.3-TEST';Role=$Role;GameDirectory=$game;SessionDirectory=$session;Status='starting';Client=$null;Server=$null}
+$record=[ordered]@{Version='0.7-TEST';Role=$Role;GameDirectory=$game;SessionDirectory=$session;Status='starting';Client=$null;Server=$null;StartCarId=$StartCarId;StartCarHash=$startCar.HelperHash}
 $active=Join-Path $script:CoopStateRoot 'active-session.json'
 Save-CoopSettings $game
+if($StartCarId -ne 'story'){Write-Host ('Startauto: '+$startCar.Name);Write-Host 'Vor dem Rennen im Hauptmenue einmal VIEW CARS / AUTOS ANSEHEN oeffnen. Danach zurueck und Rennen starten. Tankstellen weiterhin meiden.'}
 $client=$null;$server=$null
 $garageJob=$null
 try {
@@ -45,6 +54,10 @@ try {
     $info.FileName=$clientExe;$info.WorkingDirectory=$game;$info.UseShellExecute=$false
     $info.EnvironmentVariables['__COMPAT_LAYER']='RunAsInvoker';$info.Arguments=$clientArgs
     $client=[Diagnostics.Process]::Start($info)
+    try{
+        $garage=Join-Path $PSScriptRoot 'Garage-Fenster.ps1'
+        if(Test-Path -LiteralPath $garage){Start-Process -FilePath (Join-Path $PSHOME 'pwsh.exe') -ArgumentList ('-NoProfile -STA -ExecutionPolicy Bypass -File "'+$garage+'" -GamePid '+$client.Id) -WorkingDirectory $PSScriptRoot -WindowStyle Hidden | Out-Null}
+    }catch{Write-Host ('Garage-Fenster konnte nicht starten: '+$_.Exception.Message)}
     $garageJob=Start-Job -ScriptBlock {
         param($worker,$gamePid,$directory,$log)
         & $worker -GameProcessId $gamePid -GameDirectory $directory -LogPath $log

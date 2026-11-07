@@ -1,4 +1,4 @@
-. (Join-Path $PSScriptRoot 'Coop-Core.ps1')
+﻿. (Join-Path $PSScriptRoot 'Coop-Core.ps1')
 Assert-CoopClosed
 $last=Join-Path $script:CoopStateRoot 'last-install.txt'
 if(!(Test-Path -LiteralPath $last)){throw 'Keine mit diesem Installer gesicherte Installation gefunden.'}
@@ -9,7 +9,7 @@ $manifest=Get-Content -LiteralPath $manifestPath -Raw|ConvertFrom-Json
 $backup=[IO.Path]::GetFullPath($manifest.BackupDirectory).TrimEnd('\')
 if((Split-Path -Parent $manifestPath) -ne $backup){throw 'Sicherungsordner stimmt nicht mit Manifest ueberein.'}
 $game=Get-CoopGameDirectory $manifest.GameDirectory
-$allowed=@('Need For Speed The Run.exe','NFSTR_Server.exe','dinput8.dll','Scripts\NFSTR_LANOnlineHelper.asi','Scripts\NFSTR_LANOnlineHelper.ini','d3d11.dll')
+$allowed=@('Scripts\NFSTR_DefinitiveEdition.asi','Scripts\NFSTR_DefinitiveEdition.ini','Need For Speed The Run.exe','NFSTR_Server.exe','dinput8.dll','Scripts\NFSTR_LANOnlineHelper.asi','Scripts\NFSTR_LANOnlineHelper.ini','d3d11.dll')
 $restore=@()
 foreach($entry in $manifest.Files){
     if($entry.RelativePath -notin $allowed){throw 'Unerwarteter Dateipfad in Sicherungsmanifest.'}

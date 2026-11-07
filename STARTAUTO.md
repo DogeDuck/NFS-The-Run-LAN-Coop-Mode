@@ -1,18 +1,14 @@
-# Optionales Startauto
+﻿# Autoauswahl im Story-Koop
 
-Im Koop-Starter waehlt jeder sein eigenes Startauto. Standard ist "Story-Auto beibehalten".
-Zur Auswahl stehen R35, M3 GTS, 370Z, V12 Vantage, R8, 911 Carrera S und Shelby Super Snake.
+Fuer die Story das automatisch gestartete Garage-Fenster verwenden: eigenes Auto,
+Paket und Variante waehlen, dann "Fuers naechste Rennen uebernehmen". Beide
+Garage-Fenster offen lassen. Die Wahl wirkt beim naechsten Fahrzeug-Spawn,
+Etappenwechsel oder Retry. Details: GARAGE.md.
 
-1. Auto im Starter auswaehlen und Koop normal verbinden.
-2. Vor dem Rennen im Hauptmenue einmal VIEW CARS / AUTOS ANSEHEN oeffnen.
-3. Zurueckgehen; nur der HOST startet danach das Rennen.
+Die aeltere Autoauswahl im Starter / Auto-Auswaehlen.cmd speichert eine
+Helper-Vorgabe. Sie ist fuer Story-Autos NICHT verlaesslich (live widerlegt).
+VIEW CARS ist keine Reparatur dieser Story-Uebernahme. Die neue Garage schreibt
+stattdessen die eigene Story-Fahrzeugwahl auf dem Server.
 
-Der gewaehlte Wagen wird fuer die Sitzung erzwungen. Fuer ein anderes Auto das Spiel
-schliessen und neu starten. Gescriptete Story-Fahrzeuge koennen davon abweichen.
-Diese Funktion nutzt den vorhandenen LAN-Helper und ist noch experimentell;
-es gibt keinen neuen Tankstellenwechsel. Tankstellen weiterhin meiden.
-
-Technische Quellen: mRally2-Fahrzeugtabelle, https://github.com/mRally2/The-Run-Tools-Research
-und vorhandener LAN-Helper (ForceGarageCarHash). Keine Spielassets enthalten.
-
-Fuer gescriptete Story-Fahrzeugauswahlen (z.B. Prolog/Werkstatt) vorerst mit "Story-Auto beibehalten" neu starten.
+Tankstellen meiden: Vorschau und Fahrzeugwechsel koennen weiterhin haengen.
+Gescriptete Story-Autos und manche Sonderfahrzeuge brauchen weitere Tests.

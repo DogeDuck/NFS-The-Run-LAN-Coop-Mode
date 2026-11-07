@@ -1,0 +1,14 @@
+{
+  "version": "0.7-TEST",
+  "files_verified": 129,
+  "sha256": "5b270c9af2a5b30d992c8c84b0975b469e53073bd7f330edd4a9d098f0e2e188",
+  "zip_bytes": 467402,
+  "native_matches_live_test": true,
+  "offline_tests": 202,
+  "extra_targeted_tests": 17,
+  "host_pause_ai_user_confirmed": true,
+  "multiplayer_player_list_user_confirmed": true,
+  "first_npc_2_6_user_confirmed": true,
+  "battle_team_evaluation_fixed": false,
+  "full_campaign_verified": false
+}

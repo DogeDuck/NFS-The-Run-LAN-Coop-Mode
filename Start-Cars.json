@@ -1,0 +1,435 @@
+﻿[
+  {
+    "Id": "story",
+    "Name": "Story-Auto beibehalten",
+    "HelperHash": "0",
+    "VehicleKey": 0
+  },
+  {
+    "Id": "car_8c2ced1d",
+    "Name": "Aston Martin One-77",
+    "HelperHash": "1DED2C8C",
+    "VehicleKey": 2351754525,
+    "DatabaseEntry": "ast_one_77_10_pp_stock_1"
+  },
+  {
+    "Id": "Vantage",
+    "Name": "Aston Martin V12 Vantage",
+    "HelperHash": "3E3E59AA",
+    "VehicleKey": 2857975358,
+    "DatabaseEntry": "ast_van_v12_10_pp_stock_1"
+  },
+  {
+    "Id": "car_952c945b",
+    "Name": "Audi Quattro 20V",
+    "HelperHash": "5B942C95",
+    "VehicleKey": 2502726747,
+    "DatabaseEntry": "aud_ur_qua_91_pp_stock_1"
+  },
+  {
+    "Id": "R8",
+    "Name": "Audi R8 V10 5.2 FSI quattro",
+    "HelperHash": "81ED930D",
+    "VehicleKey": 227798401,
+    "DatabaseEntry": "aud_r8_v10_10_pp_stock_1"
+  },
+  {
+    "Id": "car_48e0dccc",
+    "Name": "Audi RS4",
+    "HelperHash": "CCDCE048",
+    "VehicleKey": 1222696140,
+    "DatabaseEntry": "aud_rs4_stk_08_pp_stock_1"
+  },
+  {
+    "Id": "car_5ec1a3d1",
+    "Name": "BMW 1 Series M Coupé",
+    "HelperHash": "D1A3C15E",
+    "VehicleKey": 1589748689,
+    "DatabaseEntry": "bmw_1m_cou_11_pp_stock_1"
+  },
+  {
+    "Id": "M3",
+    "Name": "BMW M3 GTS (E92)",
+    "HelperHash": "9E7FF128",
+    "VehicleKey": 686915486,
+    "DatabaseEntry": "bmw_m3_gts_10_pp_stock_1"
+  },
+  {
+    "Id": "car_6680684b",
+    "Name": "BMW M3 Sport Evolution",
+    "HelperHash": "4B688066",
+    "VehicleKey": 1719691339,
+    "DatabaseEntry": "bmw_m3_e30_90_pp_stock_1"
+  },
+  {
+    "Id": "car_d43bc1a9",
+    "Name": "BMW Z4 GT3 - Signature Edition",
+    "HelperHash": "A9C13BD4",
+    "VehicleKey": 3560685993,
+    "DatabaseEntry": "bmw_z4_gt3_11_pp_stock_1"
+  },
+  {
+    "Id": "car_5343662b",
+    "Name": "Bugatti Veyron 16.4 Super Sport",
+    "HelperHash": "2B664353",
+    "VehicleKey": 1396925995,
+    "DatabaseEntry": "bug_vey_ss_10_pp_stock_1"
+  },
+  {
+    "Id": "car_5abe9eb4",
+    "Name": "Chevrolet Camaro SS (1967)",
+    "HelperHash": "B49EBE5A",
+    "VehicleKey": 1522441908,
+    "DatabaseEntry": "che_cam_ss_67_pp_stock_1"
+  },
+  {
+    "Id": "car_cf00e0ed",
+    "Name": "Chevrolet Camaro ZL1",
+    "HelperHash": "EDE000CF",
+    "VehicleKey": 3472941293,
+    "DatabaseEntry": "che_cam_zl1_13_pp_stock_1"
+  },
+  {
+    "Id": "car_acbd399a",
+    "Name": "Chevrolet Corvette Z06 Carbon Limited Edition",
+    "HelperHash": "9A39BDAC",
+    "VehicleKey": 2898082202,
+    "DatabaseEntry": "che_vet_cbn_10_pp_stock_1"
+  },
+  {
+    "Id": "car_f789bd68",
+    "Name": "Chevrolet El Camino SS",
+    "HelperHash": "68BD89F7",
+    "VehicleKey": 4152999272,
+    "DatabaseEntry": "che_el_cam_70_pp_stock_1"
+  },
+  {
+    "Id": "car_c017ad4a",
+    "Name": "Dodge Challenger SRT-8",
+    "HelperHash": "4AAD17C0",
+    "VehicleKey": 3222777162,
+    "DatabaseEntry": "dod_cha_srt_08_pp_stock_1"
+  },
+  {
+    "Id": "car_2cdad574",
+    "Name": "Ford Focus RS",
+    "HelperHash": "74D5DA2C",
+    "VehicleKey": 752538996,
+    "DatabaseEntry": "for_foc_rs_10_pp_stock_1"
+  },
+  {
+    "Id": "car_cfc52544",
+    "Name": "Ford GT",
+    "HelperHash": "4425C5CF",
+    "VehicleKey": 3485803844,
+    "DatabaseEntry": "for_gt_stk_06_pp_stock_1"
+  },
+  {
+    "Id": "car_5d7d4434",
+    "Name": "Ford Mustang Boss 302",
+    "HelperHash": "34447D5D",
+    "VehicleKey": 1568490548,
+    "DatabaseEntry": "for_mus_bos_12_pp_stock_1"
+  },
+  {
+    "Id": "car_596afa36",
+    "Name": "Ford Mustang Boss 302 (1969)",
+    "HelperHash": "36FA6A59",
+    "VehicleKey": 1500183094,
+    "DatabaseEntry": "for_mus_302_69_pp_stock_1"
+  },
+  {
+    "Id": "car_b0c88d7b",
+    "Name": "Ford Mustang RTR",
+    "HelperHash": "7B8DC8B0",
+    "VehicleKey": 2965933435,
+    "DatabaseEntry": "for_mus_rtr_12_pp_stock_1"
+  },
+  {
+    "Id": "Mustang",
+    "Name": "Ford Shelby GT500 Super Snake",
+    "HelperHash": "675306F1",
+    "VehicleKey": 4043723623,
+    "DatabaseEntry": "she_mus_snk_12_pp_stock_1"
+  },
+  {
+    "Id": "car_fa08ea32",
+    "Name": "Gumpert Apollo S",
+    "HelperHash": "32EA08FA",
+    "VehicleKey": 4194888242,
+    "DatabaseEntry": "gum_apo_s_11_pp_stock_1"
+  },
+  {
+    "Id": "car_70a26b8c",
+    "Name": "Heynessey Venom GT",
+    "HelperHash": "8C6BA270",
+    "VehicleKey": 1889692556,
+    "DatabaseEntry": "hen_ven_gt_11_pp_stock_1"
+  },
+  {
+    "Id": "car_37ee9e16",
+    "Name": "Koenigsegg Agera R",
+    "HelperHash": "169EEE37",
+    "VehicleKey": 938384918,
+    "DatabaseEntry": "koe_age_r_11_pp_stock_1"
+  },
+  {
+    "Id": "car_0d9964ac",
+    "Name": "Lamborghini Aventador LP 700-4",
+    "HelperHash": "AC64990D",
+    "VehicleKey": 228156588,
+    "DatabaseEntry": "lam_ave_700_12_pp_stock_1"
+  },
+  {
+    "Id": "car_7910fc8a",
+    "Name": "Lamborghini Countach 500 quattrovalvole",
+    "HelperHash": "8AFC1079",
+    "VehicleKey": 2031156362,
+    "DatabaseEntry": "lam_cou_qv_85_pp_stock_1"
+  },
+  {
+    "Id": "car_15d76537",
+    "Name": "Lamborghini Gallardo LP 550-2 Valentino Balboni",
+    "HelperHash": "3765D715",
+    "VehicleKey": 366437687,
+    "DatabaseEntry": "lam_gal_vb_10_pp_stock_1"
+  },
+  {
+    "Id": "car_b30c7c29",
+    "Name": "Lamborghini Miura SV",
+    "HelperHash": "297C0CB3",
+    "VehicleKey": 3003939881,
+    "DatabaseEntry": "lam_miu_sv_71_pp_stock_1"
+  },
+  {
+    "Id": "car_19367fdc",
+    "Name": "Lamborghini Murciélago LP 670-4 SV",
+    "HelperHash": "DC7F3619",
+    "VehicleKey": 423002076,
+    "DatabaseEntry": "lam_mur_sv_10_pp_stock_1"
+  },
+  {
+    "Id": "car_b510963f",
+    "Name": "Lamborghini Sesto Elemento",
+    "HelperHash": "3F9610B5",
+    "VehicleKey": 3037763135,
+    "DatabaseEntry": "lam_ses_ele_11_pp_stock_1"
+  },
+  {
+    "Id": "car_4a0dcb33",
+    "Name": "Lexus LF-A",
+    "HelperHash": "33CB0D4A",
+    "VehicleKey": 1242417971,
+    "DatabaseEntry": "lex_lfa_stk_10_pp_stock_1"
+  },
+  {
+    "Id": "car_299fcc24",
+    "Name": "Lotus Evora",
+    "HelperHash": "24CC9F29",
+    "VehicleKey": 698338340,
+    "DatabaseEntry": "lot_evo_stk_10_pp_stock_1"
+  },
+  {
+    "Id": "car_47d7c38a",
+    "Name": "Lotus Exige Cup 260",
+    "HelperHash": "8AC3D747",
+    "VehicleKey": 1205322634,
+    "DatabaseEntry": "lot_exi_260_10_pp_stock_1"
+  },
+  {
+    "Id": "car_87f58908",
+    "Name": "Mazda MX-5",
+    "HelperHash": "0889F587",
+    "VehicleKey": 2281015560,
+    "DatabaseEntry": "maz_mx5_rht_09_pp_stock_1"
+  },
+  {
+    "Id": "car_477073d6",
+    "Name": "Mazda RX-7 RZ",
+    "HelperHash": "D6737047",
+    "VehicleKey": 1198552022,
+    "DatabaseEntry": "maz_rx7_rz_98_pp_stock_1"
+  },
+  {
+    "Id": "car_b7bce1fb",
+    "Name": "McLaren F1",
+    "HelperHash": "FBE1BCB7",
+    "VehicleKey": 3082609147,
+    "DatabaseEntry": "mcl_f1_stk_94_pp_stock_1"
+  },
+  {
+    "Id": "car_9e73f8f7",
+    "Name": "McLaren MP4-12C",
+    "HelperHash": "F7F8739E",
+    "VehicleKey": 2658400503,
+    "DatabaseEntry": "mcl_mp4_12c_12_pp_stock_1"
+  },
+  {
+    "Id": "car_8e562e18",
+    "Name": "Mercedes-Benz SLS AMG",
+    "HelperHash": "182E568E",
+    "VehicleKey": 2388012568,
+    "DatabaseEntry": "mer_sls_amg_10_pp_stock_1"
+  },
+  {
+    "Id": "car_b30fbcfb",
+    "Name": "Mitsubishi Lancer Evolution X",
+    "HelperHash": "FBBC0FB3",
+    "VehicleKey": 3004153083,
+    "DatabaseEntry": "mit_evo_x_08_pp_stock_1"
+  },
+  {
+    "Id": "car_9b3e53ce",
+    "Name": "Nissan 200SX (S14)",
+    "HelperHash": "CE533E9B",
+    "VehicleKey": 2604553166,
+    "DatabaseEntry": "nis_s14_a_97_pp_stock_1"
+  },
+  {
+    "Id": "370Z",
+    "Name": "Nissan 370Z (Z34)",
+    "HelperHash": "755298C0",
+    "VehicleKey": 3231208053,
+    "DatabaseEntry": "nis_370_z_09_pp_stock_1"
+  },
+  {
+    "Id": "car_6ae5d9b0",
+    "Name": "Nissan Fairlady 240ZG (S30)",
+    "HelperHash": "B0D9E56A",
+    "VehicleKey": 1793448368,
+    "DatabaseEntry": "nis_240_zg_71_pp_stock_1"
+  },
+  {
+    "Id": "R35",
+    "Name": "Nissan GT-R (R35)",
+    "HelperHash": "FB9F5F4B",
+    "VehicleKey": 1264558075,
+    "DatabaseEntry": "nis_gtr_r35_08_pp_stock_1"
+  },
+  {
+    "Id": "car_13d56c9f",
+    "Name": "Nissan GT-R SpecV (R35)",
+    "HelperHash": "9F6CD513",
+    "VehicleKey": 332754079,
+    "DatabaseEntry": "nis_gtr_v_10_pp_stock_1"
+  },
+  {
+    "Id": "car_c16da9dc",
+    "Name": "Nissan Skyline 2000GT-R (C10)",
+    "HelperHash": "DCA96DC1",
+    "VehicleKey": 3245189596,
+    "DatabaseEntry": "nis_gtr_stk_73_pp_stock_1"
+  },
+  {
+    "Id": "car_dbb436f2",
+    "Name": "Nissan Skyline GT-R (R32)",
+    "HelperHash": "F236B4DB",
+    "VehicleKey": 3686020850,
+    "DatabaseEntry": "nis_gtr_r32_91_pp_stock_1"
+  },
+  {
+    "Id": "car_2fcadd23",
+    "Name": "Pagani Huayra",
+    "HelperHash": "23DDCA2F",
+    "VehicleKey": 801824035,
+    "DatabaseEntry": "pag_hua_stk_11_pp_stock_1"
+  },
+  {
+    "Id": "car_cd524249",
+    "Name": "Pagani Zonda Cinque",
+    "HelperHash": "494252CD",
+    "VehicleKey": 3444720201,
+    "DatabaseEntry": "pag_zon_cin_10_pp_stock_1"
+  },
+  {
+    "Id": "car_db746d74",
+    "Name": "Pontiac Firebird Formula",
+    "HelperHash": "746D74DB",
+    "VehicleKey": 3681840500,
+    "DatabaseEntry": "pon_fir_stk_78_pp_stock_1"
+  },
+  {
+    "Id": "911",
+    "Name": "Porsche 911 Carrera S (991)",
+    "HelperHash": "981E8B35",
+    "VehicleKey": 898309784,
+    "DatabaseEntry": "por_991_s_12_pp_stock_1"
+  },
+  {
+    "Id": "car_3d7e8871",
+    "Name": "Porsche 911 GT2 (993)",
+    "HelperHash": "71887E3D",
+    "VehicleKey": 1031702641,
+    "DatabaseEntry": "por_993_gt2_96_pp_stock_1"
+  },
+  {
+    "Id": "car_da49926a",
+    "Name": "Porsche 911 GT3 RS 4.0 (997)",
+    "HelperHash": "6A9249DA",
+    "VehicleKey": 3662254698,
+    "DatabaseEntry": "por_gt3_rs_10_pp_stock_1"
+  },
+  {
+    "Id": "car_c86d71d1",
+    "Name": "Porsche 918 RSR",
+    "HelperHash": "D1716DC8",
+    "VehicleKey": 3362615761,
+    "DatabaseEntry": "por_918_rsr_11_pp_stock_1"
+  },
+  {
+    "Id": "car_8141b636",
+    "Name": "Porsche Carrera GT",
+    "HelperHash": "36B64181",
+    "VehicleKey": 2168567350,
+    "DatabaseEntry": "por_car_gt_08_pp_stock_1"
+  },
+  {
+    "Id": "car_7da83191",
+    "Name": "Renault Sport Mégane RS",
+    "HelperHash": "9131A87D",
+    "VehicleKey": 2108174737,
+    "DatabaseEntry": "ren_meg_rs_10_pp_stock_1"
+  },
+  {
+    "Id": "car_f77c763b",
+    "Name": "Shelby Cobra Daytona Coupe",
+    "HelperHash": "3B767CF7",
+    "VehicleKey": 4152129083,
+    "DatabaseEntry": "she_day_cou_65_pp_stock_1"
+  },
+  {
+    "Id": "car_dd1dd33d",
+    "Name": "Subaru Impreza WRX STi (Hatchback)",
+    "HelperHash": "3DD31DDD",
+    "VehicleKey": 3709719357,
+    "DatabaseEntry": "sub_wrx_sti_09_pp_stock_1"
+  },
+  {
+    "Id": "car_16d2ce61",
+    "Name": "Toyota Corolla GTS (AE86)",
+    "HelperHash": "61CED216",
+    "VehicleKey": 382914145,
+    "DatabaseEntry": "toy_cor_stk_86_pp_stock_1"
+  },
+  {
+    "Id": "car_6a4e1f32",
+    "Name": "Toyota Supra",
+    "HelperHash": "321F4E6A",
+    "VehicleKey": 1783504690,
+    "DatabaseEntry": "toy_sup_stk_98_pp_stock_1"
+  },
+  {
+    "Id": "car_1c0d1dd1",
+    "Name": "Volkswagen Golf GTI (Mk1)",
+    "HelperHash": "D11D0D1C",
+    "VehicleKey": 470621649,
+    "DatabaseEntry": "vol_gti_mk1_76_pp_stock_1"
+  },
+  {
+    "Id": "car_d9a65a9d",
+    "Name": "Volkswagen Scirocco R",
+    "HelperHash": "9D5AA6D9",
+    "VehicleKey": 3651558045,
+    "DatabaseEntry": "vol_sci_r_10_pp_stock_1"
+  }
+]

@@ -1,0 +1,276 @@
+{
+  "version": "0.7-TEST",
+  "ai": {
+    "layout": {
+      "adapter": 45629440,
+      "counter": 45633536,
+      "adapterSize": 1281,
+      "quota_adapter": 45630464,
+      "quota_counter": 45633600
+    },
+    "sha256": "8fa5580076607120edf9e74a24367d74a24988ef7ec172fade15cdff41f2bf6b",
+    "gameplay_evidence": "Las Vegas event1289338c: two humans plus original two NPCs, user confirmed all present; paired live counters both1",
+    "limitations": "Other missions, scripted police and team finish not verified"
+  },
+  "spawn": {
+    "sha256": "aeaf9c120b02a158cd3f52554fbfa1f2f0f18507da43d9c4aa00225c845249ff",
+    "selection_layout": {
+      "adapter": 45637632,
+      "counter": 45641728,
+      "adapterSize": 2654
+    },
+    "matrix_layout": {
+      "adapter": 45645824,
+      "counter": 45649920,
+      "adapterSize": 2469
+    },
+    "events": [
+      {
+        "event": "2_2",
+        "guid": "6e4465d5-c4f7-4dd6-9a96-611969216152"
+      },
+      {
+        "event": "2_4",
+        "guid": "ae29a7bb-76ec-422d-9e82-cea570e43597"
+      },
+      {
+        "event": "2_5",
+        "guid": "a50adedb-c5ac-4489-9917-087d9e8ceb69"
+      },
+      {
+        "event": "2_6",
+        "guid": "e9e7914c-6504-48b0-a285-a81df2cae18d"
+      },
+      {
+        "event": "3_1",
+        "guid": "a879cf15-a57a-4dfb-acf7-63c43f24e329"
+      },
+      {
+        "event": "3_2",
+        "guid": "3049dba6-2085-43b1-8c5f-66aa616daa72"
+      },
+      {
+        "event": "3_3",
+        "guid": "9a6fd91f-70cd-4876-8d03-413064286eb4"
+      },
+      {
+        "event": "3_5",
+        "guid": "6be7deda-d431-4a04-a184-1689dd69b0d2"
+      },
+      {
+        "event": "3_41",
+        "guid": "1289338c-c4b2-4123-83a5-f4c1ce9bff58"
+      },
+      {
+        "event": "3_51",
+        "guid": "87861d2f-5087-41d8-9f1b-8ae97a1116d3"
+      },
+      {
+        "event": "5_1",
+        "guid": "09a09070-5f2b-4c78-bcd7-0a196e687d6f"
+      },
+      {
+        "event": "5_2",
+        "guid": "5252017e-4681-49d6-ae3d-8a85ab8ea274"
+      },
+      {
+        "event": "5_3",
+        "guid": "0867d82a-d812-4359-aa70-249b29892fce"
+      },
+      {
+        "event": "6_1",
+        "guid": "1fc46f13-2cdc-4ae0-b7e9-0937a779dc5b"
+      },
+      {
+        "event": "6_2",
+        "guid": "3b39a225-26ed-4fb2-9f04-bcdd7e3f7fbb"
+      },
+      {
+        "event": "6_3",
+        "guid": "5bccc9e0-4cb8-4584-aa6d-2b8033fb4636"
+      },
+      {
+        "event": "6_21",
+        "guid": "7026f4b9-d357-4f8d-8fe0-0ac25a41e1ee"
+      },
+      {
+        "event": "9_0",
+        "guid": "1fb33f57-4774-43ba-a8a4-af1100c40637"
+      },
+      {
+        "event": "9_1",
+        "guid": "d64a8d7c-a6ee-45bb-88a1-f160c8e974a9"
+      },
+      {
+        "event": "9_3",
+        "guid": "70d54b95-9604-47a2-b16c-d0572ae6cef6"
+      },
+      {
+        "event": "9_21",
+        "guid": "bb6ad963-2173-4e0a-b79c-0b18127592dc"
+      },
+      {
+        "event": "10_1",
+        "guid": "39b49ce4-6ca3-4e45-b4e9-33cbed0bcdf3"
+      },
+      {
+        "event": "10_2",
+        "guid": "f630307b-183d-4b34-85cb-5ca561db596b"
+      },
+      {
+        "event": "10_3",
+        "guid": "835f2e00-f84f-4075-abd7-bec6fc878902"
+      },
+      {
+        "event": "11_0",
+        "guid": "c94e574a-8a86-4d08-98bd-260deec5eff1"
+      },
+      {
+        "event": "11_2",
+        "guid": "b5639684-74df-40c8-b056-85f8477b8961"
+      },
+      {
+        "event": "11_3",
+        "guid": "8e8f09a7-7849-4fb0-9aa2-b2b74fd09cdb"
+      },
+      {
+        "event": "11_4",
+        "guid": "4553fe47-5cde-4b92-94ff-b7b9612a6631"
+      },
+      {
+        "event": "11_11",
+        "guid": "4f52b248-96f3-4b30-81bc-b3877e5a17e8"
+      },
+      {
+        "event": "12_1",
+        "guid": "3bf7e4df-48b7-4fff-8752-286c4886c927"
+      },
+      {
+        "event": "12_2",
+        "guid": "5a5439cf-6b96-44fb-b3e8-a703279d60b4"
+      },
+      {
+        "event": "12_31",
+        "guid": "20f7d137-8b4f-4b83-ab9d-90d68214e01b"
+      },
+      {
+        "event": "13_1",
+        "guid": "5d408f56-f54b-4d8e-bda4-fd58884dbd1f"
+      },
+      {
+        "event": "13_2",
+        "guid": "40ebc864-ea75-4be3-baca-12fe4de8e695"
+      },
+      {
+        "event": "13_3",
+        "guid": "c3991df4-0701-4cb7-91dd-5ceccd086a64"
+      },
+      {
+        "event": "13_4",
+        "guid": "2d707c7e-7383-4558-a927-631457df7960"
+      },
+      {
+        "event": "13_31",
+        "guid": "3ddfa5a6-654b-433b-9c13-6145985061e2"
+      },
+      {
+        "event": "13_41",
+        "guid": "ea240523-7973-41a8-a760-78d8ee0da69e"
+      }
+    ],
+    "stage1_excluded": true,
+    "second_human_offset_metres": 8,
+    "reserve_authored_slots": true,
+    "gameplay_verified_events": [
+      "3_5"
+    ],
+    "full_campaign_verified": false,
+    "evidence": "User confirmed both cars at race start and driveable in3.5 after full Retry; native selection2/matrix1+1 counters.",
+    "limitations": "Other allowlisted races and the combined disk package have not been tested in game. Garage/pause/team-result changes excluded."
+  },
+  "combined_package_gameplay_verified": false,
+  "garage_fix_included": false,
+  "pause_autodrive_included": true,
+  "team_result_adapter_included": true,
+  "coop_hud_included": true,
+  "coop_hud": {
+    "sha256": "4afc9b078f7c70044ab48c05cc3327dcbfb05ef489aab190c5a6640e8043ad29",
+    "layout": {
+      "adapter": 45637632,
+      "counter": 45641728,
+      "adapterSize": 633
+    },
+    "native_leaderboard": true,
+    "hide_story_timer": true,
+    "hide_autolog_stage_leader": true,
+    "race_data_modified": false,
+    "gameplay_verified": false,
+    "limitations": "Candidate only. Native Career leaderboard may require additional data initialization in Story LAN; no teammate-only filter or invented seconds gap."
+  },
+  "second_human_slot_reservation_included": true,
+  "pause_ai_included": true,
+  "pause_ai": {
+    "sha256": "4e653b2dcfa91306d2cb9ef94db79dfe0ba0ac9bc7441b3cf13f32f364d40400",
+    "layout": {
+      "adapter": 45629440,
+      "counter": 45633536,
+      "adapterSize": 323
+    },
+    "site": "0x900f68",
+    "draft": true,
+    "guard_ai_state": false,
+    "source": "hud_pause_visibility",
+    "gameplay_verified": false,
+    "limitations": "LAN only. Native AI switch F29820(entity,1/0,0,0) using HUD PauseVisibilty state transitions; switched back on resume. Not tested in game."
+  },
+  "battle_team_finish_included": false,
+  "battle_team_finish": null,
+  "gas_ack_timeout_included": false,
+  "gas_ack_timeout": null,
+  "gas_unload_ack_included": false,
+  "gas_unload_ack": null,
+  "legacy_prelaunch_car_choice": {
+    "saved_per_role_and_nickname": true,
+    "stock_cars": 61,
+    "helper_force_for_session": true,
+    "effective_on": "next game launch",
+    "event_transition_gameplay_verified": false,
+    "requires_initial_view_cars": true,
+    "scripted_story_cars_may_override": true,
+    "powershell7_required": true
+  },
+  "persistent_car_choice": {
+    "mode": "server_per_human",
+    "relay_port": 25211,
+    "effective_on": "next vehicle spawn / Retry",
+    "requires_open_garage_window": true,
+    "shared_tcp_palette_error_fixed": true,
+    "guest_story_auto_release_supported": false
+  },
+  "live_evidence_2026_11_07": {
+    "host_pause_ai": true,
+    "native_multiplayer_player_list_visible": true,
+    "first_npc_in_2_6_correct": true,
+    "guest_can_still_lose_battle_when_only_host_wins": true,
+    "exact_multiplayer_gap_values_verified": false
+  },
+  "team_result": {
+    "sha256": "95ba75bb168b2ffc38c4539e2287d8be31dcc55d2001d53c7c7a60696c839f14",
+    "source_sha256": "2cb4570c34e46cc74ccded44f8f38338c12a0edfbb33a74572b72fc6e11ad249",
+    "layout": {
+      "adapter": 45621248,
+      "counter": 45625344,
+      "adapterSize": 1401
+    },
+    "gameplay_verified": false,
+    "published": false,
+    "installed": false,
+    "scope": "Native Story result mode0 finish-time/rank getters; exactly two validated non-bot client players; IDs derived per call.",
+    "limitations": [
+      "Not a general scripted mission/failure-message replacement",
+      "No shared overtaken HUD",
+      "Native result timing and continue transition require gameplay tests",
+      "Unexpected roster/type declines to original behaviour"
+    ]
+  }
+}

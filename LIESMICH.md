@@ -1,73 +1,66 @@
-# NFS: The Run LAN Coop Mode – v0.6-TEST
+# NFS: The Run LAN Coop Mode – v0.7 TEST
 
-Experimentelle Story-Koop-Mod fuer zwei Spieler. Beide benoetigen eine eigene
-passende Spielinstallation und das unterstuetzte LAN-Grundpaket v1 vom 29.05.2024.
-Der Download enthaelt Patches und Mod-Dateien, keine Spiel- oder Server-EXE.
+Experimentelle Story-Koop-Mod fuer zwei Spieler, lokal oder ueber Radmin VPN.
+Beide brauchen eine eigene passende Spielinstallation und das unterstuetzte
+LAN-Grundpaket v1 vom 29.05.2024. Enthalten sind Installer, Patches und Mods,
+keine Spiel- oder Server-EXE.
 
-## Neu in dieser Version
+## Neu zusammengefasst
 
-- Native KI-Racer werden im Story-LAN wieder angelegt. Der zusaetzliche Mensch
-  soll keinen urspruenglichen Gegner verdraengen. Der Fix prueft Startplatzkapazitaet
-  und Belegung; bei unzureichendem Platz greift die Erweiterung nicht.
-- Story-Startplaetze fuer 38 ausdruecklich erfasste Rennen ab Stage 2:
-  erster verarbeiteter menschlicher Fahrer am vorgesehenen Einzelspieler-Start,
-  zweiter Fahrer acht Meter hinter diesem Punkt entlang der Fahrtrichtung.
-  Beide behalten eigene Fahrzeuge und native Besitzerzuordnung. Die genaue
-  Reihenfolge wird von der Engine bestimmt, nicht fest von HOST/GAST.
-- Die neue Spawnlogik greift nicht in Stage 1. Die bisherige gezielte
-  1.51-Spawnbehandlung des Client-Patches bleibt unveraendert enthalten.
-- Definitive Edition im eingeschraenkten Koop-Profil sowie Musik +25 dB bleiben
-  enthalten und werden vom Installer angewendet. Details: ADDONS.md.
+- Pause-KI: Beim Oeffnen des Pausemenues wird das eigene Auto der nativen KI
+  uebergeben; beim Schliessen wird die selbst aktivierte Uebernahme beendet.
+  Im HOST live bestaetigt, noch kein umfassender Gast-/Cutscene-Test.
+- Multiplayer-HUD: native Spieler-/Platzierungsliste statt des Story-Timers und
+  der Autolog-Stage-Leader-Anzeige. Sichtbarer Wechsel live bestaetigt.
+  Genauigkeit aller Sekundenabstaende und aller Rennanzeigen noch offen.
+- Zusaetzlicher Startplatz fuer den zweiten menschlichen Fahrer auf den
+  ausdruecklich unterstuetzten Events. Er soll keinen originalen NPC-Startplatz
+  mehr belegen. Erster echter Gegner in Eliminator2.6 live korrekt gespawnt.
+- Eigene Garage pro Client: oeffnet mit dem Spiel, ohne dauerhafte Konsole.
+  Auto, Style-Pack und Variante waehlen; beim naechsten Fahrzeug-Spawn,
+  Etappenwechsel oder Retry uebernommen. Beide Garage-Fenster offen lassen.
+- Der Gast sendet seine Auswahl an das Garage-Fenster des Hosts (TCP25211).
+  Der Fehler "ForeColor: Cannot convert null" bei der Bestaetigung ist behoben.
+  Neuer Versand ueber zwei PCs/Radmin muss noch separat getestet werden.
 
-## Was wurde tatsaechlich getestet?
+## Bisherige Funktionen bleiben enthalten
 
-Spieltest: In Rennen 3.5 stehen beide Autos nach vollstaendigem Retry am
-Rennanfang auf der Strasse und sind fahrbar. Serverzaehler bestaetigen die
-Startplatzwahl fuer beide und jeweils eine Matrixkorrektur. KI-Racer wurden
-zuvor in Desert Hills sowie Las Vegas mit der urspruenglichen Gegneranzahl
-bestaetigt. Die anderen 37 Spawn-Eintraege wurden noch nicht im Spiel geprueft.
+- KI-Racer-Erweiterung; gescriptete Polizei/Verfolgungen sind separat zu pruefen.
+- Erfasste Story-Startpositionen ab Stage2, Mitspieler versetzt dahinter;
+  gezielte bisherige 1.51-Behandlung. Liste: SPAWN-EVENTS.json.
+- Gemeinsame Checkpoint-Zeitboni fuer Zeitrennen.
+- Gemeinsame normale Zielwertung (Mode0) und bisherige Story-Weiterwechsel.
+  Das ist KEIN vollstaendiger gemeinsamer Eliminator-/Battle-Fix.
+- Definitive Edition im Koop-Profil, Musik +25dB und vorhandene Freischaltungen.
+  Details und Fremdmod-Credits: ADDONS.md und GARAGE.md.
 
-Die kombinierte Installerversion wurde offline geprueft, nicht als gesamte
-Kampagne oder auf zwei PCs im Spiel getestet. SPAWN-EVENTS.json enthaelt die
-ausdrueckliche Rennliste. GAMEPLAY-STATUS.json trennt Spielbelege und Grenzen.
+## Installation und Verbindung
 
-## Installation / Update auf beiden PCs
+1. ZIP vollstaendig entpacken, Spiel und Server schliessen.
+2. Auf beiden PCs Install-Coop.cmd starten. Den SpielORDNER angeben.
+3. Beide PCs in dasselbe Radmin-VPN-Netzwerk bringen, siehe RADMIN-ANLEITUNG.md.
+4. Koop-Starten.cmd: einer HOST, einer GAST. Der Gast traegt die Radmin-IPv4
+   des Hosts ein. Die Host-Firewallhilfe umfasst auch die Garage (TCP25211).
+5. Host startet den Server, sobald das Gast-Spielfenster offen ist. Nur der
+   HOST startet das Rennen. Beide Garage-Fenster fuer gehaltene Autos offen lassen.
+6. Stop-Coop.cmd beendet die eigene Sitzung. Restore-Installation.cmd stellt
+   gesicherte Installationsdateien wieder her. Kein automatischer Save-Restore.
 
-1. ZIP vollstaendig entpacken; Spiel und Testserver schliessen.
-2. Install-Coop.cmd starten und den SPIELORDNER angeben, nicht die EXE-Datei.
-   Updates von v0.3/v0.4 sowie den unterstuetzten Grundfassungen werden erkannt.
-3. RADMIN-ANLEITUNG.md befolgen: beide in dasselbe Radmin-VPN-Netzwerk.
-4. Koop-Starten.cmd: einer HOST, der andere GAST. Der Gast traegt die
-   Radmin-IPv4 des Hosts im IP-Feld ein.
-5. Im Host-Starter erst Enter druecken, wenn das Gast-Spielfenster offen ist.
-   Nur der HOST startet das Rennen. Starterfenster offen lassen.
+## Bekannte Fehler
 
-Der Installer sichert geaenderte Installationsdateien. Die Starter sichern vor
-dem Start den aktuellen Spielstand; sie schreiben keinen alten Stand zurueck.
-Stop-Coop.cmd beendet die eigene Sitzung. Restore-Installation.cmd stellt
-Installationsdateien wieder her; fuer die Musik gilt zusaetzlich ADDONS.md.
+- Eliminator: Wenn nur einer den echten NPC schlaegt, kann der andere weiterhin
+  lokal verlieren und in KI-Steuerung wechseln. Gemeinsamer aktueller Gegner,
+  Battle-Countdown, Zaehler und Ausgang sind NICHT geloest. Auch der Test, bei
+  dem beide vor dem NPC bleiben, steht noch aus.
+- Tankstellen meiden: Fahrzeugauswahl kann haengen oder abstuerzen. Die getestete
+  Eintrittssperre wirkte nicht und ist nicht enthalten. Garage als Ersatz nutzen.
+- Gast-Cutscenes, Kamera, Figuren und QTE-Eingaben sind nicht allgemein synchron.
+  Die erste QTE laesst beide weiter, wenn einer sie schafft; kein neuer QTE-Fix.
+- Bekannter Brueckenabsturz in1.51, einzelne Streaming-/Sound-/Spawnfehler und
+  gescriptete Uebergaenge bleiben offen. Keine vollstaendige Kampagnenfreigabe.
+- "Story-Auto" beendet beim Host das Halten des eigenen Autos; beim Gast ist
+  diese Rueckgabe noch offen. Ein anderes Auto kann ausgewaehlt werden.
 
-## Bekannte Grenzen – bitte vor dem Test lesen
-
-- Tankstellenwechsel ist NICHT repariert: fehlende Vorschau, Endlosladen und
-  Softlock nach Auswahl oder Zurueck. Tankstellen vorerst meiden.
-- Pause-Menue mit KI-Uebernahme ist noch nicht enthalten.
-- Dynamischer Teamwertungs-Kandidat fuer normale Story-Zielwertung enthalten.
-  In3.5 bestaetigt: beide gewinnen und wechseln weiter; keine Garantie fuer gescriptete Fehlschlaege,
-  Cutscene-Abschluesse oder Fortschritt. Gemeinsamer Overtaken-HUD fehlt.
-- Brueckenabsturz in 1.51 weiterhin offen. Cutscene-Figuren, Gastkamera,
-  Fahrzeugton und Steuerungsuebergaben koennen fehlerhaft sein.
-- Kein vollstaendiger Verfolgungs-/Polizei-Fix: gescriptete Cops und Weltstreaming
-  sind unabhaengig von der KI-Racer-Erweiterung.
-- Spaetere Resets, andere Rennstarts und Uebergaenge brauchen weitere Tests.
-
-Keine Tankstellen-Diagnose, kein experimenteller Garagen-Routing-Hook und keine
-automatischen Prozessaufnahmen werden durch dieses Update gestartet.
-
-Teamwertung ist experimentell; nur mode0-Zielwertung, gescriptete Fehlschlaege nicht allgemein geloest.
-
-Optionale Autoauswahl im Starter: jeder waehlt fuer sich vor Spielstart. Vor dem Rennen im Hauptmenue einmal VIEW CARS / AUTOS ANSEHEN oeffnen, dann zurueck und Rennen starten. Die Wahl bleibt fuer diese Sitzung erzwungen; fuer ein anderes Auto Spiel neu starten. Gescriptete Story-Autos koennen abweichen. Kein Tankstellenfix, In3.5 mit HOST R35 und GAST M3 GTS bestaetigt.
-
-Spieltest v0.6: HOST R35 und GAST M3 GTS bestaetigt; beide gewinnen in3.5 und wechseln zusammen weiter. Weitere Rennen/gescriptete Ablaeufe nicht vollstaendig getestet.
-
-Die globale Run Position / Kampagnenplatzierung bleibt individuell (im Test138/139). Gemeinsamer Sieg synchronisiert diese Anzeige nicht.
+Offline202 Pruefungen vor dem Release-Paket bestanden; Paketpruefungen separat.
+Live bestaetigte Teilfunktionen sind oben genannt. Nicht als fehlerfreie Version
+oder als allgemeiner Fix fuer alle Rennarten verstehen.

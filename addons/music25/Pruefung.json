@@ -1,0 +1,47 @@
+{
+  "changed_channels": [
+    {
+      "channel": "/_c4/Sound/MomentStreams",
+      "original_db": 0.0,
+      "installed_db": -2.0
+    },
+    {
+      "channel": "/_c4/Sound/Global_SFX",
+      "original_db": 0.0,
+      "installed_db": -2.0
+    },
+    {
+      "channel": "/_c4/Sound/Global_Music",
+      "original_db": 0.0,
+      "installed_db": 25.0
+    },
+    {
+      "channel": "/_c4/Sound/MomentAmbienceStreams",
+      "original_db": 0.0,
+      "installed_db": -2.0
+    },
+    {
+      "channel": "/_c4/Sound/Global_UI",
+      "original_db": 0.0,
+      "installed_db": -2.0
+    },
+    {
+      "channel": "/_c4/Sound/Global_Test",
+      "original_db": 0.0,
+      "installed_db": -2.0
+    }
+  ],
+  "unchanged_speech_groups": [
+    "/_c4/Sound/Global_Speech/Speech",
+    "/_c4/Sound/Global_Speech/Speech/Efforts",
+    "/_c4/Sound/Global_Speech/Speech/_Placeholder",
+    "/_c4/Sound/Global_Speech/Speech/Efforts/Rooftop",
+    "/_c4/Sound/Global_Speech/Speech/Story",
+    "/_c4/Sound/Global_Speech/Speech/Story/Test_JimSced",
+    "/_c4/Sound/Global_Speech/Speech/Efforts/Generic",
+    "/_c4/Sound/Global_Speech/Speech/Efforts/Generic/Land",
+    "/_c4/Sound/Global_Speech"
+  ],
+  "asset_sha1": "e90056e56fca122a604a7f5661920db4d4c09806",
+  "listening_test": "Not performed; game remains closed."
+}

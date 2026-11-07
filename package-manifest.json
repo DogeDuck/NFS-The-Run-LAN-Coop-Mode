@@ -1,6 +1,66 @@
 {
-  "version": "0.3-TEST",
+  "version": "0.7-TEST",
   "files": [
+    {
+      "path": "addons/LICENSE-DefinitiveEdition.txt",
+      "sha256": "7fe05e5a34881e3befa916fc376c4edc6f95a07738b03623d0a1eef06fab5787",
+      "bytes": 1090
+    },
+    {
+      "path": "addons/manifest.json",
+      "sha256": "f204b820dead9d906e7254172a8c52b536cdb6fbb45a90a27c8a60e0cb235e16",
+      "bytes": 882
+    },
+    {
+      "path": "addons/music25/Lies mich.md",
+      "sha256": "3f3ce97910ec0ff3fe061e410df6c49392be0e6b274e2cb959b2a88ca67abe45",
+      "bytes": 3007
+    },
+    {
+      "path": "addons/music25/NFS-Audio-Patch.ps1",
+      "sha256": "128755a63bf5599c995d6ec181198a27a39d11092cb13e2d1ba84bbda09b31f3",
+      "bytes": 18992
+    },
+    {
+      "path": "addons/music25/Pruefung.json",
+      "sha256": "89c349c0ca06c1260b01ca164496101ef6d81ea23f2ca5028234113816825fb8",
+      "bytes": 1337
+    },
+    {
+      "path": "addons/NFSTR_DefinitiveEdition.asi",
+      "sha256": "21821683c7f0c16436fb1dbbcfc23ecbdd226f59f3bec10d9268b173dabfd5fb",
+      "bytes": 469583
+    },
+    {
+      "path": "addons/NFSTR_DefinitiveEdition.ini",
+      "sha256": "c539c2df70fc51f9692d693b7f0d1fcb14313634e02177b2388a47060e91f158",
+      "bytes": 31059
+    },
+    {
+      "path": "ADDONS.md",
+      "sha256": "7db68a387f4a9023238018565556130801871cceec147ce87fcb7e965888bae9",
+      "bytes": 1160
+    },
+    {
+      "path": "Auto-Auswaehlen.cmd",
+      "sha256": "5b586ec5795bba93eb993d3b1b3adf477fb5a8562ad7888b8cf921cfb9dc8d15",
+      "bytes": 148
+    },
+    {
+      "path": "Car-Choice.ps1",
+      "sha256": "c25eab67a46cdac0e649345418b0e87f07b42e929d4fdc4ed4bc81a18347a05b",
+      "bytes": 1224
+    },
+    {
+      "path": "Car-Preferences.ps1",
+      "sha256": "748f2150ed72c4cd875d78140c6511c8f8d8437d75dac529363b8c001734d38c",
+      "bytes": 3048
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "b20fcdd6e02f1e1318ef5a701299e4e73513d8920357043620ab86b9b5ff06be",
+      "bytes": 3930
+    },
     {
       "path": "config/NFSTR_LANOnlineHelper.ini",
       "sha256": "63a781fde245b7b8b79cd120a7d55549fe298dd924688b9e0babb5c19e71430b",
@@ -8,8 +68,8 @@
     },
     {
       "path": "Connect-Coop.ps1",
-      "sha256": "8d9485b0a3bd71b84cc29cff25791b2693935670a63f40a00b59f2d4579a4afd",
-      "bytes": 5045
+      "sha256": "18bbe71a03a759ac0cb60cda9de262bcc60271cd5ad7bd087b66feb4c99242fb",
+      "bytes": 7575
     },
     {
       "path": "Coop-Core.ps1",
@@ -17,9 +77,144 @@
       "bytes": 4499
     },
     {
+      "path": "Diagnose-Absturz-Exportieren.cmd",
+      "sha256": "7341a018cfe75e37cc3c063580cdb126d6a3e14c449cad3a727d2c8b5c6c6d0c",
+      "bytes": 127
+    },
+    {
+      "path": "Diagnose-Absturz.cmd",
+      "sha256": "a1bb825922dcd6b836a2548cd81e603cbbbec768fe0845c923392293262cf0bd",
+      "bytes": 144
+    },
+    {
+      "path": "Diagnose-Exportieren.cmd",
+      "sha256": "25f0e13447021ac499bcf3cafb0312a3626b6c1e30725cfb5fd4f1216519aef3",
+      "bytes": 122
+    },
+    {
+      "path": "Diagnose-Markieren.cmd",
+      "sha256": "1de8d48c60ee32b62ecc56c25f1e8deb05eb45dd1257f2aa0097d461d53346f9",
+      "bytes": 120
+    },
+    {
+      "path": "Diagnose-Starten.cmd",
+      "sha256": "6bc4c98c82fa12410d037393a83b3fd0ddae421f8d32bd4a190459e90d5d5f3d",
+      "bytes": 122
+    },
+    {
+      "path": "DIAGNOSE.md",
+      "sha256": "7dda41be4aaaa2f57ddae0a74068bb4f3dc3ab2c1ec6b9f1d6af075ee2a4bf39",
+      "bytes": 4473
+    },
+    {
+      "path": "diagnostics_tool/bridge_crash_analysis.py",
+      "sha256": "bedd98dc865d1aa5433d49f1a4a464d73c29222d58297ffcd6cb148bfc40bb7a",
+      "bytes": 7141
+    },
+    {
+      "path": "diagnostics_tool/bridge_exception_snapshot.py",
+      "sha256": "15250c69cb2016d230f1b12458f0f370cec2dca9f6372a3fca427158c08d29b1",
+      "bytes": 9619
+    },
+    {
+      "path": "diagnostics_tool/coop_capture_summary.py",
+      "sha256": "1f4b68afe6dea5c3186c598e451cb449774bcdee00b84817d6ef7f70674f4782",
+      "bytes": 5128
+    },
+    {
+      "path": "diagnostics_tool/coop_diagnostic_capture.py",
+      "sha256": "f4919f8fa0735b77b03fcee076275486202d074a5c9c154ae641f7b88880c100",
+      "bytes": 13254
+    },
+    {
+      "path": "diagnostics_tool/coop_diagnostics.py",
+      "sha256": "f9b8d060190325cf6699ac035359f09546d3da0a69fe43373760c7aa7cf31d7b",
+      "bytes": 16994
+    },
+    {
+      "path": "diagnostics_tool/coop_population.py",
+      "sha256": "8446fdb307477123f127a1f6f592e28ae0843e982abb83d7f0ab6a24165a4c87",
+      "bytes": 5333
+    },
+    {
+      "path": "diagnostics_tool/coop_runtime_session.py",
+      "sha256": "c160da19deb99add8e4c7570047aa3507b62539c6b22e67f662d8bd4b6d2e863",
+      "bytes": 5206
+    },
+    {
+      "path": "diagnostics_tool/exception_debug_backend.py",
+      "sha256": "b0d5e44c448c53ffacd48b49713f4912f00536a29d2bf0892dfbea655034b665",
+      "bytes": 7338
+    },
+    {
+      "path": "diagnostics_tool/inspect_cinematic_crash.py",
+      "sha256": "aec3e71b18e8e86e08fef4723b13dc566744c82812ccf59ff74627a25507775c",
+      "bytes": 4221
+    },
+    {
+      "path": "diagnostics_tool/lookup_registry_snapshot.py",
+      "sha256": "0cf1ed111b99781439d293b19ef3dd076ec6e63e479fae04e3045ceaa0402c90",
+      "bytes": 1845
+    },
+    {
+      "path": "diagnostics_tool/minidump_memory.py",
+      "sha256": "b2599958959a84b61d6a17a124f60af7c4180fd863f37eb182bb729307eda644",
+      "bytes": 4282
+    },
+    {
+      "path": "diagnostics_tool/pe_image_readonly.py",
+      "sha256": "5dc8fd6a7633065ba597d0ad912d635540878a221dcfb147aecdb37b6aabeed1",
+      "bytes": 2200
+    },
+    {
+      "path": "diagnostics_tool/record_bridge_exception.py",
+      "sha256": "f8e8bc4b7ad1d3c8cd0187980f196cafbcd333db35318807203fbf21840641ff",
+      "bytes": 8021
+    },
+    {
       "path": "Enable-HostFirewall.ps1",
-      "sha256": "173d4ae9ed049119ba91e296a8f9660175be211b8db327253b85bdb4de713185",
-      "bytes": 1383
+      "sha256": "a0f30f4fbbddbf85b031799bd46e8562b5516626fcedc84b54ab5fb9997caa05",
+      "bytes": 1896
+    },
+    {
+      "path": "GAMEPLAY-STATUS.json",
+      "sha256": "b3ff91a396a07f64ca3f131d931151704bd9deaa0dc290f941c2e2e12fb22099",
+      "bytes": 8461
+    },
+    {
+      "path": "Garage-Cars.json",
+      "sha256": "d389cd31d4bf5f9525bddbc913d07dbed3800b77a2b0afe269f2bd7b29a60706",
+      "bytes": 256589
+    },
+    {
+      "path": "Garage-Core.ps1",
+      "sha256": "c83e176e0b0ca811654aea0b6683434cd896b80b82d760195d89007fae0ca8e4",
+      "bytes": 20756
+    },
+    {
+      "path": "Garage-Fenster.cmd",
+      "sha256": "af28f7b9d639f75f51f62f5be94a974a409adc8b076a7f9535d82b620ea02137",
+      "bytes": 101
+    },
+    {
+      "path": "Garage-Fenster.ps1",
+      "sha256": "a5fab69fcc201b245518d4cb0492eaf8e40990c1f1e3d7cf23123315cab01036",
+      "bytes": 15661
+    },
+    {
+      "path": "Garage-Fenster.vbs",
+      "sha256": "f066eb68e028850334ecda02f0ba78e418487ba8004725ea44ea4c182c42c260",
+      "bytes": 938
+    },
+    {
+      "path": "Garage-Photos.json",
+      "sha256": "6e1f9b50d84b3f8b4ac2bfd12f06620741e4ad6b20db36e2dfd05ed39512215d",
+      "bytes": 463
+    },
+    {
+      "path": "GARAGE.md",
+      "sha256": "43a61e24d904d5f937c140335168ed0e4bb3f167019c6d88b6e8719d98e6dc65",
+      "bytes": 2760
     },
     {
       "path": "Install-Coop.cmd",
@@ -28,13 +223,13 @@
     },
     {
       "path": "Install-Coop.ps1",
-      "sha256": "a02784d4f30fc2c34e131a65b36966f5d4c95e5c9415419a24ca722fb35808a1",
-      "bytes": 6147
+      "sha256": "89bed3f6e1d18418225d1d1fd3c6fa1df0ebb54dfa1010b9bb598c3df4d60ee4",
+      "bytes": 6904
     },
     {
       "path": "Koop-Starten.cmd",
-      "sha256": "0a31216c7f82bfe9518169ba89116998a5375c5999abf8c7ab6610c6f9de71cb",
-      "bytes": 123
+      "sha256": "c659b19fc122f131355f53e316a0629637a22ca5253962e9beda69fa98f018a0",
+      "bytes": 133
     },
     {
       "path": "LICENSE-LANOnlineHelper.txt",
@@ -43,38 +238,78 @@
     },
     {
       "path": "LIESMICH.md",
-      "sha256": "299fa4510441413b9d9607ecb08128cc093c817c870bd261b080537c35d4121a",
-      "bytes": 1773
+      "sha256": "b20fcdd6e02f1e1318ef5a701299e4e73513d8920357043620ab86b9b5ff06be",
+      "bytes": 3930
     },
     {
       "path": "patches/client-research-upgrade.json",
-      "sha256": "57215bc1cf646de159df4745af2f5b84d9318d0136008215f2a9253c3db074f3",
-      "bytes": 3920
+      "sha256": "b693530192feb1dedd6046dcfeecab098fe36c269600fb4103b78a217d4001b4",
+      "bytes": 11908
     },
     {
       "path": "patches/client-upgrade.json",
-      "sha256": "0bdc78276d4f186b37d22c2ad8f59fba6de2178e8520912e564cc82316d06f17",
-      "bytes": 7879
+      "sha256": "6add36a7f283f8df336b5b75ad067c81d1df2a0c2c8b2b522e9fd0453fbd6abf",
+      "bytes": 15867
+    },
+    {
+      "path": "patches/client-v0_3-upgrade.json",
+      "sha256": "c41671c8bc534195eb7ee70fc0973f905d64a8692fca7d4924d1318adc787e83",
+      "bytes": 8502
+    },
+    {
+      "path": "patches/client-v0_4-upgrade.json",
+      "sha256": "c41671c8bc534195eb7ee70fc0973f905d64a8692fca7d4924d1318adc787e83",
+      "bytes": 8502
+    },
+    {
+      "path": "patches/client-v0_5-upgrade.json",
+      "sha256": "c41671c8bc534195eb7ee70fc0973f905d64a8692fca7d4924d1318adc787e83",
+      "bytes": 8502
+    },
+    {
+      "path": "patches/client-v0_6-upgrade.json",
+      "sha256": "2a90337625c2361be9660a064b57a370990ba42492972c9f883166730cf4b0d5",
+      "bytes": 5148
     },
     {
       "path": "patches/client.json",
-      "sha256": "a05c9d3f747303c76795253c0bdbb4a8af93938be4b3f723653207a0f7616bdb",
-      "bytes": 9913
+      "sha256": "f1e5338595252b0cbb304691864ae9a7b7f30c0df990b546647a8ff0e4554c7a",
+      "bytes": 17901
     },
     {
       "path": "patches/server-research-upgrade.json",
-      "sha256": "283c1c340c6977cdeea37b0e732f7da20645cd16559e5a3f9724f28c1729be0f",
-      "bytes": 7291
+      "sha256": "6c017c730b06044878c35fcae92cc81d913382ec543e1b10574820ea86552953",
+      "bytes": 20795
     },
     {
       "path": "patches/server-upgrade.json",
-      "sha256": "ec93d07d0069b586147e683f08275d210510632d8d325945e8652728f8f15f34",
-      "bytes": 11110
+      "sha256": "dabbd110787deaa4c46e32d2e55580ab135a5261c2bb39ff6c09de7428a70307",
+      "bytes": 24618
+    },
+    {
+      "path": "patches/server-v0_3-upgrade.json",
+      "sha256": "abcc0a3e0f8dc12e31347134c11c639eb2c4268e570da6cadb1acb120e7c5b3d",
+      "bytes": 14536
+    },
+    {
+      "path": "patches/server-v0_4-upgrade.json",
+      "sha256": "9c0ebb77fadf2ae29703c8fd226e7233c45b5eebacab1091e26b49a06e08eff2",
+      "bytes": 14012
+    },
+    {
+      "path": "patches/server-v0_5-upgrade.json",
+      "sha256": "edb0132ea0134ecd87e516343088fb0dfc4bc6b576f97f6e9bdf720f173827b5",
+      "bytes": 2059
+    },
+    {
+      "path": "patches/server-v0_6-upgrade.json",
+      "sha256": "edb0132ea0134ecd87e516343088fb0dfc4bc6b576f97f6e9bdf720f173827b5",
+      "bytes": 2059
     },
     {
       "path": "patches/server.json",
-      "sha256": "5cfa2d80d6ff1967e03abe37cc1cea69188e29949aae51947aa1b8677b7e0c12",
-      "bytes": 13183
+      "sha256": "7bf439091d0d95e9e67f5bd76bf70713dbd537743a9d4015e7a641734bc86d8c",
+      "bytes": 26687
     },
     {
       "path": "patches/support-files.json",
@@ -82,9 +317,19 @@
       "bytes": 284
     },
     {
+      "path": "PowerShell7.cmd",
+      "sha256": "38b27a32a6fe534e48293c12351e11f9641c0fdc47088c51dcaff7f1d096b734",
+      "bytes": 344
+    },
+    {
       "path": "RADMIN-ANLEITUNG.md",
-      "sha256": "198a4d90018122db2ee34524e33a7d6212a23df7fbcb75f4c054d22310cba526",
-      "bytes": 3655
+      "sha256": "74deb8e1cbce4daed1af5458042cccbffc72510d13564f92ee7506d74cc40db9",
+      "bytes": 4195
+    },
+    {
+      "path": "README.md",
+      "sha256": "212ce7b9fe1244e15ca749ca2de7e61e816f54c535210beac3766787c9ad3e76",
+      "bytes": 2134
     },
     {
       "path": "Restore-Installation.cmd",
@@ -93,13 +338,133 @@
     },
     {
       "path": "Restore-Installation.ps1",
-      "sha256": "bf937bcaaa34c8957423993bbcc627d47581db381c6c1341d07fd0b4424b5e1f",
-      "bytes": 2446
+      "sha256": "aa8d617af9e49eaa41454831b157d61ba7fb479a23f9f1b6027320aa6493a5b1",
+      "bytes": 2559
+    },
+    {
+      "path": "SPAWN-EVENTS.json",
+      "sha256": "fdcaca34229d8582f6d0361cd262fd31ed4aa3127e2cd697fb856b9b9153a470",
+      "bytes": 3572
+    },
+    {
+      "path": "src/battle_team_finish_adapter.py",
+      "sha256": "5fcffde70c0a1c161bbb27228a877ee6045b82dba3a19b0521f27743f9a3efde",
+      "bytes": 3789
+    },
+    {
+      "path": "src/bridge_crash_analysis.py",
+      "sha256": "84f924e0fb9a6cbf94ec8fb475f8ac5f258a2bba65bd533e44042535a0666570",
+      "bytes": 7018
+    },
+    {
+      "path": "src/bridge_exception_snapshot.py",
+      "sha256": "6b1275c92dece639b3185def33342d2cdf3a3528e193fc14cb323dcf8a42e521",
+      "bytes": 9449
+    },
+    {
+      "path": "src/build_test_package.py",
+      "sha256": "d59d3b5b5f516bf2b258cbe6d9ed774b8843f0fed74009447dd9d6fba332c05b",
+      "bytes": 29639
+    },
+    {
+      "path": "src/bundle_coop_addons.py",
+      "sha256": "d7ba3ceb9b1ed45fb0c5374f2d1e8712fc5347111ea9adaf819af0e0779ac78a",
+      "bytes": 3819
+    },
+    {
+      "path": "src/checkpoint_humans_adapter.py",
+      "sha256": "317781924bb276c643e936b9577a3a40accd56c1833d232cf69a27e75eadc2d2",
+      "bytes": 2997
+    },
+    {
+      "path": "src/checkpoint_team_timer_adapter.py",
+      "sha256": "472444791662652d0f0851ae71848e638e004d1cfb95ba973f9d50a2e8cb4425",
+      "bytes": 1803
+    },
+    {
+      "path": "src/coop_diagnostics.py",
+      "sha256": "e87c8c1dfeec907f5101ed82199c08e9cbf8b41fbc569925339e4554570bff02",
+      "bytes": 16660
+    },
+    {
+      "path": "src/coop_hud_adapter.py",
+      "sha256": "0fa3888ada5f8fb2b32e8eb876b6abd069f003b82dad58c55ee530031b88ba35",
+      "bytes": 2105
+    },
+    {
+      "path": "src/coop_runtime_session.py",
+      "sha256": "897d612ae97e3e0726c8d4f5cb549aed8b5ab32cf0cd9214d4c44dcc7362a2d2",
+      "bytes": 5072
+    },
+    {
+      "path": "src/coop_summary.py",
+      "sha256": "eb32065ef1e9cc6907efb7f3b43a104b7c47096a542d87b4d0c31b8f523678a2",
+      "bytes": 20021
+    },
+    {
+      "path": "src/gas_ack_timeout_adapter.py",
+      "sha256": "abe13a70049400c9fa317013ec567d184f7552a4d6188e9b87408e5cae2ed7cb",
+      "bytes": 3548
+    },
+    {
+      "path": "src/gas_unload_ack_adapter.py",
+      "sha256": "0449abbac8f4517e1e8687475108e83e8e9873a94cc91b04ff4d5491b9ad01c6",
+      "bytes": 4438
+    },
+    {
+      "path": "src/inspect_cinematic_crash.py",
+      "sha256": "19f9316ecf5186ea6fced3e9b568df8fbc7c4e7dbb7117af5013a6662e42d391",
+      "bytes": 4163
+    },
+    {
+      "path": "src/lookup_registry_snapshot.py",
+      "sha256": "73af5b863fd4207aba003197c107a14141157fa38bb18a455363e895a1dde6e9",
+      "bytes": 1810
+    },
+    {
+      "path": "src/manual_retry_mode_adapter.py",
+      "sha256": "093c4b9126507d38e8192ab9fda14f285d68032cd746f764d9433c00179e6daf",
+      "bytes": 4789
+    },
+    {
+      "path": "src/minidump_memory.py",
+      "sha256": "83ed24220a95dc8f37f3eadf36671b882e94a1e73a84b2910dfdbd6000fa9359",
+      "bytes": 4198
+    },
+    {
+      "path": "src/orphan_spawn_release_adapter.py",
+      "sha256": "6e5a7fc2940ba4a6a3d4d07db7bf3e9719b2b0d40af8d743e3cc697aca0f693c",
+      "bytes": 4744
+    },
+    {
+      "path": "src/patch_battle_team_finish.py",
+      "sha256": "3c5d94e100f6698383df8660518d6a21e811bdfec8b7fa3266717e55cf6fba61",
+      "bytes": 1647
     },
     {
       "path": "src/patch_checkpoint_retry.py",
       "sha256": "a529649416a30cdbc34b9dc275be053583e6521ce51f4d823e5c36c7c3c01a1d",
       "bytes": 8079
+    },
+    {
+      "path": "src/patch_coop_checkpoints.py",
+      "sha256": "4320ed851f6a73e7435cce00629f6ab40db77347471b49e9b0adc3b8a1281650",
+      "bytes": 4759
+    },
+    {
+      "path": "src/patch_coop_hud.py",
+      "sha256": "ca6975a24a7d834ccb83f61d78fb5af9c9bf6cee00a59eeb1d40d6be0ffe52d9",
+      "bytes": 1985
+    },
+    {
+      "path": "src/patch_gas_ack_timeout.py",
+      "sha256": "4605d40d70c27d1d78fb66905f2a7259f55daca93b18cabe755b859da3d1e6df",
+      "bytes": 1347
+    },
+    {
+      "path": "src/patch_gas_unload_ack.py",
+      "sha256": "93406931300e3b634f0b789ec60751695b045f5698e1ae00b552bc521a1c677c",
+      "bytes": 2912
     },
     {
       "path": "src/patch_headless_reset.py",
@@ -112,9 +477,44 @@
       "bytes": 4173
     },
     {
+      "path": "src/patch_pause_ai.py",
+      "sha256": "997926767d4279889d8a561acb6d08d5e986f469051f9fe7e1307781a27ad9d0",
+      "bytes": 1869
+    },
+    {
       "path": "src/patch_shared_timer_hud.py",
       "sha256": "6cc62f2754e396c81107234dff1f4788cadcdd18992a7e1983f53c0dd2f2cb37",
       "bytes": 4781
+    },
+    {
+      "path": "src/patch_story_ai_gate.py",
+      "sha256": "f207edc4aa9f3a22f7d13fb176f4633008b7b01dde859d4be419520a4e30e777",
+      "bytes": 2158
+    },
+    {
+      "path": "src/patch_story_spawn_1_51.py",
+      "sha256": "2e65aa47f1bca41641c82c63d2a7779536331c7bc95fb1af189b4580090a9518",
+      "bytes": 4459
+    },
+    {
+      "path": "src/patch_story_start_spawn.py",
+      "sha256": "91b080a6673acbf0d3099c5a28f737d1603cb3feab923908695954574434ed31",
+      "bytes": 2898
+    },
+    {
+      "path": "src/patch_team_finish_dynamic.py",
+      "sha256": "91f434e572e27729eeb8d71547a24d3e8a62aed75397a0924fc64bcecf39a9c2",
+      "bytes": 2670
+    },
+    {
+      "path": "src/patch_test_candidate.py",
+      "sha256": "0e13ebdb6dd20e13f76c788190ed4a9eda5b28c98b8e1ecb1993aabf05a7e133",
+      "bytes": 2660
+    },
+    {
+      "path": "src/pause_ai_adapter.py",
+      "sha256": "5837ef8257b92ee9658f42b326719c2b23e6b01a6204df50ebc2e87746a989d5",
+      "bytes": 5205
     },
     {
       "path": "src/pe_adapter.py",
@@ -122,19 +522,114 @@
       "bytes": 2473
     },
     {
+      "path": "src/pe_image_readonly.py",
+      "sha256": "e4f8267ab6e2d7562ce745e8a7799f3421637816f291dbcfcc349c93708adc94",
+      "bytes": 2163
+    },
+    {
+      "path": "src/probe_lifecycle.py",
+      "sha256": "27a6e959303798b8a135af0b4576c5f6173c78897964dc25cae4b23713d104b0",
+      "bytes": 2376
+    },
+    {
+      "path": "src/snapshot_pause_hud.py",
+      "sha256": "2bed2659d3c44242268842da3b02b1db0097e9d45ca2ba0e0dd378ae9207af4a",
+      "bytes": 1832
+    },
+    {
+      "path": "src/static_xref.py",
+      "sha256": "27f7838325e53f901c0d9fb3ce5d6d740ef59b3b8f06f322aaab5f4879545616",
+      "bytes": 4636
+    },
+    {
+      "path": "src/story_ai_gate_adapter.py",
+      "sha256": "cb4c546e36ca99edefbce2b3a848bd648a27c72f136f887d43e2c8fd92df28f1",
+      "bytes": 2126
+    },
+    {
+      "path": "src/story_ai_quota_adapter.py",
+      "sha256": "7339ed55897a778dc7b9af0f312a56231576d71ab9bf0da83580de016db030a0",
+      "bytes": 2636
+    },
+    {
+      "path": "src/story_start_spawn_adapter.py",
+      "sha256": "64149fbcaa9c91febf958bc951719776a5e217c2a223a33ae9627cbd9935bd56",
+      "bytes": 7121
+    },
+    {
+      "path": "src/team_finish_adapter.py",
+      "sha256": "0a78da819cb4edec4a60cd5aab4e3e8e69fe95a3bc1619a8f7620affa020493d",
+      "bytes": 2490
+    },
+    {
+      "path": "src/team_finish_dynamic_adapter.py",
+      "sha256": "fbf71355d6ea8622d37dd3a7d79215b68f238e95c7ff9c368eb88b84a753a450",
+      "bytes": 2681
+    },
+    {
+      "path": "src/teleport_probe_adapter.py",
+      "sha256": "c8f59e789927a6ff5e0d6d7235fe1543d509fafb57483e0832a2c26c93144ea3",
+      "bytes": 4519
+    },
+    {
+      "path": "src/test_coop_hud.py",
+      "sha256": "90e655b6d9f236127eb07b682b5b26eb82a2d48c047325abd02221d9ac3afeb2",
+      "bytes": 4325
+    },
+    {
+      "path": "src/test_garage_window.py",
+      "sha256": "01f678499fbd50713641d3179f19cc18a26541c6674e6e98715bee4cab26208a",
+      "bytes": 8369
+    },
+    {
+      "path": "src/test_package_delta.py",
+      "sha256": "b5f8242973a64608d852cf26bc8d3390c8ed0a42096ee9b2cf32118526cfba17",
+      "bytes": 1992
+    },
+    {
+      "path": "src/test_pause_ai_adapter.py",
+      "sha256": "461e5a71235605b424dd7bbdf3b03334adfe51a83fc7f7c612695b6e877ca54a",
+      "bytes": 7455
+    },
+    {
+      "path": "src/test_pause_hud_ai.py",
+      "sha256": "c15ca33a92b11f11d803d07b9847b1f212f66f30ea9ed44ac94e08e944bedcd9",
+      "bytes": 2874
+    },
+    {
+      "path": "Start-Cars.json",
+      "sha256": "9280eab1acc7db4f73774eb8915b4d48b367c4e513c0909e060062b1743eab95",
+      "bytes": 11540
+    },
+    {
       "path": "Start-Coop.ps1",
-      "sha256": "257282159eba911edd5f665a11c40a75d03b4e0e50ca38ba6a3d52e7d9d89329",
-      "bytes": 5841
+      "sha256": "c7eff9ecf4281b1423869b8917447079631c6fc05b1bed22738c33cee2e53862",
+      "bytes": 7056
+    },
+    {
+      "path": "Start-CrashDiagnostics.ps1",
+      "sha256": "e6e35b43b301d55e53ba6b527759b7e5030a9d8f167fe1963625c46ed9819cbc",
+      "bytes": 3176
+    },
+    {
+      "path": "Start-Diagnostics.ps1",
+      "sha256": "bfd5c75af19fc2041d553ffd5312155d57588446a86d602eaee9a23bcbe2c081",
+      "bytes": 3148
     },
     {
       "path": "Start-Guest.cmd",
-      "sha256": "2335a2a5f1aa9e2928f910bfd48c37b2d9b88f4727e47ec53560c6cff3dfcf1a",
-      "bytes": 112
+      "sha256": "be4e6eb4bbee02c7936c8fd029f81f6012885af85befa5d52935d5c953089d51",
+      "bytes": 138
     },
     {
       "path": "Start-Host.cmd",
-      "sha256": "e05c5464a185b5bd92cdbaf859f9f47e289bc44bc9cf8f9304b6898312a68e4a",
-      "bytes": 111
+      "sha256": "880e2e012bf356a0ed8c65e4685fe411b60850b7a60da17b2a025550ce986186",
+      "bytes": 137
+    },
+    {
+      "path": "STARTAUTO.md",
+      "sha256": "def50e2073115045957b82c1cfa04ae91c621487c3b82a7a9339328121eb3928",
+      "bytes": 767
     },
     {
       "path": "Stop-Coop.cmd",
@@ -148,17 +643,17 @@
     },
     {
       "path": "Unlock-Coop-Garage.ps1",
-      "sha256": "f67874cbcacc9c1c5f88a3ef7abaf6ac7af543f73c3617c046a0602fc6e3c7d8",
+      "sha256": "804001932a1224ab9e5c0e29e9103380892af8608105a317518aabe2e5586011",
       "bytes": 4237
     }
   ],
   "limitations": [
-    "HOST checkpoint + both timers confirmed; GAST-led checkpoint not yet tested",
+    "Earlier prototype: HOST checkpoint + both timers observed. New DriverKind0 guard emulated only; updated package needs gameplay test.",
     "Experimental manual reset policy; timeout, both-dead retry and story progression need live testing"
   ],
   "client": {
     "base_sha256": "c9d48e500ef82efc642edf2db848a9072e56fbc114e283173d6e7e58bac634a6",
-    "patched_sha256": "2cb4570c34e46cc74ccded44f8f38338c12a0edfbb33a74572b72fc6e11ad249",
+    "patched_sha256": "4afc9b078f7c70044ab48c05cc3327dcbfb05ef489aab190c5a6640e8043ad29",
     "layout": {
       "adapter": 45613056,
       "counter": 45617152,
@@ -168,6 +663,267 @@
     "scope": "Temporary1.51 two-player recovery after orphan actor binding; not an authored spawn resolver for every event.",
     "manual_restart": true,
     "installed": false,
-    "live_validation": "Prototype street position observed; broader testing pending"
-  }
+    "live_validation": "Prototype street position observed; broader testing pending",
+    "team_result": {
+      "sha256": "95ba75bb168b2ffc38c4539e2287d8be31dcc55d2001d53c7c7a60696c839f14",
+      "source_sha256": "2cb4570c34e46cc74ccded44f8f38338c12a0edfbb33a74572b72fc6e11ad249",
+      "layout": {
+        "adapter": 45621248,
+        "counter": 45625344,
+        "adapterSize": 1401
+      },
+      "gameplay_verified": false,
+      "published": false,
+      "installed": false,
+      "scope": "Native Story result mode0 finish-time/rank getters; exactly two validated non-bot client players; IDs derived per call.",
+      "limitations": [
+        "Not a general scripted mission/failure-message replacement",
+        "No shared overtaken HUD",
+        "Native result timing and continue transition require gameplay tests",
+        "Unexpected roster/type declines to original behaviour"
+      ]
+    },
+    "pause_ai": {
+      "sha256": "4e653b2dcfa91306d2cb9ef94db79dfe0ba0ac9bc7441b3cf13f32f364d40400",
+      "layout": {
+        "adapter": 45629440,
+        "counter": 45633536,
+        "adapterSize": 323
+      },
+      "site": "0x900f68",
+      "draft": true,
+      "guard_ai_state": false,
+      "source": "hud_pause_visibility",
+      "gameplay_verified": false,
+      "limitations": "LAN only. Native AI switch F29820(entity,1/0,0,0) using HUD PauseVisibilty state transitions; switched back on resume. Not tested in game."
+    },
+    "coop_hud": {
+      "sha256": "4afc9b078f7c70044ab48c05cc3327dcbfb05ef489aab190c5a6640e8043ad29",
+      "layout": {
+        "adapter": 45637632,
+        "counter": 45641728,
+        "adapterSize": 633
+      },
+      "native_leaderboard": true,
+      "hide_story_timer": true,
+      "hide_autolog_stage_leader": true,
+      "race_data_modified": false,
+      "gameplay_verified": false,
+      "limitations": "Candidate only. Native Career leaderboard may require additional data initialization in Story LAN; no teammate-only filter or invented seconds gap."
+    }
+  },
+  "server": {
+    "base_sha256": "dcfafc833016baade51f556c82963ba8c015406adc69bea0006919ad7dd68695",
+    "patched_sha256": "aeaf9c120b02a158cd3f52554fbfa1f2f0f18507da43d9c4aa00225c845249ff",
+    "layout": {
+      "adapter": 45613056,
+      "counter": 45617152,
+      "adapterSize": 1694
+    },
+    "sites": [
+      "0x13e734d",
+      "0x13e7388",
+      "0x13dbaa2",
+      "0x13dbafe"
+    ],
+    "validation": [
+      "Earlier prototype: HOST checkpoint + both timers observed. New DriverKind0 guard emulated only; updated package needs gameplay test.",
+      "Experimental manual reset policy; timeout, both-dead retry and story progression need live testing"
+    ],
+    "reset_layout": {
+      "adapter": 45621248,
+      "counter": 45625344,
+      "adapterSize": 709
+    },
+    "ai_gate": {
+      "layout": {
+        "adapter": 45629440,
+        "counter": 45633536,
+        "adapterSize": 1281,
+        "quota_adapter": 45630464,
+        "quota_counter": 45633600
+      },
+      "sha256": "8fa5580076607120edf9e74a24367d74a24988ef7ec172fade15cdff41f2bf6b",
+      "gameplay_evidence": "Las Vegas event1289338c: two humans plus original two NPCs, user confirmed all present; paired live counters both1",
+      "limitations": "Other missions, scripted police and team finish not verified"
+    },
+    "story_start": {
+      "sha256": "aeaf9c120b02a158cd3f52554fbfa1f2f0f18507da43d9c4aa00225c845249ff",
+      "selection_layout": {
+        "adapter": 45637632,
+        "counter": 45641728,
+        "adapterSize": 2654
+      },
+      "matrix_layout": {
+        "adapter": 45645824,
+        "counter": 45649920,
+        "adapterSize": 2469
+      },
+      "events": [
+        {
+          "event": "2_2",
+          "guid": "6e4465d5-c4f7-4dd6-9a96-611969216152"
+        },
+        {
+          "event": "2_4",
+          "guid": "ae29a7bb-76ec-422d-9e82-cea570e43597"
+        },
+        {
+          "event": "2_5",
+          "guid": "a50adedb-c5ac-4489-9917-087d9e8ceb69"
+        },
+        {
+          "event": "2_6",
+          "guid": "e9e7914c-6504-48b0-a285-a81df2cae18d"
+        },
+        {
+          "event": "3_1",
+          "guid": "a879cf15-a57a-4dfb-acf7-63c43f24e329"
+        },
+        {
+          "event": "3_2",
+          "guid": "3049dba6-2085-43b1-8c5f-66aa616daa72"
+        },
+        {
+          "event": "3_3",
+          "guid": "9a6fd91f-70cd-4876-8d03-413064286eb4"
+        },
+        {
+          "event": "3_5",
+          "guid": "6be7deda-d431-4a04-a184-1689dd69b0d2"
+        },
+        {
+          "event": "3_41",
+          "guid": "1289338c-c4b2-4123-83a5-f4c1ce9bff58"
+        },
+        {
+          "event": "3_51",
+          "guid": "87861d2f-5087-41d8-9f1b-8ae97a1116d3"
+        },
+        {
+          "event": "5_1",
+          "guid": "09a09070-5f2b-4c78-bcd7-0a196e687d6f"
+        },
+        {
+          "event": "5_2",
+          "guid": "5252017e-4681-49d6-ae3d-8a85ab8ea274"
+        },
+        {
+          "event": "5_3",
+          "guid": "0867d82a-d812-4359-aa70-249b29892fce"
+        },
+        {
+          "event": "6_1",
+          "guid": "1fc46f13-2cdc-4ae0-b7e9-0937a779dc5b"
+        },
+        {
+          "event": "6_2",
+          "guid": "3b39a225-26ed-4fb2-9f04-bcdd7e3f7fbb"
+        },
+        {
+          "event": "6_3",
+          "guid": "5bccc9e0-4cb8-4584-aa6d-2b8033fb4636"
+        },
+        {
+          "event": "6_21",
+          "guid": "7026f4b9-d357-4f8d-8fe0-0ac25a41e1ee"
+        },
+        {
+          "event": "9_0",
+          "guid": "1fb33f57-4774-43ba-a8a4-af1100c40637"
+        },
+        {
+          "event": "9_1",
+          "guid": "d64a8d7c-a6ee-45bb-88a1-f160c8e974a9"
+        },
+        {
+          "event": "9_3",
+          "guid": "70d54b95-9604-47a2-b16c-d0572ae6cef6"
+        },
+        {
+          "event": "9_21",
+          "guid": "bb6ad963-2173-4e0a-b79c-0b18127592dc"
+        },
+        {
+          "event": "10_1",
+          "guid": "39b49ce4-6ca3-4e45-b4e9-33cbed0bcdf3"
+        },
+        {
+          "event": "10_2",
+          "guid": "f630307b-183d-4b34-85cb-5ca561db596b"
+        },
+        {
+          "event": "10_3",
+          "guid": "835f2e00-f84f-4075-abd7-bec6fc878902"
+        },
+        {
+          "event": "11_0",
+          "guid": "c94e574a-8a86-4d08-98bd-260deec5eff1"
+        },
+        {
+          "event": "11_2",
+          "guid": "b5639684-74df-40c8-b056-85f8477b8961"
+        },
+        {
+          "event": "11_3",
+          "guid": "8e8f09a7-7849-4fb0-9aa2-b2b74fd09cdb"
+        },
+        {
+          "event": "11_4",
+          "guid": "4553fe47-5cde-4b92-94ff-b7b9612a6631"
+        },
+        {
+          "event": "11_11",
+          "guid": "4f52b248-96f3-4b30-81bc-b3877e5a17e8"
+        },
+        {
+          "event": "12_1",
+          "guid": "3bf7e4df-48b7-4fff-8752-286c4886c927"
+        },
+        {
+          "event": "12_2",
+          "guid": "5a5439cf-6b96-44fb-b3e8-a703279d60b4"
+        },
+        {
+          "event": "12_31",
+          "guid": "20f7d137-8b4f-4b83-ab9d-90d68214e01b"
+        },
+        {
+          "event": "13_1",
+          "guid": "5d408f56-f54b-4d8e-bda4-fd58884dbd1f"
+        },
+        {
+          "event": "13_2",
+          "guid": "40ebc864-ea75-4be3-baca-12fe4de8e695"
+        },
+        {
+          "event": "13_3",
+          "guid": "c3991df4-0701-4cb7-91dd-5ceccd086a64"
+        },
+        {
+          "event": "13_4",
+          "guid": "2d707c7e-7383-4558-a927-631457df7960"
+        },
+        {
+          "event": "13_31",
+          "guid": "3ddfa5a6-654b-433b-9c13-6145985061e2"
+        },
+        {
+          "event": "13_41",
+          "guid": "ea240523-7973-41a8-a760-78d8ee0da69e"
+        }
+      ],
+      "stage1_excluded": true,
+      "second_human_offset_metres": 8,
+      "reserve_authored_slots": true,
+      "gameplay_verified_events": [
+        "3_5"
+      ],
+      "full_campaign_verified": false,
+      "evidence": "User confirmed both cars at race start and driveable in3.5 after full Retry; native selection2/matrix1+1 counters.",
+      "limitations": "Other allowlisted races and the combined disk package have not been tested in game. Garage/pause/team-result changes excluded."
+    }
+  },
+  "gameplay_verified": false,
+  "published": false
 }
