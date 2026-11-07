@@ -1,5 +1,5 @@
 {
-  "version": "0.7-TEST",
+  "version": "0.7.1-TEST",
   "files": [
     {
       "path": "addons/LICENSE-DefinitiveEdition.txt",
@@ -58,8 +58,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "b20fcdd6e02f1e1318ef5a701299e4e73513d8920357043620ab86b9b5ff06be",
-      "bytes": 3930
+      "sha256": "fe5600521c701c58576fa31b6fe49617cfe49af77172fe50492e40a84f641e09",
+      "bytes": 4173
     },
     {
       "path": "config/NFSTR_LANOnlineHelper.ini",
@@ -178,8 +178,8 @@
     },
     {
       "path": "GAMEPLAY-STATUS.json",
-      "sha256": "b3ff91a396a07f64ca3f131d931151704bd9deaa0dc290f941c2e2e12fb22099",
-      "bytes": 8461
+      "sha256": "9cb64118d07df7672cafc1b50f737eb9f1f13bb0a286747c16e291140a179752",
+      "bytes": 8513
     },
     {
       "path": "Garage-Cars.json",
@@ -198,13 +198,13 @@
     },
     {
       "path": "Garage-Fenster.ps1",
-      "sha256": "a5fab69fcc201b245518d4cb0492eaf8e40990c1f1e3d7cf23123315cab01036",
-      "bytes": 15661
+      "sha256": "4476a5f484225aab60d0c938c5f52334613de93c45ad22630fa72fb883942882",
+      "bytes": 15689
     },
     {
       "path": "Garage-Fenster.vbs",
-      "sha256": "f066eb68e028850334ecda02f0ba78e418487ba8004725ea44ea4c182c42c260",
-      "bytes": 938
+      "sha256": "4c22737e968f80ba4fc5886594d75ee8600c97bd5684d73949a2233d91c05a46",
+      "bytes": 937
     },
     {
       "path": "Garage-Photos.json",
@@ -223,8 +223,8 @@
     },
     {
       "path": "Install-Coop.ps1",
-      "sha256": "89bed3f6e1d18418225d1d1fd3c6fa1df0ebb54dfa1010b9bb598c3df4d60ee4",
-      "bytes": 6904
+      "sha256": "6272bcb59b808cabaf788361984b0b2b9481de9197e6b5931a2cb5fffa489d81",
+      "bytes": 6906
     },
     {
       "path": "Koop-Starten.cmd",
@@ -238,8 +238,8 @@
     },
     {
       "path": "LIESMICH.md",
-      "sha256": "b20fcdd6e02f1e1318ef5a701299e4e73513d8920357043620ab86b9b5ff06be",
-      "bytes": 3930
+      "sha256": "fe5600521c701c58576fa31b6fe49617cfe49af77172fe50492e40a84f641e09",
+      "bytes": 4173
     },
     {
       "path": "patches/client-research-upgrade.json",
@@ -328,8 +328,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "212ce7b9fe1244e15ca749ca2de7e61e816f54c535210beac3766787c9ad3e76",
-      "bytes": 2134
+      "sha256": "d4bcf7477124d197b20dd29176082b082a72f9d0ff461a522e88ff10a405ab35",
+      "bytes": 2352
     },
     {
       "path": "Restore-Installation.cmd",
@@ -363,8 +363,8 @@
     },
     {
       "path": "src/build_test_package.py",
-      "sha256": "d59d3b5b5f516bf2b258cbe6d9ed774b8843f0fed74009447dd9d6fba332c05b",
-      "bytes": 29639
+      "sha256": "d50a993caf5c4a0dff01505c629d669e0cb0ee3368f6da999df72b893a5a2148",
+      "bytes": 30326
     },
     {
       "path": "src/bundle_coop_addons.py",
@@ -577,6 +577,11 @@
       "bytes": 4325
     },
     {
+      "path": "src/test_garage_autostart.py",
+      "sha256": "d99fc84d520c03dff2e5c2c2bbe38cdb659edf0a56ab26a0621ed2ba55359635",
+      "bytes": 3065
+    },
+    {
       "path": "src/test_garage_window.py",
       "sha256": "01f678499fbd50713641d3179f19cc18a26541c6674e6e98715bee4cab26208a",
       "bytes": 8369
@@ -603,8 +608,8 @@
     },
     {
       "path": "Start-Coop.ps1",
-      "sha256": "c7eff9ecf4281b1423869b8917447079631c6fc05b1bed22738c33cee2e53862",
-      "bytes": 7056
+      "sha256": "9f53d9ca93377332a72778262ebf5293c4610d5c9b225d74cb601173fd6291b1",
+      "bytes": 6847
     },
     {
       "path": "Start-CrashDiagnostics.ps1",
@@ -615,6 +620,11 @@
       "path": "Start-Diagnostics.ps1",
       "sha256": "bfd5c75af19fc2041d553ffd5312155d57588446a86d602eaee9a23bcbe2c081",
       "bytes": 3148
+    },
+    {
+      "path": "Start-GarageWindow.ps1",
+      "sha256": "a74e17536189b0800485e5980135a1e9614aac54ccf0baf03fcbe1a83f64f746",
+      "bytes": 978
     },
     {
       "path": "Start-Guest.cmd",

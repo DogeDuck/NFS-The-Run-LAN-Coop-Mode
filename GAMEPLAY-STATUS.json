@@ -1,5 +1,5 @@
 {
-  "version": "0.7-TEST",
+  "version": "0.7.1-TEST",
   "ai": {
     "layout": {
       "adapter": 45629440,
@@ -247,6 +247,7 @@
     "shared_tcp_palette_error_fixed": true,
     "guest_story_auto_release_supported": false
   },
+  "garage_console_free_visible_autostart": true,
   "live_evidence_2026_11_07": {
     "host_pause_ai": true,
     "native_multiplayer_player_list_visible": true,

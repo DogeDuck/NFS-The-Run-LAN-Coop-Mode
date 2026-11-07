@@ -125,7 +125,7 @@ function Get-OwnGame{
 function Update-Identity{
     # Laeuft im Hintergrund: eigenes Spiel, eigene Spieler-Nummer, Server lokal oder beim Host.
     $g=Get-OwnGame
-    if(!$g -and $GamePid){$form.Close();return}   # mit dem eigenen Spiel beenden
+    if(!$g -and $state.GamePid){$form.Close();return}   # auch nach manuellem Oeffnen ans eigene Spiel binden
     if(!$g){$lblWho.Text='Warte auf dein Spiel ...';$state.Slot=$null;return}
     if($state.HostIp -eq $null){$state.HostIp=Get-GarageClientServerIp $g.Id}
     $slot=Get-GarageClientPlayerId $g.Id

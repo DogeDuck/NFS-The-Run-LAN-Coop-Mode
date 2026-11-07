@@ -156,7 +156,7 @@ def main():
     parser.add_argument('--output',type=Path,default=ROOT/'release/TheRun-Coop-v0.5-TEST')
     parser.add_argument('--validation',type=Path,help='Optional completed offline test report to include')
     parser.add_argument('--team-finish-candidate',action='store_true',help='Build unverified dynamic team-result candidate, never install automatically')
-    parser.add_argument('--version',choices=['0.6-CANDIDATE','0.6-TEST','0.7-TEST'],default='0.6-CANDIDATE',help='Version for the opt-in team-result build')
+    parser.add_argument('--version',choices=['0.6-CANDIDATE','0.6-TEST','0.7-TEST','0.7.1-TEST'],default='0.6-CANDIDATE',help='Version for the opt-in team-result build')
     parser.add_argument('--pause-ai',action='store_true',help='Opt-in DRAFT client: AI drives while the LAN pause menu is open (PAUSE-KI-2026-11-04.md); not gameplay verified')
     parser.add_argument('--pause-ai-no-state-guard',action='store_true',help='With --pause-ai: do not skip when entity+D0 is set (use if live SKIPPED_AI keeps rising)')
     parser.add_argument('--pause-ai-hud-state',action='store_true',help='With --pause-ai: use HUD PauseVisibilty transitions instead of the LAN-inactive ClientPauseGameMessage hook')
@@ -168,7 +168,7 @@ def main():
     args=parser.parse_args()
     if args.pause_ai_hud_state and not args.pause_ai:
         parser.error('--pause-ai-hud-state requires --pause-ai')
-    if args.version=='0.7-TEST':
+    if args.version in ('0.7-TEST','0.7.1-TEST'):
         if not (args.team_finish_candidate and args.pause_ai and args.pause_ai_hud_state and args.pause_ai_no_state_guard and args.coop_hud and args.reserve_authored_slots):
             parser.error('v0.7 requires the reviewed combined feature set')
         if args.gas_ack_timeout or args.gas_unload_ack or args.battle_team_finish:
@@ -354,12 +354,18 @@ Definitive Edition und Musik+25dB werden automatisch mitinstalliert; siehe ADDON
     if args.reserve_authored_slots:
         readme=destination/'LIESMICH.md'
         readme.write_text(readme.read_text(encoding='utf-8')+'\nTestkandidat Startplatz: Der Gast startet hinter dem originalen Solo-Feld, damit Eliminator-Gegner echte NPCs bleiben. Noch NICHT im Spiel getestet.\n',encoding='utf-8')
-    if VERSION=='0.7-TEST':
+    if VERSION in ('0.7-TEST','0.7.1-TEST'):
         shutil.copyfile(ROOT/'RELEASE-0.7.md',destination/'LIESMICH.md')
         shutil.copyfile(ROOT/'RELEASE-0.7.md',destination/'CHANGELOG.md')
         shutil.copyfile(ROOT/'README-0.7.md',destination/'README.md')
+        if VERSION=='0.7.1-TEST':
+            for name in ('LIESMICH.md','CHANGELOG.md','README.md'):
+                doc=destination/name
+                text=doc.read_text(encoding='utf-8').replace('v0.7 TEST','v0.7.1 TEST').replace('v0.7-TEST','v0.7.1-TEST')
+                note='\nGarage autostart hotfix: suppress only the PowerShell console (CreateNoWindow), keep the Garage window visible on every Host/Guest start. Game patches unchanged from v0.7.\n'
+                doc.write_text(text+note,encoding='utf-8')
         copy_local_sources(destination/'src',('build_test_package.py','snapshot_pause_hud.py','coop_summary.py',
-            'test_coop_hud.py','test_pause_hud_ai.py','test_garage_window.py','test_package_delta.py'))
+            'test_coop_hud.py','test_pause_hud_ai.py','test_garage_window.py','test_garage_autostart.py','test_package_delta.py'))
     car_catalogue=json.loads((destination/'Start-Cars.json').read_text(encoding='utf-8-sig'))
     car_choice_report=dict(saved_per_role_and_nickname=True,stock_cars=len(car_catalogue)-1,
                            helper_force_for_session=True,effective_on='next game launch',
@@ -379,9 +385,10 @@ Definitive Edition und Musik+25dB werden automatisch mitinstalliert; siehe ADDON
         persistent_car_choice=dict(mode='server_per_human',relay_port=25211,
             effective_on='next vehicle spawn / Retry',requires_open_garage_window=True,
             shared_tcp_palette_error_fixed=True,guest_story_auto_release_supported=False),
+        garage_console_free_visible_autostart=VERSION=='0.7.1-TEST',
         live_evidence_2026_11_07=dict(host_pause_ai=True,native_multiplayer_player_list_visible=True,
             first_npc_in_2_6_correct=True,guest_can_still_lose_battle_when_only_host_wins=True,
-            exact_multiplayer_gap_values_verified=False) if VERSION=='0.7-TEST' else None,
+            exact_multiplayer_gap_values_verified=False) if VERSION in ('0.7-TEST','0.7.1-TEST') else None,
         team_result=client_report.get('team_result')),indent=2),encoding='utf-8')
     # CMD does not reliably accept a UTF-8 BOM before @echo. Historical copied
     # launchers and current templates must all begin with their real command.

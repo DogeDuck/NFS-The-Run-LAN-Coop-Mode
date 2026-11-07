@@ -43,7 +43,7 @@ if($StartCarId -ne 'story'){$config=$config -replace '(?m)^ForceInitFlow = .*','
 Save-CoopCarPreference $Role $Nickname $StartCarId
 [IO.File]::WriteAllText($configPath,$config,[Text.Encoding]::ASCII)
 $launchConfigHash=Get-CoopFileHash $configPath
-$record=[ordered]@{Version='0.7-TEST';Role=$Role;GameDirectory=$game;SessionDirectory=$session;Status='starting';Client=$null;Server=$null;StartCarId=$StartCarId;StartCarHash=$startCar.HelperHash}
+$record=[ordered]@{Version='0.7.1-TEST';Role=$Role;GameDirectory=$game;SessionDirectory=$session;Status='starting';Client=$null;Server=$null;StartCarId=$StartCarId;StartCarHash=$startCar.HelperHash}
 $active=Join-Path $script:CoopStateRoot 'active-session.json'
 Save-CoopSettings $game
 if($StartCarId -ne 'story'){Write-Host ('Startauto: '+$startCar.Name);Write-Host 'Vor dem Rennen im Hauptmenue einmal VIEW CARS / AUTOS ANSEHEN oeffnen. Danach zurueck und Rennen starten. Tankstellen weiterhin meiden.'}
@@ -55,8 +55,7 @@ try {
     $info.EnvironmentVariables['__COMPAT_LAYER']='RunAsInvoker';$info.Arguments=$clientArgs
     $client=[Diagnostics.Process]::Start($info)
     try{
-        $garage=Join-Path $PSScriptRoot 'Garage-Fenster.ps1'
-        if(Test-Path -LiteralPath $garage){Start-Process -FilePath (Join-Path $PSHOME 'pwsh.exe') -ArgumentList ('-NoProfile -STA -ExecutionPolicy Bypass -File "'+$garage+'" -GamePid '+$client.Id) -WorkingDirectory $PSScriptRoot -WindowStyle Hidden | Out-Null}
+        & (Join-Path $PSScriptRoot 'Start-GarageWindow.ps1') -GamePid $client.Id -RelayOnly:($Role -eq 'Guest')
     }catch{Write-Host ('Garage-Fenster konnte nicht starten: '+$_.Exception.Message)}
     $garageJob=Start-Job -ScriptBlock {
         param($worker,$gamePid,$directory,$log)

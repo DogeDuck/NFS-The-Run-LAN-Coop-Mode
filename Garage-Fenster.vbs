@@ -4,7 +4,7 @@ Dim sh, fs, folder, command, fallback, launchError
 Set sh = CreateObject("WScript.Shell")
 Set fs = CreateObject("Scripting.FileSystemObject")
 folder = fs.GetParentFolderName(WScript.ScriptFullName)
-command = " -NoProfile -STA -ExecutionPolicy Bypass -File " & Chr(34) & folder & "\Garage-Fenster.ps1" & Chr(34)
+command = " -NoProfile -ExecutionPolicy Bypass -File " & Chr(34) & folder & "\Start-GarageWindow.ps1" & Chr(34)
 sh.CurrentDirectory = folder
 On Error Resume Next
 sh.Run "pwsh.exe" & command, 0, False

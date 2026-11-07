@@ -1,4 +1,4 @@
-# NFS: The Run LAN Coop Mode – v0.7 TEST
+# NFS: The Run LAN Coop Mode – v0.7.1 TEST
 
 Experimentelle Story-Koop-Mod fuer zwei Spieler, lokal oder ueber Radmin VPN.
 Beide brauchen eine eigene passende Spielinstallation und das unterstuetzte
@@ -64,3 +64,5 @@ keine Spiel- oder Server-EXE.
 Offline202 Pruefungen vor dem Release-Paket bestanden; Paketpruefungen separat.
 Live bestaetigte Teilfunktionen sind oben genannt. Nicht als fehlerfreie Version
 oder als allgemeiner Fix fuer alle Rennarten verstehen.
+
+Garage autostart hotfix: suppress only the PowerShell console (CreateNoWindow), keep the Garage window visible on every Host/Guest start. Game patches unchanged from v0.7.

@@ -1,8 +1,8 @@
-# NFS: The Run LAN Coop Mode — v0.7 TEST
+# NFS: The Run LAN Coop Mode — v0.7.1 TEST
 
 Experimental two-player story co-op using the original LAN multiplayer base.
 
-**[Download v0.7 TEST](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/releases/tag/v0.7-TEST)** · [German setup guide](RADMIN-ANLEITUNG.md) · [Changes and limitations](LIESMICH.md)
+**[Download v0.7.1 TEST](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/releases/tag/v0.7.1-TEST)** · [German setup guide](RADMIN-ANLEITUNG.md) · [Changes and limitations](LIESMICH.md)
 
 Both players need their own supported game installation, the LAN base package v1
 from May 29, 2024, PowerShell 7, and the same mod version. Game/server executables
@@ -35,3 +35,5 @@ Exact HUD gap values and the new Garage relay over Radmin need further testing.
 Close the game/server before installing. Run Install-Coop.cmd, then
 Koop-Starten.cmd; the guest enters the host's Radmin IPv4. Only the host selects
 the mission. See the included guides for ports and backups. No automatic save restore.
+
+Garage autostart hotfix: suppress only the PowerShell console (CreateNoWindow), keep the Garage window visible on every Host/Guest start. Game patches unchanged from v0.7.

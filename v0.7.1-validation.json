@@ -1,0 +1,11 @@
+{
+  "version": "0.7.1-TEST",
+  "files_verified": 131,
+  "sha256": "46c740eb6621885f785260333d5effb0263affbdb93595ba144f0c0084462da5",
+  "zip_bytes": 470830,
+  "native_matches_v07": true,
+  "offline_tests": 204,
+  "repeated_visible_console_free_launch_tested": true,
+  "legacy_hidden_launch_bug_reproduced": true,
+  "full_game_start_user_confirmed": false
+}
