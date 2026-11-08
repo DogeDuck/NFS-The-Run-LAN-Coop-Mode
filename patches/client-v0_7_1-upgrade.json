@@ -1,0 +1,275 @@
+{
+  "FileName": "Need For Speed The Run.exe",
+  "OriginalSha256": "4afc9b078f7c70044ab48c05cc3327dcbfb05ef489aab190c5a6640e8043ad29",
+  "PatchedSha256": "c3fba53c787f6b4edf97b142e2477f3fec4a8bf9ff0c6adacdf7beadd17cc0d6",
+  "OriginalLength": 38036992,
+  "PatchedLength": 38041088,
+  "Changes": [
+    {
+      "Offset": 294,
+      "Before": "Fw==",
+      "After": "Hw=="
+    },
+    {
+      "Offset": 317,
+      "Before": "Ig==",
+      "After": "Kg=="
+    },
+    {
+      "Offset": 321,
+      "Before": "Eg==",
+      "After": "Gg=="
+    },
+    {
+      "Offset": 369,
+      "Before": "gHg=",
+      "After": "AHk="
+    },
+    {
+      "Offset": 1456,
+      "Before": "AAAAAAAAAAAAAA==",
+      "After": "LmJ0bGxlYWRVAQ=="
+    },
+    {
+      "Offset": 1469,
+      "Before": "AAAA",
+      "After": "gHgC"
+    },
+    {
+      "Offset": 1473,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1477,
+      "Before": "AAAA",
+      "After": "ZkQC"
+    },
+    {
+      "Offset": 1492,
+      "Before": "AA==",
+      "After": "IA=="
+    },
+    {
+      "Offset": 1495,
+      "Before": "AAAAAAAAAAAAAA==",
+      "After": "YC5idGxsZWFzCA=="
+    },
+    {
+      "Offset": 1509,
+      "Before": "AAAA",
+      "After": "kHgC"
+    },
+    {
+      "Offset": 1513,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1517,
+      "Before": "AAAA",
+      "After": "aEQC"
+    },
+    {
+      "Offset": 1532,
+      "Before": "AA==",
+      "After": "QA=="
+    },
+    {
+      "Offset": 1535,
+      "Before": "AAAAAAAAAAA=",
+      "After": "wC5odWRyY2c="
+    },
+    {
+      "Offset": 1544,
+      "Before": "AA==",
+      "After": "Ig=="
+    },
+    {
+      "Offset": 1549,
+      "Before": "AAAA",
+      "After": "oHgC"
+    },
+    {
+      "Offset": 1553,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1557,
+      "Before": "AAAA",
+      "After": "akQC"
+    },
+    {
+      "Offset": 1572,
+      "Before": "AA==",
+      "After": "IA=="
+    },
+    {
+      "Offset": 1575,
+      "Before": "AAAAAAAAAAA=",
+      "After": "YC5odWRyY3M="
+    },
+    {
+      "Offset": 1584,
+      "Before": "AA==",
+      "After": "CA=="
+    },
+    {
+      "Offset": 1589,
+      "Before": "AAAA",
+      "After": "sHgC"
+    },
+    {
+      "Offset": 1593,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1597,
+      "Before": "AAAA",
+      "After": "bEQC"
+    },
+    {
+      "Offset": 1612,
+      "Before": "AA==",
+      "After": "QA=="
+    },
+    {
+      "Offset": 1615,
+      "Before": "AAAAAAAAAAA=",
+      "After": "wC5idGxib3Q="
+    },
+    {
+      "Offset": 1624,
+      "Before": "AA==",
+      "After": "LA=="
+    },
+    {
+      "Offset": 1629,
+      "Before": "AAAA",
+      "After": "wHgC"
+    },
+    {
+      "Offset": 1633,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1637,
+      "Before": "AAAA",
+      "After": "bkQC"
+    },
+    {
+      "Offset": 1652,
+      "Before": "AA==",
+      "After": "IA=="
+    },
+    {
+      "Offset": 1655,
+      "Before": "AAAAAAAAAAAAAA==",
+      "After": "YC5idGxib3RzCA=="
+    },
+    {
+      "Offset": 1669,
+      "Before": "AAAA",
+      "After": "0HgC"
+    },
+    {
+      "Offset": 1673,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1677,
+      "Before": "AAAA",
+      "After": "cEQC"
+    },
+    {
+      "Offset": 1692,
+      "Before": "AA==",
+      "After": "QA=="
+    },
+    {
+      "Offset": 1695,
+      "Before": "AAAAAAAAAAA=",
+      "After": "wC5idGxwaGc="
+    },
+    {
+      "Offset": 1704,
+      "Before": "AAA=",
+      "After": "2gE="
+    },
+    {
+      "Offset": 1709,
+      "Before": "AAAA",
+      "After": "4HgC"
+    },
+    {
+      "Offset": 1713,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1717,
+      "Before": "AAAA",
+      "After": "ckQC"
+    },
+    {
+      "Offset": 1732,
+      "Before": "AA==",
+      "After": "IA=="
+    },
+    {
+      "Offset": 1735,
+      "Before": "AAAAAAAAAAA=",
+      "After": "YC5idGxwaHM="
+    },
+    {
+      "Offset": 1744,
+      "Before": "AA==",
+      "After": "CA=="
+    },
+    {
+      "Offset": 1749,
+      "Before": "AAAA",
+      "After": "8HgC"
+    },
+    {
+      "Offset": 1753,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1757,
+      "Before": "AAAA",
+      "After": "dEQC"
+    },
+    {
+      "Offset": 1772,
+      "Before": "AA==",
+      "After": "QA=="
+    },
+    {
+      "Offset": 1775,
+      "Before": "AA==",
+      "After": "wA=="
+    },
+    {
+      "Offset": 5297617,
+      "Before": "i5T1/w==",
+      "After": "K8onAg=="
+    },
+    {
+      "Offset": 5817920,
+      "Before": "VleL+YsNeI+IAg==",
+      "After": "6bu5HwKQkJCQkA=="
+    },
+    {
+      "Offset": 5835344,
+      "Before": "UVaL8TPS",
+      "After": "6avVHwKQ"
+    }
+  ],
+  "Append": "/wUAkLgCoXiPiAKFwA+ELQEAAIuQnAAAAIuAoAAAAIXSD4QZAQAAKdAPhhEBAACoAw+FCQEAAIP4QA+HAAEAAFNWV1WD7AyJz4nWjRwCxwQkAAAAAMdEJAgAAAAA/7eoAAAAiw34JIgC6EK1zf2JRCQEOd4Pg10AAACLBoPGBIXAD4Tr////6XQ/AACQO4eoAAAAD4UIAAAAx0QkCAEAAABQiw34JIgC6AO1zf2FwA+Evf///4sMJIXJD4QPAAAA8w8QQCQPLkEkD4aj////iQQk6Zv/////BQSQuAKLBCSFwA+EQgAAAItMJASFyQ+EPQAAAIN8JAgAD4UyAAAA8w8QQCTzDxBJJItUJCCF0nQE8w8RAotUJCSF0nQE8w8RCg8uwQ+DBwAAADHA6QUAAAC4AQAAAIPEDF1fXlvCCAD/BQiQuAJWV4v5iw14j4gC6fVE4P3MzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8FALC4AuhVys39hcAPhAEAAADD/wUEsLgCg8QE6V042P3MzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACc/wUA0LgCgLhgAgAAAA+FDAAAAJ2LgDQDAADpbcD///8FBNC4Ap3pRsD//8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnGCAeZgAD4TBAQAAjal0////i3wkKP8FAPC4AoF/CCtbZFsPhF8BAAChfI+IAoXAD4SXAQAAgHgIAA+FjQEAAIO4pAAAAAMPhYABAAChnCOIAoXAD4RzAQAAg3gEAg+FaQEAAIF/CLQ1E9cPhVwBAACDf0QAD4VSAQAAoegkiAKFwA+EPwEAAItQEIXSD4Q0AQAAOwUQ8LgCD4UMAAAAOxUU8LgCD4QsAAAAoxDwuAKJFRTwuAK+IPC4ArkEAAAAxwYAAAAAx0YIAAAAAIPGbEkPhen///++IPC4ArkEAAAAMduLBjnoD4Q1AAAAhcAPhQoAAACF2w+FAgAAAInzg8ZsSQ+F2v///4XbD4S2AAAAid6JLotFFIlGBMdGCAAAAACLRRQ7RgQPhAoAAACJRgTHRggAAAAAi04Ig/kYD4eDAAAAi1c8jV4MhckPhBIAAAA5Ew+EYgAAAIPDBEkPhe7///+LRgiD+BgPgwwAAACJVIYM/0YI6VEAAADHRgj/////6T8AAAD/BQjwuAK+IPC4ArkEAAAAOS4PhQ0AAADHBgAAAADHRggAAAAAg8ZsSQ+F4f///+kRAAAA/wUE8LgCYZ3CBAD/BQzwuAJhnVFWi/Ez0ul8KOD9zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+}

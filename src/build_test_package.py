@@ -147,6 +147,28 @@ def installed_research_baseline(current,stem):
                   'server':'aeaf9c120b02a158cd3f52554fbfa1f2f0f18507da43d9c4aa00225c845249ff'}
         if candidate['PatchedSha256']!=approved[stem]:raise ValueError('Unrecognized HUD/pause/slot delta')
         candidates.append(candidate)
+    v072_path=ROOT/f'outputs/TheRun-Coop-v0.7.2-TEST-CANDIDATE/{relative}'
+    if v072_path.is_file():
+        candidate=json.loads(v072_path.read_text(encoding='utf-8-sig'))
+        approved={'client':'42746e48e5e20fc3ee96c54f30eb0b4d6070d48a966eb9483386aa18db4c309e',
+                  'server':'b912b57bf013dc6ac37c2bc0dae8367496776ed5429f7afce6b319015ae8512c'}
+        if candidate['PatchedSha256']!=approved[stem]:raise ValueError('Unrecognized v0.7.2 delta')
+        candidates.append(candidate)
+    human_hud_path=ROOT/f'outputs/TheRun-Coop-v0.7.2-HUMAN-HUD-CANDIDATE/{relative}'
+    if human_hud_path.is_file():
+        candidate=json.loads(human_hud_path.read_text(encoding='utf-8-sig'))
+        approved={'client':'7fd4bfb845deb7c2f78f1220706599c52ade487e3303a42ae4818eee31a94269',
+                  'server':'b912b57bf013dc6ac37c2bc0dae8367496776ed5429f7afce6b319015ae8512c'}
+        if candidate['PatchedSha256']!=approved[stem]:raise ValueError('Unrecognized human/HUD delta')
+        candidates.append(candidate)
+    for package,approved in (
+        ('TheRun-Coop-v0.7.2-BATTLE-PHASE-CANDIDATE',{'client':'c3fba53c787f6b4edf97b142e2477f3fec4a8bf9ff0c6adacdf7beadd17cc0d6','server':'c9ab0d36ff35d9cf2548bdc73a94d911cc2065a921fa4a4afac86ad2e593a988'}),
+        ('TheRun-Coop-v0.7.2-QTE-DELTA-CANDIDATE',{'client':'1bcf0628db85d4757de22219df395034157fe440d2be64053434f883cd33bed1','server':'c9ab0d36ff35d9cf2548bdc73a94d911cc2065a921fa4a4afac86ad2e593a988'})):
+        path=ROOT/'outputs'/package/relative
+        if path.is_file():
+            candidate=json.loads(path.read_text(encoding='utf-8-sig'))
+            if candidate['PatchedSha256']!=approved[stem]:raise ValueError('Unrecognized pinned candidate delta')
+            candidates.append(candidate)
     return research_baseline(current,previous,candidates)
 
 
@@ -156,11 +178,14 @@ def main():
     parser.add_argument('--output',type=Path,default=ROOT/'release/TheRun-Coop-v0.5-TEST')
     parser.add_argument('--validation',type=Path,help='Optional completed offline test report to include')
     parser.add_argument('--team-finish-candidate',action='store_true',help='Build unverified dynamic team-result candidate, never install automatically')
-    parser.add_argument('--version',choices=['0.6-CANDIDATE','0.6-TEST','0.7-TEST','0.7.1-TEST'],default='0.6-CANDIDATE',help='Version for the opt-in team-result build')
+    parser.add_argument('--version',choices=['0.6-CANDIDATE','0.6-TEST','0.7-TEST','0.7.1-TEST','0.7.2-TEST'],default='0.6-CANDIDATE',help='Version for the opt-in team-result build')
     parser.add_argument('--pause-ai',action='store_true',help='Opt-in DRAFT client: AI drives while the LAN pause menu is open (PAUSE-KI-2026-11-04.md); not gameplay verified')
     parser.add_argument('--pause-ai-no-state-guard',action='store_true',help='With --pause-ai: do not skip when entity+D0 is set (use if live SKIPPED_AI keeps rising)')
     parser.add_argument('--pause-ai-hud-state',action='store_true',help='With --pause-ai: use HUD PauseVisibilty transitions instead of the LAN-inactive ClientPauseGameMessage hook')
+    parser.add_argument('--hud-racer-guard',action='store_true',help='With --coop-hud: skip native leaderboard build while no local racer exists (post-race crash 90D5E1); not gameplay verified')
+    parser.add_argument('--hide-empty-standings',action='store_true',help='With --coop-hud --hud-racer-guard: hide leaderboard on native HUD-show without local racer; unverified candidate')
     parser.add_argument('--coop-hud',action='store_true',help='Opt-in native Career leaderboard in LAN Story HUD, suppress Story timer and Autolog stage-leader panel; unverified in game')
+    parser.add_argument('--battle-team-lead',action='store_true',help='Client: Eliminator lead/HOLD THE LEAD counts the best human (teammate never opponent); not gameplay verified')
     parser.add_argument('--battle-team-finish',action='store_true',help='Opt-in DRAFT: BattleRace finishes every human together (ELIMINATOR-FINISH-2026-11-04.md); not gameplay verified')
     parser.add_argument('--gas-ack-timeout',action='store_true',help='Opt-in DRAFT: server continues gas station bundle queue when client acks never arrive; not gameplay verified')
     parser.add_argument('--gas-unload-ack',action='store_true',help='Opt-in client candidate: send native bundle-unloaded acknowledgement after E55260 completes; server timeout remains disabled')
@@ -168,10 +193,12 @@ def main():
     args=parser.parse_args()
     if args.pause_ai_hud_state and not args.pause_ai:
         parser.error('--pause-ai-hud-state requires --pause-ai')
+    if args.hide_empty_standings and not (args.coop_hud and args.hud_racer_guard):
+        parser.error('--hide-empty-standings requires --coop-hud and --hud-racer-guard')
     if args.version in ('0.7-TEST','0.7.1-TEST'):
         if not (args.team_finish_candidate and args.pause_ai and args.pause_ai_hud_state and args.pause_ai_no_state_guard and args.coop_hud and args.reserve_authored_slots):
             parser.error('v0.7 requires the reviewed combined feature set')
-        if args.gas_ack_timeout or args.gas_unload_ack or args.battle_team_finish:
+        if args.gas_ack_timeout or args.gas_unload_ack or args.battle_team_finish or args.hide_empty_standings or args.battle_team_lead:
             parser.error('Unverified gas/battle experiments are not part of v0.7')
     if args.gas_unload_ack and args.gas_ack_timeout:
         parser.error('--gas-unload-ack cannot be combined with the unsafe server --gas-ack-timeout')
@@ -212,6 +239,19 @@ def main():
         from patch_coop_hud import build as add_coop_hud
         client, _, hud_report=add_coop_hud(client)
         client_report.update(patched_sha256=sha(client),coop_hud=hud_report)
+    if args.battle_team_lead:
+        from patch_battle_team_lead import build as add_team_lead
+        client, _, lead_report=add_team_lead(client)
+        client_report.update(patched_sha256=sha(client),battle_team_lead=lead_report)
+    if args.hud_racer_guard:
+        if not args.coop_hud:parser.error('--hud-racer-guard requires --coop-hud')
+        from patch_hud_racer_guard import build as add_racer_guard
+        client, _, guard_report=add_racer_guard(client)
+        client_report.update(patched_sha256=sha(client),hud_racer_guard=guard_report)
+    if args.hide_empty_standings:
+        from patch_empty_standings import build as add_empty_standings
+        client, _, empty_report=add_empty_standings(client)
+        client_report.update(patched_sha256=sha(client),empty_standings=empty_report)
     if args.gas_unload_ack:
         from patch_gas_unload_ack import build as add_gas_unload_ack
         client, _, unload_report=add_gas_unload_ack(client)
@@ -248,9 +288,22 @@ def main():
         if v06_patch['PatchedSha256']!=approved_v06[stem]:raise ValueError('Unrecognized public v0.6 baseline')
         previous_v06=apply(research_base,v06_patch)
         patches[stem+'-v0_6-upgrade']=delta(name,previous_v06,target)
+        # Installed v0.7.1 TEST (client 4AFC9B07, server AEAF9C12) upgrades without the LAN base package.
+        v071_patch=json.loads((ROOT/f'outputs/publish-v0.7.1/patches/{stem}-research-upgrade.json').read_text(encoding='utf-8-sig'))
+        approved_v071={'client':'4afc9b078f7c70044ab48c05cc3327dcbfb05ef489aab190c5a6640e8043ad29','server':'aeaf9c120b02a158cd3f52554fbfa1f2f0f18507da43d9c4aa00225c845249ff'}
+        if v071_patch['PatchedSha256'].lower()!=approved_v071[stem]:raise ValueError('Unrecognized public v0.7.1 baseline')
+        previous_v071=apply(research_base,v071_patch)
+        patches[stem+'-v0_7_1-upgrade']=delta(name,previous_v071,target)
+        if args.hide_empty_standings:
+            v072_patch=json.loads((ROOT/f'outputs/TheRun-Coop-v0.7.2-TEST-CANDIDATE/patches/{stem}-research-upgrade.json').read_text(encoding='utf-8-sig'))
+            approved_v072={'client':'42746e48e5e20fc3ee96c54f30eb0b4d6070d48a966eb9483386aa18db4c309e',
+                          'server':'b912b57bf013dc6ac37c2bc0dae8367496776ed5429f7afce6b319015ae8512c'}
+            if v072_patch['PatchedSha256']!=approved_v072[stem]:raise ValueError('Unrecognized installed v0.7.2 baseline')
+            previous_v072=apply(research_base,v072_patch)
+            patches[stem+'-v0_7_2-upgrade']=delta(name,previous_v072,target)
         for key, patch in list(patches.items()):
             if key.startswith(stem):
-                start = original if key == stem else research_base if key.endswith('research-upgrade') else previous if key.endswith('v0_3-upgrade') else previous_v04 if key.endswith('v0_4-upgrade') else previous_v05 if key.endswith('v0_5-upgrade') else previous_v06 if key.endswith('v0_6-upgrade') else old_release
+                start = original if key == stem else research_base if key.endswith('research-upgrade') else previous if key.endswith('v0_3-upgrade') else previous_v04 if key.endswith('v0_4-upgrade') else previous_v05 if key.endswith('v0_5-upgrade') else previous_v06 if key.endswith('v0_6-upgrade') else previous_v071 if key.endswith('v0_7_1-upgrade') else previous_v072 if key.endswith('v0_7_2-upgrade') else old_release
                 if apply(start, patch) != target:
                     raise ValueError('Roundtrip mismatch')
     shutil.copytree(source, destination, ignore=shutil.ignore_patterns('package-manifest.json', 'validation.json', 'Start-Guest-voreingestellt.cmd'))
@@ -266,7 +319,7 @@ $deltas=@(foreach($entry in $deltas){
     if(Test-Path -LiteralPath $current){
         $hash=Get-CoopFileHash $current
         $stem=if($entry.FileName -eq 'NFSTR_Server.exe'){'server'}else{'client'}
-        foreach($suffix in @('-upgrade','-research-upgrade','-v0_3-upgrade','-v0_4-upgrade','-v0_5-upgrade','-v0_6-upgrade')){
+        foreach($suffix in @('-upgrade','-research-upgrade','-v0_3-upgrade','-v0_4-upgrade','-v0_5-upgrade','-v0_6-upgrade','-v0_7_1-upgrade','-v0_7_2-upgrade')){
             $candidate=Join-Path $PSScriptRoot ("patches\\"+$stem+$suffix+'.json')
             if(Test-Path -LiteralPath $candidate){
                 $upgrade=Get-Content -LiteralPath $candidate -Raw|ConvertFrom-Json
@@ -278,6 +331,14 @@ $deltas=@(foreach($entry in $deltas){
 })
 """
     text = text.replace(marker, insert + marker, 1).replace("Version='0.1'", "Version='"+VERSION+"'")
+    stub_block = (
+        "\n# Ein Startpunkt neben der Spiel-EXE (Koop + Solo). Restore-Installation entfernt ihn wieder.\n"
+        "$stub=Join-Path $game 'The Run starten (Koop + Solo).cmd'\n"
+        "$body=\"@echo off`r`nrem TheRunStoryCoop-Starter`r`ncall `\"\"+(Join-Path $PSScriptRoot 'Koop-Starten.cmd')+\"`\"`r`n\"\n"
+        "if(!(Test-Path -LiteralPath $stub) -or ((Get-Content -LiteralPath $stub -Raw) -match 'TheRunStoryCoop-Starter')){[IO.File]::WriteAllText($stub,$body,[Text.Encoding]::ASCII);Write-Output ('Starter neben der Spiel-EXE: '+$stub)}\n")
+    final_line = "Write-Output 'Koop-Patch installiert."
+    if final_line in text and 'TheRunStoryCoop-Starter' not in text:
+        text = text.replace(final_line, stub_block.lstrip('\n') + final_line, 1)
     installer.write_text(text, encoding='utf-8-sig')
     start = destination / 'Start-Coop.ps1'
     start.write_text(start.read_text(encoding='utf-8-sig').replace("Version='0.1'", "Version='"+VERSION+"'"), encoding='utf-8-sig')
@@ -354,6 +415,16 @@ Definitive Edition und Musik+25dB werden automatisch mitinstalliert; siehe ADDON
     if args.reserve_authored_slots:
         readme=destination/'LIESMICH.md'
         readme.write_text(readme.read_text(encoding='utf-8')+'\nTestkandidat Startplatz: Der Gast startet hinter dem originalen Solo-Feld, damit Eliminator-Gegner echte NPCs bleiben. Noch NICHT im Spiel getestet.\n',encoding='utf-8')
+    if args.hide_empty_standings:
+        (destination/'KANDIDAT-2026-11-08.md').write_text(
+            'Offline-Kandidat, NICHT veroeffentlicht oder automatisch installiert.\n'
+            'Basis: Claudes installierter v0.7.2-Kandidat; Server bleibt bytegleich.\n'
+            'Neu: Eliminator filtert KI ueber den nativen Bot-Wert, nur LAN Story.\n'
+            'Leere STANDINGS-Liste wird beim nativen HUD-Aufbau ohne lokalen Racer ausgeblendet.\n'
+            'Beim naechsten HUD-Aufbau mit Racer wieder eingeblendet; keine Rennwerte veraendert.\n'
+            'Kein allgemeiner Cutscene-/QTE- oder Zug-Abschlussfix. Szenen mit vorhandenen Racern noch offen.\n'
+            'Live offen: Intro -> fahrbares Rennen/Spielerliste, Szenenuebergang, Eliminator nur ein Fahrer vorne.\n'
+            'Garage statt Tankstellen verwenden. PowerShell7-Autoinstallation und 1-4-Spieler-Support fehlen.\n',encoding='utf-8')
     if VERSION in ('0.7-TEST','0.7.1-TEST'):
         shutil.copyfile(ROOT/'RELEASE-0.7.md',destination/'LIESMICH.md')
         shutil.copyfile(ROOT/'RELEASE-0.7.md',destination/'CHANGELOG.md')
@@ -365,7 +436,10 @@ Definitive Edition und Musik+25dB werden automatisch mitinstalliert; siehe ADDON
                 note='\nGarage autostart hotfix: suppress only the PowerShell console (CreateNoWindow), keep the Garage window visible on every Host/Guest start. Game patches unchanged from v0.7.\n'
                 doc.write_text(text+note,encoding='utf-8')
         copy_local_sources(destination/'src',('build_test_package.py','snapshot_pause_hud.py','coop_summary.py',
-            'test_coop_hud.py','test_pause_hud_ai.py','test_garage_window.py','test_garage_autostart.py','test_package_delta.py'))
+            'test_coop_hud.py','test_hud_racer_guard.py','test_battle_team_lead.py','test_battle_team_finish_adapter.py','test_pause_hud_ai.py','test_garage_window.py','test_garage_autostart.py','test_package_delta.py'))
+    if args.hide_empty_standings:
+        copy_local_sources(destination/'src',('patch_empty_standings.py','patch_battle_team_lead.py',
+            'test_empty_standings.py','test_battle_team_lead.py','coop_summary.py'))
     car_catalogue=json.loads((destination/'Start-Cars.json').read_text(encoding='utf-8-sig'))
     car_choice_report=dict(saved_per_role_and_nickname=True,stock_cars=len(car_catalogue)-1,
                            helper_force_for_session=True,effective_on='next game launch',
@@ -376,9 +450,12 @@ Definitive Edition und Musik+25dB werden automatisch mitinstalliert; siehe ADDON
         combined_package_gameplay_verified=False,garage_fix_included=False,
         pause_autodrive_included=args.pause_ai,team_result_adapter_included=args.team_finish_candidate,
         coop_hud_included=args.coop_hud,coop_hud=client_report.get('coop_hud'),
+        hud_racer_guard_included=args.hud_racer_guard,hud_racer_guard=client_report.get('hud_racer_guard'),
+        hide_empty_standings_included=args.hide_empty_standings,empty_standings=client_report.get('empty_standings'),
         second_human_slot_reservation_included=args.reserve_authored_slots,
         pause_ai_included=args.pause_ai,pause_ai=client_report.get('pause_ai'),
         battle_team_finish_included=args.battle_team_finish,battle_team_finish=report.get('battle_team_finish'),
+        battle_team_lead_included=args.battle_team_lead,battle_team_lead=client_report.get('battle_team_lead'),
         gas_ack_timeout_included=args.gas_ack_timeout,gas_ack_timeout=report.get('gas_ack_timeout'),
         gas_unload_ack_included=args.gas_unload_ack,gas_unload_ack=client_report.get('gas_unload_ack'),
         legacy_prelaunch_car_choice=car_choice_report,

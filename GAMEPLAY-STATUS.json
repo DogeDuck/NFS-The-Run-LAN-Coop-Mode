@@ -1,5 +1,5 @@
 {
-  "version": "0.7.1-TEST",
+  "version": "0.7.3-TEST",
   "ai": {
     "layout": {
       "adapter": 45629440,
@@ -207,6 +207,18 @@
     "gameplay_verified": false,
     "limitations": "Candidate only. Native Career leaderboard may require additional data initialization in Story LAN; no teammate-only filter or invented seconds gap."
   },
+  "hud_racer_guard_included": true,
+  "hud_racer_guard": {
+    "sha256": "42746e48e5e20fc3ee96c54f30eb0b4d6070d48a966eb9483386aa18db4c309e",
+    "layout": {
+      "adapter": "0x2b8a000",
+      "stats": "0x2b8b000"
+    },
+    "site": "0x90d5d0",
+    "stats": "CALLS +0, SKIPPED +4",
+    "gameplay_verified": false,
+    "limitations": "Skips only the leaderboard build while no local racer exists; B1496E/DD76D4 are separate and not addressed."
+  },
   "second_human_slot_reservation_included": true,
   "pause_ai_included": true,
   "pause_ai": {
@@ -223,8 +235,34 @@
     "gameplay_verified": false,
     "limitations": "LAN only. Native AI switch F29820(entity,1/0,0,0) using HUD PauseVisibilty state transitions; switched back on resume. Not tested in game."
   },
-  "battle_team_finish_included": false,
-  "battle_team_finish": null,
+  "battle_team_finish_included": true,
+  "battle_team_finish": {
+    "sha256": "b912b57bf013dc6ac37c2bc0dae8367496776ed5429f7afce6b319015ae8512c",
+    "layout": {
+      "pick": 45654016,
+      "wrapper": 45654032,
+      "stats": 45658112
+    },
+    "sites": [
+      "0x13e0ba2",
+      "0x13e2dc2"
+    ],
+    "gameplay_verified": false,
+    "draft": true,
+    "limitations": "Team finish for every human in BattleRace; bot part runs once per human; not tested in game."
+  },
+  "battle_team_lead_included": true,
+  "battle_team_lead": {
+    "sha256": "3f04b0211f0f1c391b24f5b8ebd112956551814e4f0aa3941fee7d588212f5db",
+    "layout": {
+      "adapter": "0x2b88000",
+      "stats": "0x2b89000"
+    },
+    "site": "0x98c640",
+    "stats": "CALLS +0, TEAM +4, NATIVE_FALLBACK +8",
+    "gameplay_verified": false,
+    "limitations": "Lead/HOLD THE LEAD uses the best human progress; server-side finish for all humans needs --battle-team-finish."
+  },
   "gas_ack_timeout_included": false,
   "gas_ack_timeout": null,
   "gas_unload_ack_included": false,
@@ -247,14 +285,8 @@
     "shared_tcp_palette_error_fixed": true,
     "guest_story_auto_release_supported": false
   },
-  "garage_console_free_visible_autostart": true,
-  "live_evidence_2026_11_07": {
-    "host_pause_ai": true,
-    "native_multiplayer_player_list_visible": true,
-    "first_npc_in_2_6_correct": true,
-    "guest_can_still_lose_battle_when_only_host_wins": true,
-    "exact_multiplayer_gap_values_verified": false
-  },
+  "garage_console_free_visible_autostart": false,
+  "live_evidence_2026_11_07": null,
   "team_result": {
     "sha256": "95ba75bb168b2ffc38c4539e2287d8be31dcc55d2001d53c7c7a60696c839f14",
     "source_sha256": "2cb4570c34e46cc74ccded44f8f38338c12a0edfbb33a74572b72fc6e11ad249",
@@ -273,5 +305,55 @@
       "Native result timing and continue transition require gameplay tests",
       "Unexpected roster/type declines to original behaviour"
     ]
-  }
+  },
+  "isolated_bot_filter": {
+    "base_sha256": "42746e48e5e20fc3ee96c54f30eb0b4d6070d48a966eb9483386aa18db4c309e",
+    "patched_sha256": "fda3873c37a83407a5a863e3cd111c11f0ee804dba4416a9711849fcfa2c48c1",
+    "site": 45645959,
+    "loop": 45645938,
+    "layout": {
+      "adapter": 45662208,
+      "counter": 45666304,
+      "adapterSize": 44
+    },
+    "gameplay_verified": false,
+    "stats": "PLAYER_ENTRIES+0, SKIPPED_BOTS+4",
+    "limitations": "Only removes bots from original Claude team comparison. No phase/timer/result/control/HUD changes."
+  },
+  "battle_client_phase_guard": {
+    "base_sha256": "fda3873c37a83407a5a863e3cd111c11f0ee804dba4416a9711849fcfa2c48c1",
+    "patched_sha256": "c3fba53c787f6b4edf97b142e2477f3fec4a8bf9ff0c6adacdf7beadd17cc0d6",
+    "layout": {
+      "adapter": 45670400,
+      "counter": 45674496,
+      "adapterSize": 474
+    },
+    "gameplay_verified": false,
+    "stats": "CALLS+0, IGNORED_REPEAT+4, RESETS+8, DECLINED+12",
+    "source": "Repeated NewBattle START, identical or previously seen rival within reset/challenge generation",
+    "native_win_paths_unchanged": true,
+    "server_unchanged": true,
+    "limitations": "Client-side only. Server may still re-activate/restart an NPC before the repeated broadcast; verify that separately. Restart required; do not activate mid-race."
+  },
+  "battle_server_phase_guard": {
+    "base_sha256": "b912b57bf013dc6ac37c2bc0dae8367496776ed5429f7afce6b319015ae8512c",
+    "patched_sha256": "c9ab0d36ff35d9cf2548bdc73a94d911cc2065a921fa4a4afac86ad2e593a988",
+    "layout": {
+      "adapter": 45662208,
+      "counter": 45666304,
+      "adapterSize": 1585
+    },
+    "gameplay_verified": false,
+    "player_count_independent": true,
+    "guard_before_actor_activation": true,
+    "native_win_paths_unchanged": true,
+    "stats": "CALLS+0, IGNORED_REPEAT+4, ENABLE_RESET+8, GLOBAL_RESET+12, ACCEPTED+24, DECLINED+28",
+    "limitations": "Bounded24 authored source/rival pairs per challenge, native fallback if full; verify enable/reset and legitimate repeated rivals in game."
+  },
+  "source_package": "TheRun-Coop-v0.7.2-TEST-CANDIDATE",
+  "multiplayer_target": "2 tested; 3/4 modeled offline, full four-player gameplay unverified",
+  "battle_live_evidence": "2.6: repeated HOST/GUEST checkpoint gives no extra point or timer restart; user completed race from start to finish.",
+  "bilingual_launcher_garage": "32 targeted checks including existing regressions; newest UI not live-tested with two PCs.",
+  "qte_synchronization_fixed": false,
+  "ant_delta_experiment_included": false
 }

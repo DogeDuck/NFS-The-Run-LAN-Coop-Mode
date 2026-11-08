@@ -1,16 +1,8 @@
 {
-  "version": "0.3-TEST",
-  "offline_checks": [
-    "25 existing tests passed",
-    "3 package composition/manifest tests passed",
-    "PowerShell parse checks passed",
-    "garage helper C# compile passed",
-    "installer CheckOnly against supported local baseline passed",
-    "all delta paths reconstructed to exact target hash",
-    "Windows PowerShell 5.1 STA full form construction passed, 11 controls, no game launched"
-  ],
-  "zip_sha256": "8a41331be21909c0415fa9c7d5254cfc9d2e504a0658c046891563a0ee7949bb",
-  "game_installation_modified": false,
-  "combined_package_gameplay_verified": false,
-  "two_pc_verified": false
+  "successful": true,
+  "tests": 55,
+  "failures": 0,
+  "errors": 0,
+  "command": "python -m unittest test_launcher_bilingual test_launcher_garage_language test_car_preferences test_start_solo test_claude_battle_botfilter test_battle_phase_guard test_server_battle_phase_guard -q",
+  "limits": "Targeted source checks. Native double-checkpoint and full2.6 run user-confirmed; newly combined bilingual package not live-tested."
 }

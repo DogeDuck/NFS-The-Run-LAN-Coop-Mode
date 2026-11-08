@@ -1,0 +1,110 @@
+{
+  "FileName": "NFSTR_Server.exe",
+  "OriginalSha256": "b912b57bf013dc6ac37c2bc0dae8367496776ed5429f7afce6b319015ae8512c",
+  "PatchedSha256": "c9ab0d36ff35d9cf2548bdc73a94d911cc2065a921fa4a4afac86ad2e593a988",
+  "OriginalLength": 38044160,
+  "PatchedLength": 38046720,
+  "Changes": [
+    {
+      "Offset": 294,
+      "Before": "Gw==",
+      "After": "HQ=="
+    },
+    {
+      "Offset": 317,
+      "Before": "Og==",
+      "After": "Qg=="
+    },
+    {
+      "Offset": 321,
+      "Before": "Fg==",
+      "After": "GA=="
+    },
+    {
+      "Offset": 369,
+      "Before": "wA==",
+      "After": "4A=="
+    },
+    {
+      "Offset": 1616,
+      "Before": "AAAAAAAAAA==",
+      "After": "LnN2YnBoZw=="
+    },
+    {
+      "Offset": 1624,
+      "Before": "AAA=",
+      "After": "MQY="
+    },
+    {
+      "Offset": 1629,
+      "Before": "AAAA",
+      "After": "wHgC"
+    },
+    {
+      "Offset": 1633,
+      "Before": "AA==",
+      "After": "CA=="
+    },
+    {
+      "Offset": 1637,
+      "Before": "AAAA",
+      "After": "gkQC"
+    },
+    {
+      "Offset": 1652,
+      "Before": "AA==",
+      "After": "IA=="
+    },
+    {
+      "Offset": 1655,
+      "Before": "AAAAAAAAAAA=",
+      "After": "YC5zdmJwaHM="
+    },
+    {
+      "Offset": 1664,
+      "Before": "AA==",
+      "After": "CA=="
+    },
+    {
+      "Offset": 1669,
+      "Before": "AAAA",
+      "After": "0HgC"
+    },
+    {
+      "Offset": 1673,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1677,
+      "Before": "AAAA",
+      "After": "ikQC"
+    },
+    {
+      "Offset": 1692,
+      "Before": "AA==",
+      "After": "QA=="
+    },
+    {
+      "Offset": 1695,
+      "Before": "AA==",
+      "After": "wA=="
+    },
+    {
+      "Offset": 16627456,
+      "Before": "g+w4jQwk",
+      "After": "6fsOewGQ"
+    },
+    {
+      "Offset": 16657872,
+      "Before": "g+xMVVY=",
+      "After": "6SuWegE="
+    },
+    {
+      "Offset": 16658511,
+      "Before": "iwBqAVA=",
+      "After": "6ayPegE="
+    }
+  ],
+  "Append": "nGD/BQDQuAKhgFyOAoXAD4TYAAAAgThQbVsCD4XMAAAAi0gQhckPhLsAAAA7BRDQuAIPhQwAAAA7DRTQuAIPhCUAAACjENC4AokNFNC4Ar4g0LgCuRgAAADHBgAAAACDxhBJD4Xw////i2wkBIt9FItEJByLEL4g0LgCuRgAAAAx24sGOegPhRcAAAA5fgQPhSAAAAA5VggPhDwAAADpEgAAAIXAD4UKAAAAhdsPhQIAAACJ84PGEEkPhcP///+F2w+EIAAAAIkriXsEiVMI/wUY0LgC6RMAAAD/BQTQuAJhnemib4X+/wUc0LgCYZ2LAGoBUOlbb4X+zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzJxg/wUI0LgCic++INC4ArkYAAAAOT4PhQYAAADHBgAAAACDxhBJD4Xo////YZ2D7ExVVumdaYX+zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMnGD/BQzQuAKJz74g0LgCuRgAAADHBgAAAACDxhBJD4Xw////YZ2D7DiNDCTp1fCE/szMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+}

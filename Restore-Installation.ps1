@@ -29,6 +29,8 @@ foreach($entry in $restore){
         if((Get-CoopFileHash $target) -ne $entry.BeforeSha256){throw 'Wiederherstellung konnte nicht verifiziert werden.'}
     }elseif(Test-Path -LiteralPath $target){Remove-Item -LiteralPath $target}
 }
+$stub=Join-Path $game 'The Run starten (Koop + Solo).cmd'
+if((Test-Path -LiteralPath $stub) -and ((Get-Content -LiteralPath $stub -Raw) -match 'TheRunStoryCoop-Starter')){Remove-Item -LiteralPath $stub}
 $manifest.Status='restored'
 $manifest|ConvertTo-Json -Depth 6|Set-Content -LiteralPath $manifestPath -Encoding utf8
 Write-Output 'Der Zustand vor dieser Paketinstallation wurde wiederhergestellt. Spielstaende wurden nicht veraendert.'

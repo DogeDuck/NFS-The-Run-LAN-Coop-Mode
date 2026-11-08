@@ -60,7 +60,7 @@ public sealed class NFSTRCoopGarageSession : IDisposable {
 if($CompileOnly){Write-Output 'Garage helper compiled; no process opened.';return}
 if($GameProcessId -le 0 -or !$GameDirectory){throw 'GameProcessId and GameDirectory required'}
 $exe=Join-Path $GameDirectory 'Need For Speed The Run.exe'
-if((Get-FileHash -LiteralPath $exe -Algorithm SHA256).Hash -ne '4AFC9B078F7C70044AB48C05CC3327DCBFB05EF489AAB190C5A6640E8043AD29'){throw 'Unsupported garage helper build'}
+if((Get-FileHash -LiteralPath $exe -Algorithm SHA256).Hash -ne 'C3FBA53C787F6B4EDF97B142E2477F3FEC4A8BF9FF0C6ADACDF7BEADD17CC0D6'){throw 'Unsupported garage helper build'}
 $session=[NFSTRCoopGarageSession]::new($GameProcessId,$exe)
 try {
  while($session.Alive){

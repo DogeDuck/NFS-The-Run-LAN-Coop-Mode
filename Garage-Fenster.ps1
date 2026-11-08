@@ -1,8 +1,15 @@
 ﻿#requires -Version 7.0
 # Koop-Garage: Auto, Style-Pack und Variante fuer das EIGENE laufende Spiel waehlen.
 # Wirkung beim naechsten Fahrzeug-Spawn (naechstes Rennen / Retry). -SelfTest baut nur das Fenster.
-param([switch]$SelfTest,[string]$Screenshot,[int]$GamePid=0,[switch]$RelayOnly)
+param([switch]$SelfTest,[string]$Screenshot,[int]$GamePid=0,[switch]$RelayOnly,[ValidateSet('auto','de','en')][string]$Language='auto',[switch]$JsonSelfTest)
 $ErrorActionPreference='Stop'
+. (Join-Path $PSScriptRoot 'Coop-GarageLanguage.ps1')
+$script:CoopLanguage=Get-CoopLanguage $Language
+trap {
+    $message=Get-GarageUiText $_.Exception.Message
+    if(!$SelfTest){Add-Type -AssemblyName System.Windows.Forms;[void][Windows.Forms.MessageBox]::Show($message,(Get-GarageUiText 'The Run Koop – Garage'))}
+    throw $message
+}
 . (Join-Path $PSScriptRoot 'Garage-Core.ps1')
 Add-Type -AssemblyName System.Windows.Forms,System.Drawing
 [Windows.Forms.Application]::EnableVisualStyles()
@@ -16,29 +23,37 @@ $font=New-Object Drawing.Font('Segoe UI',10)
 
 function New-Btn([string]$Text,[int]$W=110){
     $b=New-Object Windows.Forms.Button
-    $b.Text=$Text;$b.Width=$W;$b.Height=32;$b.FlatStyle='Flat';$b.ForeColor=$C.Text;$b.BackColor=$C.Panel
+    $b.Text=Get-GarageUiText $Text;$b.Width=$W;$b.Height=32;$b.FlatStyle='Flat';$b.ForeColor=$C.Text;$b.BackColor=$C.Panel
     $b.FlatAppearance.BorderColor=[Drawing.Color]::FromArgb(70,70,75);$b.Margin='3,3,3,3';$b.Font=$font
     return $b
 }
 function Set-On($b,[bool]$on){$b.BackColor=if($on){$C.Accent}else{$C.Panel};$b.ForeColor=if($on){[Drawing.Color]::Black}else{$C.Text}}
 
 $form=New-Object Windows.Forms.Form
-$form.Text='The Run Koop – Garage';$form.Size='980,720';$form.MinimumSize='860,640';$form.BackColor=$C.Bg;$form.ForeColor=$C.Text;$form.Font=$font;$form.StartPosition='CenterScreen'
+$form.Text=Get-GarageUiText 'The Run Koop – Garage';$form.Size='980,720';$form.MinimumSize='860,640';$form.BackColor=$C.Bg;$form.ForeColor=$C.Text;$form.Font=$font;$form.StartPosition='CenterScreen'
 
 # Kopfzeile: wer bin ich, wo ist der Server (alles automatisch)
-$top=New-Object Windows.Forms.TableLayoutPanel;$top.Dock='Top';$top.Height=58;$top.Padding='12,6,12,6';$top.BackColor=$C.Panel;$top.ColumnCount=1;$top.RowCount=2
+$top=New-Object Windows.Forms.TableLayoutPanel;$top.Dock='Top';$top.Height=58;$top.Padding='12,6,12,6';$top.BackColor=$C.Panel;$top.ColumnCount=2;$top.RowCount=2
 $lblWho=New-Object Windows.Forms.Label;$lblWho.AutoSize=$true;$lblWho.Font=New-Object Drawing.Font('Segoe UI',11,[Drawing.FontStyle]::Bold);$lblWho.Text='Suche dein Spiel ...'
 $lblStatus=New-Object Windows.Forms.Label;$lblStatus.AutoSize=$true;$lblStatus.ForeColor=$C.Muted
 $top.Controls.Add($lblWho,0,0);$top.Controls.Add($lblStatus,0,1)
+[void]$top.ColumnStyles.Add([Windows.Forms.ColumnStyle]::new([Windows.Forms.SizeType]::Percent,100))
+[void]$top.ColumnStyles.Add([Windows.Forms.ColumnStyle]::new([Windows.Forms.SizeType]::Absolute,140))
+$languageBox=[Windows.Forms.ComboBox]::new();$languageBox.DropDownStyle='DropDownList';$languageBox.Width=130
+$languageBox.BackColor=$C.Panel;$languageBox.ForeColor=$C.Text;$languageBox.FlatStyle='Flat'
+[void]$languageBox.Items.AddRange(@('Deutsch','English'));$languageBox.SelectedIndex=if($script:CoopLanguage -eq 'de'){0}else{1}
+$top.Controls.Add($languageBox,1,0);$top.SetRowSpan($languageBox,2)
 
 # Links: Suche + Liste
 $left=New-Object Windows.Forms.Panel;$left.Dock='Left';$left.Width=270;$left.Padding='8,8,4,8'
+$left.BackColor=$C.Bg;$left.ForeColor=$C.Text
 $txtSearch=New-Object Windows.Forms.TextBox;$txtSearch.Dock='Top';$txtSearch.PlaceholderText='Auto suchen';$txtSearch.BackColor=$C.Panel;$txtSearch.ForeColor=$C.Text;$txtSearch.BorderStyle='FixedSingle'
 $lst=New-Object Windows.Forms.ListBox;$lst.Dock='Fill';$lst.BackColor=$C.Panel;$lst.ForeColor=$C.Text;$lst.BorderStyle='None';$lst.IntegralHeight=$false;$lst.ItemHeight=22
 $left.Controls.Add($lst);$left.Controls.Add($txtSearch)
 
 # Rechts: Vorschau + Auswahl
 $right=New-Object Windows.Forms.FlowLayoutPanel;$right.Dock='Fill';$right.FlowDirection='TopDown';$right.WrapContents=$false;$right.Padding='12,8,8,8';$right.AutoScroll=$true
+$right.BackColor=$C.Bg;$right.ForeColor=$C.Text;$top.ForeColor=$C.Text
 $pic=New-Object Windows.Forms.PictureBox;$pic.Size='620,260';$pic.SizeMode='Zoom';$pic.BackColor=$C.Panel
 $lblName=New-Object Windows.Forms.Label;$lblName.AutoSize=$true;$lblName.Font=New-Object Drawing.Font('Segoe UI',13,[Drawing.FontStyle]::Bold);$lblName.Margin='3,8,3,2'
 $lblPreview=New-Object Windows.Forms.Label;$lblPreview.AutoSize=$true;$lblPreview.ForeColor=$C.Muted
@@ -60,7 +75,9 @@ $right.Controls.AddRange(@($pic,$lblName,$lblSource,$lblPreview,$lblPack,$packs,
 
 $form.Controls.Add($right);$form.Controls.Add($left);$form.Controls.Add($top)
 
-function Set-Status([string]$Text,$Color){$lblStatus.Text=$Text;$lblStatus.ForeColor=$Color}
+$script:GarageStatusRaw='';$script:GarageWhoRaw='Suche dein Spiel ...'
+function Set-Status([string]$Text,$Color){$script:GarageStatusRaw=$Text;$lblStatus.Text=Get-GarageUiText $Text;$lblStatus.ForeColor=$Color}
+function Set-GarageWho([string]$Text){$script:GarageWhoRaw=$Text;$lblWho.Text=Get-GarageUiText $Text}
 
 function Show-Preview{
     $v=$state.Variant
@@ -68,13 +85,13 @@ function Show-Preview{
     $path=if($v){Get-GaragePreviewPath $v.DatabaseEntry $state.Car.Id}else{$null}
     if($path){
         $bytes=[IO.File]::ReadAllBytes($path);$ms=New-Object IO.MemoryStream(,$bytes)
-        $pic.Image=[Drawing.Image]::FromStream($ms);$lblPreview.Text=(Get-GaragePreviewCredit $path)
+        $pic.Image=[Drawing.Image]::FromStream($ms);$lblPreview.Text=Get-GarageUiText (Get-GaragePreviewCredit $path)
     }else{
         $car=$state.Car
-        if($car -and !$state.Fetching.ContainsKey($car.Id) -and (Start-GaragePhotoDownload $car {if($state.Car -eq $car){Show-Preview}}.GetNewClosure())){
-            $state.Fetching[$car.Id]=$true;$lblPreview.Text='Lade Foto von Wikimedia Commons ...'
-        }elseif($state.Fetching.ContainsKey($car.Id)){$lblPreview.Text='Kein Foto gefunden – "Foto aus Spiel" oder eigenes Bild hineinziehen.'}
-        else{$lblPreview.Text='Kein Vorschaubild – "Foto aus Spiel" klicken oder ein Bild ins Fenster ziehen.'}
+        if(!$SelfTest -and $car -and !$state.Fetching.ContainsKey($car.Id) -and (Start-GaragePhotoDownload $car {if($state.Car -eq $car){Show-Preview}}.GetNewClosure())){
+            $state.Fetching[$car.Id]=$true;$lblPreview.Text=Get-GarageUiText 'Lade Foto von Wikimedia Commons ...'
+        }elseif($state.Fetching.ContainsKey($car.Id)){$lblPreview.Text=Get-GarageUiText 'Kein Foto gefunden – "Foto aus Spiel" oder eigenes Bild hineinziehen.'}
+        else{$lblPreview.Text=Get-GarageUiText 'Kein Vorschaubild – "Foto aus Spiel" klicken oder ein Bild ins Fenster ziehen.'}
     }
 }
 
@@ -86,7 +103,7 @@ function Show-Variants{
         $b.Add_Click({param($s,$e)$state.Variant=$s.Tag;Show-Variants;Show-Preview})
         $vars.Controls.Add($b)
     }
-    $lblKey.Text=if($state.Variant){'Kennung: {0}  (0x{1:X8})' -f $state.Variant.DatabaseEntry,[uint32]$state.Variant.VehicleKey}else{''}
+    $lblKey.Text=if($state.Variant){Get-GarageUiText ('Kennung: {0}  (0x{1:X8})' -f $state.Variant.DatabaseEntry,[uint32]$state.Variant.VehicleKey)}else{''}
 }
 
 function Show-Packs{
@@ -104,7 +121,7 @@ function Select-Car($car,[string]$PackId,[int]$N){
     $state.Pack=@($car.Packs|Where-Object Pack -eq $PackId)[0]; if(!$state.Pack){$state.Pack=$car.Packs[0]}
     $state.Variant=@($state.Pack.Variants|Where-Object N -eq $N)[0]; if(!$state.Variant){$state.Variant=$state.Pack.Variants[0]}
     $lblName.Text=$car.Name
-    $lblSource.Text=if($car.Category -eq 'fun'){'Spaß (experimentell, nicht offiziell fahrbar) – Liste aus: '+$car.Source}elseif($car.Tier){'Tier '+$car.Tier+' von 6 (Serienversion laut NFS-Wiki)'}else{''}
+    $lblSource.Text=Get-GarageUiText $(if($car.Category -eq 'fun'){'Spaß (experimentell, nicht offiziell fahrbar) – Liste aus: '+$car.Source}elseif($car.Tier){'Tier '+$car.Tier+' von 6 (Serienversion laut NFS-Wiki)'}else{''})
     Show-Packs;Show-Variants;Show-Preview
 }
 
@@ -126,7 +143,7 @@ function Update-Identity{
     # Laeuft im Hintergrund: eigenes Spiel, eigene Spieler-Nummer, Server lokal oder beim Host.
     $g=Get-OwnGame
     if(!$g -and $state.GamePid){$form.Close();return}   # auch nach manuellem Oeffnen ans eigene Spiel binden
-    if(!$g){$lblWho.Text='Warte auf dein Spiel ...';$state.Slot=$null;return}
+    if(!$g){Set-GarageWho 'Warte auf dein Spiel ...';$state.Slot=$null;return}
     if($state.HostIp -eq $null){$state.HostIp=Get-GarageClientServerIp $g.Id}
     $slot=Get-GarageClientPlayerId $g.Id
     $state.Slot=$slot
@@ -135,13 +152,13 @@ function Update-Identity{
     if($sp -and !$state.LocalServer){try{$state.LocalServer=$sp.Id;$state.Listener=Start-GarageRelayListener}catch{Set-Status ('Gast-Anfragen nicht moeglich: '+$_.Exception.Message) $C.Bad}}
     if(!$sp -and $state.LocalServer){$state.LocalServer=$null;if($state.Listener){$state.Listener.Stop();$state.Listener=$null}}
     $role=if($state.LocalServer){'Host'}else{'Gast'}
-    if($slot -eq $null){$lblWho.Text=('Dein Auto ({0}) – warte, bis du im Rennen bist ...' -f $role);return}
+    if($slot -eq $null){Set-GarageWho ('Dein Auto ({0}) – warte, bis du im Rennen bist ...' -f $role);return}
     $cur=''
     if($state.LocalServer){
         try{$srv=Open-GarageServer $state.LocalServer;try{$pl=@(Get-GarageServerPlayers $srv $catalog|Where-Object Slot -eq $slot)[0];if($pl){$cur=$pl.Current}}finally{Close-GarageHelper $srv}}catch{}
     }elseif($state.Current){$cur=$state.Current}
     $hold=if($state.Desired.ContainsKey($slot)){' · wird gehalten'}else{''}
-    $lblWho.Text=('Dein Auto · Spieler {0} ({1}){2}{3}' -f $slot,$role,$(if($cur){' · aktuell '+$cur}else{''}),$hold)
+    Set-GarageWho ('Dein Auto · Spieler {0} ({1}){2}{3}' -f $slot,$role,$(if($cur){' · aktuell '+$cur}else{''}),$hold)
 }
 
 function Set-ServerSlot([int]$Slot,[uint32]$Key){
@@ -178,7 +195,7 @@ $btnApply.Add_Click({if($state.Variant){Apply-Key ([uint32]$state.Variant.Vehicl
 $btnStory.Add_Click({Apply-Key 0 'Story-Auto'})
 $btnImage.Add_Click({
     if(!$state.Variant){return}
-    $dlg=New-Object Windows.Forms.OpenFileDialog;$dlg.Filter='Bilder|*.png;*.jpg;*.jpeg;*.bmp'
+    $dlg=New-Object Windows.Forms.OpenFileDialog;$dlg.Filter=Get-CoopText ImageFilter
     if($dlg.ShowDialog($form) -eq 'OK'){
         try{[void](Save-GaragePreview $dlg.FileName $state.Variant.DatabaseEntry);Show-Preview}catch{Set-Status $_.Exception.Message $C.Bad}
     }
@@ -199,6 +216,26 @@ $dragDrop={param($s,$e)
 $form.Add_DragEnter($dragEnter);$form.Add_DragDrop($dragDrop);$pic.Add_DragEnter($dragEnter);$pic.Add_DragDrop($dragDrop)
 $form.Add_FormClosed({if($state.Listener){$state.Listener.Stop()};if($pic.Image){$pic.Image.Dispose()}})
 
+
+function Update-GarageLanguage {
+    $form.Text=Get-GarageUiText 'The Run Koop – Garage'
+    $txtSearch.PlaceholderText=Get-GarageUiText 'Auto suchen'
+    $lblPack.Text=Get-GarageUiText 'Paket';$lblVar.Text=Get-GarageUiText 'Variante / Lack'
+    $btnApply.Text=Get-GarageUiText 'Fürs nächste Rennen übernehmen';$btnStory.Text=Get-GarageUiText 'Story-Auto'
+    $btnImage.Text=Get-GarageUiText 'Vorschaubild...';$btnShot.Text=Get-GarageUiText 'Foto aus Spiel'
+    $lblHint.Text=Get-GarageUiText 'Du wählst nur dein eigenes Auto. Es kommt beim nächsten Etappenstart und bleibt auch nach Retry, solange dieses Fenster offen ist. Der Host muss sein Garage-Fenster ebenfalls offen haben.'
+    $lblWho.Text=Get-GarageUiText $script:GarageWhoRaw
+    $lblStatus.Text=Get-GarageUiText $script:GarageStatusRaw
+    foreach($car in $catalog.Cars){$car.Label=Get-GarageUiText $(if($car.Category -eq 'fun'){'★ Spaß · '+$car.Name}elseif($car.Tier){'Tier '+$car.Tier+' · '+$car.Name}else{$car.Name})}
+    Fill-List
+    if($state.Car){Select-Car $state.Car $state.Pack.Pack $state.Variant.N}
+}
+$languageBox.Add_SelectedIndexChanged({
+    $script:CoopLanguage=if($languageBox.SelectedIndex -eq 0){'de'}else{'en'}
+    Update-GarageLanguage
+    try{Save-CoopLanguage $script:CoopLanguage}catch{Set-Status $_.Exception.Message $C.Bad}
+})
+Update-GarageLanguage
 Fill-List
 $last=Read-GarageLastSelection
 $startCar=if($last){@($catalog.Cars|Where-Object Id -eq $last.CarId)[0]}else{$null}
@@ -208,11 +245,40 @@ $lst.SelectedItem=$startCar
 
 if($SelfTest){
     $total=($catalog.Cars|ForEach-Object{$_.Packs}|ForEach-Object{$_.Variants}).Count
-    "SELFTEST ok cars=$($catalog.Cars.Count) variants=$total packs=$($packs.Controls.Count) variantButtons=$($vars.Controls.Count) selected=$($state.Variant.DatabaseEntry)"
+    if(!$JsonSelfTest){"SELFTEST ok cars=$($catalog.Cars.Count) variants=$total packs=$($packs.Controls.Count) variantButtons=$($vars.Controls.Count) selected=$($state.Variant.DatabaseEntry)"}
+    if($JsonSelfTest){
+        $states=[ordered]@{};$originalLanguage=$script:CoopLanguage
+        foreach($code in 'de','en'){
+            $script:CoopLanguage=$code;Update-GarageLanguage
+            $states[$code]=[ordered]@{Title=$form.Text;Apply=$btnApply.Text;Story=$btnStory.Text;Search=$txtSearch.PlaceholderText;Hint=$lblHint.Text;Pack=$packs.Controls[0].Text;Selected=$state.Variant.DatabaseEntry}
+        }
+        $script:CoopLanguage=$originalLanguage;Update-GarageLanguage
+        [ordered]@{Language=$script:CoopLanguage;Cars=$catalog.Cars.Count;Variants=$total;Languages=$states;StartsGame=$false;TouchesGame=$false}|ConvertTo-Json -Depth 5
+    }
     if($Screenshot){
-        $form.Left=-3000;$form.Show();[Windows.Forms.Application]::DoEvents()
-        $bmp=New-Object Drawing.Bitmap($form.Width,$form.Height);$form.DrawToBitmap($bmp,(New-Object Drawing.Rectangle(0,0,$form.Width,$form.Height)))
-        $bmp.Save($Screenshot,[Drawing.Imaging.ImageFormat]::Png);$bmp.Dispose();$form.Hide()
+        $bmp=[Drawing.Bitmap]::new($form.Width,$form.Height)
+        $form.PerformLayout();$border=[int](($form.Width-$form.ClientSize.Width)/2);$titleHeight=$form.Height-$form.ClientSize.Height-$border
+        $roots=@($form.Controls)
+        $rootBounds=@{};foreach($root in $roots){$rootBounds[$root.GetHashCode()]=$root.Bounds}
+        $form.SuspendLayout()
+        try{
+            $form.DrawToBitmap($bmp,[Drawing.Rectangle]::new(0,0,$form.Width,$form.Height))
+            $graphics=[Drawing.Graphics]::FromImage($bmp)
+            try{
+                foreach($root in @($left,$right,$top)){
+                    $bounds=$rootBounds[$root.GetHashCode()];$form.Controls.Remove($root);$root.Bounds=$bounds
+                    $part=[Drawing.Bitmap]::new($bounds.Width,$bounds.Height)
+                    try{$root.DrawToBitmap($part,[Drawing.Rectangle]::new(0,0,$bounds.Width,$bounds.Height));$graphics.DrawImageUnscaled($part,$bounds.Left+$border,$bounds.Top+$titleHeight)}finally{$part.Dispose()}
+                }
+                $fieldBrush=[Drawing.SolidBrush]::new($languageBox.BackColor);$textBrush=[Drawing.SolidBrush]::new($languageBox.ForeColor)
+                try{
+                    $x=$top.Left+$languageBox.Left+$border;$y=$top.Top+$languageBox.Top+$titleHeight
+                    $graphics.FillRectangle($fieldBrush,$x+2,$y+2,$languageBox.Width-21,$languageBox.Height-4)
+                    $graphics.DrawString($languageBox.Text,$languageBox.Font,$textBrush,$x+4,$y+3)
+                }finally{$fieldBrush.Dispose();$textBrush.Dispose()}
+            }finally{$graphics.Dispose()}
+            $bmp.Save([IO.Path]::GetFullPath($Screenshot),[Drawing.Imaging.ImageFormat]::Png)
+        }finally{foreach($root in $roots){$form.Controls.Add($root)};$form.ResumeLayout();$bmp.Dispose()}
     }
     $form.Dispose();exit 0
 }

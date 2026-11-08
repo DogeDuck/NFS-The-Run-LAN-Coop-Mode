@@ -1,0 +1,165 @@
+{
+  "FileName": "Need For Speed The Run.exe",
+  "OriginalSha256": "42746e48e5e20fc3ee96c54f30eb0b4d6070d48a966eb9483386aa18db4c309e",
+  "PatchedSha256": "c3fba53c787f6b4edf97b142e2477f3fec4a8bf9ff0c6adacdf7beadd17cc0d6",
+  "OriginalLength": 38039040,
+  "PatchedLength": 38041088,
+  "Changes": [
+    {
+      "Offset": 294,
+      "Before": "Gw==",
+      "After": "Hw=="
+    },
+    {
+      "Offset": 317,
+      "Before": "Jg==",
+      "After": "Kg=="
+    },
+    {
+      "Offset": 321,
+      "Before": "Fg==",
+      "After": "Gg=="
+    },
+    {
+      "Offset": 369,
+      "Before": "wHg=",
+      "After": "AHk="
+    },
+    {
+      "Offset": 1616,
+      "Before": "AAAAAAAAAA==",
+      "After": "LmJ0bGJvdA=="
+    },
+    {
+      "Offset": 1624,
+      "Before": "AA==",
+      "After": "LA=="
+    },
+    {
+      "Offset": 1629,
+      "Before": "AAAA",
+      "After": "wHgC"
+    },
+    {
+      "Offset": 1633,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1637,
+      "Before": "AAAA",
+      "After": "bkQC"
+    },
+    {
+      "Offset": 1652,
+      "Before": "AA==",
+      "After": "IA=="
+    },
+    {
+      "Offset": 1655,
+      "Before": "AAAAAAAAAAAAAA==",
+      "After": "YC5idGxib3RzCA=="
+    },
+    {
+      "Offset": 1669,
+      "Before": "AAAA",
+      "After": "0HgC"
+    },
+    {
+      "Offset": 1673,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1677,
+      "Before": "AAAA",
+      "After": "cEQC"
+    },
+    {
+      "Offset": 1692,
+      "Before": "AA==",
+      "After": "QA=="
+    },
+    {
+      "Offset": 1695,
+      "Before": "AAAAAAAAAAA=",
+      "After": "wC5idGxwaGc="
+    },
+    {
+      "Offset": 1704,
+      "Before": "AAA=",
+      "After": "2gE="
+    },
+    {
+      "Offset": 1709,
+      "Before": "AAAA",
+      "After": "4HgC"
+    },
+    {
+      "Offset": 1713,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1717,
+      "Before": "AAAA",
+      "After": "ckQC"
+    },
+    {
+      "Offset": 1732,
+      "Before": "AA==",
+      "After": "IA=="
+    },
+    {
+      "Offset": 1735,
+      "Before": "AAAAAAAAAAA=",
+      "After": "YC5idGxwaHM="
+    },
+    {
+      "Offset": 1744,
+      "Before": "AA==",
+      "After": "CA=="
+    },
+    {
+      "Offset": 1749,
+      "Before": "AAAA",
+      "After": "8HgC"
+    },
+    {
+      "Offset": 1753,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1757,
+      "Before": "AAAA",
+      "After": "dEQC"
+    },
+    {
+      "Offset": 1772,
+      "Before": "AA==",
+      "After": "QA=="
+    },
+    {
+      "Offset": 1775,
+      "Before": "AA==",
+      "After": "wA=="
+    },
+    {
+      "Offset": 5835344,
+      "Before": "UVaL8TPS",
+      "After": "6avVHwKQ"
+    },
+    {
+      "Offset": 38037127,
+      "Before": "i4A0Aw==",
+      "After": "6XQ/AA=="
+    },
+    {
+      "Offset": 38037132,
+      "Before": "AA==",
+      "After": "kA=="
+    }
+  ],
+  "Append": "nP8FANC4AoC4YAIAAAAPhQwAAACdi4A0AwAA6W3A////BQTQuAKd6UbA///MzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJxggHmYAA+EwQEAAI2pdP///4t8JCj/BQDwuAKBfwgrW2RbD4RfAQAAoXyPiAKFwA+ElwEAAIB4CAAPhY0BAACDuKQAAAADD4WAAQAAoZwjiAKFwA+EcwEAAIN4BAIPhWkBAACBfwi0NRPXD4VcAQAAg39EAA+FUgEAAKHoJIgChcAPhD8BAACLUBCF0g+ENAEAADsFEPC4Ag+FDAAAADsVFPC4Ag+ELAAAAKMQ8LgCiRUU8LgCviDwuAK5BAAAAMcGAAAAAMdGCAAAAACDxmxJD4Xp////viDwuAK5BAAAADHbiwY56A+ENQAAAIXAD4UKAAAAhdsPhQIAAACJ84PGbEkPhdr///+F2w+EtgAAAIneiS6LRRSJRgTHRggAAAAAi0UUO0YED4QKAAAAiUYEx0YIAAAAAItOCIP5GA+HgwAAAItXPI1eDIXJD4QSAAAAORMPhGIAAACDwwRJD4Xu////i0YIg/gYD4MMAAAAiVSGDP9GCOlRAAAAx0YI/////+k/AAAA/wUI8LgCviDwuAK5BAAAADkuD4UNAAAAxwYAAAAAx0YIAAAAAIPGbEkPheH////pEQAAAP8FBPC4AmGdwgQA/wUM8LgCYZ1RVovxM9LpfCjg/czMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+}

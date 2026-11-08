@@ -21,7 +21,7 @@ FIELDS = ('sequence', 'entity', 'player_id', 'player', 'controllable',
 def make_code(base, stats, target=TARGET, payload=None, caller_offset=36):
     if not (0x10000 <= base < 0x7FFFFFFF and 0x10000 <= stats < 0x7FFFFFFF):
         raise ValueError('Expected low 32-bit code/stats addresses')
-    if caller_offset not in (36,40,48):raise ValueError('Unsupported caller stack layout')
+    if caller_offset not in (36,40,44,48):raise ValueError('Unsupported caller stack layout')
     b = bytearray.fromhex('9c60')  # pushfd; pushad. Original ESP now +36.
     b += b'\xbf' + struct.pack('<I', stats)  # edi=stats
     # Non-blocking single-writer gate: skip logging rather than stall gameplay.

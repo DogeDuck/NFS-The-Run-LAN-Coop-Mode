@@ -1,22 +1,32 @@
 ﻿#requires -Version 7.0
-param([ValidateSet('Host','Guest')][string]$Role='Host',[string]$GameDirectory,[string]$HostAddress,[string]$Nickname,[string]$StartCarId,[switch]$CheckOnly)
+param([ValidateSet('Host','Guest')][string]$Role='Host',[string]$GameDirectory,[string]$HostAddress,[string]$Nickname,[string]$StartCarId,[ValidateRange(1,4)][int]$MaxPlayers=2,[switch]$ShowServerWindow,[switch]$CheckOnly,[ValidateSet('auto','de','en')][string]$Language='auto')
+$ErrorActionPreference='Stop'
+. (Join-Path $PSScriptRoot 'Coop-Language.ps1')
+$script:CoopLanguage=Get-CoopLanguage $Language
+trap { throw (ConvertTo-CoopUserError $_.Exception.Message) }
 . (Join-Path $PSScriptRoot 'Coop-Core.ps1')
+if(!$GameDirectory -and !(Test-Path -LiteralPath (Join-Path $script:CoopStateRoot 'settings.json'))){
+    if($CheckOnly){throw (Get-CoopText MissingGame)}
+    $GameDirectory=Read-Host (Get-CoopText FolderPrompt)
+}
 . (Join-Path $PSScriptRoot 'Car-Choice.ps1')
 . (Join-Path $PSScriptRoot 'Car-Preferences.ps1')
 $game=Get-CoopGameDirectory $GameDirectory
 Test-CoopReady $game
 if(!$Nickname){$Nickname=(Get-CoopLastCarProfile -Role $Role).Nickname}
-if($Nickname -notmatch '^[A-Za-z0-9_-]{1,16}$'){throw 'Name: 1 bis 16 Buchstaben/Ziffern, _ oder -.'}
+if($Nickname -notmatch '^[A-Za-z0-9_-]{1,16}$'){throw (Get-CoopText BadNickname)}
 if(!$StartCarId){$StartCarId=Get-CoopSavedStartCar $Role $Nickname}
 $startCar=Get-CoopStartCar $StartCarId
-if($Role -eq 'Host'){$HostAddress='127.0.0.1'}elseif(!$HostAddress){if($CheckOnly){throw 'Fuer die Gast-Pruefung HostAddress angeben.'};$HostAddress=Read-Host 'Radmin-/VPN-IPv4 des Hosts'}
+if($Role -eq 'Host'){$HostAddress='127.0.0.1'}elseif(!$HostAddress){if($CheckOnly){throw (Get-CoopText BadIp)};$HostAddress=Read-Host (Get-CoopText VpnPrompt)}
 $address=$null
-if(![Net.IPAddress]::TryParse($HostAddress,[ref]$address) -or $address.AddressFamily -ne [Net.Sockets.AddressFamily]::InterNetwork){throw 'Gueltige IPv4-Adresse des Hosts angeben.'}
+if(![Net.IPAddress]::TryParse($HostAddress,[ref]$address) -or $address.AddressFamily -ne [Net.Sockets.AddressFamily]::InterNetwork){throw (Get-CoopText BadIp)}
 $clientExe=Join-Path $game 'Need For Speed The Run.exe'
 $serverExe=Join-Path $game 'NFSTR_Server.exe'
 $clientArgs="-Client.ServerIp ${HostAddress}:25200 -Client.QuitGameOnServerDisconnect False -Client.UseGlobalGamePadInput False"
 $serverArgs='-Server.ServerName StoryCoop -GamePort 25200 -Game.DefaultLayerInclusion StartupMode=Game;GameMode=StoryMode -NfsOnline.Backend Backend_Lan -NfsGame.CarSelectTimer 0.0'
-if($CheckOnly){[ordered]@{Status='verified';StartCar=$startCar.Name;StartCarHash=$startCar.HelperHash;Role=$Role;GameDirectory=$game;Nickname=$Nickname;ClientArguments=$clientArgs;ServerArguments=$(if($Role -eq 'Host'){$serverArgs}else{$null})}|ConvertTo-Json;return}
+# GameSettings.MaxPlayerCount (Server-Reflection); Wirkung auf die Spielerzahl ist noch nicht live geprueft.
+if($MaxPlayers -ne 2){$serverArgs+=" -Game.MaxPlayerCount $MaxPlayers"}
+if($CheckOnly){[ordered]@{Status='verified';Language=$script:CoopLanguage;ShowServerWindow=[bool]$ShowServerWindow;MaxPlayers=$MaxPlayers;DifficultyControlAvailable=$false;StartCar=$startCar.Name;StartCarHash=$startCar.HelperHash;Role=$Role;GameDirectory=$game;Nickname=$Nickname;ClientArguments=$clientArgs;ServerArguments=$(if($Role -eq 'Host'){$serverArgs}else{$null})}|ConvertTo-Json;return}
 Assert-CoopClosed
 $stamp=(Get-Date -Format 'yyyyMMdd-HHmmss')+'-'+[Guid]::NewGuid().ToString('N').Substring(0,8)
 $session=Join-Path $script:CoopStateRoot "Sessions\$stamp"
@@ -28,7 +38,7 @@ if(Test-Path -LiteralPath $profile){
     $files=@(Get-ChildItem -LiteralPath $profile -File -Recurse|ForEach-Object {
         $relative=$_.FullName.Substring($profile.Length+1)
         $hash=Get-CoopFileHash $_.FullName
-        if((Get-CoopFileHash (Join-Path $snapshot $relative)) -ne $hash){throw 'Spielstandssicherung fehlgeschlagen.'}
+        if((Get-CoopFileHash (Join-Path $snapshot $relative)) -ne $hash){throw (Get-CoopText BackupFailed)}
         [ordered]@{RelativePath=$relative;Sha256=$hash}
     })
     [ordered]@{ProfileDirectory=$profile;Snapshot=$snapshot;Files=$files}|ConvertTo-Json -Depth 5|Set-Content -LiteralPath (Join-Path $session 'save-manifest.json') -Encoding utf8
@@ -43,10 +53,10 @@ if($StartCarId -ne 'story'){$config=$config -replace '(?m)^ForceInitFlow = .*','
 Save-CoopCarPreference $Role $Nickname $StartCarId
 [IO.File]::WriteAllText($configPath,$config,[Text.Encoding]::ASCII)
 $launchConfigHash=Get-CoopFileHash $configPath
-$record=[ordered]@{Version='0.7.1-TEST';Role=$Role;GameDirectory=$game;SessionDirectory=$session;Status='starting';Client=$null;Server=$null;StartCarId=$StartCarId;StartCarHash=$startCar.HelperHash}
+$record=[ordered]@{Version='0.7.3-TEST';Role=$Role;GameDirectory=$game;SessionDirectory=$session;Status='starting';Client=$null;Server=$null;StartCarId=$StartCarId;StartCarHash=$startCar.HelperHash}
 $active=Join-Path $script:CoopStateRoot 'active-session.json'
 Save-CoopSettings $game
-if($StartCarId -ne 'story'){Write-Host ('Startauto: '+$startCar.Name);Write-Host 'Vor dem Rennen im Hauptmenue einmal VIEW CARS / AUTOS ANSEHEN oeffnen. Danach zurueck und Rennen starten. Tankstellen weiterhin meiden.'}
+if($StartCarId -ne 'story'){Write-Host (Get-CoopText StartCar -Values @($startCar.Name));Write-Host (Get-CoopText ViewCars)}
 $client=$null;$server=$null
 $garageJob=$null
 try {
@@ -55,8 +65,8 @@ try {
     $info.EnvironmentVariables['__COMPAT_LAYER']='RunAsInvoker';$info.Arguments=$clientArgs
     $client=[Diagnostics.Process]::Start($info)
     try{
-        & (Join-Path $PSScriptRoot 'Start-GarageWindow.ps1') -GamePid $client.Id -RelayOnly:($Role -eq 'Guest')
-    }catch{Write-Host ('Garage-Fenster konnte nicht starten: '+$_.Exception.Message)}
+        & (Join-Path $PSScriptRoot 'Start-GarageWindow.ps1') -GamePid $client.Id -RelayOnly:($Role -eq 'Guest') -Language $script:CoopLanguage
+    }catch{Write-Host (Get-CoopText GarageFailed -Values @((ConvertTo-CoopUserError $_.Exception.Message)))}
     $garageJob=Start-Job -ScriptBlock {
         param($worker,$gamePid,$directory,$log)
         & $worker -GameProcessId $gamePid -GameDirectory $directory -LogPath $log
@@ -66,18 +76,18 @@ try {
     $record|ConvertTo-Json -Depth 5|Set-Content -LiteralPath $active -Encoding utf8
     if($Role -eq 'Host'){
         $vpn=@(Get-NetIPAddress -AddressFamily IPv4 -ErrorAction SilentlyContinue|Where-Object InterfaceAlias -eq 'Radmin VPN'|Select-Object -ExpandProperty IPAddress)
-        if($vpn.Count){Write-Host ('Deine Radmin-IP: '+($vpn -join ', '))}
-        Write-Host 'Der Kumpel startet jetzt Start-Guest.cmd auf seinem PC.'
-        Read-Host 'Enter druecken, sobald sein Spielfenster offen ist'|Out-Null
-        $client.Refresh();if($client.HasExited){throw 'Das Host-Spielfenster wurde geschlossen.'}
-        $server=Start-Process -FilePath $serverExe -WorkingDirectory $game -ArgumentList $serverArgs -WindowStyle Hidden -PassThru
+        if($vpn.Count){Write-Host (Get-CoopText YourIp -Values @(($vpn -join ', ')))}
+        Write-Host (Get-CoopText Invite)
+        Read-Host (Get-CoopText ReadyPrompt)|Out-Null
+        $client.Refresh();if($client.HasExited){throw (Get-CoopText HostClosed)}
+        $server=Start-Process -FilePath $serverExe -WorkingDirectory $game -ArgumentList $serverArgs -WindowStyle $(if($ShowServerWindow){'Normal'}else{'Hidden'}) -PassThru
         $record.Server=Get-CoopProcessRecord $server $serverExe
-        Write-Host 'Server gestartet. Sobald beide verbunden sind: nur der Host waehlt THE RUN -> Fortsetzen.'
-    }else{Write-Host 'Warte im Spielfenster auf die Verbindung. Der Host startet danach den Server und waehlt Fortsetzen.'}
+        Write-Host (Get-CoopText ServerStarted)
+    }else{Write-Host (Get-CoopText GuestWaiting)}
     $record.Status='running'
     $record|ConvertTo-Json -Depth 5|Set-Content -LiteralPath $active -Encoding utf8
-    Write-Host "Spielstand vor dem Start gesichert in: $session"
-    Write-Host 'Dieses Starterfenster offen lassen, bis das Spiel beendet ist.'
+    Write-Host (Get-CoopText Saved -Values @($session))
+    Write-Host (Get-CoopText LeaveOpen)
     $client.WaitForExit()
 } finally {
     if($record.Server){Stop-CoopOwnedProcess $record.Server}

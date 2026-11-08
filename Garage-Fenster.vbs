@@ -17,4 +17,4 @@ If launchError <> 0 Then
         launchError = Err.Number
     End If
 End If
-If launchError <> 0 Then MsgBox "PowerShell 7 fehlt oder die Garage konnte nicht gestartet werden.", 48, "The Run Koop - Garage"
+If launchError <> 0 Then MsgBox "PowerShell 7 is missing or the garage could not start." & vbCrLf & "PowerShell 7 fehlt oder die Garage konnte nicht gestartet werden.", 48, "The Run Co-op / Koop - Garage"
