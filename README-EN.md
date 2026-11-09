@@ -1,4 +1,9 @@
-﻿# The Run Story Co-op – English
+﻿# v0.7.4-TEST
+
+[Changes / Änderungen](CHANGELOG.md)
+[Updates and difficulty / Updates und Schwierigkeit](UPDATES-DIFFICULTY.md)
+
+# The Run Story Co-op – English
 
 [Deutsch](README-DE.md) · [Set up Radmin](RADMIN-EN.md) · [Garage](GARAGE-EN.md)
 

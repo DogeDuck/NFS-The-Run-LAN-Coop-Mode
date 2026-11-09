@@ -1,4 +1,4 @@
-"""Read-only, bounded LAN recorder and offline scenario checks. No process writes."""
+﻿"""Read-only, bounded LAN recorder and offline scenario checks. No process writes."""
 from pathlib import Path
 import argparse
 import ctypes as c
@@ -14,7 +14,7 @@ import uuid
 
 ROOT = Path(__file__).resolve().parent
 UPSTREAM = ROOT / 'external/coop-anything/tools/flight'
-BUILD = 'C9D48E500EF82EFC642EDF2DB848A9072E56FBC114E283173D6E7E58BAC634A6'
+BUILD = 'DF9F70693DD4167440935725174014D1643C284B05D010FE198681D4B322ACE5'
 RESEARCH = Path(r'C:\Users\hatty\Documents\Codex\2026-10-28\es-x20\work\the-run')
 GAME = Path(r'X:\EA Games\Need for Speed The Run\Need for Speed The Run')
 

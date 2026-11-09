@@ -14,7 +14,7 @@ $launcherFile=Join-Path $stateRoot 'launcher.json'
 
 
 function Read-LauncherState{
-    $s=[ordered]@{Role='Host';Nickname='CoopHost';HostIp='';GameDirectory='';MaxPlayers=2;ShowServerWindow=$false}
+    $s=[ordered]@{Role='Host';Nickname='CoopHost';HostIp='';GameDirectory='';MaxPlayers=2;Difficulty=1;AutoUpdate=$true;ShowServerWindow=$false}
     try{
         if(Test-Path -LiteralPath $launcherFile){
             $j=Get-Content -LiteralPath $launcherFile -Raw -Encoding utf8|ConvertFrom-Json
@@ -25,12 +25,18 @@ function Read-LauncherState{
             $limit=0
             if([int]::TryParse([string]$j.MaxPlayers,[ref]$limit) -and $limit -ge 1 -and $limit -le 4){$s.MaxPlayers=$limit}
             if($j.ShowServerWindow -is [bool]){$s.ShowServerWindow=$j.ShowServerWindow}
+            if($j.PSObject.Properties.Name -contains 'Difficulty'){
+                $level=0;if([int]::TryParse([string]$j.Difficulty,[ref]$level) -and $level -ge 0 -and $level -le 3){$s.Difficulty=$level}
+            }
+            if($j.AutoUpdate -is [bool]){$s.AutoUpdate=$j.AutoUpdate}
         }
         if(!$s.GameDirectory){$old=Join-Path $stateRoot 'settings.json';if(Test-Path -LiteralPath $old){$s.GameDirectory=(Get-Content -LiteralPath $old -Raw|ConvertFrom-Json).GameDirectory}}
     }catch{}
     return $s
 }
 function Save-LauncherState($s){
+    if($null -ne $difficultyBox){$s['Difficulty']=[int]$difficultyBox.SelectedIndex}
+    if($null -ne $autoUpdates){$s['AutoUpdate']=[bool]$autoUpdates.Checked}
     if(!(Test-Path -LiteralPath $stateRoot)){[void](New-Item -ItemType Directory -Path $stateRoot)}
     $tmp=Join-Path $stateRoot ([IO.Path]::GetRandomFileName())
     try{
@@ -44,7 +50,7 @@ function Get-LauncherBackground{
 }
 
 $state=Read-LauncherState
-if($CheckOnly){[ordered]@{Status='configuration-check-only';Language=$script:CoopLanguage;Fields=@('Host','Guest','Solo','HostIp','Nickname','GameDirectory','MaxPlayers','ShowServerWindow','Language');Preferences=$state;Port=25200;CarChoiceOnly=[bool]$CarChoiceOnly;DifficultyControlAvailable=$false;StartsGame=$false}|ConvertTo-Json -Depth 5;return}
+if($CheckOnly){[ordered]@{Status='configuration-check-only';Language=$script:CoopLanguage;Fields=@('Host','Guest','Solo','HostIp','Nickname','GameDirectory','MaxPlayers','Difficulty','AutoUpdate','ShowServerWindow','Language');Preferences=$state;Port=25200;CarChoiceOnly=[bool]$CarChoiceOnly;DifficultyControlAvailable=$true;StartsGame=$false}|ConvertTo-Json -Depth 5;return}
 Add-Type -AssemblyName System.Windows.Forms,System.Drawing
 [Windows.Forms.Application]::EnableVisualStyles()
 $script:Labels=@{}
@@ -114,11 +120,15 @@ $maxPlayers=New-Object Windows.Forms.NumericUpDown;$maxPlayers.Location=New-Obje
 $maxPlayers.Minimum=1;$maxPlayers.Maximum=4;$maxPlayers.BackColor=$C.Field;$maxPlayers.ForeColor=$C.Text;$card.Controls.Add($maxPlayers)
 $showServer=New-Object Windows.Forms.CheckBox;$showServer.Text='Serverfenster anzeigen';$showServer.Location=New-Object Drawing.Point(200,369);$showServer.Size=New-Object Drawing.Size(190,26)
 $showServer.ForeColor=$C.Text;$showServer.BackColor=[Drawing.Color]::Transparent;$card.Controls.Add($showServer)
-$hint=New-Label '' 20 403 365 $C.Muted 8.5;$hint.Size=New-Object Drawing.Size(365,42)
+$hint=New-Label '' 20 443 365 $C.Muted 8.5;$hint.Size=New-Object Drawing.Size(365,58)
 $start=New-FlatButton '' 20 510 270 35;$start.BackColor=$C.Accent;$start.ForeColor=[Drawing.Color]::Black;$start.Font=New-Object Drawing.Font('Segoe UI',10.5,[Drawing.FontStyle]::Bold)
 $bgButton=New-FlatButton '' 300 510 85 35
 $form.AcceptButton=$start
-$difficulty=New-Label '' 20 451 365 $C.Muted 8.5;$difficulty.Size=New-Object Drawing.Size(365,40)
+$difficulty=New-Label 'Difficulty' 20 407 110 $C.Muted 9
+$difficultyBox=New-Object Windows.Forms.ComboBox
+$difficultyBox.DropDownStyle='DropDownList';$difficultyBox.Location=New-Object Drawing.Point(130,404);$difficultyBox.Size=New-Object Drawing.Size(255,28)
+$difficultyBox.BackColor=$C.Field;$difficultyBox.ForeColor=$C.Text;$difficultyBox.FlatStyle='Flat';$card.Controls.Add($difficultyBox)
+[void]$difficultyBox.Items.AddRange(@('Easy','Normal','Hard','Extreme'));$difficultyBox.SelectedIndex=[int]$state.Difficulty
 
 $nickname.Text=$state.Nickname;$ip.Text=[string]$state.HostIp;$directory.Text=[string]$state.GameDirectory
 $maxPlayers.Value=[Math]::Min(4,[Math]::Max(1,[int]$state.MaxPlayers));$showServer.Checked=[bool]$state.ShowServerWindow
@@ -132,7 +142,7 @@ function Update-Role{
     $script:IsHost=($script:Mode -eq 'Host');$solo=($script:Mode -eq 'Solo')
     Set-On $btnHost ($script:Mode -eq 'Host');Set-On $btnJoin ($script:Mode -eq 'Guest');Set-On $btnSolo $solo
     $ip.Enabled=($script:Mode -eq 'Guest');$lblIp.Enabled=$ip.Enabled
-    foreach($c in $lblOptions,$lblMax,$maxPlayers,$showServer){$c.Visible=$script:IsHost}
+    foreach($c in $lblOptions,$lblMax,$maxPlayers,$showServer,$difficulty,$difficultyBox){$c.Visible=$script:IsHost}
     $nickname.Enabled=!$solo
     if(!$solo -and $script:AutomaticNickname){
         $script:UpdatingNickname=$true
@@ -140,13 +150,18 @@ function Update-Role{
     }
     $start.Text=Get-CoopText $(if($solo){'StartSolo'}elseif($script:IsHost){'StartHost'}else{'StartGuest'})
     $hint.Text=Get-CoopText $(if($solo){'SoloHint'}elseif($script:IsHost){'HostHint'}else{'GuestHint'})
-    $difficulty.Text=Get-CoopText $(if($solo){'DifficultySolo'}else{'DifficultyPending'})
+    $difficulty.Text=Get-CoopText Difficulty
 }
 function Update-Language {
     $form.Text=Get-CoopText Title
     foreach($key in $script:Labels.Keys){$script:Labels[$key].Text=Get-CoopText $key}
     $btnHost.Text=Get-CoopText Host;$btnJoin.Text=Get-CoopText Guest;$btnSolo.Text=Get-CoopText Solo
     $browse.Text=Get-CoopText Browse;$showServer.Text=Get-CoopText ShowServer;$bgButton.Text=Get-CoopText Background
+    $selectedDifficulty=$difficultyBox.SelectedIndex
+    $difficultyBox.Items.Clear()
+    [void]$difficultyBox.Items.AddRange(@((Get-CoopText DifficultyEasy),(Get-CoopText DifficultyNormal),(Get-CoopText DifficultyHard),(Get-CoopText DifficultyExtreme)))
+    $difficultyBox.SelectedIndex=$selectedDifficulty
+    if($null -ne $autoUpdates){$autoUpdates.Text=Get-CoopText AutoUpdates;$updateButton.Text=Get-CoopText CheckUpdates}
     Update-Role
 }
 $languageBox.Add_SelectedIndexChanged({
@@ -176,6 +191,80 @@ $bgButton.Add_Click({
     }catch{[Windows.Forms.MessageBox]::Show($_.Exception.Message,(Get-CoopText BackgroundTitle))|Out-Null}finally{$dialog.Dispose()}
 })
 Update-Language
+
+# Updates run in a hidden worker; slow/offline GitHub never blocks the form.
+$updatePanel=New-Object Windows.Forms.Panel
+$updatePanel.Location=New-Object Drawing.Point(15,446);$updatePanel.Size=New-Object Drawing.Size(345,138)
+$updatePanel.BackColor=[Drawing.Color]::Transparent;$form.Controls.Add($updatePanel)
+$autoUpdates=New-Object Windows.Forms.CheckBox
+$autoUpdates.Location=New-Object Drawing.Point(5,70);$autoUpdates.Size=New-Object Drawing.Size(335,32)
+$autoUpdates.ForeColor=$C.Text;$autoUpdates.BackColor=[Drawing.Color]::Transparent;$autoUpdates.Checked=[bool]$state.AutoUpdate
+$autoUpdates.Text=Get-CoopText AutoUpdates;$updatePanel.Controls.Add($autoUpdates)
+$updateButton=New-Object Windows.Forms.Button
+$updateButton.Location=New-Object Drawing.Point(5,106);$updateButton.Size=New-Object Drawing.Size(335,31)
+$updateButton.FlatStyle='Flat';$updateButton.BackColor=$C.Field;$updateButton.ForeColor=$C.Text;$updateButton.Text=Get-CoopText CheckUpdates
+$updatePanel.Controls.Add($updateButton)
+$updateStatus=New-Object Windows.Forms.Label
+$updateStatus.Location=New-Object Drawing.Point(5,0);$updateStatus.Size=New-Object Drawing.Size(335,62)
+$updateStatus.ForeColor=$C.Muted;$updateStatus.BackColor=[Drawing.Color]::Transparent;$updatePanel.Controls.Add($updateStatus)
+try{$packageVersion=[string](Get-Content -LiteralPath (Join-Path $PSScriptRoot 'package-manifest.json') -Raw -Encoding utf8|ConvertFrom-Json).version}catch{$packageVersion='Development'}
+$updateStatus.Text='v'+$packageVersion
+$script:UpdateProcess=$null;$script:UpdateResult=$null;$script:UpdateInstalling=$false
+function Start-LauncherUpdate([switch]$Install){
+    if($script:UpdateProcess -and !$script:UpdateProcess.HasExited){return}
+    $worker=Join-Path $PSScriptRoot 'Update-Coop.ps1'
+    if(!(Test-Path -LiteralPath $worker)){$updateStatus.Text=Get-CoopText UpdateOffline;return}
+    if($Install){
+        if(@(Get-Process -Name 'Need For Speed The Run','NFSTR_Server' -ErrorAction SilentlyContinue).Count){$updateStatus.Text=Get-CoopText UpdateGameRunning;return}
+        if(!$directory.Text.Trim()){$updateStatus.Text=Get-CoopText UpdateChooseGame;return}
+    }
+    $script:UpdateResult=Join-Path $stateRoot ('Updates\result-'+[Guid]::NewGuid().ToString('N')+'.json')
+    $info=[Diagnostics.ProcessStartInfo]::new((Join-Path $PSHOME 'pwsh.exe'))
+    $info.UseShellExecute=$false;$info.CreateNoWindow=$true
+    $mode=if($Install){'-Install'}else{'-CheckOnly'}
+    foreach($arg in @('-NoProfile','-File',$worker,$mode,'-CurrentPackageDirectory',$PSScriptRoot,'-ResultPath',$script:UpdateResult)){$info.ArgumentList.Add($arg)}
+    if($Install){$info.ArgumentList.Add('-GameDirectory');$info.ArgumentList.Add($directory.Text.Trim().Trim('"'))}
+    $script:UpdateInstalling=[bool]$Install
+    $updateStatus.Text=Get-CoopText $(if($Install){'UpdateInstalling'}else{'UpdateChecking'})
+    $updateButton.Enabled=$false;if($Install){$start.Enabled=$false}
+    $script:UpdateProcess=[Diagnostics.Process]::Start($info)
+}
+$updateTimer=New-Object Windows.Forms.Timer;$updateTimer.Interval=400
+$updateTimer.Add_Tick({
+    if(!$script:UpdateProcess){return}
+    if(!(Test-Path -LiteralPath $script:UpdateResult)){
+        if($script:UpdateProcess.HasExited){$updateStatus.Text=Get-CoopText UpdateOffline;$updateButton.Enabled=$true;$start.Enabled=$true;$script:UpdateProcess=$null}
+        return
+    }
+    try{
+        $result=Get-Content -LiteralPath $script:UpdateResult -Raw -Encoding utf8|ConvertFrom-Json
+        $script:UpdateProcess=$null;$updateButton.Enabled=$true;$start.Enabled=$true
+        switch($result.Status){
+            'current' {$updateStatus.Text=Get-CoopText UpdateCurrent}
+            'available' {
+                $updateStatus.Text=Get-CoopText UpdateAvailable -Values @($result.Version)
+                if($autoUpdates.Checked){Start-LauncherUpdate -Install}
+            }
+            'game-running' {$updateStatus.Text=Get-CoopText UpdateGameRunning}
+            'missing-game' {$updateStatus.Text=Get-CoopText UpdateChooseGame}
+            'installed' {
+                $newPackage=[IO.Path]::GetFullPath([string]$result.PackageDirectory)
+                $gamePrefix=[IO.Path]::GetFullPath($directory.Text.Trim().Trim('"')).TrimEnd('\')+'\'
+                if(!$newPackage.StartsWith($gamePrefix,[StringComparison]::OrdinalIgnoreCase)){throw 'Updated package is outside the game folder.'}
+                Save-CoopLanguage $script:CoopLanguage $stateRoot
+                Save-LauncherState ([ordered]@{Role=$script:Mode;Nickname=$nickname.Text;HostIp=$ip.Text;GameDirectory=$directory.Text;MaxPlayers=[int]$maxPlayers.Value;ShowServerWindow=$showServer.Checked})
+                $info=[Diagnostics.ProcessStartInfo]::new((Join-Path $PSHOME 'pwsh.exe'));$info.UseShellExecute=$false;$info.CreateNoWindow=$true
+                foreach($arg in @('-NoProfile','-File',(Join-Path $newPackage 'Connect-Coop.ps1'),'-Language',$script:CoopLanguage)){$info.ArgumentList.Add($arg)}
+                [void][Diagnostics.Process]::Start($info);$form.Close()
+            }
+            'failed' {$updateStatus.Text=Get-CoopText UpdateFailed -Values @([string]$result.Error)}
+            default {$updateStatus.Text=Get-CoopText UpdateOffline}
+        }
+    }catch{$updateStatus.Text=Get-CoopText UpdateFailed -Values @($_.Exception.Message);$updateButton.Enabled=$true;$start.Enabled=$true;$script:UpdateProcess=$null}
+})
+$updateButton.Add_Click({Start-LauncherUpdate -Install})
+$form.Add_Shown({if(!$CarChoiceOnly -and !$ValidateForm){$updateTimer.Start();Start-LauncherUpdate}})
+$form.Add_FormClosed({$updateTimer.Stop();$updateTimer.Dispose()})
 
 function Quote-CoopLiteral([string]$Value){return "'"+$Value.Replace("'","''")+"'"}
 $form.Add_FormClosing({
@@ -212,6 +301,7 @@ $start.Add_Click({
         Save-CoopLanguage $script:CoopLanguage $stateRoot
         Save-LauncherState ([ordered]@{Role=$role;Nickname=$nickname.Text;HostIp=$ip.Text.Trim();GameDirectory=$game;MaxPlayers=[int]$maxPlayers.Value;ShowServerWindow=$showServer.Checked})
         $command='& {0} -Role {1} -GameDirectory {2} -HostAddress {3} -Nickname {4} -MaxPlayers {5} -Language {6}' -f (Quote-CoopLiteral $starter),(Quote-CoopLiteral $role),(Quote-CoopLiteral $game),(Quote-CoopLiteral $address),(Quote-CoopLiteral $nickname.Text),[int]$maxPlayers.Value,(Quote-CoopLiteral $script:CoopLanguage)
+        if($script:IsHost){$command+=' -Difficulty '+[int]$difficultyBox.SelectedIndex}
         if($script:IsHost -and $showServer.Checked){$command+=' -ShowServerWindow'}
         $command='try { '+$command+' } catch { Write-Host $_.Exception.Message; Read-Host '+(Quote-CoopLiteral (Get-CoopText StartFailed))+' | Out-Null; exit 1 }'
         $encoded=[Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($command))
@@ -234,7 +324,7 @@ try{
             $roleStates[$role]=[ordered]@{StartText=$start.Text;IpEnabled=$ip.Enabled;NicknameEnabled=$nickname.Enabled;HostOptionsAvailable=$script:IsHost;Hint=$hint.Text;Difficulty=$difficulty.Text}
         }
         $script:Mode=$originalMode;Update-Role
-        [ordered]@{Status='form-constructed';Language=$script:CoopLanguage;SelectedLanguage=$languageBox.Text;LanguageStates=$languageStates;Controls=$card.Controls.Count;HostSelected=$script:IsHost;Background=[bool]$form.BackgroundImage;Roles=$roleStates;StartsGame=$false}|ConvertTo-Json -Depth 5
+        [ordered]@{Status='form-constructed';Language=$script:CoopLanguage;SelectedLanguage=$languageBox.Text;LanguageStates=$languageStates;Controls=$card.Controls.Count;HostSelected=$script:IsHost;Background=[bool]$form.BackgroundImage;Roles=$roleStates;DifficultyIndex=$difficultyBox.SelectedIndex;DifficultyOptions=@($difficultyBox.Items);AutoUpdate=$autoUpdates.Checked;UpdateWorkerStarted=($null -ne $script:UpdateProcess);StartsGame=$false}|ConvertTo-Json -Depth 5
         if($Screenshot){
             # An unshown Form hides all descendants. Render the detached child panel
             # separately: it has no top-level window and never takes focus.
@@ -249,14 +339,23 @@ try{
                 # Native ComboBox omits its selected text in DrawToBitmap on this
                 # Windows build. Draw the actual control value into the preview.
                 $panelGraphics=[Drawing.Graphics]::FromImage($panelBitmap)
-                $fieldBrush=[Drawing.SolidBrush]::new($languageBox.BackColor)
-                $textBrush=[Drawing.SolidBrush]::new($languageBox.ForeColor)
                 try{
-                    $panelGraphics.FillRectangle($fieldBrush,$languageBox.Left+2,$languageBox.Top+2,$languageBox.Width-21,$languageBox.Height-4)
-                    $panelGraphics.DrawString($languageBox.Text,$languageBox.Font,$textBrush,$languageBox.Left+5,$languageBox.Top+3)
-                }finally{$textBrush.Dispose();$fieldBrush.Dispose();$panelGraphics.Dispose()}
+                    foreach($combo in $languageBox,$difficultyBox){
+                        $fieldBrush=[Drawing.SolidBrush]::new($combo.BackColor);$textBrush=[Drawing.SolidBrush]::new($combo.ForeColor)
+                        try{
+                            $panelGraphics.FillRectangle($fieldBrush,$combo.Left+2,$combo.Top+2,$combo.Width-21,$combo.Height-4)
+                            $panelGraphics.DrawString($combo.Text,$combo.Font,$textBrush,$combo.Left+5,$combo.Top+3)
+                        }finally{$textBrush.Dispose();$fieldBrush.Dispose()}
+                    }
+                }finally{$panelGraphics.Dispose()}
                 $graphics=[Drawing.Graphics]::FromImage($bmp)
-                try{$graphics.DrawImageUnscaled($panelBitmap,$card.Left+$border,$card.Top+$top)}finally{$graphics.Dispose()}
+                $updateBitmap=New-Object Drawing.Bitmap($updatePanel.Width,$updatePanel.Height)
+                try{
+                    $graphics.DrawImageUnscaled($panelBitmap,$card.Left+$border,$card.Top+$top)
+                    $form.Controls.Remove($updatePanel)
+                    $updatePanel.DrawToBitmap($updateBitmap,(New-Object Drawing.Rectangle(0,0,$updatePanel.Width,$updatePanel.Height)))
+                    $graphics.DrawImageUnscaled($updateBitmap,$updatePanel.Left+$border,$updatePanel.Top+$top)
+                }finally{$form.Controls.Add($updatePanel);$updateBitmap.Dispose();$graphics.Dispose()}
                 $bmp.Save([IO.Path]::GetFullPath($Screenshot),[Drawing.Imaging.ImageFormat]::Png)
             }finally{$form.Controls.Add($card);$panelBitmap.Dispose();$bmp.Dispose()}
         }

@@ -1,8 +1,20 @@
 {
   "successful": true,
-  "tests": 55,
+  "tests": 43,
   "failures": 0,
   "errors": 0,
-  "command": "python -m unittest test_launcher_bilingual test_launcher_garage_language test_car_preferences test_start_solo test_claude_battle_botfilter test_battle_phase_guard test_server_battle_phase_guard -q",
-  "limits": "Targeted source checks. Native double-checkpoint and full2.6 run user-confirmed; newly combined bilingual package not live-tested."
+  "commands": [
+    "python -m unittest test_host_first_human test_guest_script_vehicle test_bundle_owner_adapter test_qte_hud_scope test_host_difficulty test_qte_local_binding -q",
+    "python -m unittest test_release_074_layout.PersistedLayoutTests -v"
+  ],
+  "updater_offline_checks": 15,
+  "launcher_forms": [
+    "de",
+    "en"
+  ],
+  "github_update_check": "current 0.7.3 returned by live read-only check",
+  "game_tests_run": false,
+  "verified_at": "2026-11-09T23:57:27.744204+00:00",
+  "combined_package_gameplay_verified": false,
+  "limits": "Targeted offline checks only. Native engine rendering/streaming and combined gameplay need joint live test."
 }

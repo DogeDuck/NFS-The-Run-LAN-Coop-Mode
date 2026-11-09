@@ -1,4 +1,4 @@
-"""Bounded read-only snapshots of the two native ID -> pointer registries.
+﻿"""Bounded read-only snapshots of the two native ID -> pointer registries.
 
 These addresses/layouts come from440030 and its two confirmed callers. Payload
 previews are uninterpreted bytes: do not claim a string/type from a raw pointer.

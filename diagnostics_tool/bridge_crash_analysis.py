@@ -1,4 +1,4 @@
-"""Offline evidence for the repeated bridge crash. No process access or patching.
+﻿"""Offline evidence for the repeated bridge crash. No process access or patching.
 
 The original allocation CALL adds8 argument bytes, CALL4, PUSH EDI4. At the
 fault, native caller locals thus live at captured ESP+16. The lookup output at
@@ -14,7 +14,7 @@ from pe_image_readonly import PE32
 
 CLIENT_HASHES={'2cb4570c34e46cc74ccded44f8f38338c12a0edfbb33a74572b72fc6e11ad249',
                '8140947e9b11cdfa4cac5d3c7f05820a96246f447399ed6adc6187355910d5c6',
-               'c9d48e500ef82efc642edf2db848a9072e56fbc114e283173d6e7e58bac634a6',
+               'df9f70693dd4167440935725174014d1643c284b05d010fe198681d4b322ace5',
                # NOGUARD candidate: all native lookup/stack CONTRACT bytes verified.
                '25167583c71ec9ad530a3636e4b3607a4707ef7105a4cd5daabe65ac295f8b9b'}
 CONTRACT={

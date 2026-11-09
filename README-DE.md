@@ -1,4 +1,9 @@
-﻿# The Run Story-Koop – Deutsch
+﻿# v0.7.4-TEST
+
+[Changes / Änderungen](CHANGELOG.md)
+[Updates and difficulty / Updates und Schwierigkeit](UPDATES-DIFFICULTY.md)
+
+# The Run Story-Koop – Deutsch
 
 [English](README-EN.md) · [Radmin einrichten](RADMIN-DE.md) · [Garage](GARAGE-DE.md)
 

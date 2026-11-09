@@ -1,4 +1,4 @@
-"""Explicit event-driven bridge exception capture. No game launches or patches.
+﻿"""Explicit event-driven bridge exception capture. No game launches or patches.
 
 --run attaches a Windows debugger for1..300s. Debug events briefly stop the
 client. Native exceptions are passed to the game's handlers, not suppressed.

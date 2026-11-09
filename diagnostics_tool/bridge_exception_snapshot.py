@@ -1,4 +1,4 @@
-"""Small, replayable memory snapshot at a stopped native exception.
+﻿"""Small, replayable memory snapshot at a stopped native exception.
 
 No complete process dump, process writes, inferred type names or network upload.
 All addresses come from the verified bridge path and two native registries.

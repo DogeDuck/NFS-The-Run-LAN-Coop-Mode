@@ -1,4 +1,4 @@
-"""Small checked PE32 reader for diagnostics. No mutation or process APIs."""
+﻿"""Small checked PE32 reader for diagnostics. No mutation or process APIs."""
 import struct
 
 class PE32:

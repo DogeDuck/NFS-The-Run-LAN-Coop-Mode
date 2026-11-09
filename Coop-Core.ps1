@@ -1,4 +1,4 @@
-$ErrorActionPreference='Stop'
+﻿$ErrorActionPreference='Stop'
 $script:CoopStateRoot=Join-Path ([Environment]::GetFolderPath('LocalApplicationData')) 'TheRunStoryCoop'
 function Get-CoopHash([byte[]]$Bytes){
     $sha=[Security.Cryptography.SHA256]::Create()

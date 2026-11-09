@@ -1,0 +1,200 @@
+{
+  "FileName": "Need For Speed The Run.exe",
+  "OriginalSha256": "c3fba53c787f6b4edf97b142e2477f3fec4a8bf9ff0c6adacdf7beadd17cc0d6",
+  "PatchedSha256": "df9f70693dd4167440935725174014d1643c284b05d010fe198681d4b322ace5",
+  "OriginalLength": 38041088,
+  "PatchedLength": 38043136,
+  "Changes": [
+    {
+      "Offset": 294,
+      "Before": "Hw==",
+      "After": "IQ=="
+    },
+    {
+      "Offset": 317,
+      "Before": "Kg==",
+      "After": "MA=="
+    },
+    {
+      "Offset": 321,
+      "Before": "Gg==",
+      "After": "HA=="
+    },
+    {
+      "Offset": 369,
+      "Before": "AA==",
+      "After": "IA=="
+    },
+    {
+      "Offset": 1384,
+      "Before": "eQ==",
+      "After": "uA=="
+    },
+    {
+      "Offset": 1776,
+      "Before": "AAAAAAAAAA==",
+      "After": "Lm93bmJuZA=="
+    },
+    {
+      "Offset": 1784,
+      "Before": "AAA=",
+      "After": "CQQ="
+    },
+    {
+      "Offset": 1790,
+      "Before": "AAA=",
+      "After": "eQI="
+    },
+    {
+      "Offset": 1793,
+      "Before": "AA==",
+      "After": "Bg=="
+    },
+    {
+      "Offset": 1797,
+      "Before": "AAAA",
+      "After": "dkQC"
+    },
+    {
+      "Offset": 1812,
+      "Before": "AA==",
+      "After": "IA=="
+    },
+    {
+      "Offset": 1815,
+      "Before": "AAAAAAAAAAA=",
+      "After": "YC5vd25ic3Q="
+    },
+    {
+      "Offset": 1824,
+      "Before": "AA==",
+      "After": "IA=="
+    },
+    {
+      "Offset": 1829,
+      "Before": "AAAA",
+      "After": "EHkC"
+    },
+    {
+      "Offset": 1833,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1837,
+      "Before": "AAAA",
+      "After": "fEQC"
+    },
+    {
+      "Offset": 1852,
+      "Before": "AA==",
+      "After": "QA=="
+    },
+    {
+      "Offset": 1855,
+      "Before": "AA==",
+      "After": "wA=="
+    },
+    {
+      "Offset": 372403,
+      "Before": "OSH//w==",
+      "After": "SVFzAg=="
+    },
+    {
+      "Offset": 38035467,
+      "Before": "Qw==",
+      "After": "mw=="
+    },
+    {
+      "Offset": 38035477,
+      "Before": "OQ==",
+      "After": "kQ=="
+    },
+    {
+      "Offset": 38035490,
+      "Before": "LA==",
+      "After": "hA=="
+    },
+    {
+      "Offset": 38035503,
+      "Before": "Hw==",
+      "After": "dw=="
+    },
+    {
+      "Offset": 38035513,
+      "Before": "FQ==",
+      "After": "bQ=="
+    },
+    {
+      "Offset": 38035517,
+      "Before": "xkQ=",
+      "After": "oeg="
+    },
+    {
+      "Offset": 38035520,
+      "Before": "LQHGRCQuAMZEJC8A/wUAcLgCYZ1TMttXOFwkEun999j9zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzA==",
+      "After": "iAKFwA+EYAAAAItAEIXAD4RVAAAAg3goAw+EHwAAAOkAAAAAxkQkLQHGRCQuAMZEJC8A/wUAcLgC6SwAAAD/BQxwuAKB7CACAACNbCQPg+XwD65FAInxagBqAehAtdf9D65NAIHEIAIAAGGdUzLbVzhcJBLppffY/Q=="
+    },
+    {
+      "Offset": 38035979,
+      "Before": "XQ==",
+      "After": "nA=="
+    },
+    {
+      "Offset": 38035989,
+      "Before": "Uw==",
+      "After": "kg=="
+    },
+    {
+      "Offset": 38036002,
+      "Before": "Rg==",
+      "After": "hQ=="
+    },
+    {
+      "Offset": 38036015,
+      "Before": "OQ==",
+      "After": "eA=="
+    },
+    {
+      "Offset": 38036025,
+      "Before": "Lw==",
+      "After": "bg=="
+    },
+    {
+      "Offset": 38036029,
+      "Before": "i0Q=",
+      "After": "oeg="
+    },
+    {
+      "Offset": 38036032,
+      "Before": "KIP4Bg==",
+      "After": "iAKFwA=="
+    },
+    {
+      "Offset": 38036038,
+      "Before": "FA==",
+      "After": "YQ=="
+    },
+    {
+      "Offset": 38036042,
+      "Before": "g/gID4UZAAA=",
+      "After": "i0AQhcAPhFY="
+    },
+    {
+      "Offset": 38036051,
+      "Before": "/wUIcLgC6QYA",
+      "After": "AACDeCgDD4QF"
+    },
+    {
+      "Offset": 38036062,
+      "Before": "/wUEcLgCxw==",
+      "After": "AOkYAAAAiw=="
+    },
+    {
+      "Offset": 38036071,
+      "Before": "LAAAAABhnVWL7IPk8Olts9f9zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM",
+      "After": "KIP4AQ+FOgAAAP8FEHC4AuknAAAAi0QkKIP4Bg+EFAAAAIP4CA+FGQAAAP8FCHC4AukGAAAA/wUEcLgCx0QkLAAAAABhnVWL7IPk8Okus9f9"
+    }
+  ],
+  "Append": "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"
+}

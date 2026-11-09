@@ -1,4 +1,4 @@
-"""Read-only registered racer inventory. Not a census of every scripted police car."""
+﻿"""Read-only registered racer inventory. Not a census of every scripted police car."""
 import struct
 import uuid
 

@@ -1,5 +1,5 @@
 ﻿#requires -Version 7.0
-param([ValidateSet('Host','Guest')][string]$Role='Host',[string]$GameDirectory,[string]$HostAddress,[string]$Nickname,[string]$StartCarId,[ValidateRange(1,4)][int]$MaxPlayers=2,[switch]$ShowServerWindow,[switch]$CheckOnly,[ValidateSet('auto','de','en')][string]$Language='auto')
+param([ValidateSet('Host','Guest')][string]$Role='Host',[string]$GameDirectory,[string]$HostAddress,[string]$Nickname,[string]$StartCarId,[ValidateRange(1,4)][int]$MaxPlayers=2,[ValidateRange(0,3)][int]$Difficulty=1,[switch]$ShowServerWindow,[switch]$CheckOnly,[ValidateSet('auto','de','en')][string]$Language='auto')
 $ErrorActionPreference='Stop'
 . (Join-Path $PSScriptRoot 'Coop-Language.ps1')
 $script:CoopLanguage=Get-CoopLanguage $Language
@@ -26,7 +26,7 @@ $clientArgs="-Client.ServerIp ${HostAddress}:25200 -Client.QuitGameOnServerDisco
 $serverArgs='-Server.ServerName StoryCoop -GamePort 25200 -Game.DefaultLayerInclusion StartupMode=Game;GameMode=StoryMode -NfsOnline.Backend Backend_Lan -NfsGame.CarSelectTimer 0.0'
 # GameSettings.MaxPlayerCount (Server-Reflection); Wirkung auf die Spielerzahl ist noch nicht live geprueft.
 if($MaxPlayers -ne 2){$serverArgs+=" -Game.MaxPlayerCount $MaxPlayers"}
-if($CheckOnly){[ordered]@{Status='verified';Language=$script:CoopLanguage;ShowServerWindow=[bool]$ShowServerWindow;MaxPlayers=$MaxPlayers;DifficultyControlAvailable=$false;StartCar=$startCar.Name;StartCarHash=$startCar.HelperHash;Role=$Role;GameDirectory=$game;Nickname=$Nickname;ClientArguments=$clientArgs;ServerArguments=$(if($Role -eq 'Host'){$serverArgs}else{$null})}|ConvertTo-Json;return}
+if($CheckOnly){[ordered]@{Status='verified';Language=$script:CoopLanguage;ShowServerWindow=[bool]$ShowServerWindow;MaxPlayers=$MaxPlayers;DifficultyControlAvailable=$true;HostDifficulty=$(if($Role -eq 'Host'){$Difficulty}else{$null});StartCar=$startCar.Name;StartCarHash=$startCar.HelperHash;Role=$Role;GameDirectory=$game;Nickname=$Nickname;ClientArguments=$clientArgs;ServerArguments=$(if($Role -eq 'Host'){$serverArgs}else{$null})}|ConvertTo-Json;return}
 Assert-CoopClosed
 $stamp=(Get-Date -Format 'yyyyMMdd-HHmmss')+'-'+[Guid]::NewGuid().ToString('N').Substring(0,8)
 $session=Join-Path $script:CoopStateRoot "Sessions\$stamp"
@@ -53,7 +53,7 @@ if($StartCarId -ne 'story'){$config=$config -replace '(?m)^ForceInitFlow = .*','
 Save-CoopCarPreference $Role $Nickname $StartCarId
 [IO.File]::WriteAllText($configPath,$config,[Text.Encoding]::ASCII)
 $launchConfigHash=Get-CoopFileHash $configPath
-$record=[ordered]@{Version='0.7.3-TEST';Role=$Role;GameDirectory=$game;SessionDirectory=$session;Status='starting';Client=$null;Server=$null;StartCarId=$StartCarId;StartCarHash=$startCar.HelperHash}
+$record=[ordered]@{Version='0.7.4-TEST';Role=$Role;GameDirectory=$game;SessionDirectory=$session;Status='starting';Client=$null;Server=$null;StartCarId=$StartCarId;StartCarHash=$startCar.HelperHash}
 $active=Join-Path $script:CoopStateRoot 'active-session.json'
 Save-CoopSettings $game
 if($StartCarId -ne 'story'){Write-Host (Get-CoopText StartCar -Values @($startCar.Name));Write-Host (Get-CoopText ViewCars)}
@@ -63,6 +63,7 @@ try {
     $info=New-Object Diagnostics.ProcessStartInfo
     $info.FileName=$clientExe;$info.WorkingDirectory=$game;$info.UseShellExecute=$false
     $info.EnvironmentVariables['__COMPAT_LAYER']='RunAsInvoker';$info.Arguments=$clientArgs
+    $info.EnvironmentVariables['THERUN_COOP_ROLE']=$Role.ToUpperInvariant()
     $client=[Diagnostics.Process]::Start($info)
     try{
         & (Join-Path $PSScriptRoot 'Start-GarageWindow.ps1') -GamePid $client.Id -RelayOnly:($Role -eq 'Guest') -Language $script:CoopLanguage
@@ -80,7 +81,18 @@ try {
         Write-Host (Get-CoopText Invite)
         Read-Host (Get-CoopText ReadyPrompt)|Out-Null
         $client.Refresh();if($client.HasExited){throw (Get-CoopText HostClosed)}
-        $server=Start-Process -FilePath $serverExe -WorkingDirectory $game -ArgumentList $serverArgs -WindowStyle $(if($ShowServerWindow){'Normal'}else{'Hidden'}) -PassThru
+        # The native story-player adapter matches the actual host nickname.
+        # Keep this environment value scoped to the server start.
+        $previousCoopHostName=[Environment]::GetEnvironmentVariable('THERUN_HOST_NAME','Process')
+        $previousCoopDifficulty=[Environment]::GetEnvironmentVariable('THERUN_DIFFICULTY','Process')
+        try {
+            $env:THERUN_HOST_NAME=$Nickname
+            $env:THERUN_DIFFICULTY=$Difficulty.ToString([Globalization.CultureInfo]::InvariantCulture)
+            $server=Start-Process -FilePath $serverExe -WorkingDirectory $game -ArgumentList $serverArgs -WindowStyle $(if($ShowServerWindow){'Normal'}else{'Hidden'}) -PassThru
+        } finally {
+            [Environment]::SetEnvironmentVariable('THERUN_HOST_NAME',$previousCoopHostName,'Process')
+            [Environment]::SetEnvironmentVariable('THERUN_DIFFICULTY',$previousCoopDifficulty,'Process')
+        }
         $record.Server=Get-CoopProcessRecord $server $serverExe
         Write-Host (Get-CoopText ServerStarted)
     }else{Write-Host (Get-CoopText GuestWaiting)}

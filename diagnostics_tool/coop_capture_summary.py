@@ -1,4 +1,4 @@
-"""Summarize existing local capture files offline; never opens game processes.
+﻿"""Summarize existing local capture files offline; never opens game processes.
 
 Samples from changes/recent overlap. Deduplicate their native capture clock;
 never turn sparse state changes into measured durations or a successful finish.

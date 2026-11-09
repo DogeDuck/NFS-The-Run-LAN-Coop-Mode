@@ -1,0 +1,430 @@
+{
+  "schema": 1,
+  "source_toc": "X:\\EA Games\\Need for Speed The Run\\Need for Speed The Run\\Data\\Win32\\_c4\\Levels\\Level_3000_ChicagoDowntown\\Level_3000_ChicagoDowntown.toc",
+  "toc_sha256": "16781fa7b07cdadd5b283d7520ca4c1d6a8efb0f7aef6fca735cf3b9ba33457d",
+  "asset_name": "_c4/actionelements/_common/helicopter/ae_helicoptervechicleprefab",
+  "asset_guid": "3dbf1a18-7690-11e0-8a79-b436ef4833e6",
+  "owners": [
+    {
+      "bundle": "win32/_c4/levels/level_3000_chicagodowntown/sm_10_4",
+      "asset_guid": "3dbf1a18-7690-11e0-8a79-b436ef4833e6",
+      "owner_name": "_c4/levels/level_3000_chicagodowntown/sm_10_4",
+      "owner_guid": "db9161a1-e619-4f54-87fa-60013dac2420"
+    },
+    {
+      "bundle": "win32/_c4/levels/level_3000_chicagodowntown/sm_10_5_sec1",
+      "asset_guid": "3dbf1a18-7690-11e0-8a79-b436ef4833e6",
+      "owner_name": "_c4/levels/level_3000_chicagodowntown/sm_10_5_sec1",
+      "owner_guid": "6e5d239f-acbf-4b16-ba00-f892e2194555"
+    },
+    {
+      "bundle": "win32/_c4/levels/level_3000_chicagodowntown/sm_10_5_sec2",
+      "asset_guid": "3dbf1a18-7690-11e0-8a79-b436ef4833e6",
+      "owner_name": "_c4/levels/level_3000_chicagodowntown/sm_10_5_sec2",
+      "owner_guid": "6152be07-4a0d-4729-aef3-86d008c35928"
+    },
+    {
+      "bundle": "win32/_c4/levels/level_3000_chicagodowntown/sm_10_5_sec3",
+      "asset_guid": "3dbf1a18-7690-11e0-8a79-b436ef4833e6",
+      "owner_name": "_c4/levels/level_3000_chicagodowntown/sm_10_5_sec3",
+      "owner_guid": "a4551c8d-d7c4-40d1-9495-291795ecabd9"
+    },
+    {
+      "bundle": "win32/_c4/levels/level_3000_chicagodowntown/sm_10_5_sec4",
+      "asset_guid": "3dbf1a18-7690-11e0-8a79-b436ef4833e6",
+      "owner_name": "_c4/levels/level_3000_chicagodowntown/sm_10_5_sec4",
+      "owner_guid": "653c74c1-9c5c-4daa-93ce-bae50eb262a0"
+    },
+    {
+      "bundle": "win32/_c4/levels/level_3000_chicagodowntown/sm_10_5_sec5",
+      "asset_guid": "3dbf1a18-7690-11e0-8a79-b436ef4833e6",
+      "owner_name": "_c4/levels/level_3000_chicagodowntown/sm_10_5_sec5",
+      "owner_guid": "5af7408d-682c-439c-b4ba-36720fba1949"
+    },
+    {
+      "bundle": "win32/_c4/levels/level_3000_chicagodowntown/sm_10_6_intro",
+      "asset_guid": "3dbf1a18-7690-11e0-8a79-b436ef4833e6",
+      "owner_name": "_c4/levels/level_3000_chicagodowntown/sm_10_6_intro",
+      "owner_guid": "44c4578b-8e29-429e-b820-1d7edfeede51"
+    }
+  ],
+  "root_guids": [
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/careermode",
+      "guid": "1a073244-f1dc-45cd-b891-6af7f8f13dc4"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/careermode_route_bwdlong",
+      "guid": "0ea295c1-a8ef-4c08-8c67-ee44d4862132"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/careermode_route_bwdshort",
+      "guid": "7cfae6ea-47da-4cc6-9bd7-48332e0201c7"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/careermode_route_bwdshort2",
+      "guid": "d5b67b6c-8719-40f5-ac2c-f2a604effe6b"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/careermode_route_fwdlong",
+      "guid": "e4dd8f31-3ba1-402d-90ec-1cb4786c58fa"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/careermode_route_fwdshort",
+      "guid": "b3352047-d399-4343-a85c-0a1182888b6c"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/careermode_route_fwdshort2",
+      "guid": "aaf8ab47-531e-443e-bdfa-e61f74d7b9a2"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/chicagodowtown_tod_day",
+      "guid": "edf32624-4085-4cd2-81d3-7173b94ad6b3"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/chicagodowtown_tod_night",
+      "guid": "a50ca3fb-ffca-4a89-9c19-9685687fc2d4"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/chicagodowtown_tod_sunset",
+      "guid": "c0d7c71e-171c-41fa-b9f1-22ed8c30212e"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/cs_s10_3",
+      "guid": "640e22fb-1d35-43bc-a1f7-3a54b4aca17f"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/cs_s10_3_route",
+      "guid": "c1fff214-3728-4228-be63-5c8055cee785"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/cs_s10_4",
+      "guid": "148338b2-e8b2-4f0e-9e53-7987d00e284a"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/cs_s10_4_props",
+      "guid": "cd0bebf4-dcf2-4c26-acdb-0fff41d6e1b9"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/cs_s10_4_route",
+      "guid": "9fe48568-c479-43dd-81fa-b8d121f881fd"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/cs_s10_4_sec1",
+      "guid": "a6bdafc0-382b-4394-a79b-e9dd8c5d10d4"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/cs_s10_4_sec2",
+      "guid": "1cc175a2-f0fc-415e-8dce-a1e60e8fa13c"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/cs_s10_4_sec3",
+      "guid": "83b49e55-f6f8-43bb-b37f-605f83c4c813"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/cs_s10_4_sec4",
+      "guid": "9a8fbf7c-c3f6-4bb0-b867-afa2d2924db8"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/devmode",
+      "guid": "21890889-516b-407a-bec3-280dd93a5c78"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown",
+      "guid": "8ec42280-82fa-11df-8f58-e4578d31ef9a"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_global",
+      "guid": "12a259fc-643c-41bd-3db9-0350bd60101c"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_hex_x_1076_y__1129",
+      "guid": "2ab4c6e4-ca83-7af0-6bc0-46cc1ddf3ed4"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_hex_x_1076_y__2515",
+      "guid": "7790f334-cc4d-15e1-4671-1fdd128a0f81"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_hex_x__123_y__437",
+      "guid": "338b6b8b-000c-3b4d-d19c-469e4bdbefc9"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x_148_y__1515",
+      "guid": "dca96ae9-2a49-9e1d-d176-d69ae858a41d"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x_17_y__646",
+      "guid": "b01adb22-5aed-1e13-7475-78d8b2f4c270"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x_264_y_1200",
+      "guid": "8a340e65-39dc-383f-0f6d-7348ec8a34f0"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x_266_y_1278",
+      "guid": "55cb4cd1-9860-f221-fd46-39e01a337511"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x_323_y__811",
+      "guid": "b5d7eeba-f67c-d8a6-75c9-3701cd78452f"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x_424_y__1039",
+      "guid": "ef99d0d6-7eb7-7d98-7de5-830466623b19"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x_433_y__1072",
+      "guid": "98c08de3-9ab3-b9d8-be37-085cf1cb81df"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x_514_y__1191",
+      "guid": "8826a9ad-ca7a-6d02-6f26-5d3427a6c0af"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x_589_y_557",
+      "guid": "8eb8bc09-09fd-957d-2696-844a0db08113"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x_708_y__679",
+      "guid": "51c8c2a6-4430-ea9a-ab67-dad562860896"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x_819_y__1671",
+      "guid": "5cbcffa6-65f1-93c8-0e67-f38288a7d3fd"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x_873_y_1423",
+      "guid": "8fda245e-98f2-dd2e-c10c-3c2e8e06fdc9"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__111_y_1078",
+      "guid": "0ada8163-3264-a699-17cf-9fb41e9d3240"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__129_y__495",
+      "guid": "71fc4684-83e5-57b7-d82b-90adb871b380"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__1373_y__1084",
+      "guid": "5f47779d-a0c0-bec1-4a0f-3a553117f058"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__232_y__1283",
+      "guid": "b3e0f86f-c290-dcaf-0a97-70da67dc0e9e"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__359_y__207",
+      "guid": "0e6b3844-9fe9-0cf2-b869-25318da75f69"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__391_y__901",
+      "guid": "d1b5daf4-f222-3166-1186-e90bac8cc64f"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__407_y__492",
+      "guid": "b31e2ee2-0cfa-12ca-934a-59126600447f"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__408_y__1420",
+      "guid": "00d4a449-15ae-54b1-f373-e74a98605258"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__43_y__210",
+      "guid": "8fd654e2-30fd-fb0b-78f0-67fbd9f02434"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__602_y__1115",
+      "guid": "53c0873c-4a7e-b247-804d-9af8340330d5"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__669_y__922",
+      "guid": "24aaa6c7-4107-e24b-2d0f-d202a28569a9"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__673_y__639",
+      "guid": "968a65be-e72e-09c8-2c69-8da31f5a37c4"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__715_y__879",
+      "guid": "c692ccee-f95c-8914-244f-5457d4179f52"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__715_y__902",
+      "guid": "45d496e5-b7b0-43f5-999b-e12c3ec10aab"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__843_y__1367",
+      "guid": "1afca0d2-073b-7f93-561f-5b06c36a993a"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__907_y__636",
+      "guid": "2cf7198d-fba4-8ed0-ed13-af983f684b62"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__956_y__876",
+      "guid": "2b9ec630-d2c0-f971-376c-abc61f3ae0e7"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__956_y__876_1",
+      "guid": "2842f1c6-b1de-f2f6-9632-04693cb8f62d"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/level_3000_chicagodowntown_stream_win32_sect_x__98_y_227",
+      "guid": "52cd832d-9273-7cb4-955b-08e8e3fb7771"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/loop_dynamicprops_sublevel",
+      "guid": "86f2adfd-6ba5-4588-bc18-1b3974f4d16e"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/loopsublevelstatic",
+      "guid": "82d394f5-6cdf-4e28-a5a0-303cd7a7f808"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/michiganave_dynamicprops_sublevel",
+      "guid": "234fc399-cd30-443e-acc8-b42dcc10b78d"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/nfsgarage",
+      "guid": "35b2f898-53bc-471d-be15-f3400413984c"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/rivernorth_constructionpillars_sublevel",
+      "guid": "f11034e2-ecdd-4d82-aa7a-9cd4deeab95c"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/rivernorth_dynamicprops_sublevel",
+      "guid": "977db8ae-7021-49a5-ae8b-734bcd7c92c7"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/rivernorth_sublevel_static",
+      "guid": "99c3b518-ead7-460b-a00f-134e20e1ddf3"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_3",
+      "guid": "210c3614-c33c-4889-b4b6-301c00c47903"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_3_outro",
+      "guid": "cfc4b9ae-d9ab-4efd-a92d-41db9c3d11eb"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_3_route",
+      "guid": "fc0e9d18-0c2b-461e-82e1-101453da1b96"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_3_sec1",
+      "guid": "4de8e35b-2139-4d9a-9379-23bdea03bf09"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_4",
+      "guid": "db9161a1-e619-4f54-87fa-60013dac2420"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_4_debug",
+      "guid": "8eeb87cd-4e03-4eea-a9c1-cdd729168611"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_4_intro",
+      "guid": "523badc3-dd95-4c8a-ac67-7d3f5dec7f7e"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_4_m10_heli",
+      "guid": "565ebb62-7ca4-4a4b-bb80-0dfbe015aed1"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_4_m50_alley",
+      "guid": "f00445c1-3a19-4319-a753-b586eeb99e1c"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_5",
+      "guid": "102a6f68-5018-497f-b262-12446fc0be53"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_5_heli_deathstate",
+      "guid": "bf90ee74-4522-4598-8b6b-9ce60c224f1f"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_5_intro",
+      "guid": "97f53a4c-2f0d-4849-b90f-984ce9f66016"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_5_route",
+      "guid": "5d6f917a-fdf5-477a-9da8-9e49163141f8"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_5_sec1",
+      "guid": "6e5d239f-acbf-4b16-ba00-f892e2194555"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_5_sec2",
+      "guid": "6152be07-4a0d-4729-aef3-86d008c35928"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_5_sec3",
+      "guid": "a4551c8d-d7c4-40d1-9495-291795ecabd9"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_5_sec4",
+      "guid": "653c74c1-9c5c-4daa-93ce-bae50eb262a0"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_5_sec5",
+      "guid": "5af7408d-682c-439c-b4ba-36720fba1949"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_5e3_route",
+      "guid": "f23df210-17a6-4db8-b3e6-57588830c6a1"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_6",
+      "guid": "76f93158-663c-410f-8907-0e123796bbe3"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_10_6_intro",
+      "guid": "44c4578b-8e29-429e-b820-1d7edfeede51"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_11_0",
+      "guid": "7b7c4823-9cee-45db-bac3-a5c990507790"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_11_0_routes",
+      "guid": "89d41548-2425-491d-aaee-338ddc8ca39f"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_11_0_sec1",
+      "guid": "f40079ab-2204-4223-93a7-0a4d0ee338ae"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_11_0_sec3",
+      "guid": "f8b4efe4-012e-40ae-b86b-97e2afc04b2b"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_11_c",
+      "guid": "a8c468aa-4e5b-48e4-ac85-1c926087dfd0"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/sm_11_c_nis_jackdealership",
+      "guid": "f8d87a5e-e89d-4661-b77e-0f171fa4696f"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/storymode",
+      "guid": "0f4c7d4a-8327-4f26-9dad-c30db18393b4"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/storymode_10_5_dynamicprops",
+      "guid": "75e24e34-c81a-4b1a-81ea-8d9764405989"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/storymode_route_introdrive",
+      "guid": "338345ae-bb7d-4d92-bbab-b66271d3db7c"
+    },
+    {
+      "name": "_c4/levels/level_3000_chicagodowntown/storymode_route_maindrive",
+      "guid": "68225d3a-4da3-491d-90f3-ef7098c2e139"
+    }
+  ],
+  "rule": "Choose only a unique currently registered owner whose bundle contains the parent partition; decline ambiguous/missing cases."
+}

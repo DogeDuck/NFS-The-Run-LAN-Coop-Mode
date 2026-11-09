@@ -1,4 +1,4 @@
-"""Read-only two-PC/Radmin capture, bounded rolling evidence and local export.
+﻿"""Read-only two-PC/Radmin capture, bounded rolling evidence and local export.
 
 No process writes, injected hooks, game launches, save changes or network upload.
 Explicit `record` is required; default invocation displays help.

@@ -1,4 +1,4 @@
-. (Join-Path $PSScriptRoot 'Coop-Core.ps1')
+﻿. (Join-Path $PSScriptRoot 'Coop-Core.ps1')
 $active=Join-Path $script:CoopStateRoot 'active-session.json'
 if(!(Test-Path -LiteralPath $active)){Write-Output 'Keine gestartete Koop-Sitzung gefunden.';return}
 $record=Get-Content -LiteralPath $active -Raw|ConvertFrom-Json

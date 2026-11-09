@@ -1,4 +1,4 @@
-param([string]$GameDirectory,[string]$LanPackageDirectory,[switch]$CheckOnly)
+﻿param([string]$GameDirectory,[string]$LanPackageDirectory,[switch]$CheckOnly)
 . (Join-Path $PSScriptRoot 'Coop-Core.ps1')
 $game=Get-CoopGameDirectory $GameDirectory
 if(!$CheckOnly){Assert-CoopClosed}
@@ -10,7 +10,7 @@ $deltas=@(foreach($entry in $deltas){
     if(Test-Path -LiteralPath $current){
         $hash=Get-CoopFileHash $current
         $stem=if($entry.FileName -eq 'NFSTR_Server.exe'){'server'}else{'client'}
-        foreach($suffix in @('-upgrade','-research-upgrade','-v0_3-upgrade','-v0_4-upgrade','-v0_5-upgrade','-v0_6-upgrade','-v0_7_1-upgrade','-v0_7_2-upgrade')){
+        foreach($suffix in @('-upgrade','-research-upgrade','-v0_3-upgrade','-v0_4-upgrade','-v0_5-upgrade','-v0_6-upgrade','-v0_7_1-upgrade','-v0_7_2-upgrade','-v0_7_3-upgrade','-v0_7_3-marcus-upgrade')){
             $candidate=Join-Path $PSScriptRoot ("patches\"+$stem+$suffix+'.json')
             if(Test-Path -LiteralPath $candidate){
                 $upgrade=Get-Content -LiteralPath $candidate -Raw|ConvertFrom-Json
@@ -92,7 +92,7 @@ foreach($entry in $changes){
         if((Get-CoopFileHash $copy) -ne $entry.BeforeSha256){throw 'Originalsicherung konnte nicht verifiziert werden.'}
     }
 }
-$manifest=[ordered]@{Version='0.7.2-TEST';GameDirectory=$game;BackupDirectory=$backup;Timestamp=(Get-Date).ToString('o');Status='backed-up';Files=$changes}
+$manifest=[ordered]@{Version='0.7.4-TEST';GameDirectory=$game;BackupDirectory=$backup;Timestamp=(Get-Date).ToString('o');Status='backed-up';Files=$changes}
 $manifestPath=Join-Path $backup 'install-manifest.json'
 $manifest|ConvertTo-Json -Depth 6|Set-Content -LiteralPath $manifestPath -Encoding utf8
 foreach($entry in $changes){

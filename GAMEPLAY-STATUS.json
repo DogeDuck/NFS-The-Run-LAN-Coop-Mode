@@ -1,5 +1,5 @@
 {
-  "version": "0.7.3-TEST",
+  "version": "0.7.4-TEST",
   "ai": {
     "layout": {
       "adapter": 45629440,
@@ -351,9 +351,64 @@
     "limitations": "Bounded24 authored source/rival pairs per challenge, native fallback if full; verify enable/reset and legitimate repeated rivals in game."
   },
   "source_package": "TheRun-Coop-v0.7.2-TEST-CANDIDATE",
-  "multiplayer_target": "2 tested; 3/4 modeled offline, full four-player gameplay unverified",
+  "multiplayer_target": "2 tested; selected adapters emulated for2-4. Full four-player campaign unverified.",
   "battle_live_evidence": "2.6: repeated HOST/GUEST checkpoint gives no extra point or timer restart; user completed race from start to finish.",
   "bilingual_launcher_garage": "32 targeted checks including existing regressions; newest UI not live-tested with two PCs.",
   "qte_synchronization_fixed": false,
-  "ant_delta_experiment_included": false
+  "ant_delta_experiment_included": false,
+  "claude_live_helpers": "Host selection, guest vehicle10.5 v2, ordered helicopter ownership and OOC HUD tested separately in RAM on09Nov.",
+  "client_story_bundle": {
+    "qte_hud": {
+      "code": 45637632,
+      "stats": 45641728,
+      "bytes": 696
+    },
+    "bundle_owner": {
+      "adapter": 45678592,
+      "counter": 45682688,
+      "adapterSize": 1033,
+      "prefer_latest": true,
+      "asset_guid": "3dbf1a18-7690-11e0-8a79-b436ef4833e6",
+      "owners": [
+        "44c4578b-8e29-429e-b820-1d7edfeede51",
+        "5af7408d-682c-439c-b4ba-36720fba1949",
+        "653c74c1-9c5c-4daa-93ce-bae50eb262a0",
+        "a4551c8d-d7c4-40d1-9495-291795ecabd9",
+        "6152be07-4a0d-4729-aef3-86d008c35928",
+        "6e5d239f-acbf-4b16-ba00-f892e2194555",
+        "db9161a1-e619-4f54-87fa-60013dac2420"
+      ]
+    }
+  },
+  "server_story_bundle": {
+    "adapter": 45670400,
+    "counter": 45674496,
+    "adapterSize": 1187,
+    "entries": {
+      "host": 45670400,
+      "vehicle_enter": 45670656,
+      "vehicle_done": 45670874,
+      "host_stats": 45674496,
+      "vehicle_stats": 45674752,
+      "difficulty": {
+        "ai_manager": 45671376,
+        "race_manager": 45671427
+      },
+      "difficulty_stats": 45674880
+    },
+    "host_env": "THERUN_HOST_NAME",
+    "guest_vehicle_scope": "10.5 only, v2 story player enters last car",
+    "players": "enumerate real humans, no fixed player0/1 assumption"
+  },
+  "host_difficulty_included": true,
+  "difficulty_gameplay_verified": false,
+  "github_updater_included": true,
+  "updater_integrity_checks": true,
+  "guest_mute_included": false,
+  "guest_qte_synchronization_fixed": false,
+  "qte_local_binding_experiment_enabled": false,
+  "cutscene_collision_fix_included": false,
+  "gas_stations_blocked": false,
+  "powershell7_auto_install": false,
+  "current_qte_live": "10.4: first load scene on GUEST; Retry scene on HOST; roof stalls with no prompt even after freecam off."
 }

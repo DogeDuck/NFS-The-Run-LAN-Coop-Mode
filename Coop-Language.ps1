@@ -2,6 +2,8 @@
 # Shared personal UI language. Never sent to the game server or written to a game INI.
 $script:CoopStrings=@{
     en=@{
+        Difficulty='Difficulty';DifficultyEasy='Easy';DifficultyNormal='Normal';DifficultyHard='Hard';DifficultyExtreme='Extreme'
+        Updates='Updates';CheckUpdates='Check for updates';AutoUpdates='Install updates automatically';UpdateChecking='Checking GitHub…';UpdateCurrent='You have the latest release.';UpdateAvailable='Update {0} is available.';UpdateInstalling='Downloading and installing update…';UpdateOffline='Update check unavailable. You can still play.';UpdateGameRunning='Close the game to install this update.';UpdateFailed='Update failed: {0}';UpdateChooseGame='Select your game folder before updating.'
         Title='NFS The Run – Co-op'; Story='CO-OP STORY'; Language='Language / Sprache'; Host='Host'; Guest='Join'; Solo='Solo'
         Nickname='Player name'; HostIp='Host IPv4 (Radmin/VPN, remembered)'; GameDirectory='Game folder'; Browse='Browse'; HostOptions='HOST SETTINGS'
         MaxPlayers='Max. players'; ShowServer='Show server window'; Background='Image…'; StartHost='Start as host'; StartGuest='Connect'; StartSolo='Start single player'
@@ -24,6 +26,8 @@ $script:CoopStrings=@{
         UnknownCar='This starting car is not available.'; CarFile='Car preferences could not be read. Check car-preferences.json.'
     }
     de=@{
+        Difficulty='Schwierigkeit';DifficultyEasy='Leicht';DifficultyNormal='Normal';DifficultyHard='Schwer';DifficultyExtreme='Extrem'
+        Updates='Updates';CheckUpdates='Nach Updates suchen';AutoUpdates='Updates automatisch installieren';UpdateChecking='Prüfe GitHub…';UpdateCurrent='Die aktuelle Version ist installiert.';UpdateAvailable='Update {0} ist verfügbar.';UpdateInstalling='Update wird geladen und installiert…';UpdateOffline='Updateprüfung nicht möglich. Spielen geht weiterhin.';UpdateGameRunning='Zum Aktualisieren bitte das Spiel schließen.';UpdateFailed='Update fehlgeschlagen: {0}';UpdateChooseGame='Vor dem Update bitte den Spielordner wählen.'
         Title='NFS The Run – Koop'; Story='KOOP-STORY'; Language='Language / Sprache'; Host='Hosten'; Guest='Beitreten'; Solo='Solo'
         Nickname='Spielername'; HostIp='Host-IPv4 (Radmin/VPN, wird gemerkt)'; GameDirectory='Spielordner'; Browse='Auswählen'; HostOptions='HOST-EINSTELLUNGEN'
         MaxPlayers='Max. Spieler'; ShowServer='Serverfenster anzeigen'; Background='Bild…'; StartHost='Als Host starten'; StartGuest='Verbinden'; StartSolo='Einzelspieler starten'

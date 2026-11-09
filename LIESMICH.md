@@ -1,4 +1,7 @@
-﻿# v0.7.3-TEST
+﻿# v0.7.4-TEST
+
+[Changes / Änderungen](CHANGELOG.md)
+[Updates and difficulty / Updates und Schwierigkeit](UPDATES-DIFFICULTY.md)
 
 # The Run Story Co-op / Koop
 
@@ -13,6 +16,3 @@ Start: `Launch-Coop.cmd` / `Launch-Coop.vbs` · Installation: `Install.cmd`
 Launcher und Garage sind zweisprachig. Der bestehende Installer und weitere Helfer enthalten noch deutsche Meldungen; siehe die Sprach-Anleitungen.
 
 Launcher and garage are bilingual. The existing installer and other helpers still contain German messages; see the language-specific guides.
-
-
-[Changes / Aenderungen](CHANGELOG.md)

@@ -1,5 +1,5 @@
 {
-  "version": "0.7.3-TEST",
+  "version": "0.7.4-TEST",
   "files": [
     {
       "path": "addons/LICENSE-DefinitiveEdition.txt",
@@ -58,8 +58,13 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "ac57e47889ab04cbf46bc1cf2807099d91661db24b678930de16adc3654549aa",
-      "bytes": 1869
+      "sha256": "8ec7e4642720eba7c5969f55be011f774c8000aee391e4938c6355c8a954210e",
+      "bytes": 3784
+    },
+    {
+      "path": "config/chicago-bundle-owner-catalog.json",
+      "sha256": "d2f7ffb94e52163319a76f4a5ea828c519e34efebb46ce34f4a7cf52da93f41f",
+      "bytes": 17446
     },
     {
       "path": "config/NFSTR_LANOnlineHelper.ini",
@@ -68,13 +73,13 @@
     },
     {
       "path": "Connect-Coop.ps1",
-      "sha256": "010e3319289f70aaa8192479206cfdc7ba336584ee0eac87a5824af1f4bd2f64",
-      "bytes": 19337
+      "sha256": "144c053e55f235974cd0d0cc220b98ce2fa6e79d37539decb24e150808274095",
+      "bytes": 27271
     },
     {
       "path": "Coop-Core.ps1",
-      "sha256": "dfb3b1412d959238809b4ab79ae4d154a6cc5ce93f01d7f118025fdd97bfbc61",
-      "bytes": 4499
+      "sha256": "e4fe4d477354c9d451b28323f1622369ffb580e0412c1b2ccf2e09370b63bf95",
+      "bytes": 4567
     },
     {
       "path": "Coop-GarageLanguage.ps1",
@@ -83,8 +88,8 @@
     },
     {
       "path": "Coop-Language.ps1",
-      "sha256": "3da7c50185b7a175ee0646eb78461c4b82b80c0e38fde2cce3e9a33f14a72e7a",
-      "bytes": 9784
+      "sha256": "4b9ef507cf2e46c4c4490409380b59d7dda6338ab61bf1b1f08a8bcd86ab625b",
+      "bytes": 11095
     },
     {
       "path": "Diagnose-Absturz-Exportieren.cmd",
@@ -118,68 +123,68 @@
     },
     {
       "path": "diagnostics_tool/bridge_crash_analysis.py",
-      "sha256": "bedd98dc865d1aa5433d49f1a4a464d73c29222d58297ffcd6cb148bfc40bb7a",
-      "bytes": 7141
+      "sha256": "cc0edde7758814e6c5af39c153937d0663b9d9e8bdd1df7431fcbff29f5e535b",
+      "bytes": 7144
     },
     {
       "path": "diagnostics_tool/bridge_exception_snapshot.py",
-      "sha256": "15250c69cb2016d230f1b12458f0f370cec2dca9f6372a3fca427158c08d29b1",
-      "bytes": 9619
+      "sha256": "5198c8a82aa06493d0e984da5a4f0a67066ff4415c7d5b51924cf91f3269dba2",
+      "bytes": 9622
     },
     {
       "path": "diagnostics_tool/coop_capture_summary.py",
-      "sha256": "1f4b68afe6dea5c3186c598e451cb449774bcdee00b84817d6ef7f70674f4782",
-      "bytes": 5128
+      "sha256": "675a232d2a9dec40d8b54c071af675bdf24b7a240edcc3c370f4db2ff32d87b4",
+      "bytes": 5131
     },
     {
       "path": "diagnostics_tool/coop_diagnostic_capture.py",
-      "sha256": "f4919f8fa0735b77b03fcee076275486202d074a5c9c154ae641f7b88880c100",
-      "bytes": 13254
+      "sha256": "cecdbd955f915e7e6b0f14b576d6e4696d3164b8fe76812a10a0117ae541b3fa",
+      "bytes": 13257
     },
     {
       "path": "diagnostics_tool/coop_diagnostics.py",
-      "sha256": "f9b8d060190325cf6699ac035359f09546d3da0a69fe43373760c7aa7cf31d7b",
-      "bytes": 16994
+      "sha256": "69db06ae427d7ca87a8066b1ad44ef13d32e18912d1736ce01c9d1896a09554c",
+      "bytes": 16997
     },
     {
       "path": "diagnostics_tool/coop_population.py",
-      "sha256": "8446fdb307477123f127a1f6f592e28ae0843e982abb83d7f0ab6a24165a4c87",
-      "bytes": 5333
+      "sha256": "da344b5b550688d91c7ff753f0fb716544bc5b0e2d41e089e4848c2d23ef3b62",
+      "bytes": 5336
     },
     {
       "path": "diagnostics_tool/coop_runtime_session.py",
-      "sha256": "79119cc217594d957f00d3e2110d3e4eea96cdd6a2441f1dabb608162e572d45",
-      "bytes": 5340
+      "sha256": "2ac9210ca6197bb13a62eed1f94a00f91d26f5d4b8602c0ab26ddddcebf512a1",
+      "bytes": 5343
     },
     {
       "path": "diagnostics_tool/exception_debug_backend.py",
-      "sha256": "b0d5e44c448c53ffacd48b49713f4912f00536a29d2bf0892dfbea655034b665",
-      "bytes": 7338
+      "sha256": "44bb948a2b52ae2bab5b4a702bccd9dc5b5aaf0feaaf1566fa4a8fa1c1682e86",
+      "bytes": 7341
     },
     {
       "path": "diagnostics_tool/inspect_cinematic_crash.py",
-      "sha256": "aec3e71b18e8e86e08fef4723b13dc566744c82812ccf59ff74627a25507775c",
-      "bytes": 4221
+      "sha256": "235360f9f54250194887b0e1d3f2c9aadc80b64d1dad7eb71e18a48da73bd082",
+      "bytes": 4224
     },
     {
       "path": "diagnostics_tool/lookup_registry_snapshot.py",
-      "sha256": "0cf1ed111b99781439d293b19ef3dd076ec6e63e479fae04e3045ceaa0402c90",
-      "bytes": 1845
+      "sha256": "e22a967a68fbfc562dcb137cd77bf478979080811cd35676cf77bf691811efec",
+      "bytes": 1848
     },
     {
       "path": "diagnostics_tool/minidump_memory.py",
-      "sha256": "b2599958959a84b61d6a17a124f60af7c4180fd863f37eb182bb729307eda644",
-      "bytes": 4282
+      "sha256": "58c52574a29315535721a3085abafb246a9d7add0f6e287fbe885a5d3904347d",
+      "bytes": 4285
     },
     {
       "path": "diagnostics_tool/pe_image_readonly.py",
-      "sha256": "5dc8fd6a7633065ba597d0ad912d635540878a221dcfb147aecdb37b6aabeed1",
-      "bytes": 2200
+      "sha256": "7d82b8cd7bde03ebcf5242ec309e4be78ba54463508ce32e9bd642ee205a81d0",
+      "bytes": 2203
     },
     {
       "path": "diagnostics_tool/record_bridge_exception.py",
-      "sha256": "f8e8bc4b7ad1d3c8cd0187980f196cafbcd333db35318807203fbf21840641ff",
-      "bytes": 8021
+      "sha256": "cd3ad05f288680ff55be46342a187471d8e23113178dc9a90ad9eb00198a736c",
+      "bytes": 8024
     },
     {
       "path": "Enable-HostFirewall.ps1",
@@ -188,8 +193,8 @@
     },
     {
       "path": "GAMEPLAY-STATUS.json",
-      "sha256": "34ffa60d3d830140dc3044cd90be54d3bf48ec017e7574415020b6c1d7cff36e",
-      "bytes": 12255
+      "sha256": "ddc059b75d12703192eed183b200aa3f5885e87998fc887f978dccd7cec4de43",
+      "bytes": 14259
     },
     {
       "path": "Garage-Cars.json",
@@ -198,7 +203,7 @@
     },
     {
       "path": "Garage-Core.ps1",
-      "sha256": "8f5a0f21eff33819cba2a3293d1399a498333d9eb1d26831034cfb91fbc73f56",
+      "sha256": "b808dc8ce9bc41cf074aed1615d2a5ce6f3d9894c54e7a56904621d4bdf56c79",
       "bytes": 20756
     },
     {
@@ -243,8 +248,8 @@
     },
     {
       "path": "Install-Coop.ps1",
-      "sha256": "7050e56b679969831151add98a80d72b7e07e59ee3c7ed263c3b7471bc2b07e2",
-      "bytes": 7436
+      "sha256": "3a722c61f146489f48777679c2191816bc54e7e250481648d13519a536ba6a9c",
+      "bytes": 7482
     },
     {
       "path": "Install.cmd",
@@ -278,98 +283,113 @@
     },
     {
       "path": "LIESMICH.md",
-      "sha256": "2ba54473acedcf618eca56d2993acf23ff6d16a76ed68bd5a74f6f1f563368c9",
-      "bytes": 705
+      "sha256": "0656e525b20dc5e32165764e6faecb210e326ddd23e507b186e14a284cf2d3d0",
+      "bytes": 780
     },
     {
       "path": "patches/client-research-upgrade.json",
-      "sha256": "9e87f6d7bbe7ce30b72df3ae1b6b551d53ba6230e194731ae25d0b75553f923f",
-      "bytes": 23805
+      "sha256": "befd214c938302e93fc9a5822ebe5ffa7b3be343553e8cecab9613d16c6e46b6",
+      "bytes": 27697
     },
     {
       "path": "patches/client-upgrade.json",
-      "sha256": "2bf8b41c4e835db0eb1724fafa2a64d9b668b37e3f4b8a736438f2cc53ba0f1e",
-      "bytes": 28700
+      "sha256": "7ed94603736da1d05d2658fa4cf9f076153275b6b37ba1c27ea5d624a60681d9",
+      "bytes": 32592
     },
     {
       "path": "patches/client-v0_3-upgrade.json",
-      "sha256": "094028ed2ab6b73e9753d0e6565e8333def17e5815f3e555d2f317d3fe6b6554",
-      "bytes": 19896
+      "sha256": "f14a08bbdffff77ab3d441a25ae0c3548c2eed98019dd439f8e8ada921db622a",
+      "bytes": 23784
     },
     {
       "path": "patches/client-v0_4-upgrade.json",
-      "sha256": "094028ed2ab6b73e9753d0e6565e8333def17e5815f3e555d2f317d3fe6b6554",
-      "bytes": 19896
+      "sha256": "f14a08bbdffff77ab3d441a25ae0c3548c2eed98019dd439f8e8ada921db622a",
+      "bytes": 23784
     },
     {
       "path": "patches/client-v0_5-upgrade.json",
-      "sha256": "094028ed2ab6b73e9753d0e6565e8333def17e5815f3e555d2f317d3fe6b6554",
-      "bytes": 19896
+      "sha256": "f14a08bbdffff77ab3d441a25ae0c3548c2eed98019dd439f8e8ada921db622a",
+      "bytes": 23784
     },
     {
       "path": "patches/client-v0_6-upgrade.json",
-      "sha256": "9a818dacfbf19cca493218359d6002b28b99190b70475d5e2b0670c0bbe0b94c",
-      "bytes": 16070
+      "sha256": "6f387a7fd7539e1237fb3bd8cf9e606c458113fb250ec22dc9d2695122156671",
+      "bytes": 19962
     },
     {
       "path": "patches/client-v0_7_1-upgrade.json",
-      "sha256": "494d00ebb79598585d83ae5b8ab56f260a4d1d7db89cb54f9b1c31b2b5faf5b8",
-      "bytes": 10543
+      "sha256": "392925ca73950723877a73d7202cba800b52bba2a90a855eb62d4bfa2abb7682",
+      "bytes": 16811
     },
     {
       "path": "patches/client-v0_7_2-upgrade.json",
-      "sha256": "ca2144dfb28f27be8a1a947df87f2f83f86d066bb1dcedee362fe2d08a7c040e",
-      "bytes": 5817
+      "sha256": "f0a632a7d23827d03dbdbcad3d25df87ab3807666e44a0dc3049d4ee4b5653ec",
+      "bytes": 12089
+    },
+    {
+      "path": "patches/client-v0_7_3-upgrade.json",
+      "sha256": "b01fd4c1de1aaa015b8735db026ce8a143a26f1018e72dd7e3390b957d61127e",
+      "bytes": 7022
     },
     {
       "path": "patches/client.json",
-      "sha256": "7c6fd75c823a835cf5a1514c745c6e01bde807c9ddaad966ef3474d26a6ed8bf",
-      "bytes": 31241
+      "sha256": "695c71cb15ee9d2dd6530f40c1e6eaef93ce60460978bf7dc9706fbe3a8878d8",
+      "bytes": 35133
     },
     {
       "path": "patches/server-research-upgrade.json",
-      "sha256": "2c904a0c935d4302f9e955d5b84cc7a96b1da0b54a369fd8b82770612b85e7da",
-      "bytes": 30730
+      "sha256": "ea627fa7eb4648b49a197fed7391423dc01a0cc0a90ebe23938aa66bf4704909",
+      "bytes": 34864
     },
     {
       "path": "patches/server-upgrade.json",
-      "sha256": "6963de2d94ae58d77386dab49e92009ffab9f5b4a0e120c8a77ef2829a4b5214",
-      "bytes": 35368
+      "sha256": "f2eefc8cdeb0d9bae2bfff1c22bba3e8c7c91f454c6b9f649fbe5d74b7584437",
+      "bytes": 39506
     },
     {
       "path": "patches/server-v0_3-upgrade.json",
-      "sha256": "e02b3f72e16a1c2aa0427e6ce796902c81f68692d03ae46de3edd1e92fe786ee",
-      "bytes": 23648
+      "sha256": "0fba7d436dda2d5b33409c7e37ac616f12d273cfc9c4948a14f455c0cbf599b3",
+      "bytes": 27786
     },
     {
       "path": "patches/server-v0_4-upgrade.json",
-      "sha256": "128f1770735c36ee5b133ad4875fe840d3fd7a549043444cb46ff1d815b49def",
-      "bytes": 22968
+      "sha256": "957bc9616129c495a6e4d25208ab0152c61fe503011f7345cd48df4d14c9d772",
+      "bytes": 27106
     },
     {
       "path": "patches/server-v0_5-upgrade.json",
-      "sha256": "0b55a960345c0bb581bd712a8b7f7820b42970e5a07df6d7b0a79d042643ae72",
-      "bytes": 10860
+      "sha256": "6bd2de7dfe4c422cbca2745612b02578997d32a2dc85aedb185af91d5aa5b382",
+      "bytes": 35454
     },
     {
       "path": "patches/server-v0_6-upgrade.json",
-      "sha256": "0b55a960345c0bb581bd712a8b7f7820b42970e5a07df6d7b0a79d042643ae72",
-      "bytes": 10860
+      "sha256": "6bd2de7dfe4c422cbca2745612b02578997d32a2dc85aedb185af91d5aa5b382",
+      "bytes": 35454
     },
     {
       "path": "patches/server-v0_7_1-upgrade.json",
-      "sha256": "e9618c614f62befa966dd819eaefa51b3e2a6ff6b0b717289e0fac941ed12615",
-      "bytes": 8060
+      "sha256": "54b739f095359d37455da9e043413670b6663721587f76d3f3131773e471fdc8",
+      "bytes": 35520
     },
     {
       "path": "patches/server-v0_7_2-upgrade.json",
-      "sha256": "da8757318846b34fe5187b34c25d8472c45e7caba62c6e53f4ba78a3874e4050",
-      "bytes": 5514
+      "sha256": "cbe83e92fb7d93d89caec7d91d25edb56e8a7adadeb3bfe6a7573c0d2d07cbfe",
+      "bytes": 32970
+    },
+    {
+      "path": "patches/server-v0_7_3-marcus-upgrade.json",
+      "sha256": "ae201fb87b68e1af5a9838924a44433cc40e0f004ec539332fea196a3b8f475a",
+      "bytes": 4878
+    },
+    {
+      "path": "patches/server-v0_7_3-upgrade.json",
+      "sha256": "91c98d018dd12366aa25e3550acd9677a1731a2dc77578ac7c5e791b26b4726a",
+      "bytes": 28200
     },
     {
       "path": "patches/server.json",
-      "sha256": "622ed352fd333e4be9bd96587bc302693eb099579d88b410b46e443f23dfb990",
-      "bytes": 37987
+      "sha256": "1928b176aa54417dedca44909eb48743ea7b9bcdbd4711c8b66e1bd9832a968a",
+      "bytes": 42121
     },
     {
       "path": "patches/support-files.json",
@@ -398,18 +418,18 @@
     },
     {
       "path": "README-DE.md",
-      "sha256": "65f202430f2eac1b1b5426b4c767fe83efc118a114106867c2dbc75b3f09594a",
-      "bytes": 3672
+      "sha256": "eca663c0979d8148f9be4e9a38c39481edeb1e7b75cdc747d4d3ff5f764186c9",
+      "bytes": 3807
     },
     {
       "path": "README-EN.md",
-      "sha256": "5cf9101b94d7e698fc09525225fe43d594d0d4eb8c664ee1b819aa9fc48ff0d1",
-      "bytes": 3975
+      "sha256": "f60d536df00c5bd202ecaf7f802a484a515257a7207b25bc026ec11791c06363",
+      "bytes": 4110
     },
     {
       "path": "README.md",
-      "sha256": "2ba54473acedcf618eca56d2993acf23ff6d16a76ed68bd5a74f6f1f563368c9",
-      "bytes": 705
+      "sha256": "0656e525b20dc5e32165764e6faecb210e326ddd23e507b186e14a284cf2d3d0",
+      "bytes": 780
     },
     {
       "path": "Restore-Installation.cmd",
@@ -447,9 +467,19 @@
       "bytes": 6147
     },
     {
+      "path": "src/build_qte_local_candidate.py",
+      "sha256": "f0ebd9527e0916ce973e59f1c4f552e9eaa494ba68f6574f06f8cf5b562d9a72",
+      "bytes": 4990
+    },
+    {
       "path": "src/build_release_073.py",
       "sha256": "ea5fea486b346dc581855e11cf012ece7c7ae5fca6b25e238797fa13e98934fb",
       "bytes": 7032
+    },
+    {
+      "path": "src/build_release_074_test.py",
+      "sha256": "df473cdf9a3f456a2c92c02d5fd21cf6da4b0e07a0104e6d160fdbb024573087",
+      "bytes": 7878
     },
     {
       "path": "src/build_test_package.py",
@@ -460,6 +490,11 @@
       "path": "src/bundle_coop_addons.py",
       "sha256": "d7ba3ceb9b1ed45fb0c5374f2d1e8712fc5347111ea9adaf819af0e0779ac78a",
       "bytes": 3819
+    },
+    {
+      "path": "src/bundle_owner_adapter.py",
+      "sha256": "96ba1236879f3fe43a46d989cf46d42a04b2c6e063dac61cb7332460a7574459",
+      "bytes": 5286
     },
     {
       "path": "src/checkpoint_humans_adapter.py",
@@ -507,6 +542,21 @@
       "bytes": 4438
     },
     {
+      "path": "src/guest_script_vehicle_adapter.py",
+      "sha256": "074fe920bc6c51a2dd7c4a2c9f1e7a6cc747ddce9543b2b733591432d2edd11c",
+      "bytes": 7325
+    },
+    {
+      "path": "src/host_difficulty_adapter.py",
+      "sha256": "5aebbbd91d86e2a5408de58e9fa237c6913b141b3dd505aa889b45afbe843b71",
+      "bytes": 3618
+    },
+    {
+      "path": "src/host_first_human_adapter.py",
+      "sha256": "17b5107f1e5ab6010772f62c3261e7d9305d5cb67a11c5dff6efc9d781364796",
+      "bytes": 4369
+    },
+    {
       "path": "src/hud_racer_guard_adapter.py",
       "sha256": "7d06ef2f74173190ed3f6a6404cf77b582fda2389e002bf948e13238a639fac8",
       "bytes": 2073
@@ -545,6 +595,11 @@
       "path": "src/patch_claude_battle_botfilter.py",
       "sha256": "994be5e7e19a05275c3a3ae75af53895998c9753042575641ab85c62974b9803",
       "bytes": 2658
+    },
+    {
+      "path": "src/patch_claude_story_bundle.py",
+      "sha256": "f037ea3d35eceb2cce1e6939269d64b65da6bde85e6546059ec760cb17001a68",
+      "bytes": 5868
     },
     {
       "path": "src/patch_coop_checkpoints.py",
@@ -592,6 +647,11 @@
       "bytes": 1869
     },
     {
+      "path": "src/patch_qte_local_binding.py",
+      "sha256": "989d4bb559e0580b37ae5e26a92f890e4bc3b23b47a19e9965bd6c341cb7d44c",
+      "bytes": 1575
+    },
+    {
       "path": "src/patch_server_battle_phase_guard.py",
       "sha256": "98120f0a465112c6b8a36fea3c4da69546ead8f335c437f6f30f8b7e6263ce82",
       "bytes": 1507
@@ -600,6 +660,11 @@
       "path": "src/patch_shared_timer_hud.py",
       "sha256": "6cc62f2754e396c81107234dff1f4788cadcdd18992a7e1983f53c0dd2f2cb37",
       "bytes": 4781
+    },
+    {
+      "path": "src/patch_spawn_allowlist.py",
+      "sha256": "d1565706f0ea60360a7b2af7ab339c6ee2b55e8ca393ad194c686bc0a05035c8",
+      "bytes": 4001
     },
     {
       "path": "src/patch_story_ai_gate.py",
@@ -650,6 +715,16 @@
       "path": "src/probe_windows_backend.py",
       "sha256": "54115b2a2acd305e044d4e896aa87335340534bf4c7bd79e172adc5c33c04b65",
       "bytes": 6533
+    },
+    {
+      "path": "src/qte_hud_scope_adapter.py",
+      "sha256": "a963e3536d295aa8d401c1f78da03a9515d8688776b498bd58f06fd23255b7a5",
+      "bytes": 2976
+    },
+    {
+      "path": "src/qte_local_event_adapter.py",
+      "sha256": "2739202e42213b63a0b8ace0c932be7da2784ddd4c3f4958dfe6c80d50bae3d8",
+      "bytes": 2491
     },
     {
       "path": "src/record_battle_phase_flow.py",
@@ -732,9 +807,19 @@
       "bytes": 4717
     },
     {
+      "path": "src/test_host_difficulty.py",
+      "sha256": "b176d833b3033db85a906b6d113e2cfa4d331d93276cffc73f53399c00952da6",
+      "bytes": 5255
+    },
+    {
       "path": "src/test_pause_ai_adapter.py",
       "sha256": "461e5a71235605b424dd7bbdf3b03334adfe51a83fc7f7c612695b6e877ca54a",
       "bytes": 7455
+    },
+    {
+      "path": "src/test_qte_local_binding.py",
+      "sha256": "2212348bf028b8162effd6e36f3a1ac6ab389ba95571c1ba131e6ee6542704da",
+      "bytes": 5336
     },
     {
       "path": "src/test_server_battle_phase_guard.py",
@@ -748,8 +833,8 @@
     },
     {
       "path": "Start-Coop.ps1",
-      "sha256": "59285c266bfc0de4a3ce855fbf8b635eb006bd1317cccec24bc0d335a4578a74",
-      "bytes": 7354
+      "sha256": "f28ee089759d6c1029aa4599464b06e41ce0a3aa04ba7b2cd44e75f76e6a6b9d",
+      "bytes": 8286
     },
     {
       "path": "Start-CrashDiagnostics.ps1",
@@ -793,18 +878,31 @@
     },
     {
       "path": "Stop-Coop.ps1",
-      "sha256": "90d72c7fb7199bdcd9c00484374e3177081e444274a9583dc67a3e8368cbc09f",
-      "bytes": 690
+      "sha256": "05fad0266df97915cce7f67c1d0bf2485705f7b589a086744d1d77fb1b32f58b",
+      "bytes": 702
     },
     {
       "path": "Unlock-Coop-Garage.ps1",
-      "sha256": "2e7135465e20908a1c33d6b3f4a666940365f940d3d5ea5659478caa331f6097",
+      "sha256": "015d7a9f9a646d45987766991446e11ad70a494bd30446efe17b39af50bda9b8",
       "bytes": 4237
     },
     {
+      "path": "Update-Coop.ps1",
+      "sha256": "dd8da2055312e645806edd25d71e47c36d64eb5a7a04c8ba3e81e1aee258c510",
+      "bytes": 9095
+    },
+    {
+      "path": "UPDATES-DIFFICULTY.md",
+      "sha256": "0575b4ddbfcb92c1c741c4f57e8495ab011abb1ad349ab510368e962d4f8a0eb",
+      "bytes": 2225
+    },
+    {
       "path": "validation.json",
-      "sha256": "1f4f2f8545fc7a3bc2e255e2a499741b08c017f2b988b99e89a9cad2909fb33b",
-      "bytes": 437
+      "sha256": "df96f8e474268c8febd36910134e92f9dcbbef35f50468eccaadb6a805f48c84",
+      "bytes": 753
     }
-  ]
+  ],
+  "client_sha256": "df9f70693dd4167440935725174014d1643c284b05d010fe198681d4b322ace5",
+  "server_sha256": "b4dfa348819bcac31872095e6959aa9baf07c143e8543ca8e32bb4cee40ebd0c",
+  "gameplay_verified": false
 }

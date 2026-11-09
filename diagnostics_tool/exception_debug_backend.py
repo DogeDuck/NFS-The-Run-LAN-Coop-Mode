@@ -1,4 +1,4 @@
-"""Explicit Win64 -> WOW64 exception observation. Importing never attaches.
+﻿"""Explicit Win64 -> WOW64 exception observation. Importing never attaches.
 
 Official contracts: DebugActiveProcess, DebugSetProcessKillOnExit(FALSE),
 WaitForDebugEvent/ContinueDebugEvent, Wow64GetThreadContext (Microsoft Learn).

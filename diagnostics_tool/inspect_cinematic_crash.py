@@ -1,4 +1,4 @@
-"""Read local Windows game minidumps without modifying processes or settings."""
+﻿"""Read local Windows game minidumps without modifying processes or settings."""
 from pathlib import Path,PureWindowsPath
 import struct, json
 from minidump_memory import DumpMemory

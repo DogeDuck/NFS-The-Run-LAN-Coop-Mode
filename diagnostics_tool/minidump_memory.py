@@ -1,4 +1,4 @@
-"""Bounds-checked offline minidump memory access; absent memory stays absent."""
+﻿"""Bounds-checked offline minidump memory access; absent memory stays absent."""
 import struct
 
 class MissingMemory(ValueError):
