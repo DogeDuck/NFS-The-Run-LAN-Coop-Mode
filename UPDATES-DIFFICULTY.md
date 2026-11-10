@@ -1,4 +1,4 @@
-# Updates und Schwierigkeit / Updates and difficulty
+﻿# Updates und Schwierigkeit / Updates and difficulty
 
 ## Deutsch
 

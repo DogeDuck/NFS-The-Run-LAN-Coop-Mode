@@ -1,4 +1,4 @@
-# Feste Bestandteile dieses Testpakets
+﻿# Feste Bestandteile dieses Testpakets
 
 Definitive Edition wird automatisch unter Scripts installiert: FPS-/Motor-Audio-
 und Partikelfixes aktiv, Fahrziel240FPS, Cutscene-/QTE-Clamp aktiv. Schnelleres

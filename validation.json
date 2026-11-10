@@ -16,5 +16,7 @@
   "game_tests_run": false,
   "verified_at": "2026-11-09T23:57:27.744204+00:00",
   "combined_package_gameplay_verified": false,
-  "limits": "Targeted offline checks only. Native engine rendering/streaming and combined gameplay need joint live test."
+  "limits": "Targeted offline checks only. Native engine rendering/streaming and combined gameplay need joint live test.",
+  "updater_live_available_check": true,
+  "supersedes": "0.7.4-TEST updater-only correction"
 }

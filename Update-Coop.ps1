@@ -57,7 +57,9 @@ try{
     # This project publishes TEST prereleases. /latest would omit all of them.
     # Accept published TEST releases, never drafts, DEV/GAS/ALL/CANDIDATE builds.
     $headers=@{'User-Agent'='TheRunStoryCoop-Updater';Accept='application/vnd.github+json';'X-GitHub-Api-Version'='2026-03-10'}
-    $releases=@(Invoke-RestMethod -Uri 'https://api.github.com/repos/DogeDuck/NFS-The-Run-LAN-Coop-Mode/releases?per_page=30' -Headers $headers -TimeoutSec 12)
+    # Invoke-RestMethod emits the JSON array as one pipeline object. Wrapping
+    # the call in @() creates a nested array, so .draft becomes an array too.
+    $releases=Invoke-RestMethod -Uri 'https://api.github.com/repos/DogeDuck/NFS-The-Run-LAN-Coop-Mode/releases?per_page=30' -Headers $headers -TimeoutSec 12
     $choices=@(foreach($release in $releases){
         if($release.draft -or [string]$release.tag_name -notmatch '^v\d+\.\d+(?:\.\d+)?-TEST$'){continue}
         $version=([string]$release.tag_name).Substring(1)

@@ -1,6 +1,9 @@
-# v0.7.4 TEST
+# v0.7.5 TEST
 
 ## Deutsch
+
+- Korrektur nach Veröffentlichung0.7.4: GitHubs Versionsliste wird jetzt richtig als Array verarbeitet.0.7.4 wurde lokal nicht installiert; bitte direkt0.7.5 verwenden. Native Spielpatches sind identisch.
+
 
 - Claudes bisherige RAM-Fixes fest eingebaut: Hostname bestimmt den Story-Spieler; zusätzliche Menschen bekommen in Chicago10.5 ein eigenes Skriptfahrzeug, der Story-Spieler das letzte; Chicago-Hubschrauber werden dem passenden zuletzt geladenen Abschnitt zugeordnet. Kein auslaufender Hilfsprozess mehr nötig.
 - Chicago10.31: Gast übernimmt nicht Marcus Blackwells Startplatz. Die bestehenden NPC-, Teamabschluss-, Eliminator-Phasen-, gemeinsamen Zeit-, Garage- und DE/EN-Funktionen bleiben enthalten.
@@ -11,6 +14,9 @@
 - Bekannte Grenzen: Cutscene-Kollisionen/anfängliche KI-Steuerung, Tankstellenwechsel (meiden, Garage verwenden),1.2Zug/1.51Brückenende, weitere QTEs und kompletter Vier-Spielerbetrieb offen.10.5-Ende ohne Gast-Mute braucht Gegenprobe. PowerShell7 bleibt Voraussetzung; automatische Mitinstallation noch offen. Installertexte teilweise Deutsch.
 
 ## English
+
+- Correct the GitHub release-list array handling found after0.7.4 publication. Use0.7.5 directly; native gameplay patches are unchanged.
+
 
 - Persist Claude's previously RAM-only fixes: select the story player by host nickname; spawn separate scripted vehicles for additional humans in Chicago10.5, with the story player entering last; resolve Chicago helicopter ownership to the correct most recently loaded section. No expiring helper process required.
 - Chicago10.31 preserves Marcus Blackwell's rival slot. Existing NPC racers, team results, Battle checkpoint guards, shared checkpoint time, garage and bilingual UI remain included.
