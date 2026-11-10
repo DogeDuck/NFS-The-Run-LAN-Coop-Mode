@@ -1,4 +1,4 @@
-﻿# The Run: Audio-Patch
+# The Run: Audio-Patch
 
 Auf deinem PC bereits angewendet. Das Spiel kann danach normal gestartet werden.
 

@@ -1,8 +1,8 @@
-# v0.7.5 TEST
+# v0.7.6 TEST
 
 ## Deutsch
 
-- Korrektur nach Veröffentlichung0.7.4: GitHubs Versionsliste wird jetzt richtig als Array verarbeitet.0.7.4 wurde lokal nicht installiert; bitte direkt0.7.5 verwenden. Native Spielpatches sind identisch.
+- Ersetzt0.7.4/0.7.5: GitHub-Array korrekt eingelesen und unveränderte Addon-Dateien erhalten.0.7.5 wurde durch die Installationsvorprüfung abgefangen und nicht ins Spiel installiert. Native Spielpatches unverändert.
 
 
 - Claudes bisherige RAM-Fixes fest eingebaut: Hostname bestimmt den Story-Spieler; zusätzliche Menschen bekommen in Chicago10.5 ein eigenes Skriptfahrzeug, der Story-Spieler das letzte; Chicago-Hubschrauber werden dem passenden zuletzt geladenen Abschnitt zugeordnet. Kein auslaufender Hilfsprozess mehr nötig.
@@ -15,7 +15,7 @@
 
 ## English
 
-- Correct the GitHub release-list array handling found after0.7.4 publication. Use0.7.5 directly; native gameplay patches are unchanged.
+- Supersedes0.7.4/0.7.5: correct GitHub array handling and preserve original addon bytes. Installer preflight rejected0.7.5 before game files were written. Native gameplay patches unchanged.
 
 
 - Persist Claude's previously RAM-only fixes: select the story player by host nickname; spawn separate scripted vehicles for additional humans in Chicago10.5, with the story player entering last; resolve Chicago helicopter ownership to the correct most recently loaded section. No expiring helper process required.

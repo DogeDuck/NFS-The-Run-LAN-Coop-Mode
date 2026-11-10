@@ -53,7 +53,7 @@ if($StartCarId -ne 'story'){$config=$config -replace '(?m)^ForceInitFlow = .*','
 Save-CoopCarPreference $Role $Nickname $StartCarId
 [IO.File]::WriteAllText($configPath,$config,[Text.Encoding]::ASCII)
 $launchConfigHash=Get-CoopFileHash $configPath
-$record=[ordered]@{Version='0.7.5-TEST';Role=$Role;GameDirectory=$game;SessionDirectory=$session;Status='starting';Client=$null;Server=$null;StartCarId=$StartCarId;StartCarHash=$startCar.HelperHash}
+$record=[ordered]@{Version='0.7.6-TEST';Role=$Role;GameDirectory=$game;SessionDirectory=$session;Status='starting';Client=$null;Server=$null;StartCarId=$StartCarId;StartCarHash=$startCar.HelperHash}
 $active=Join-Path $script:CoopStateRoot 'active-session.json'
 Save-CoopSettings $game
 if($StartCarId -ne 'story'){Write-Host (Get-CoopText StartCar -Values @($startCar.Name));Write-Host (Get-CoopText ViewCars)}

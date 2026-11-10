@@ -1,5 +1,5 @@
 {
-  "version": "0.7.5-TEST",
+  "version": "0.7.6-TEST",
   "files": [
     {
       "path": "addons/LICENSE-DefinitiveEdition.txt",
@@ -8,13 +8,13 @@
     },
     {
       "path": "addons/manifest.json",
-      "sha256": "cad4597ad08f853d7e7933823ad069b736b53db9b6963d39523455ec71a05cd6",
-      "bytes": 885
+      "sha256": "f204b820dead9d906e7254172a8c52b536cdb6fbb45a90a27c8a60e0cb235e16",
+      "bytes": 882
     },
     {
       "path": "addons/music25/Lies mich.md",
-      "sha256": "28418972b604bfac698bbaa4fafbdef6421896fa867b4fa75b309e2e25ea6e70",
-      "bytes": 3078
+      "sha256": "3f3ce97910ec0ff3fe061e410df6c49392be0e6b274e2cb959b2a88ca67abe45",
+      "bytes": 3007
     },
     {
       "path": "addons/music25/NFS-Audio-Patch.ps1",
@@ -23,8 +23,8 @@
     },
     {
       "path": "addons/music25/Pruefung.json",
-      "sha256": "72c77ef49d54aa46eac0b820cfeb672d5e9475d1ee9171cc9276dd172e576361",
-      "bytes": 1340
+      "sha256": "89c349c0ca06c1260b01ca164496101ef6d81ea23f2ca5028234113816825fb8",
+      "bytes": 1337
     },
     {
       "path": "addons/NFSTR_DefinitiveEdition.asi",
@@ -38,8 +38,8 @@
     },
     {
       "path": "ADDONS.md",
-      "sha256": "644caa2b1eb88e24589de78bc8abb9dac7d403f0dcfa63afc1f15251f27bf4aa",
-      "bytes": 1163
+      "sha256": "7db68a387f4a9023238018565556130801871cceec147ce87fcb7e965888bae9",
+      "bytes": 1160
     },
     {
       "path": "Auto-Auswaehlen.cmd",
@@ -58,13 +58,13 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "eba8c6528e00266195128a91885bdaa89a24c533a325378c6a4837220b652533",
-      "bytes": 4137
+      "sha256": "b29f83c9087c50a890e3f285722c3adfba80c97ab834503e8274d3202db78a5c",
+      "bytes": 4205
     },
     {
       "path": "config/chicago-bundle-owner-catalog.json",
-      "sha256": "e79574208a88c6bbf4d2ccda043c4413c9e6ed7361959636a415369dab157ebb",
-      "bytes": 17449
+      "sha256": "d2f7ffb94e52163319a76f4a5ea828c519e34efebb46ce34f4a7cf52da93f41f",
+      "bytes": 17446
     },
     {
       "path": "config/NFSTR_LANOnlineHelper.ini",
@@ -193,8 +193,8 @@
     },
     {
       "path": "GAMEPLAY-STATUS.json",
-      "sha256": "9ab37c952749fcd473380e37d710347a767829cd11b4778877ac2a13387ae658",
-      "bytes": 14338
+      "sha256": "827b3c1da65f83cd753d405285738690ca7d6288431a2f8e0e26e8f3b86994f7",
+      "bytes": 14376
     },
     {
       "path": "Garage-Cars.json",
@@ -248,7 +248,7 @@
     },
     {
       "path": "Install-Coop.ps1",
-      "sha256": "44e3cf075cbc2676a5d89bf8ccee214224c77231f1cd191a888824c037101c81",
+      "sha256": "df0d0ad3a55004df2d106e30adae24448d1abf218108faf4f7d23e9987d837d5",
       "bytes": 7482
     },
     {
@@ -283,7 +283,7 @@
     },
     {
       "path": "LIESMICH.md",
-      "sha256": "2e3ff78087aa3a6157eccff649628bdd5a33b9d05528cc5a11b0323681f6e074",
+      "sha256": "00f5389071065446a41fd66adc6f47f0d2680c561bf090969883588b18e77dda",
       "bytes": 780
     },
     {
@@ -418,17 +418,17 @@
     },
     {
       "path": "README-DE.md",
-      "sha256": "688ee7651afa4b674f3b779c65447b17fa3f36534289c3b5cb5a75b6d86cf9fc",
+      "sha256": "839136014c2079e0bb7659501761e15edf208edb565271a3156cac39dee8bc7f",
       "bytes": 3807
     },
     {
       "path": "README-EN.md",
-      "sha256": "e4ea20aba087b1c81833171bbede91f76d69bbea0429950673275d7e9bfda47d",
+      "sha256": "af4e26123c2812f1c480552a1f60e85250f92b72232090805d574fc973ed8a94",
       "bytes": 4110
     },
     {
       "path": "README.md",
-      "sha256": "2e3ff78087aa3a6157eccff649628bdd5a33b9d05528cc5a11b0323681f6e074",
+      "sha256": "00f5389071065446a41fd66adc6f47f0d2680c561bf090969883588b18e77dda",
       "bytes": 780
     },
     {
@@ -443,8 +443,8 @@
     },
     {
       "path": "SPAWN-EVENTS.json",
-      "sha256": "cac76b802370efc191470fefedb5941463ad88854f7ee23df2a9e7faa3fc6bbf",
-      "bytes": 3575
+      "sha256": "fdcaca34229d8582f6d0361cd262fd31ed4aa3127e2cd697fb856b9b9153a470",
+      "bytes": 3572
     },
     {
       "path": "src/battle_phase_guard_adapter.py",
@@ -482,9 +482,9 @@
       "bytes": 7878
     },
     {
-      "path": "src/build_release_075.py",
-      "sha256": "988ac2cf09c73165cc8136b52bd52e20bcf8407b96a8772de05259b051213325",
-      "bytes": 3461
+      "path": "src/build_release_076.py",
+      "sha256": "1e15c88d8b06402eca84ce3f622e16327644db085f921cd0f8758288ec12a186",
+      "bytes": 3686
     },
     {
       "path": "src/build_test_package.py",
@@ -838,7 +838,7 @@
     },
     {
       "path": "Start-Coop.ps1",
-      "sha256": "6bce47ac0c7876c04a0c6d7b9671dabd7136a6a8f36399fb0460aadb271d65a5",
+      "sha256": "b2ab0e7d1f45b1ba642612ad2211334476c990669d363a278a67aac68957d4a4",
       "bytes": 8286
     },
     {
@@ -893,18 +893,18 @@
     },
     {
       "path": "Update-Coop.ps1",
-      "sha256": "e52edfec3b511d8a248132ffb01abe61cc21a4a485b90ad6ba88fbf8b2b41e78",
-      "bytes": 9250
+      "sha256": "ac0b356fdcd90ce202e0c747f464ef8412010df936548cce8829b860ce7e1d47",
+      "bytes": 9120
     },
     {
       "path": "UPDATES-DIFFICULTY.md",
-      "sha256": "328ccffa93348738bb9524f7b9e9502915cc8cba3ba90225f4f1efad9fa6067d",
-      "bytes": 2245
+      "sha256": "0575b4ddbfcb92c1c741c4f57e8495ab011abb1ad349ab510368e962d4f8a0eb",
+      "bytes": 2225
     },
     {
       "path": "validation.json",
-      "sha256": "9196b72ab9ccad95c440b21521cbec12451b972d615d7e23272af5859a598c6e",
-      "bytes": 849
+      "sha256": "88886d3d53b1dc5d25a63c1a10cc902a73b7a566e58e233df6c06ae5ad249fa6",
+      "bytes": 856
     }
   ],
   "client_sha256": "df9f70693dd4167440935725174014d1643c284b05d010fe198681d4b322ace5",

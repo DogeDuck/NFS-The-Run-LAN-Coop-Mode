@@ -1,4 +1,4 @@
-﻿#requires -Version 7.0
+#requires -Version 7.0
 param([switch]$CheckOnly,[switch]$Install,[string]$GameDirectory,[string]$CurrentPackageDirectory=$PSScriptRoot,[string]$ResultPath)
 $ErrorActionPreference='Stop'
 

@@ -92,7 +92,7 @@ foreach($entry in $changes){
         if((Get-CoopFileHash $copy) -ne $entry.BeforeSha256){throw 'Originalsicherung konnte nicht verifiziert werden.'}
     }
 }
-$manifest=[ordered]@{Version='0.7.5-TEST';GameDirectory=$game;BackupDirectory=$backup;Timestamp=(Get-Date).ToString('o');Status='backed-up';Files=$changes}
+$manifest=[ordered]@{Version='0.7.6-TEST';GameDirectory=$game;BackupDirectory=$backup;Timestamp=(Get-Date).ToString('o');Status='backed-up';Files=$changes}
 $manifestPath=Join-Path $backup 'install-manifest.json'
 $manifest|ConvertTo-Json -Depth 6|Set-Content -LiteralPath $manifestPath -Encoding utf8
 foreach($entry in $changes){
