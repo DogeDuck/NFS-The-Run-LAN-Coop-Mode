@@ -1,5 +1,5 @@
 {
-  "version": "0.7.6-TEST",
+  "version": "0.7.7-TEST",
   "ai": {
     "layout": {
       "adapter": 45629440,
@@ -410,8 +410,19 @@
   "cutscene_collision_fix_included": false,
   "gas_stations_blocked": false,
   "powershell7_auto_install": false,
-  "current_qte_live": "10.4: first load scene on GUEST; Retry scene on HOST; roof stalls with no prompt even after freecam off.",
+  "current_qte_live": "Chicago 10.4: cameras diverge and progression can stall. Vegas 3.52: host crash observed.",
   "updater_array_fix": true,
-  "native_gameplay_identical_to": "0.7.4-TEST",
-  "preserves_addon_checksums": true
+  "native_gameplay_identical_to": "0.7.6-TEST",
+  "preserves_addon_checksums": true,
+  "solo_without_coop_code": true,
+  "solo_hash_cmdlet_independent": true,
+  "core_hash_cmdlet_independent": true,
+  "music_mix_toggle": true,
+  "cinematic_audio_mix": true,
+  "launcher_graphics_settings": true,
+  "vbs_entry_points_without_bom": true,
+  "installer_starter_follows_updates": true,
+  "vsync_controlled_by_launcher": false,
+  "solo_roundtrip_confirmed": true,
+  "vegas_negative_delta_guard": false
 }

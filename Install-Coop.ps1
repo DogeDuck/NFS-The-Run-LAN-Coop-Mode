@@ -76,7 +76,14 @@ $changes=@(foreach($relative in $staged.Keys|Sort-Object){
 })
 if($removeSpecialK){$changes += [ordered]@{RelativePath='d3d11.dll';AfterSha256=$null;AfterExists=$false}}
 if($CheckOnly){[ordered]@{Status='verified';GameDirectory=$game;Changes=$changes;ContainsGameExecutables=$false}|ConvertTo-Json -Depth 5;return}
-if(!$changes.Count){& $music -GamePath $game -Mode Apply;Save-CoopSettings $game;Write-Output 'Koop-Dateien sind bereits bereit.';return}
+# Startpunkt neben der Spiel-EXE (Koop + Solo) zeigt immer auf dieses Paket, auch bei reinen Skript-Updates.
+# Restore-Installation entfernt ihn wieder; eine fremde gleichnamige Datei bleibt unberuehrt.
+function Set-CoopStarterStub{
+    $stub=Join-Path $game 'The Run starten (Koop + Solo).cmd'
+    $body="@echo off`r`nrem TheRunStoryCoop-Starter`r`ncall `""+(Join-Path $PSScriptRoot 'Koop-Starten.cmd')+"`"`r`n"
+    if(!(Test-Path -LiteralPath $stub) -or ((Get-Content -LiteralPath $stub -Raw) -match 'TheRunStoryCoop-Starter')){[IO.File]::WriteAllText($stub,$body,[Text.Encoding]::ASCII);Write-Output ('Starter neben der Spiel-EXE: '+$stub)}
+}
+if(!$changes.Count){& $music -GamePath $game -Mode Apply;Save-CoopSettings $game;Set-CoopStarterStub;Write-Output 'Koop-Dateien sind bereits bereit.';return}
 $stamp=(Get-Date -Format 'yyyyMMdd-HHmmss')+'-'+[Guid]::NewGuid().ToString('N').Substring(0,8)
 $backup=Join-Path $script:CoopStateRoot "InstallBackups\$stamp"
 New-Item -Path $backup -ItemType Directory -Force|Out-Null
@@ -92,7 +99,7 @@ foreach($entry in $changes){
         if((Get-CoopFileHash $copy) -ne $entry.BeforeSha256){throw 'Originalsicherung konnte nicht verifiziert werden.'}
     }
 }
-$manifest=[ordered]@{Version='0.7.6-TEST';GameDirectory=$game;BackupDirectory=$backup;Timestamp=(Get-Date).ToString('o');Status='backed-up';Files=$changes}
+$manifest=[ordered]@{Version='0.7.7-TEST';GameDirectory=$game;BackupDirectory=$backup;Timestamp=(Get-Date).ToString('o');Status='backed-up';Files=$changes}
 $manifestPath=Join-Path $backup 'install-manifest.json'
 $manifest|ConvertTo-Json -Depth 6|Set-Content -LiteralPath $manifestPath -Encoding utf8
 foreach($entry in $changes){
@@ -109,9 +116,6 @@ $manifest.Status='installed'
 $manifest|ConvertTo-Json -Depth 6|Set-Content -LiteralPath $manifestPath -Encoding utf8
 Save-CoopSettings $game
 $manifestPath|Set-Content -LiteralPath (Join-Path $script:CoopStateRoot 'last-install.txt') -Encoding utf8
-# Ein Startpunkt neben der Spiel-EXE (Koop + Solo). Restore-Installation entfernt ihn wieder.
-$stub=Join-Path $game 'The Run starten (Koop + Solo).cmd'
-$body="@echo off`r`nrem TheRunStoryCoop-Starter`r`ncall `""+(Join-Path $PSScriptRoot 'Koop-Starten.cmd')+"`"`r`n"
-if(!(Test-Path -LiteralPath $stub) -or ((Get-Content -LiteralPath $stub -Raw) -match 'TheRunStoryCoop-Starter')){[IO.File]::WriteAllText($stub,$body,[Text.Encoding]::ASCII);Write-Output ('Starter neben der Spiel-EXE: '+$stub)}
+Set-CoopStarterStub
 Write-Output 'Koop-Patch installiert. Zum Hosten Start-Host.cmd, zum Beitreten Start-Guest.cmd verwenden.'
 Write-Output "Originaldateien: $backup"

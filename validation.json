@@ -1,22 +1,8 @@
 {
-  "successful": true,
-  "tests": 43,
-  "failures": 0,
-  "errors": 0,
-  "commands": [
-    "python -m unittest test_host_first_human test_guest_script_vehicle test_bundle_owner_adapter test_qte_hud_scope test_host_difficulty test_qte_local_binding -q",
-    "python -m unittest test_release_074_layout.PersistedLayoutTests -v"
-  ],
-  "updater_offline_checks": 15,
-  "launcher_forms": [
-    "de",
-    "en"
-  ],
-  "github_update_check": "current 0.7.3 returned by live read-only check",
-  "game_tests_run": false,
-  "verified_at": "2026-11-09T23:57:27.744204+00:00",
+  "version": "0.7.7-TEST",
+  "native_changes": false,
+  "native_baseline": "0.7.6-TEST",
   "combined_package_gameplay_verified": false,
-  "limits": "Targeted offline checks only. Native engine rendering/streaming and combined gameplay need joint live test.",
-  "updater_live_available_check": true,
-  "supersedes": "0.7.4/0.7.5 updater/packaging corrections"
+  "solo_roundtrip_live_confirmations": 2,
+  "audio_listening_comparison": false
 }

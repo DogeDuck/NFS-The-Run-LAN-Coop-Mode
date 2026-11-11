@@ -1,10 +1,10 @@
-﻿' Optional GUI entry point, without a persistent command window.
+' Optional GUI entry point, without a persistent command window.
 Option Explicit
 Dim sh, fs, folder, arguments, fallback, launchError
 Set sh = CreateObject("WScript.Shell")
 Set fs = CreateObject("Scripting.FileSystemObject")
 folder = fs.GetParentFolderName(WScript.ScriptFullName)
-arguments = " -STA -NoProfile -ExecutionPolicy Bypass -File " & Chr(34) & folder & "\Connect-Coop.ps1" & Chr(34)
+arguments = " -STA -NoProfile -ExecutionPolicy Bypass -File " & Chr(34) & folder & "\Start-CoopWindow.ps1" & Chr(34)
 sh.CurrentDirectory = folder
 On Error Resume Next
 sh.Run "pwsh.exe" & arguments, 0, False

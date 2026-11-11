@@ -1,4 +1,4 @@
-﻿# v0.7.6-TEST
+﻿# v0.7.7-TEST
 
 [Changes / Änderungen](CHANGELOG.md)
 [Updates and difficulty / Updates und Schwierigkeit](UPDATES-DIFFICULTY.md)
@@ -18,7 +18,7 @@ Experimentelles Story-Koop-Testpaket. Jeder benötigt eine eigene unterstützte 
 5. Einer wählt **Hosten**, die anderen **Beitreten** und die Radmin-IPv4 des Hosts, ohne Port.
 6. Der Host bestätigt im Starter mit Enter, sobald die Spielfenster aller Gäste offen sind. Dann startet der Server. Nur der Host wählt Story/Fortsetzen. Starter- und Garage-Fenster während der Sitzung offen lassen.
 
-**Solo** im Launcher startet den Einzelspieler mit den installierten Mods. Nur die LAN-Option wird für diese Sitzung ausgeschaltet und danach zurückgestellt, wenn sie zwischenzeitlich nicht verändert wurde. Das Spiel speichert weiterhin normal.
+**Solo** im Launcher startet den Einzelspieler mit den installierten Mods. Während der Sitzung verwendet der Launcher die LAN-Grund-EXE ohne Koop-Code. Danach aktiviert er wieder die Koop-EXE. Das Spiel speichert weiterhin normal.
 
 PowerShell 7 wird benötigt; vorhandenes geeignetes PowerShell 7 wird verwendet. Es wird in diesem Stand noch nicht automatisch installiert. Hinweise: [Microsoft PowerShell für Windows](https://learn.microsoft.com/powershell/scripting/install/installing-powershell-on-windows).
 
@@ -26,7 +26,7 @@ PowerShell 7 wird benötigt; vorhandenes geeignetes PowerShell 7 wird verwendet.
 
 Launcher und Garage bieten Deutsch/Englisch. Die persönliche Wahl wird auf diesem PC gespeichert; ohne Wahl gilt Deutsch bei deutscher Windows-UI, sonst Englisch. Name, Host-IP, Spielordner und lokale Fensteroptionen werden gemerkt. Das Auto wählt jeder selbst in seiner [Garage](GARAGE-DE.md).
 
-Der Host kann das vorgesehene Serverlimit 1–4 auswählen. Vollständiger Vier-Spielerbetrieb ist noch nicht live bestätigt; bisherige lokale Tests verwenden höchstens zwei Spielclients. Die Schwierigkeit wird derzeit im Spiel gewählt; Launcher-Steuerung und automatische Übernahme vom Host sind noch offen. Es gibt keinen Pause-KI-aus-Schalter.
+Der Host kann das vorgesehene Serverlimit 1–4 auswählen. Vollständiger Vier-Spielerbetrieb ist noch nicht live bestätigt; bisherige lokale Tests verwenden höchstens zwei Spielclients. Im Koop wählt der Host die Schwierigkeit im Launcher. Im Solo-Modus gilt die Spieloption. Es gibt keinen Pause-KI-aus-Schalter.
 
 ## Grenzen und Sicherungen
 

@@ -1,4 +1,4 @@
-﻿# v0.7.6-TEST
+﻿# v0.7.7-TEST
 
 [Changes / Änderungen](CHANGELOG.md)
 [Updates and difficulty / Updates und Schwierigkeit](UPDATES-DIFFICULTY.md)
@@ -18,7 +18,7 @@ Experimental story co-op test package. Each player needs their own supported gam
 5. One player selects **Host**. Guests select **Join** and enter the host's Radmin IPv4 address without a port.
 6. The host presses Enter in the launcher console once all guest game windows are open. This starts the server. Only the host selects the story/Continue. Keep launcher consoles and garage windows open during the session.
 
-**Solo** starts single player with the installed mods. The launcher disables the LAN option for that session and restores it afterward if nothing else changed it. The game still saves normally.
+**Solo** starts single player with the installed mods. During the session the launcher uses the LAN base executable without co-op code. It switches back to the co-op executable afterward. The game still saves normally.
 
 PowerShell 7 is required. An existing suitable installation is used; this package does not install it automatically yet. See [Microsoft's PowerShell installation instructions](https://learn.microsoft.com/powershell/scripting/install/installing-powershell-on-windows).
 
@@ -26,7 +26,7 @@ PowerShell 7 is required. An existing suitable installation is used; this packag
 
 The launcher and garage support German/English. Language is saved only on your PC. The default follows the Windows UI language: German for German Windows, English otherwise. Your name, host IP, game folder and local window preferences are remembered. Each player selects their own car in the [garage](GARAGE-EN.md).
 
-The host can select the intended server limit from 1–4. Full four-player operation has not been confirmed in a live test; local tests use at most two game clients. Choose difficulty in the game for now. Launcher difficulty control and automatic host-to-guest synchronization remain unfinished. There is no switch to disable AI driving while paused.
+The host can select the intended server limit from 1–4. Full four-player operation has not been confirmed in a live test; local tests use at most two game clients. For co-op the host sets the difficulty in the launcher. For Solo use the in-game difficulty setting. There is no switch to disable AI driving while paused.
 
 ## Limits and backups
 

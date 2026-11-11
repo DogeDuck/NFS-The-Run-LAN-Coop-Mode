@@ -1,68 +1,46 @@
-# The Run: Audio-Patch
+# The Run: Audio-Patch (Koop-Mix)
 
-Auf deinem PC bereits angewendet. Das Spiel kann danach normal gestartet werden.
+Wird vom Koop-Installer automatisch angewendet. Das Spiel kann danach normal gestartet werden.
 
 | Kanal | Änderung gegenüber dem Original |
 |---|---:|
-| Musik | +25 dB insgesamt |
-| Motoren, Effekte, Umgebung, Menütöne | −2 dB |
+| Musik gesamt | +25 dB |
+| Rennmusik (Brian Tyler/Soundtrack beim Fahren), Regler „Film Experience“ rechts | zusätzlich +6 dB |
+| Spielerauto (Motor, Reifen, NOS), Gegner, Lkw, Regler rechts | −4 dB |
+| Story-Szenen, QTE-Momente, Credits-Score („MomentStreams“) | +8 dB |
+| Effekte, Umgebung, Menütöne | −2 dB |
 | Sprache / Speech | 0 dB |
 
-Die vorhandenen Musiksegmente werden weiterhin vom Spiel gesteuert. Übergänge,
-Tempo- und Levelsteuerung sowie Dialog-Ducking bleiben erhalten. Der Patch
-ändert die Grundpegel der passenden Mixergruppen und drei feste Szenenwerte.
-Gemeinsame Master- und Hallsteuerungen bleiben erhalten, damit Sprache nicht
-über einen gemeinsamen übergeordneten Kanal mit abgesenkt wird.
+## Regler „Film Experience“
 
-## Speichern und später anwenden
+- **Rechts (Standard):** mehr Musik, leisere Autos (Werte oben).
+- **Links:** wie im Originalspiel auf der Renn-Seite (Rennmusik −5 dB, Autos +2…+5 dB).
+  Dazwischen wird stufenlos gemischt.
 
-1. Diesen Ordner oder die ZIP-Datei aufbewahren.
-2. The Run und den DLSS-Host vollständig schließen.
-3. ZIP gegebenenfalls entpacken und `Anwenden.cmd` öffnen.
+## Szenen
 
-Der Patch erkennt Originaldateien sowie die vorherigen lokalen Musik-Patches
-mit +3 und +10 dB. Er setzt absolute Zielwerte: Wiederholtes Anwenden verstärkt
-die Musik nicht weiter.
+Story-Zwischensequenzen und QTE-Momente haben eine fertig gemischte 5.1-Tonspur. Darin stecken Musik, Effekte
+und teils der Szenendialog zusammen. Diese Szenen werden deshalb als Ganzes um 8 dB lauter; nur die Musik darin
+getrennt anzuheben ist ohne Neuabmischung der Audiodateien nicht möglich.
 
-`Original wiederherstellen.cmd` setzt die geänderten Stellen auf den ursprünglichen
-Audiomix zurück. Es stellt nicht den vorherigen +10-dB-Mix her.
-
-## Copy-and-paste
-
-`Copy-Paste-Patch.txt` enthält den vollständigen eigenständigen PowerShell-Aufruf.
-Den gesamten Inhalt in PowerShell kopieren und ausführen. Am Ende steht der
-Spielordner; dieser kann bei einer anderen Installation angepasst werden.
-
-Alternativ reicht diese einzige Datei: `NFS-Audio-Patch.ps1`. Sie enthält alle
-Patchdaten und alle Originalbytes, benötigt weder Python noch Downloads.
-Liegt sie direkt neben der Spiel-EXE, verwendet sie diesen Ordner. Andernfalls
-verwendet sie den ursprünglich untersuchten Installationspfad:
-
-`X:\EA Games\Need for Speed The Run\Need for Speed The Run`
-
-Für einen anderen Ordner:
+## Anwenden und Wiederherstellen
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\NFS-Audio-Patch.ps1" -GamePath "D:\Spiele\The Run" -Mode Apply
+pwsh -NoProfile -ExecutionPolicy Bypass -File ".\NFS-Audio-Patch.ps1" -GamePath "D:\Spiele\The Run" -Mode Apply
+pwsh -NoProfile -ExecutionPolicy Bypass -File ".\NFS-Audio-Patch.ps1" -GamePath "D:\Spiele\The Run" -Mode Restore
 ```
 
-Zum Wiederherstellen `-Mode Restore` verwenden.
+Das Skript erkennt Originaldateien sowie die früheren Musik-Patches mit +3, +10 und +25 dB und setzt absolute
+Zielwerte: Wiederholtes Anwenden verstärkt nichts weiter. `-Mode Restore` stellt den originalen Audiomix her.
+`-CheckOnly` prüft nur und schreibt nichts.
 
 ## Prüfung und Grenzen
 
-An der hier untersuchten PC-Installation vorbereitet und angewendet. Unbekannte
-oder abweichende Dateistände werden abgelehnt. Dies ist kein universeller Patch
-für beliebige Spielversionen.
+Vor jedem Schreibvorgang prüft das Skript sämtliche betroffenen Stellen, danach alle 335 betroffenen
+Audio-Asset-Kopien (Basis- und Update-Bundles) per SHA-1. Bei einem Fehler setzt es begonnene Änderungen zurück.
+Unbekannte oder abweichende Dateistände werden vor dem Schreiben abgelehnt.
 
-Vor jedem Schreibvorgang prüft das Skript sämtliche betroffenen Stellen.
-Anschließend prüft es die vollständigen 94 betroffenen Audio-Assets sowie ihre
-SHA-1-Prüfsummen. Bei einem Fehler setzt es bereits begonnene Änderungen zurück.
-Dieses Verhalten wurde zusätzlich an separaten Beispieldateien mit Original-,
-+3-dB- und +10-dB-Ausgangszuständen geprüft, einschließlich Fehlerabbruch und
-Wiederherstellung. Die Sprachkanäle werden bei der Erstellung ausgeschlossen.
+Sehr hohe Verstärkung kann Spitzen begrenzen oder verzerren. Ein Hörvergleich im Spiel steht noch aus.
 
-+25 dB ist ein großer Boost; der Spielmix kann laute Spitzen begrenzen oder
-verzerren. Ein Hörvergleich im Rennen ist noch erforderlich.
-
-Die Spieldaten wurden mit den quelloffenen Frostbite-Scripts von NicknineTheEagle
-untersucht: https://github.com/NicknineTheEagle/Frostbite-Scripts
+Spieldaten untersucht mit den quelloffenen Frostbite-Scripts von NicknineTheEagle:
+https://github.com/NicknineTheEagle/Frostbite-Scripts

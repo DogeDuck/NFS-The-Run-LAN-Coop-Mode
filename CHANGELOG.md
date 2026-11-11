@@ -1,27 +1,21 @@
-# v0.7.6 TEST
+# v0.7.7-TEST
 
 ## Deutsch
 
-- Ersetzt0.7.4/0.7.5: GitHub-Array korrekt eingelesen und unveränderte Addon-Dateien erhalten.0.7.5 wurde durch die Installationsvorprüfung abgefangen und nicht ins Spiel installiert. Native Spielpatches unverändert.
+- **Solo mit Mods.** Während einer Solo-Sitzung läuft die Kampagne mit der LAN-Grundversion ohne Koop-Code. Beim Beenden wechselt der Launcher wieder zur Koop-Version. Dieser Wechsel wurde zweimal im Spiel bestätigt.
+- **Grafik im Launcher.** FPS-Limit, Schattenauflösung, Schattensichtweite, Texturfilterung und Sichtfeld lassen sich pro PC einstellen.
+- **Persönlicher Musik-Mix für Solo und Koop.** Die Musikgruppe behält +25 dB. Vorgemischte Filmszenen erhalten +8 dB, einschließlich enthaltener Stimmen und Effekte. Auf der Film-Seite von „Film Experience“ erhält die Rennmusik zusätzlich +6 dB, die betroffenen Fahrzeuggruppen −4 dB. Der Mix lässt sich im Launcher ausschalten. Ein Hörvergleich im Spiel steht aus.
+- **Fensterstart.** Die VBS-Starter für Launcher und Garage funktionieren wieder mit Windows Script Host. Der Launcher öffnet sein sichtbares Fenster ohne dauerhafte Startkonsole.
+- **Installation und Updates.** Der Starter neben der Spiel-EXE öffnet auch nach einem reinen Skript-Update die neue Version. Die Dateiprüfung für Solo und Wiederherstellung funktioniert auch mit Windows PowerShell 5.1. Zum Spielen mit dem Launcher wird PowerShell 7 benötigt.
 
-
-- Claudes bisherige RAM-Fixes fest eingebaut: Hostname bestimmt den Story-Spieler; zusätzliche Menschen bekommen in Chicago10.5 ein eigenes Skriptfahrzeug, der Story-Spieler das letzte; Chicago-Hubschrauber werden dem passenden zuletzt geladenen Abschnitt zugeordnet. Kein auslaufender Hilfsprozess mehr nötig.
-- Chicago10.31: Gast übernimmt nicht Marcus Blackwells Startplatz. Die bestehenden NPC-, Teamabschluss-, Eliminator-Phasen-, gemeinsamen Zeit-, Garage- und DE/EN-Funktionen bleiben enthalten.
-- Schwierigkeit im Launcher: Leicht, Normal, Schwer, Extrem. Der Server erzwingt diese Host-Wahl statt des zuletzt empfangenen Gastprofils. Offline gegen die nativen Speicherstellen geprüft; Wirkung auf das Fahrverhalten noch nicht live bestätigt.
-- Launcher prüft GitHub im Hintergrund und kann veröffentlichte TEST-Updates automatisch installieren. Download und Paketdateien werden per SHA256 geprüft. Installation nur bei geschlossenem Spiel/Server; geänderte Moddateien und persönliche Einstellungen werden gesichert. Kein Spielstands-Restore. DEV-/GAS-/CANDIDATE-Pakete werden nicht automatisch angeboten.
-- OOC/QTE nutzt wieder die ursprüngliche HUD-Policy, leeres STANDINGS wird ausgeblendet. Vollständige Gast-Szene, Kamera, Eingabe und QTE-Synchronisierung sind **weiterhin nicht repariert**: im letzten10.4-Test wanderte die aktive Szene nach Retry zum Host und blieb später auf dem Dach stehen.
-- Ein neuer QTE-Kontext-Kandidat ist separat offline vorbereitet; er ist im normalen Paket **ausgeschaltet**. Kein pauschales Gast-Mute, kein vorgetäuschter QTE-Erfolg, kein ungeprüfter Kollisionspatch.
-- Bekannte Grenzen: Cutscene-Kollisionen/anfängliche KI-Steuerung, Tankstellenwechsel (meiden, Garage verwenden),1.2Zug/1.51Brückenende, weitere QTEs und kompletter Vier-Spielerbetrieb offen.10.5-Ende ohne Gast-Mute braucht Gegenprobe. PowerShell7 bleibt Voraussetzung; automatische Mitinstallation noch offen. Installertexte teilweise Deutsch.
+Host-Schwierigkeit, GitHub-Updater, Garage und die Rennfixes aus v0.7.6 sind enthalten. Die nativen Client- und Serverpatches entsprechen v0.7.6. Kamera und Eingabe können in Chicago 10.4 auseinanderlaufen. Die Vegas-QTE kann abstürzen. Für Fahrzeugwechsel bitte die Garage verwenden, da die Tankstelle hängen kann. Ein vollständiger Vier-Spieler-Durchlauf steht aus.
 
 ## English
 
-- Supersedes0.7.4/0.7.5: correct GitHub array handling and preserve original addon bytes. Installer preflight rejected0.7.5 before game files were written. Native gameplay patches unchanged.
+- **Solo with mods.** Solo sessions run the campaign using the LAN base executable without co-op code. Exiting Solo switches the installation back to co-op. This round trip was confirmed twice in game.
+- **Launcher graphics settings.** Set the frame rate limit, shadow resolution and distance, texture filtering, and field of view on each PC.
+- **Personal music mix for Solo and co-op.** The music group keeps its +25 dB boost. Premixed cinematics gain 8 dB, including their dialogue and effects. On the Film side of Film Experience, race music gains another 6 dB and the affected vehicle groups drop 4 dB. You can turn the mix off in the launcher. An in-game listening comparison is pending.
+- **Window startup.** The launcher and garage VBS entry points work with Windows Script Host again. The launcher opens a visible window without leaving a startup console open.
+- **Installation and updates.** The starter beside the game executable follows the new package even after a scripts-only update. Solo and restoration file checks also work in Windows PowerShell 5.1. The game launcher requires PowerShell 7.
 
-
-- Persist Claude's previously RAM-only fixes: select the story player by host nickname; spawn separate scripted vehicles for additional humans in Chicago10.5, with the story player entering last; resolve Chicago helicopter ownership to the correct most recently loaded section. No expiring helper process required.
-- Chicago10.31 preserves Marcus Blackwell's rival slot. Existing NPC racers, team results, Battle checkpoint guards, shared checkpoint time, garage and bilingual UI remain included.
-- Launcher difficulty: Easy, Normal, Hard, Extreme. The server applies the host's choice instead of accepting the last guest profile value. Native store paths verified offline; actual AI behavior still needs a live test.
-- Background GitHub update check with optional automatic installation of published TEST releases. SHA256 checks cover the download and package contents. Game/server must be closed; changed mod files and personal settings are backed up. No game save restore. DEV/GAS/CANDIDATE releases are excluded.
-- Preserve native OOC/QTE HUD policy and hide empty STANDINGS. Guest scene, camera, input and QTE synchronization remain **unfixed**. Latest10.4 test: Retry moved the complete scene to the host, then Jack stalled on the roof without a prompt.
-- A separate experimental local QTE-context candidate is prepared offline and **disabled in this release**. No blanket guest mute, fake success or unverified collision patch.
-- Known issues: cutscene car collisions/initial autopilot, gas station swaps (avoid; use garage),1.2train/1.51bridge ending, other QTEs and full four-player campaign. Retest10.5 ending without guest mute. PowerShell7 is required; automatic runtime installation remains pending. Some installer messages are German.
+Includes host difficulty, the GitHub updater, the garage and the race fixes from v0.7.6. Native client and server patches match v0.7.6. Camera and input can diverge in Chicago 10.4. The Vegas QTE can crash. Use the garage for vehicle changes because gas stations can softlock. A full four-player campaign run has yet to be verified.

@@ -1,47 +1,120 @@
 {
-  "changed_channels": [
+  "mix": "Claude Koop-Mix 11.11.2026 (ersetzt ChatGPT +25 dB als Zielzustand)",
+  "mixer_changes": [
     {
-      "channel": "/_c4/Sound/MomentStreams",
-      "original_db": 0.0,
-      "installed_db": -2.0
+      "field": "SemiTruck.GainDefaultValue",
+      "original": 0.0,
+      "installed": -4.0
     },
     {
-      "channel": "/_c4/Sound/Global_SFX",
-      "original_db": 0.0,
-      "installed_db": -2.0
+      "field": "MomentStreams.GainDefaultValue",
+      "original": 0.0,
+      "installed": 8.0
     },
     {
-      "channel": "/_c4/Sound/Global_Music",
-      "original_db": 0.0,
-      "installed_db": 25.0
+      "field": "Global_SFX.GainDefaultValue",
+      "original": 0.0,
+      "installed": -2.0
     },
     {
-      "channel": "/_c4/Sound/MomentAmbienceStreams",
-      "original_db": 0.0,
-      "installed_db": -2.0
+      "field": "Global_Music.GainDefaultValue",
+      "original": 0.0,
+      "installed": 25.0
     },
     {
-      "channel": "/_c4/Sound/Global_UI",
-      "original_db": 0.0,
-      "installed_db": -2.0
+      "field": "Car_Opponant.GainDefaultValue",
+      "original": 0.0,
+      "installed": -4.0
     },
     {
-      "channel": "/_c4/Sound/Global_Test",
-      "original_db": 0.0,
-      "installed_db": -2.0
+      "field": "Car_Player_Drivetrain.GainDefaultValue",
+      "original": 0.0,
+      "installed": -4.0
+    },
+    {
+      "field": "Car_Player_Drivetrain.GainOffsetClamp.MaxOffset",
+      "original": 7.0,
+      "installed": 11.0
+    },
+    {
+      "field": "Car_Player_SFX.GainDefaultValue",
+      "original": 0.0,
+      "installed": -4.0
+    },
+    {
+      "field": "Car_Player_SFX.GainOffsetClamp.MaxOffset",
+      "original": 7.0,
+      "installed": 11.0
+    },
+    {
+      "field": "Car_Player_SFX_Noisy.GainDefaultValue",
+      "original": 0.0,
+      "installed": -4.0
+    },
+    {
+      "field": "Car_Player_SFX_Noisy.GainOffsetClamp.MaxOffset",
+      "original": 7.0,
+      "installed": 11.0
+    },
+    {
+      "field": "MomentAmbienceStreams.GainDefaultValue",
+      "original": 0.0,
+      "installed": -2.0
+    },
+    {
+      "field": "Music_Race.GainDefaultValue",
+      "original": 0.0,
+      "installed": 6.0
+    },
+    {
+      "field": "Global_UI.GainDefaultValue",
+      "original": 0.0,
+      "installed": -2.0
+    },
+    {
+      "field": "Global_Test.GainDefaultValue",
+      "original": 0.0,
+      "installed": -2.0
     }
   ],
-  "unchanged_speech_groups": [
-    "/_c4/Sound/Global_Speech/Speech",
-    "/_c4/Sound/Global_Speech/Speech/Efforts",
-    "/_c4/Sound/Global_Speech/Speech/_Placeholder",
-    "/_c4/Sound/Global_Speech/Speech/Efforts/Rooftop",
-    "/_c4/Sound/Global_Speech/Speech/Story",
-    "/_c4/Sound/Global_Speech/Speech/Story/Test_JimSced",
-    "/_c4/Sound/Global_Speech/Speech/Efforts/Generic",
-    "/_c4/Sound/Global_Speech/Speech/Efforts/Generic/Land",
-    "/_c4/Sound/Global_Speech"
+  "scene_presets": [
+    "_c4/sound/mixing/deathstates/mix_deathstate_totalled_generic",
+    "_c4/sound/mixing/levels/1300_independancepass/mix_6_3_introshot1",
+    "_c4/sound/mixing/levels/1_3_carselect/mx_1_3_carselectnis",
+    "_c4/sound/mixing/masterstates/mix_experience_race",
+    "_c4/sound/mixing/masterstates/mix_gasstation",
+    "_c4/sound/mixing/moments/10_31_prechicagorace/mix_nis_10_31a_intromain",
+    "_c4/sound/mixing/moments/10_3_chicagointerstate/mix_nis_10_3a_intromain",
+    "_c4/sound/mixing/moments/10_5_chicagodowntown/mix_0300_actionmoment_construction",
+    "_c4/sound/mixing/moments/10_5_chicagodowntown/mix_0300_moment_heliintro3",
+    "_c4/sound/mixing/moments/10_5_chicagodowntown/mix_3000_lowerwackersection",
+    "_c4/sound/mixing/moments/11_4_chicagoindustrial/mix_11_4a_explodingbarrel",
+    "_c4/sound/mixing/moments/11_4_chicagoindustrial/mix_11_4aa_introbashedoffroad",
+    "_c4/sound/mixing/moments/11_4_chicagoindustrial/mix_11_4c_warehouseheli",
+    "_c4/sound/mixing/moments/11_4_chicagoindustrial/mix_11_4e_postheli",
+    "_c4/sound/mixing/moments/12_31_smokeymountains/mix_nis_12_31a_intromain",
+    "_c4/sound/mixing/moments/13_1_smokeymountains/mix_nis_13_1a_intromain",
+    "_c4/sound/mixing/moments/13_41_newyork/mix_nis_13_41a_intromain",
+    "_c4/sound/mixing/moments/13_41_newyork/mix_nis_13_41e_onelastshotmain",
+    "_c4/sound/mixing/moments/13_41_newyork/mix_nis_13_41i_deathstarmain",
+    "_c4/sound/mixing/moments/13_4_newyorkapproach/mix_nis_13_4a_intromain",
+    "_c4/sound/mixing/moments/14_credits/mix_14b_nismain",
+    "_c4/sound/mixing/moments/1_5_sanfran/mix_1_51c_outronismain",
+    "_c4/sound/mixing/moments/1_5_sanfran/mix_nis_1_5a_intromain",
+    "_c4/sound/mixing/moments/2_2_altamont/mix_nis_2_1a_intromain",
+    "_c4/sound/mixing/moments/2_5_yosemtiesouth/mix_nis_2_5a_intromain",
+    "_c4/sound/mixing/moments/4_1_desertvalley/mix_nis_4_1a_intromain",
+    "_c4/sound/mixing/moments/5_3_milliondollarhwy/mix_nis_5_3a_intromain",
+    "_c4/sound/mixing/moments/9_1_plainsinterstate/mix_nis_9_1a_intromain"
   ],
-  "asset_sha1": "e90056e56fca122a604a7f5661920db4d4c09806",
-  "listening_test": "Not performed; game remains closed."
+  "asset_copies": 335,
+  "files": 56,
+  "accepted_prior_states": [
+    "Original",
+    "Music3",
+    "Music10",
+    "Music25"
+  ],
+  "speech": "unchanged",
+  "listening_test": "Not performed yet."
 }

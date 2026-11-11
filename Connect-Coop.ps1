@@ -5,6 +5,8 @@
 param([switch]$CheckOnly,[switch]$ValidateForm,[switch]$CarChoiceOnly,[string]$Screenshot,[ValidateSet('auto','de','en')][string]$Language='auto',[string]$StateDirectory)
 $ErrorActionPreference='Stop'
 . (Join-Path $PSScriptRoot 'Coop-Language.ps1')
+. (Join-Path $PSScriptRoot 'Coop-MusicMix.ps1')
+. (Join-Path $PSScriptRoot 'Coop-Graphics.ps1')
 $stateRoot=if($StateDirectory){[IO.Path]::GetFullPath($StateDirectory)}else{Get-CoopPersonalStateRoot}
 $script:CoopLanguage=Get-CoopLanguage $Language $stateRoot
 $starter=Join-Path $PSScriptRoot 'Start-Coop.ps1'
@@ -14,7 +16,8 @@ $launcherFile=Join-Path $stateRoot 'launcher.json'
 
 
 function Read-LauncherState{
-    $s=[ordered]@{Role='Host';Nickname='CoopHost';HostIp='';GameDirectory='';MaxPlayers=2;Difficulty=1;AutoUpdate=$true;ShowServerWindow=$false}
+    $s=[ordered]@{Role='Host';Nickname='CoopHost';HostIp='';GameDirectory='';MaxPlayers=2;Difficulty=1;AutoUpdate=$true;ShowServerWindow=$false;MusicMix=$true;MusicMixApplied=''}
+    foreach($key in $script:CoopGraphicsKeys){$s[$key]=$script:CoopGraphicsDefaults[$key]}
     try{
         if(Test-Path -LiteralPath $launcherFile){
             $j=Get-Content -LiteralPath $launcherFile -Raw -Encoding utf8|ConvertFrom-Json
@@ -29,6 +32,10 @@ function Read-LauncherState{
                 $level=0;if([int]::TryParse([string]$j.Difficulty,[ref]$level) -and $level -ge 0 -and $level -le 3){$s.Difficulty=$level}
             }
             if($j.AutoUpdate -is [bool]){$s.AutoUpdate=$j.AutoUpdate}
+            if($j.MusicMix -is [bool]){$s.MusicMix=$j.MusicMix}
+            if($j.MusicMixApplied -in @('Target','Original')){$s.MusicMixApplied=[string]$j.MusicMixApplied}
+            $graphics=ConvertTo-CoopGraphicsSettings $j
+            foreach($key in $script:CoopGraphicsKeys){$s[$key]=$graphics[$key]}
         }
         if(!$s.GameDirectory){$old=Join-Path $stateRoot 'settings.json';if(Test-Path -LiteralPath $old){$s.GameDirectory=(Get-Content -LiteralPath $old -Raw|ConvertFrom-Json).GameDirectory}}
     }catch{}
@@ -37,6 +44,11 @@ function Read-LauncherState{
 function Save-LauncherState($s){
     if($null -ne $difficultyBox){$s['Difficulty']=[int]$difficultyBox.SelectedIndex}
     if($null -ne $autoUpdates){$s['AutoUpdate']=[bool]$autoUpdates.Checked}
+    # Persoenlich: Musik-Mix an/aus und der zuletzt vom Launcher gesetzte Audiozustand.
+    if($null -ne $musicMix){$s['MusicMix']=[bool]$musicMix.Checked}
+    $s['MusicMixApplied']=[string]$script:MusicMixApplied
+    # Persoenlich: Grafik-Werte fuer die Definitive-Edition-INI.
+    if($null -ne $script:Graphics){foreach($key in $script:CoopGraphicsKeys){$s[$key]=[int]$script:Graphics[$key]}}
     if(!(Test-Path -LiteralPath $stateRoot)){[void](New-Item -ItemType Directory -Path $stateRoot)}
     $tmp=Join-Path $stateRoot ([IO.Path]::GetRandomFileName())
     try{
@@ -50,7 +62,10 @@ function Get-LauncherBackground{
 }
 
 $state=Read-LauncherState
-if($CheckOnly){[ordered]@{Status='configuration-check-only';Language=$script:CoopLanguage;Fields=@('Host','Guest','Solo','HostIp','Nickname','GameDirectory','MaxPlayers','Difficulty','AutoUpdate','ShowServerWindow','Language');Preferences=$state;Port=25200;CarChoiceOnly=[bool]$CarChoiceOnly;DifficultyControlAvailable=$true;StartsGame=$false}|ConvertTo-Json -Depth 5;return}
+# Maschinenlesbare Pruefausgaben (Tools/Tests) immer UTF-8, unabhaengig von der Konsolen-Codepage (z.B. cp850).
+function Set-LauncherCheckOutputEncoding{if([Console]::IsOutputRedirected){try{[Console]::OutputEncoding=[Text.UTF8Encoding]::new($false)}catch{}}}
+if($CheckOnly){Set-LauncherCheckOutputEncoding}
+if($CheckOnly){[ordered]@{Status='configuration-check-only';Language=$script:CoopLanguage;Fields=@('Host','Guest','Solo','HostIp','Nickname','GameDirectory','MaxPlayers','Difficulty','AutoUpdate','ShowServerWindow','MusicMix','Graphics','Language');Preferences=$state;Port=25200;CarChoiceOnly=[bool]$CarChoiceOnly;DifficultyControlAvailable=$true;StartsGame=$false}|ConvertTo-Json -Depth 5;return}
 Add-Type -AssemblyName System.Windows.Forms,System.Drawing
 [Windows.Forms.Application]::EnableVisualStyles()
 $script:Labels=@{}
@@ -135,6 +150,60 @@ $maxPlayers.Value=[Math]::Min(4,[Math]::Max(1,[int]$state.MaxPlayers));$showServ
 $script:Mode=if($state.Role -in @('Host','Guest','Solo')){$state.Role}else{'Host'}
 $script:IsHost=($script:Mode -eq 'Host')
 $script:AutomaticNickname=($state.Nickname -in @('CoopHost','CoopGuest',''))
+# Musik-Mix: persoenlicher Schalter fuer alle Modi (Standard an), links ueber dem Update-Bereich.
+$script:MusicMixApplied=[string]$state.MusicMixApplied
+$musicMix=New-Object Windows.Forms.CheckBox;$musicMix.Location=New-Object Drawing.Point(20,412);$musicMix.Size=New-Object Drawing.Size(340,30)
+$musicMix.ForeColor=$C.Text;$musicMix.BackColor=[Drawing.Color]::Transparent;$musicMix.Checked=[bool]$state.MusicMix;$form.Controls.Add($musicMix)
+# Grafik: persoenliche DE-Werte (Standard = ausgeliefertes Profil), Fenster ueber dem Musik-Mix-Schalter.
+$script:Graphics=ConvertTo-CoopGraphicsSettings $state
+$graphicsButton=New-Object Windows.Forms.Button;$graphicsButton.Location=New-Object Drawing.Point(20,374);$graphicsButton.Size=New-Object Drawing.Size(340,32)
+$graphicsButton.FlatStyle='Flat';$graphicsButton.FlatAppearance.BorderColor=$C.Edge;$graphicsButton.BackColor=$C.Field;$graphicsButton.ForeColor=$C.Text;$form.Controls.Add($graphicsButton)
+function Get-GraphicsChoiceText([string]$Key,[int]$Value){
+    switch($Key){
+        'FPSLimit'{if($Value -lt 0){return Get-CoopText GraphicsUncapped};return [string]$Value}
+        'ShadowmapResolution'{if($Value -lt 0){return Get-CoopText GraphicsGame};return [string]$Value}
+        'ShadowmapViewDistance'{if($Value -eq 200){return '200 ('+(Get-CoopText GraphicsGame)+')'};return [string]$Value}
+        'AnisotropicFiltering'{return [string]$Value+'x'}
+        'ForceFov'{if($Value -le 0){return (Get-CoopText GraphicsGame)+' (48°)'};return [string]$Value+'°'}
+    }
+}
+function Update-GraphicsButton{$graphicsButton.Text=Get-CoopText GraphicsButton -Values @((Get-GraphicsChoiceText 'FPSLimit' $script:Graphics.FPSLimit))}
+# Baut das Grafik-Fenster (ohne es zu zeigen); Rueckgabe Fenster und Auswahlfelder.
+function New-GraphicsDialog([int]$RefreshRate=0){
+    $dialog=New-Object Windows.Forms.Form;$dialog.Text=Get-CoopText GraphicsTitle;$dialog.ClientSize=New-Object Drawing.Size(420,404)
+    $dialog.FormBorderStyle='FixedDialog';$dialog.MaximizeBox=$false;$dialog.MinimizeBox=$false;$dialog.StartPosition='CenterParent'
+    $dialog.BackColor=[Drawing.Color]::FromArgb(18,18,22);$dialog.ForeColor=$C.Text;$dialog.Font=$font
+    $boxes=[ordered]@{};$y=16
+    foreach($key in $script:CoopGraphicsKeys){
+        $label=New-Object Windows.Forms.Label;$label.Text=Get-CoopText ('Graphics'+$key);$label.Location=New-Object Drawing.Point(16,($y+3));$label.Size=New-Object Drawing.Size(190,24);$label.ForeColor=$C.Muted
+        $box=New-Object Windows.Forms.ComboBox;$box.DropDownStyle='DropDownList';$box.Location=New-Object Drawing.Point(210,$y);$box.Size=New-Object Drawing.Size(194,28)
+        $box.BackColor=$C.Field;$box.ForeColor=$C.Text;$box.FlatStyle='Flat'
+        foreach($choice in $script:CoopGraphicsChoices[$key]){[void]$box.Items.Add((Get-GraphicsChoiceText $key $choice))}
+        $box.SelectedIndex=[Array]::IndexOf([int[]]$script:CoopGraphicsChoices[$key],[int]$script:Graphics[$key])
+        $dialog.Controls.Add($label);$dialog.Controls.Add($box);$boxes[$key]=$box;$y+=38
+    }
+    $monitor=if($RefreshRate -gt 1){Get-CoopText GraphicsMonitor -Values @($RefreshRate)}else{''}
+    $hintLabel=New-Object Windows.Forms.Label;$hintLabel.Text=Get-CoopText GraphicsHint -Values @($monitor);$hintLabel.Location=New-Object Drawing.Point(16,($y+2));$hintLabel.Size=New-Object Drawing.Size(390,58);$hintLabel.ForeColor=$C.Muted
+    $dialog.Controls.Add($hintLabel)
+    # Spiel-eigene Grafikoptionen (VSync, Aufloesung, Qualitaet) liegen im Spielstand: nur Hinweis, keine Aenderung.
+    $vsyncLabel=New-Object Windows.Forms.Label;$vsyncLabel.Text=Get-CoopText GraphicsVsyncHint;$vsyncLabel.Location=New-Object Drawing.Point(16,($y+62));$vsyncLabel.Size=New-Object Drawing.Size(390,78);$vsyncLabel.ForeColor=$C.Accent
+    $dialog.Controls.Add($vsyncLabel)
+    $defaults=New-Object Windows.Forms.Button;$defaults.Text=Get-CoopText GraphicsDefaults;$defaults.Location=New-Object Drawing.Point(16,360);$defaults.Size=New-Object Drawing.Size(120,32);$defaults.FlatStyle='Flat';$defaults.BackColor=$C.Field
+    $defaults.Add_Click({foreach($key in $script:CoopGraphicsKeys){$boxes[$key].SelectedIndex=[Array]::IndexOf([int[]]$script:CoopGraphicsChoices[$key],[int]$script:CoopGraphicsDefaults[$key])}}.GetNewClosure())
+    $ok=New-Object Windows.Forms.Button;$ok.Text='OK';$ok.DialogResult='OK';$ok.Location=New-Object Drawing.Point(198,360);$ok.Size=New-Object Drawing.Size(100,32);$ok.FlatStyle='Flat';$ok.BackColor=$C.Accent;$ok.ForeColor=[Drawing.Color]::Black
+    $cancel=New-Object Windows.Forms.Button;$cancel.Text=Get-CoopText GraphicsCancel;$cancel.DialogResult='Cancel';$cancel.Location=New-Object Drawing.Point(304,360);$cancel.Size=New-Object Drawing.Size(100,32);$cancel.FlatStyle='Flat';$cancel.BackColor=$C.Field
+    $dialog.Controls.AddRange(@($defaults,$ok,$cancel));$dialog.AcceptButton=$ok;$dialog.CancelButton=$cancel
+    return [pscustomobject]@{Form=$dialog;Boxes=$boxes;Hint=$hintLabel;VsyncHint=$vsyncLabel}
+}
+$graphicsButton.Add_Click({
+    $built=New-GraphicsDialog (Get-CoopMonitorRefreshRate)
+    try{
+        if($built.Form.ShowDialog($form) -eq 'OK'){
+            $chosen=[ordered]@{};foreach($key in $script:CoopGraphicsKeys){$chosen[$key]=$script:CoopGraphicsChoices[$key][$built.Boxes[$key].SelectedIndex]}
+            $script:Graphics=ConvertTo-CoopGraphicsSettings $chosen;Update-GraphicsButton
+        }
+    }finally{$built.Form.Dispose()}
+})
 $script:UpdatingNickname=$false
 $nickname.Add_TextChanged({if(!$script:UpdatingNickname){$script:AutomaticNickname=$false}})
 
@@ -156,7 +225,7 @@ function Update-Language {
     $form.Text=Get-CoopText Title
     foreach($key in $script:Labels.Keys){$script:Labels[$key].Text=Get-CoopText $key}
     $btnHost.Text=Get-CoopText Host;$btnJoin.Text=Get-CoopText Guest;$btnSolo.Text=Get-CoopText Solo
-    $browse.Text=Get-CoopText Browse;$showServer.Text=Get-CoopText ShowServer;$bgButton.Text=Get-CoopText Background
+    $browse.Text=Get-CoopText Browse;$showServer.Text=Get-CoopText ShowServer;$bgButton.Text=Get-CoopText Background;$musicMix.Text=Get-CoopText MusicMix;Update-GraphicsButton
     $selectedDifficulty=$difficultyBox.SelectedIndex
     $difficultyBox.Items.Clear()
     [void]$difficultyBox.Items.AddRange(@((Get-CoopText DifficultyEasy),(Get-CoopText DifficultyNormal),(Get-CoopText DifficultyHard),(Get-CoopText DifficultyExtreme)))
@@ -267,6 +336,18 @@ $form.Add_Shown({if(!$CarChoiceOnly -and !$ValidateForm){$updateTimer.Start();St
 $form.Add_FormClosed({$updateTimer.Stop();$updateTimer.Dispose()})
 
 function Quote-CoopLiteral([string]$Value){return "'"+$Value.Replace("'","''")+"'"}
+# Vor jedem Start (Spiel ist geschlossen): Musik-Mix passend setzen. Fehler blockieren den Start nicht.
+function Invoke-LauncherMusicMix([string]$Game){
+    $form.UseWaitCursor=$true
+    try{$script:MusicMixApplied=(Invoke-CoopMusicMix $Game ([bool]$musicMix.Checked) ([string]$script:MusicMixApplied)).State}
+    catch{[void][Windows.Forms.MessageBox]::Show((Get-CoopText MusicMixFailed -Values @($_.Exception.Message)),(Get-CoopText Title))}
+    finally{$form.UseWaitCursor=$false}
+}
+# Vor jedem Start: persoenliche Grafikwerte in die DE-INI. Fehler blockieren den Start nicht.
+function Invoke-LauncherGraphics([string]$Game){
+    try{[void](Set-CoopGraphicsIni $Game $script:Graphics)}
+    catch{[void][Windows.Forms.MessageBox]::Show((Get-CoopText GraphicsFailed -Values @($_.Exception.Message)),(Get-CoopText Title))}
+}
 $form.Add_FormClosing({
     if($ValidateForm -or $CarChoiceOnly){return}
     try{
@@ -283,6 +364,8 @@ $start.Add_Click({
         if($script:Mode -eq 'Solo'){
             # Einzelspieler mit allen Mods (DE, Musik, Debug-Menue); nur LAN-Tweaks fuer die Sitzung aus.
             if(@(Get-Process -Name 'Need For Speed The Run','NFSTR_Server' -ErrorAction SilentlyContinue).Count){throw (Get-CoopText Running)}
+            Invoke-LauncherMusicMix $game
+            Invoke-LauncherGraphics $game
             Save-CoopLanguage $script:CoopLanguage $stateRoot
             Save-LauncherState ([ordered]@{Role='Solo';Nickname=$nickname.Text;HostIp=$ip.Text.Trim();GameDirectory=$game;MaxPlayers=[int]$maxPlayers.Value;ShowServerWindow=$showServer.Checked})
             $solo=Join-Path $PSScriptRoot 'Start-Solo.ps1'
@@ -298,6 +381,8 @@ $start.Add_Click({
         $address=if($script:IsHost){'127.0.0.1'}else{$ip.Text.Trim()}
         $parsed=$null
         if(![Net.IPAddress]::TryParse($address,[ref]$parsed) -or $parsed.AddressFamily -ne [Net.Sockets.AddressFamily]::InterNetwork){throw (Get-CoopText BadIp)}
+        Invoke-LauncherMusicMix $game
+        Invoke-LauncherGraphics $game
         Save-CoopLanguage $script:CoopLanguage $stateRoot
         Save-LauncherState ([ordered]@{Role=$role;Nickname=$nickname.Text;HostIp=$ip.Text.Trim();GameDirectory=$game;MaxPlayers=[int]$maxPlayers.Value;ShowServerWindow=$showServer.Checked})
         $command='& {0} -Role {1} -GameDirectory {2} -HostAddress {3} -Nickname {4} -MaxPlayers {5} -Language {6}' -f (Quote-CoopLiteral $starter),(Quote-CoopLiteral $role),(Quote-CoopLiteral $game),(Quote-CoopLiteral $address),(Quote-CoopLiteral $nickname.Text),[int]$maxPlayers.Value,(Quote-CoopLiteral $script:CoopLanguage)
@@ -312,10 +397,11 @@ $start.Add_Click({
 })
 try{
     if($ValidateForm){
+        Set-LauncherCheckOutputEncoding
         $languageStates=[ordered]@{};$originalLanguage=$script:CoopLanguage
         foreach($languageCode in 'de','en'){
             $script:CoopLanguage=$languageCode;Update-Language
-            $languageStates[$languageCode]=[ordered]@{Title=$form.Text;Host=$btnHost.Text;Guest=$btnJoin.Text;Solo=$btnSolo.Text;Nickname=$script:Labels.Nickname.Text;GameDirectory=$script:Labels.GameDirectory.Text;ShowServer=$showServer.Text}
+            $languageStates[$languageCode]=[ordered]@{Title=$form.Text;Host=$btnHost.Text;Guest=$btnJoin.Text;Solo=$btnSolo.Text;Nickname=$script:Labels.Nickname.Text;GameDirectory=$script:Labels.GameDirectory.Text;ShowServer=$showServer.Text;MusicMix=$musicMix.Text;Graphics=$graphicsButton.Text;GraphicsTitle=(Get-CoopText GraphicsTitle)}
         }
         $script:CoopLanguage=$originalLanguage;Update-Language
         $roleStates=[ordered]@{};$originalMode=$script:Mode
@@ -324,7 +410,7 @@ try{
             $roleStates[$role]=[ordered]@{StartText=$start.Text;IpEnabled=$ip.Enabled;NicknameEnabled=$nickname.Enabled;HostOptionsAvailable=$script:IsHost;Hint=$hint.Text;Difficulty=$difficulty.Text}
         }
         $script:Mode=$originalMode;Update-Role
-        [ordered]@{Status='form-constructed';Language=$script:CoopLanguage;SelectedLanguage=$languageBox.Text;LanguageStates=$languageStates;Controls=$card.Controls.Count;HostSelected=$script:IsHost;Background=[bool]$form.BackgroundImage;Roles=$roleStates;DifficultyIndex=$difficultyBox.SelectedIndex;DifficultyOptions=@($difficultyBox.Items);AutoUpdate=$autoUpdates.Checked;UpdateWorkerStarted=($null -ne $script:UpdateProcess);StartsGame=$false}|ConvertTo-Json -Depth 5
+        [ordered]@{Status='form-constructed';Language=$script:CoopLanguage;SelectedLanguage=$languageBox.Text;LanguageStates=$languageStates;Controls=$card.Controls.Count;HostSelected=$script:IsHost;Background=[bool]$form.BackgroundImage;Roles=$roleStates;DifficultyIndex=$difficultyBox.SelectedIndex;DifficultyOptions=@($difficultyBox.Items);AutoUpdate=$autoUpdates.Checked;MusicMix=$musicMix.Checked;Graphics=$script:Graphics;GraphicsDialog=$(try{$probe=New-GraphicsDialog 144;[ordered]@{Boxes=$probe.Boxes.Count;Selected=[ordered]@{FPSLimit=$probe.Boxes.FPSLimit.Text;ForceFov=$probe.Boxes.ForceFov.Text};Hint=$probe.Hint.Text;VsyncHint=$probe.VsyncHint.Text}}finally{if($probe){$probe.Form.Dispose()}});UpdateWorkerStarted=($null -ne $script:UpdateProcess);StartsGame=$false}|ConvertTo-Json -Depth 5
         if($Screenshot){
             # An unshown Form hides all descendants. Render the detached child panel
             # separately: it has no top-level window and never takes focus.

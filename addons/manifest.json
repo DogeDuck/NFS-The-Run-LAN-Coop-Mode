@@ -5,9 +5,9 @@
     "LICENSE-DefinitiveEdition.txt": "7fe05e5a34881e3befa916fc376c4edc6f95a07738b03623d0a1eef06fab5787",
     "NFSTR_DefinitiveEdition.asi": "21821683c7f0c16436fb1dbbcfc23ecbdd226f59f3bec10d9268b173dabfd5fb",
     "NFSTR_DefinitiveEdition.ini": "c539c2df70fc51f9692d693b7f0d1fcb14313634e02177b2388a47060e91f158",
-    "music25/Lies mich.md": "3f3ce97910ec0ff3fe061e410df6c49392be0e6b274e2cb959b2a88ca67abe45",
-    "music25/NFS-Audio-Patch.ps1": "128755a63bf5599c995d6ec181198a27a39d11092cb13e2d1ba84bbda09b31f3",
-    "music25/Pruefung.json": "89c349c0ca06c1260b01ca164496101ef6d81ea23f2ca5028234113816825fb8"
+    "music25/Lies mich.md": "1671f6a7144d749c55ceb31bf21f5b7cc47b2fe3585195f70a9f419fd924b9ca",
+    "music25/NFS-Audio-Patch.ps1": "3fa04f48f29a7f97963a182a09e8a8f207547dec290fcaa47da0fb6ede049663",
+    "music25/Pruefung.json": "2c57f825a384d099afe7d770e7387e30141373e731a026a09ad7b8a56cb9b21e"
   },
   "coop_profile": "User defaults: 240 FPS, loading VSync bypass, 4096 shadows / 600 distance; QTE clamp retained"
 }

@@ -1,4 +1,4 @@
-﻿' GUI launcher: no persistent CMD/PowerShell console next to the garage.
+' GUI launcher: no persistent CMD/PowerShell console next to the garage.
 Option Explicit
 Dim sh, fs, folder, command, fallback, launchError
 Set sh = CreateObject("WScript.Shell")

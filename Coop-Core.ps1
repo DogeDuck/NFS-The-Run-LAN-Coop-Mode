@@ -4,7 +4,12 @@ function Get-CoopHash([byte[]]$Bytes){
     $sha=[Security.Cryptography.SHA256]::Create()
     try{return ([BitConverter]::ToString($sha.ComputeHash($Bytes))).Replace('-','').ToLowerInvariant()}finally{$sha.Dispose()}
 }
-function Get-CoopFileHash([string]$Path){return (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant()}
+function Get-CoopFileHash([string]$Path){
+    $stream=[IO.File]::OpenRead($Path)
+    $sha=[Security.Cryptography.SHA256]::Create()
+    try{return ([BitConverter]::ToString($sha.ComputeHash($stream))).Replace('-','').ToLowerInvariant()}
+    finally{$sha.Dispose();$stream.Dispose()}
+}
 function Get-CoopGameDirectory([string]$Requested){
     $settings=Join-Path $script:CoopStateRoot 'settings.json'
     if(!$Requested -and (Test-Path -LiteralPath $settings)){$Requested=(Get-Content -LiteralPath $settings -Raw|ConvertFrom-Json).GameDirectory}
