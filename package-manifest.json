@@ -1,6 +1,31 @@
 {
-  "version": "0.7.7-TEST",
+  "version": "0.7.8-TEST",
   "files": [
+    {
+      "path": "addons/audio-slider/Lies mich.md",
+      "bytes": 2587,
+      "sha256": "264ffd4d7ab5d8baf745b44d019a9fdcb1c49e75cec7a768ab8c6f217fd3e500"
+    },
+    {
+      "path": "addons/audio-slider/NFS-Audio-Patch.ps1",
+      "bytes": 50948,
+      "sha256": "d6ff28f6d1043dac8d4439176bf9092312efe8b23e053c1e44bb7eef93547473"
+    },
+    {
+      "path": "addons/audio-slider/Pruefung.json",
+      "bytes": 4186,
+      "sha256": "2c57f825a384d099afe7d770e7387e30141373e731a026a09ad7b8a56cb9b21e"
+    },
+    {
+      "path": "addons/hudalpha/hud-alpha-plan.json",
+      "bytes": 163282,
+      "sha256": "afb520915c3b7db10bc4c7ae2df4a3905097305670ecfaa140c2fc7d6238b7ed"
+    },
+    {
+      "path": "addons/hudalpha/NFS-HUD-Patch.ps1",
+      "bytes": 5207,
+      "sha256": "48afa1731c5c385b8115b736001dab2a17da0c174b6f4506af81827c1f21cb12"
+    },
     {
       "path": "addons/LICENSE-DefinitiveEdition.txt",
       "bytes": 1090,
@@ -8,23 +33,8 @@
     },
     {
       "path": "addons/manifest.json",
-      "bytes": 882,
-      "sha256": "7977ad613daa705b437f4cbf274147a06c63d4b51b5323fe6d2e137c02e2514a"
-    },
-    {
-      "path": "addons/music25/Lies mich.md",
-      "bytes": 2194,
-      "sha256": "1671f6a7144d749c55ceb31bf21f5b7cc47b2fe3585195f70a9f419fd924b9ca"
-    },
-    {
-      "path": "addons/music25/NFS-Audio-Patch.ps1",
-      "bytes": 50428,
-      "sha256": "3fa04f48f29a7f97963a182a09e8a8f207547dec290fcaa47da0fb6ede049663"
-    },
-    {
-      "path": "addons/music25/Pruefung.json",
-      "bytes": 4186,
-      "sha256": "2c57f825a384d099afe7d770e7387e30141373e731a026a09ad7b8a56cb9b21e"
+      "bytes": 1103,
+      "sha256": "99be140144a735e1f3476ab34f86aa1da4934874375f8bb2332f50bd8168e808"
     },
     {
       "path": "addons/NFSTR_DefinitiveEdition.asi",
@@ -43,8 +53,13 @@
     },
     {
       "path": "Auto-Auswaehlen.cmd",
-      "bytes": 148,
-      "sha256": "5b586ec5795bba93eb993d3b1b3adf477fb5a8562ad7888b8cf921cfb9dc8d15"
+      "bytes": 145,
+      "sha256": "77e36380a4f37ca14d441f6f82969267aedff39afef47561cdee8c7a57fad8cb"
+    },
+    {
+      "path": "Bootstrap-PowerShell7.ps1",
+      "bytes": 639,
+      "sha256": "d990f9f01b8f73af744ae3d4d496337f2873adcc363b14c72c14ace5a6ea0540"
     },
     {
       "path": "Car-Choice.ps1",
@@ -58,8 +73,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 3059,
-      "sha256": "d31907cac316e6b2575fef6fb21ddc7d2b8fe452381988d5ccddd1915318e6f4"
+      "bytes": 2153,
+      "sha256": "25c7b3b4d1a26c1a5dff738d23b83d58981a031f91a17b05b16d32c13468bd7c"
     },
     {
       "path": "config/chicago-bundle-owner-catalog.json",
@@ -73,18 +88,23 @@
     },
     {
       "path": "Connect-Coop.ps1",
-      "bytes": 35562,
-      "sha256": "5346ed515954c52445e7941bc1348a548fb04cd0b004f9138ddfd7a6fed19489"
+      "bytes": 39739,
+      "sha256": "6eb69b46af032b7c4dc80a65cbdb570dcaa1d5684f4c1de37a93923326e060dd"
     },
     {
       "path": "Coop-Core.ps1",
-      "bytes": 4731,
-      "sha256": "20a77318b201b1cd607fce67bbb899b1de33a4829f69ad7d4e263a8ec22c2b5b"
+      "bytes": 5428,
+      "sha256": "2ff21c2aada8b120cf6fe9f07c92affe8c6d690ab713bef15d0f88b64f293476"
     },
     {
       "path": "Coop-GarageLanguage.ps1",
-      "bytes": 8107,
-      "sha256": "101126f76e18bd2b7ea634e012ca1a2ab4d68d700b5af804f3fa5090d9dd249f"
+      "bytes": 8529,
+      "sha256": "35ddc2743eabe92d84f21f0637bbc202dab02982adfb8c6389dc2926c02f3f97"
+    },
+    {
+      "path": "Coop-GarageProfiles.ps1",
+      "bytes": 3152,
+      "sha256": "50ec7e7fd9db763f0de9d9cdbfc52b9e0e7e5a1103e36a798e4f1bd30ca1faa1"
     },
     {
       "path": "Coop-Graphics.ps1",
@@ -92,14 +112,44 @@
       "sha256": "9eb4cf4329e87659445228cc77464825b52a1ba40c7f1cda23cf32e091a16ad1"
     },
     {
+      "path": "Coop-HudAlpha.ps1",
+      "bytes": 1454,
+      "sha256": "896298333d9d3c8468f0b08162f75d342ae75fb38b472c9c2bf484e8f839b4e3"
+    },
+    {
       "path": "Coop-Language.ps1",
-      "bytes": 14158,
-      "sha256": "3de477ec14e152a0dbf93e8eb1f41d3ec87316169521f638dcea74c6be2ee611"
+      "bytes": 14826,
+      "sha256": "15895a3963dddded2e34bc482d545cb1029d222d7863c6dbb262693837324509"
+    },
+    {
+      "path": "Coop-LaunchPreflight.ps1",
+      "bytes": 4090,
+      "sha256": "f75c1af15c25bdff25139c5c83c6145a64553b47182622b0edad5f745b67c3c8"
     },
     {
       "path": "Coop-MusicMix.ps1",
-      "bytes": 1352,
-      "sha256": "e138026dcc7f17af40f8102e1d4d687d4e0ba2e696c6d9bc2586bdb97b51f163"
+      "bytes": 1393,
+      "sha256": "13909e883e6e816bb69446a7c19a3977a8e44c057e57a52517740f1ae8f4d25e"
+    },
+    {
+      "path": "Coop-PowerShellRuntime.ps1",
+      "bytes": 6644,
+      "sha256": "7d90c7be4ace2313a17036484a4002705453642edf2c13f4cf1301370623e2be"
+    },
+    {
+      "path": "Coop-Repair.ps1",
+      "bytes": 8807,
+      "sha256": "aa43cc89adb8fc1ba51c02cea3ab145b351ce1bc6080607a8f789e39c7cf01d6"
+    },
+    {
+      "path": "Coop-SessionConfig.ps1",
+      "bytes": 2355,
+      "sha256": "2a96a594cf635ed254fddf91d74903d4bc09c04acfc139631e4be4530d13a679"
+    },
+    {
+      "path": "Coop-SessionTools.ps1",
+      "bytes": 7947,
+      "sha256": "7f6b7cfb1a89f1a39a52caa9281b88639814fcc69a69d3e343278e13038bdc7f"
     },
     {
       "path": "Coop-SoloExe.ps1",
@@ -107,34 +157,49 @@
       "sha256": "0e8f4d528aa588fad355762fc1a12b43840dbbf8a9d6f3c76b755fccc6e49cce"
     },
     {
+      "path": "Coop-UpdateStage.ps1",
+      "bytes": 2832,
+      "sha256": "757b9fcd3788f368d9dfdfcd15bf670b6f3ccaa1f2795f1e40dc881f014a7325"
+    },
+    {
+      "path": "Coop-UserData.ps1",
+      "bytes": 1697,
+      "sha256": "05601002550e067380e4d0fe91ff6b6165d0a188949a29e934f4260793614e0e"
+    },
+    {
+      "path": "Coop-VersionCleanup.ps1",
+      "bytes": 5608,
+      "sha256": "e753579d0f86abd1609e959dc197ce656d55ab1dc20172fb6fe2b122da7e11dc"
+    },
+    {
       "path": "Diagnose-Absturz-Exportieren.cmd",
-      "bytes": 127,
-      "sha256": "7341a018cfe75e37cc3c063580cdb126d6a3e14c449cad3a727d2c8b5c6c6d0c"
+      "bytes": 124,
+      "sha256": "881dd7eb3acb53c195b9bcf6868912da43bf36cfaa5fdd2314d436d568d1342e"
     },
     {
       "path": "Diagnose-Absturz.cmd",
-      "bytes": 144,
-      "sha256": "a1bb825922dcd6b836a2548cd81e603cbbbec768fe0845c923392293262cf0bd"
+      "bytes": 141,
+      "sha256": "4c8b69ea9d944d087792a3f1bc0466d1d752d91a5d15c9ed4dc0c9d50f2cbb50"
     },
     {
       "path": "Diagnose-Exportieren.cmd",
-      "bytes": 122,
-      "sha256": "25f0e13447021ac499bcf3cafb0312a3626b6c1e30725cfb5fd4f1216519aef3"
+      "bytes": 119,
+      "sha256": "fc59742d3d24c8ad279d2fde60f195f0ef78d5ea663641e3abfb2c8c18779774"
     },
     {
       "path": "Diagnose-Markieren.cmd",
-      "bytes": 120,
-      "sha256": "1de8d48c60ee32b62ecc56c25f1e8deb05eb45dd1257f2aa0097d461d53346f9"
+      "bytes": 117,
+      "sha256": "5ab728b2edb596065871c82fa043e382b42fbe14570eaca15bbec1c37092be40"
     },
     {
       "path": "Diagnose-Starten.cmd",
-      "bytes": 122,
-      "sha256": "6bc4c98c82fa12410d037393a83b3fd0ddae421f8d32bd4a190459e90d5d5f3d"
+      "bytes": 119,
+      "sha256": "d63798c615cfa76b7147cce024679eb4da063a0970b2a601fe86d7b0cbb88b08"
     },
     {
       "path": "DIAGNOSE.md",
-      "bytes": 4473,
-      "sha256": "7dda41be4aaaa2f57ddae0a74068bb4f3dc3ab2c1ec6b9f1d6af075ee2a4bf39"
+      "bytes": 4393,
+      "sha256": "ad7a33c9a62a8841c6f699fca85b1d17249c44590259240f0a01241a5873530c"
     },
     {
       "path": "diagnostics_tool/bridge_crash_analysis.py",
@@ -202,34 +267,69 @@
       "sha256": "cd3ad05f288680ff55be46342a187471d8e23113178dc9a90ad9eb00198a736c"
     },
     {
+      "path": "docs/showcase/collection.svg",
+      "bytes": 1239,
+      "sha256": "e790bd169cf59207c160d88e9cb8d3f12e3ec5eef2a5785a52a5d5e693da4fdf"
+    },
+    {
+      "path": "docs/showcase/garage.png",
+      "bytes": 62331,
+      "sha256": "0dd06308983bf66ba1519c27684730bf602b552cab3c563ec15ffed017a9e5f7"
+    },
+    {
+      "path": "docs/showcase/hud-clear.png",
+      "bytes": 6539,
+      "sha256": "c36a0e80c1b3a3fe568645e46d1e13b30a1079cd31a22d58ceffb06143f47dbf"
+    },
+    {
+      "path": "docs/showcase/hud-dim.png",
+      "bytes": 10620,
+      "sha256": "7a3627502114c17b4036904964012349cded5be5dd6ca4cbeb3778f4c02e7e18"
+    },
+    {
+      "path": "docs/showcase/hud-original.png",
+      "bytes": 15172,
+      "sha256": "642f1e4968ef7c8aa0e12ce9d4f397fff130ca4489dd614dd703577cefd73d70"
+    },
+    {
+      "path": "docs/showcase/launcher.png",
+      "bytes": 77813,
+      "sha256": "3d1e932088b19bfc0c8ac84f14fe1c05af33f1f734a944fa01dd61fdddcebdcc"
+    },
+    {
+      "path": "docs/showcase/music.svg",
+      "bytes": 1253,
+      "sha256": "d583087fc436836029c6a72aae62b85fb035e4367beac2cd97d4ad06a15939f5"
+    },
+    {
       "path": "Enable-HostFirewall.ps1",
-      "bytes": 1896,
-      "sha256": "a0f30f4fbbddbf85b031799bd46e8562b5516626fcedc84b54ab5fb9997caa05"
+      "bytes": 2804,
+      "sha256": "da4ea4eb597402ab62c4a375e0ae8e8c99786d79efc58f1c2911a64d1fc0fe87"
     },
     {
       "path": "GAMEPLAY-STATUS.json",
-      "bytes": 14784,
-      "sha256": "26728f0948a76557dc6aef04d3e6c293e543004c35ea60d166a66945cebac5d7"
+      "bytes": 20825,
+      "sha256": "b805444da23108e7e7f64cdc3437d0ce461d58e408a835f802508d417c00915a"
     },
     {
       "path": "Garage-Cars.json",
-      "bytes": 256589,
-      "sha256": "d389cd31d4bf5f9525bddbc913d07dbed3800b77a2b0afe269f2bd7b29a60706"
+      "bytes": 256586,
+      "sha256": "9800324cd73994d92503896647cc992bd8a9e962a5900b7bc32a0dceed6e8c49"
     },
     {
       "path": "Garage-Core.ps1",
-      "bytes": 20756,
-      "sha256": "b808dc8ce9bc41cf074aed1615d2a5ce6f3d9894c54e7a56904621d4bdf56c79"
+      "bytes": 20275,
+      "sha256": "26107dd1f5c03d8b7c9bd73232f34eb572e46f1acc9c8748e5c81f0c50a9b2f2"
     },
     {
       "path": "GARAGE-DE.md",
-      "bytes": 2276,
-      "sha256": "cfbec02598e3d220830e4389da86fc5a32fa9a901dc5078e537742fe7fc709b7"
+      "bytes": 2256,
+      "sha256": "347b8702391a8d636566cf19408934d12b46a5d320958afe3470ca831069ce55"
     },
     {
       "path": "GARAGE-EN.md",
-      "bytes": 2209,
-      "sha256": "b675447d72f4b09893178e7a45b07262f058c58b2d81ef59f7a5479402639464"
+      "bytes": 2189,
+      "sha256": "2e8aee7191cf54b6b3c2b4f8156bdd708ebb3720a26e9f28de9927600df339df"
     },
     {
       "path": "Garage-Fenster.cmd",
@@ -238,23 +338,38 @@
     },
     {
       "path": "Garage-Fenster.ps1",
-      "bytes": 20775,
-      "sha256": "e61a0ddaad073d3c639f081dfd649ba598d3eb4bab53c8f5ff9ce7e26b088730"
+      "bytes": 23929,
+      "sha256": "34b9297f3cba318860e76c38cc9760409a774902d7b6d6310bfccbb115cfbf2b"
     },
     {
       "path": "Garage-Fenster.vbs",
-      "bytes": 1010,
-      "sha256": "ce9f63c40f68d1fae2d65d9d29862c4e05ec9a26d8fb5a76ebe1dde118a85cb7"
+      "bytes": 1118,
+      "sha256": "762930deb0144d652850b9667d2b4bd7bdc9e566f901deb9878ce741620ba089"
     },
     {
       "path": "Garage-Photos.json",
-      "bytes": 463,
-      "sha256": "6e1f9b50d84b3f8b4ac2bfd12f06620741e4ad6b20db36e2dfd05ed39512215d"
+      "bytes": 460,
+      "sha256": "e1e58961ca53121410b39484e1ba12e143275e6240c6a0f3266a5b92f7821276"
     },
     {
       "path": "GARAGE.md",
-      "bytes": 67,
-      "sha256": "ac3a999bb4f59107b5756a55b6b7672a356ccee289acb58356adf8cd2a1ff595"
+      "bytes": 64,
+      "sha256": "fe614b26a427370e31337e693ebfd267b3c84f62e7aade5d4351d6a6f87a274f"
+    },
+    {
+      "path": "hud-previews/Clear.png",
+      "bytes": 6539,
+      "sha256": "c36a0e80c1b3a3fe568645e46d1e13b30a1079cd31a22d58ceffb06143f47dbf"
+    },
+    {
+      "path": "hud-previews/Dim.png",
+      "bytes": 10620,
+      "sha256": "7a3627502114c17b4036904964012349cded5be5dd6ca4cbeb3778f4c02e7e18"
+    },
+    {
+      "path": "hud-previews/Original.png",
+      "bytes": 15172,
+      "sha256": "642f1e4968ef7c8aa0e12ce9d4f397fff130ca4489dd614dd703577cefd73d70"
     },
     {
       "path": "Install-Coop.cmd",
@@ -263,33 +378,38 @@
     },
     {
       "path": "Install-Coop.ps1",
-      "bytes": 7679,
-      "sha256": "13ed0d9f3629d2088ec0ea4863dec8dc8969c37f4536a6e9e3ee071fad56cf1c"
+      "bytes": 11538,
+      "sha256": "59d95283a0dd7737600e226e96841cbe7aa9c34aaa43dcf66aa68f60bc5b1588"
     },
     {
       "path": "Install.cmd",
-      "bytes": 112,
-      "sha256": "35ab131556901eceea42340fca25ed03c2032eaffa90680931e39fc02f8896fa"
+      "bytes": 109,
+      "sha256": "91e2c6247ba4928c37e0c6572ce68fdf103b204ce57615e85074f654e799e8d7"
+    },
+    {
+      "path": "INTEGRATED-CANDIDATE.md",
+      "bytes": 1737,
+      "sha256": "69d6d554660ff6ddfcd79d9d08c09b04f53891b55150a7f7c47d7b7810df0b0c"
     },
     {
       "path": "Koop-Starten.cmd",
-      "bytes": 43,
-      "sha256": "62cbe1f4d734aeccd6629b0d970af600e1b3c9b8f8a43b48ec45178790da6726"
+      "bytes": 41,
+      "sha256": "000729f173b7a6190beff47efe2e9aefcc023cfe8731f49b884165d499db4185"
     },
     {
       "path": "Launch-Coop.cmd",
-      "bytes": 136,
-      "sha256": "4d2791caf2213a744509dffc287ccfa176c1b339aac2085a473770bd4252522c"
+      "bytes": 133,
+      "sha256": "12abafd76011cfc2a1b71e8c7f70554b79285f4462f6ef93f3f7a1e5a2dba329"
     },
     {
       "path": "Launch-Coop.vbs",
-      "bytes": 979,
-      "sha256": "57972d17822f6e2538b21cb4c323f691c03ed60cee0f5aff3cc7597356789136"
+      "bytes": 1107,
+      "sha256": "3bc1bc653a0226bf991a1aad6389a6bb503c2edef980247c386c27ee0e1a8ad7"
     },
     {
       "path": "Launch-Garage.cmd",
-      "bytes": 46,
-      "sha256": "4720288341922fe898f5e3921375d8bb3363950e35b363c6a34c5092a16c2d18"
+      "bytes": 44,
+      "sha256": "c257d78a548480a9d339257aaf13450de93f9507ec7c2da594dba5dde0442725"
     },
     {
       "path": "LICENSE-LANOnlineHelper.txt",
@@ -298,113 +418,288 @@
     },
     {
       "path": "LIESMICH.md",
-      "bytes": 780,
-      "sha256": "52c774b4c923ba2b68a619945bce64cf71d14d32e0b9acf9eb081f6fb44e568b"
+      "bytes": 1375,
+      "sha256": "4524877c7297b17cafd1e888bb207f4ad47620859147ad61f558b3a80f3eb5c9"
+    },
+    {
+      "path": "mods/audio-slider/NFS-Audio-Patch.ps1",
+      "bytes": 50904,
+      "sha256": "5d16aa2a6d80ccaa7c0d927ed1d3e36b45b98be71e041fc16e8eb6c8e08a1ab8"
+    },
+    {
+      "path": "mods/audio-slider/README.md",
+      "bytes": 2587,
+      "sha256": "264ffd4d7ab5d8baf745b44d019a9fdcb1c49e75cec7a768ab8c6f217fd3e500"
+    },
+    {
+      "path": "mods/development/ant_delta_guard_adapter.py",
+      "bytes": 1564,
+      "sha256": "d360480a8293af6c15c814744fe72c9953ae8d996131befaf8c0f91c3419bbe2"
+    },
+    {
+      "path": "mods/development/ant_scene_scope.py",
+      "bytes": 3062,
+      "sha256": "2de2c1e9bf2500d34a822bfe6bf15d64c95a154463e63a3bdd7e3fa55248e76b"
+    },
+    {
+      "path": "mods/development/Coop-GarageProfiles.ps1",
+      "bytes": 3100,
+      "sha256": "ad5560dd4aa4dad86921422c2d5d59ccb24724ec6ba41093437f9ed61829b6b4"
+    },
+    {
+      "path": "mods/development/Coop-Repair.ps1",
+      "bytes": 8695,
+      "sha256": "4bad36bafbb365ad004c727cd9fefb72c22801632ba566556e576a56f5617d66"
+    },
+    {
+      "path": "mods/development/Coop-SessionConfig.ps1",
+      "bytes": 2314,
+      "sha256": "3654f609471d19d1bf2d08a5e8b279d3f07fa01cb68d820ece5f0a5c0890a1ee"
+    },
+    {
+      "path": "mods/development/Coop-SessionTools.ps1",
+      "bytes": 7821,
+      "sha256": "36adf7c19d05c9db5dfeb20f2fc171604a585a10d0a6b66f7f115cd6861f5ca6"
+    },
+    {
+      "path": "mods/development/Coop-UserData.ps1",
+      "bytes": 1670,
+      "sha256": "92aa34622bb20a45301f2ab79c7f632fc0b12a1c76806efebb197698291c5546"
+    },
+    {
+      "path": "mods/development/cutscene_ai_adapter.py",
+      "bytes": 24538,
+      "sha256": "787dae81f35d7161078223a6e8c0a4f60d038049363642c6334b2980b759429f"
+    },
+    {
+      "path": "mods/development/gas_entry_guard_adapter.py",
+      "bytes": 1793,
+      "sha256": "0504457f51d62d1faabfbafc9795a91f460864e037dbcbf15edb15d8e3af6af9"
+    },
+    {
+      "path": "mods/development/patch_cutscene_ai.py",
+      "bytes": 6323,
+      "sha256": "4fdbc79d57bd1abfa78e69e8a7d536ec9ce0589f5943ff289504491fa52852e2"
+    },
+    {
+      "path": "mods/development/patch_gas_entry_guard.py",
+      "bytes": 1789,
+      "sha256": "0b89dccf4656194d4fa0422ac21f2e66377d29e6012a0b563337c6cfcd96909c"
+    },
+    {
+      "path": "mods/development/patch_qte_delta_current.py",
+      "bytes": 1601,
+      "sha256": "0ac0bb7089320f91daf4ae445ee950a3cbcc40733699c74be70df8b21205828d"
+    },
+    {
+      "path": "mods/development/patch_qte_host_milestones.py",
+      "bytes": 2303,
+      "sha256": "804d6efeb209057ebf78306de65dd59232a30fd09ad5a51e2a2d65d34a4c9ce7"
+    },
+    {
+      "path": "mods/development/patch_qte_spawn_local_bus.py",
+      "bytes": 1511,
+      "sha256": "07e26ba9a1206a9755a3d7b80ba9aaf3554b336ee5ed20c5258bb9e0f4522cfe"
+    },
+    {
+      "path": "mods/development/patch_team_finish_four.py",
+      "bytes": 1985,
+      "sha256": "bc8dc4f3fde94e3caa4625d23edaf90e037d4b4c0d780de9fcd1102295577150"
+    },
+    {
+      "path": "mods/development/qte_host_milestones.py",
+      "bytes": 9609,
+      "sha256": "50c1acfd617f023246acd9f9216fe46c9b798725cbdb302c812ec7a102b44b05"
+    },
+    {
+      "path": "mods/development/qte_spawn_local_bus.py",
+      "bytes": 2367,
+      "sha256": "271dbc24876eb20525010a8dcdc3f9dd5451582a901ef03777d44ee1762a06b9"
+    },
+    {
+      "path": "mods/development/README.md",
+      "bytes": 621,
+      "sha256": "6b9560cd07aeeb500b097abf8244f53f16a5a4bdf3fb1a1f01c6174691c6a892"
+    },
+    {
+      "path": "mods/development/Repair-Coop.ps1",
+      "bytes": 561,
+      "sha256": "ab5ba2afdeee3a1e50633e1ddf14c6a8f94c8b2cccf24945e9acd3aebdd6986d"
+    },
+    {
+      "path": "mods/development/SESSION-DE.md",
+      "bytes": 3764,
+      "sha256": "7b09a1ca4da8619f14372079acccf87c525b4b2dc91cb7391d1c462f899f3f29"
+    },
+    {
+      "path": "mods/development/SESSION-EN.md",
+      "bytes": 3265,
+      "sha256": "1c6f3a3a352f5161f7078443167c21fb2d9c29bf40ae7bfcb2e7f1e47f57e254"
+    },
+    {
+      "path": "mods/development/Session-Overview.ps1",
+      "bytes": 3554,
+      "sha256": "8e5ab08acde393154ecf6fa67153a72f9acd75c389a4eff134a88048b040dcc6"
+    },
+    {
+      "path": "mods/development/Start-SessionTools.ps1",
+      "bytes": 4131,
+      "sha256": "121f3661a49712a1eeb83b6f22dff295514497ded18dfb96cabae7309476b3d9"
+    },
+    {
+      "path": "mods/development/team_finish_four_adapter.py",
+      "bytes": 2818,
+      "sha256": "0f4e368f5b42bc20ddfee912721b8b231856cbadd8a5e398b052c0376e5bf989"
+    },
+    {
+      "path": "mods/hud-background/hud-alpha-plan.json",
+      "bytes": 163282,
+      "sha256": "afb520915c3b7db10bc4c7ae2df4a3905097305670ecfaa140c2fc7d6238b7ed"
+    },
+    {
+      "path": "mods/hud-background/NFS-HUD-Patch.ps1",
+      "bytes": 5207,
+      "sha256": "48afa1731c5c385b8115b736001dab2a17da0c174b6f4506af81827c1f21cb12"
+    },
+    {
+      "path": "mods/hud-background/README.md",
+      "bytes": 658,
+      "sha256": "100a8ff81e94b453f251456c144079bb0e4db029c89adfb9ad9d92519e80d4a0"
+    },
+    {
+      "path": "MODS.md",
+      "bytes": 2472,
+      "sha256": "3516db7f9148d7bd31750c6837fdcdf54c6b7a02c2b6df63dfcac568b8a77406"
+    },
+    {
+      "path": "patches/client-native-r3-upgrade.json",
+      "bytes": 23068,
+      "sha256": "c38eda85150601532181749f880fc9964ecdecfca298d944b8290e12e8661902"
+    },
+    {
+      "path": "patches/client-r2-upgrade.json",
+      "bytes": 25607,
+      "sha256": "6f5e2ea941ceed9559cc861a9f58532cf29f0b7d6521deed941fb059fce25bda"
     },
     {
       "path": "patches/client-research-upgrade.json",
-      "bytes": 27697,
-      "sha256": "befd214c938302e93fc9a5822ebe5ffa7b3be343553e8cecab9613d16c6e46b6"
+      "bytes": 54754,
+      "sha256": "ac5452b82767bca25ffa80e6c1ba2c8be875a7664181f52f3dab185177abec4e"
     },
     {
       "path": "patches/client-upgrade.json",
-      "bytes": 32592,
-      "sha256": "7ed94603736da1d05d2658fa4cf9f076153275b6b37ba1c27ea5d624a60681d9"
+      "bytes": 59645,
+      "sha256": "3358c0a6e4ba8a922f3c0e0d5cd54adcb623be732f709dec146215cc1ee8a1f9"
     },
     {
       "path": "patches/client-v0_3-upgrade.json",
-      "bytes": 23784,
-      "sha256": "f14a08bbdffff77ab3d441a25ae0c3548c2eed98019dd439f8e8ada921db622a"
+      "bytes": 50841,
+      "sha256": "e6c35aa621be99281c5152b131370499a35b8b452803365ed0efa7397df8005c"
     },
     {
       "path": "patches/client-v0_4-upgrade.json",
-      "bytes": 23784,
-      "sha256": "f14a08bbdffff77ab3d441a25ae0c3548c2eed98019dd439f8e8ada921db622a"
+      "bytes": 50841,
+      "sha256": "e6c35aa621be99281c5152b131370499a35b8b452803365ed0efa7397df8005c"
     },
     {
       "path": "patches/client-v0_5-upgrade.json",
-      "bytes": 23784,
-      "sha256": "f14a08bbdffff77ab3d441a25ae0c3548c2eed98019dd439f8e8ada921db622a"
+      "bytes": 50841,
+      "sha256": "e6c35aa621be99281c5152b131370499a35b8b452803365ed0efa7397df8005c"
     },
     {
       "path": "patches/client-v0_6-upgrade.json",
-      "bytes": 19962,
-      "sha256": "6f387a7fd7539e1237fb3bd8cf9e606c458113fb250ec22dc9d2695122156671"
+      "bytes": 47193,
+      "sha256": "b87c7fd6a529a58e03586401f33d082f68fdd461e48241d431cb908a7ec38d58"
     },
     {
       "path": "patches/client-v0_7_1-upgrade.json",
-      "bytes": 16811,
-      "sha256": "392925ca73950723877a73d7202cba800b52bba2a90a855eb62d4bfa2abb7682"
+      "bytes": 44046,
+      "sha256": "c3eb20c4967286768280e8ee14e97ba9b12b8aed36e391380e5faa4e0bebcdf3"
     },
     {
       "path": "patches/client-v0_7_2-upgrade.json",
-      "bytes": 12089,
-      "sha256": "f0a632a7d23827d03dbdbcad3d25df87ab3807666e44a0dc3049d4ee4b5653ec"
+      "bytes": 39320,
+      "sha256": "e5a949c3a3b36e277af606614c0aa3d106403cc74dd452e5672bd71670717798"
     },
     {
       "path": "patches/client-v0_7_3-upgrade.json",
-      "bytes": 7022,
-      "sha256": "b01fd4c1de1aaa015b8735db026ce8a143a26f1018e72dd7e3390b957d61127e"
+      "bytes": 34257,
+      "sha256": "74df4bf6a35eee0556e44137b935162fc5a928187428ae853052d0b216de4865"
+    },
+    {
+      "path": "patches/client-v0_7_7-upgrade.json",
+      "bytes": 27977,
+      "sha256": "d2ff24966e4180ed8eeefb40df7f07e33c47cb8ad521b0cdaeb25574e132b3cb"
     },
     {
       "path": "patches/client.json",
-      "bytes": 35133,
-      "sha256": "695c71cb15ee9d2dd6530f40c1e6eaef93ce60460978bf7dc9706fbe3a8878d8"
+      "bytes": 62190,
+      "sha256": "9bf67c18174915d317851800d8134925d74a129977c4f741a2f403fbc548b595"
+    },
+    {
+      "path": "patches/server-r2-upgrade.json",
+      "bytes": 3184,
+      "sha256": "10fddbf271d41cbf1f1f984f546d3cf09ff95055389a064c6ce95d992e256ee4"
     },
     {
       "path": "patches/server-research-upgrade.json",
-      "bytes": 34864,
-      "sha256": "ea627fa7eb4648b49a197fed7391423dc01a0cc0a90ebe23938aa66bf4704909"
+      "bytes": 46598,
+      "sha256": "70cd28eeb4fa0c92c2a9d04c063ac5af00b58eef57cfb06bde38ef647da37907"
     },
     {
       "path": "patches/server-upgrade.json",
-      "bytes": 39506,
-      "sha256": "f2eefc8cdeb0d9bae2bfff1c22bba3e8c7c91f454c6b9f649fbe5d74b7584437"
+      "bytes": 51240,
+      "sha256": "a636744dfe2f5e7dcd7314fc1c22a8bc67085161b3a2b0bd2d6a697bd5e81770"
     },
     {
       "path": "patches/server-v0_3-upgrade.json",
-      "bytes": 27786,
-      "sha256": "0fba7d436dda2d5b33409c7e37ac616f12d273cfc9c4948a14f455c0cbf599b3"
+      "bytes": 39520,
+      "sha256": "e2811caab9700250616c9cb5ccdebe80dc94620cca506cd33ecc8836669c700c"
     },
     {
       "path": "patches/server-v0_4-upgrade.json",
-      "bytes": 27106,
-      "sha256": "957bc9616129c495a6e4d25208ab0152c61fe503011f7345cd48df4d14c9d772"
+      "bytes": 38840,
+      "sha256": "00114602475e4c5e2f9d6cdbf51658e80ac29ce978ddff800e533cd8a73ad370"
     },
     {
       "path": "patches/server-v0_5-upgrade.json",
-      "bytes": 35454,
-      "sha256": "6bd2de7dfe4c422cbca2745612b02578997d32a2dc85aedb185af91d5aa5b382"
+      "bytes": 47188,
+      "sha256": "3bae1aaba0946586e698098257634bc0aa6d646dc1a5948244b3b16d545de2a5"
     },
     {
       "path": "patches/server-v0_6-upgrade.json",
-      "bytes": 35454,
-      "sha256": "6bd2de7dfe4c422cbca2745612b02578997d32a2dc85aedb185af91d5aa5b382"
+      "bytes": 47188,
+      "sha256": "3bae1aaba0946586e698098257634bc0aa6d646dc1a5948244b3b16d545de2a5"
     },
     {
       "path": "patches/server-v0_7_1-upgrade.json",
-      "bytes": 35520,
-      "sha256": "54b739f095359d37455da9e043413670b6663721587f76d3f3131773e471fdc8"
+      "bytes": 47254,
+      "sha256": "1f0e8d7baf24ed84f8483efb90b2f09fec9bcfb765c8782279b1c5c9c5b85e0d"
     },
     {
       "path": "patches/server-v0_7_2-upgrade.json",
-      "bytes": 32970,
-      "sha256": "cbe83e92fb7d93d89caec7d91d25edb56e8a7adadeb3bfe6a7573c0d2d07cbfe"
+      "bytes": 44704,
+      "sha256": "2381dc4f4a64f8f56473157b9e22590c7a46849214da5d0ba4f66a85fdedd570"
     },
     {
       "path": "patches/server-v0_7_3-marcus-upgrade.json",
-      "bytes": 4878,
-      "sha256": "ae201fb87b68e1af5a9838924a44433cc40e0f004ec539332fea196a3b8f475a"
+      "bytes": 16612,
+      "sha256": "87d8cd10b2abe6c8021ed752e5d936f3d5739a5f64117dbfdaa5238e07c2f15e"
     },
     {
       "path": "patches/server-v0_7_3-upgrade.json",
-      "bytes": 28200,
-      "sha256": "91c98d018dd12366aa25e3550acd9677a1731a2dc77578ac7c5e791b26b4726a"
+      "bytes": 39934,
+      "sha256": "302bf70d03751a74f6ae564ed7b18b8d99eb9b7641a5c395a687f803f42fd60e"
+    },
+    {
+      "path": "patches/server-v0_7_7-upgrade.json",
+      "bytes": 9948,
+      "sha256": "48155869d338cba4d39d3bdb9ad148955a6c1abaffa0360acb5cdcf9297598cb"
     },
     {
       "path": "patches/server.json",
-      "bytes": 42121,
-      "sha256": "1928b176aa54417dedca44909eb48743ea7b9bcdbd4711c8b66e1bd9832a968a"
+      "bytes": 53855,
+      "sha256": "f4bb2ac2c55645e3d0161e9fba07cbb92d74be750f1293e19d69d4b36b7ea7e3"
     },
     {
       "path": "patches/support-files.json",
@@ -413,38 +708,58 @@
     },
     {
       "path": "PowerShell7.cmd",
-      "bytes": 509,
-      "sha256": "ae61d613bee7939a78c4b2b5e9397c2e6306e2d086cf0b7c5cdb542232faa5cc"
+      "bytes": 173,
+      "sha256": "b5693b7ea964a1381050c26c9ef4c03d14ab94d7ad6dfb8870623d030eeb8804"
+    },
+    {
+      "path": "QTE-HOST-ACTOR-TEST.md",
+      "bytes": 3281,
+      "sha256": "2d4896b3166ee638dd95caf19bca5cb32a506f12e296b0d4094c905ea2801b98"
+    },
+    {
+      "path": "qte_mirror_net.ps1",
+      "bytes": 6612,
+      "sha256": "47043422051b4bee9e27c08ce0f0495d63647a22ba094df107281e7cfc3d9738"
+    },
+    {
+      "path": "RACESTART-TEST.md",
+      "bytes": 433,
+      "sha256": "b501d7c16fd146a6acca4e5611f032018f43d518c5a3f0966d3c5ef76a2c98b8"
     },
     {
       "path": "RADMIN-ANLEITUNG.md",
-      "bytes": 67,
-      "sha256": "0b2ff3eb74dab5750e24b880546356b648ce0a2830b0b5913b63481438f630a9"
+      "bytes": 64,
+      "sha256": "4c8c7fe6f944a8eb3ec9ca4a646efd4351d9fa31ed0b2a8a53fa68d4a1fe79fa"
     },
     {
       "path": "RADMIN-DE.md",
-      "bytes": 2368,
-      "sha256": "65d1cd06001040e935c1389b2c36a50975b40b205c2dafef9ba4597095912f29"
+      "bytes": 2365,
+      "sha256": "00211f3e712f8053f4a1fc675b4a4d195f7935ec45d7702adedc16da88722170"
     },
     {
       "path": "RADMIN-EN.md",
-      "bytes": 2348,
-      "sha256": "30e01eafc1a484d61a07e14dd6c325fbffd6357b59e73867654e9e6ef0d44355"
+      "bytes": 2326,
+      "sha256": "c5b5818684a4b147fe4e5c6cda9278a0531c46b0e0720342a16b9474888f7570"
     },
     {
       "path": "README-DE.md",
-      "bytes": 3759,
-      "sha256": "163458b749f48b30bf7a6b47fd243cc77251cf76242266277024f7fc476bac6d"
+      "bytes": 1375,
+      "sha256": "4524877c7297b17cafd1e888bb207f4ad47620859147ad61f558b3a80f3eb5c9"
     },
     {
       "path": "README-EN.md",
-      "bytes": 4106,
-      "sha256": "ea6c44e19efdbdc04d5fa9850ef75c3ccbaba61f1912531e29de8b4727bb5d94"
+      "bytes": 1220,
+      "sha256": "939d7506fc5db89eed3837c98753aa71eaf12819258fb8db6c4b7015fc95c7e0"
     },
     {
       "path": "README.md",
-      "bytes": 780,
-      "sha256": "52c774b4c923ba2b68a619945bce64cf71d14d32e0b9acf9eb081f6fb44e568b"
+      "bytes": 5131,
+      "sha256": "9c569fc5fe7cf46cedddf28c41c94d0a65500be811d34943e04d6e761ac00412"
+    },
+    {
+      "path": "Repair-Coop.ps1",
+      "bytes": 571,
+      "sha256": "bb1e77dc9788837895d0b9ce2857c6527507be2a0a37c8d7236532bab2bb3c29"
     },
     {
       "path": "Restore-Installation.cmd",
@@ -457,9 +772,34 @@
       "sha256": "6fcb5df37089715bc9e0e72bd94ed954d0297c38a6a2d44dc46b969d677982e0"
     },
     {
+      "path": "SESSION-DE.md",
+      "bytes": 3764,
+      "sha256": "7b09a1ca4da8619f14372079acccf87c525b4b2dc91cb7391d1c462f899f3f29"
+    },
+    {
+      "path": "SESSION-EN.md",
+      "bytes": 3265,
+      "sha256": "1c6f3a3a352f5161f7078443167c21fb2d9c29bf40ae7bfcb2e7f1e47f57e254"
+    },
+    {
+      "path": "Session-Overview.ps1",
+      "bytes": 3591,
+      "sha256": "0a7b82fabf5bcb429ca746afd5289268744ef6d12f105d75753c42de0f62020d"
+    },
+    {
       "path": "SPAWN-EVENTS.json",
       "bytes": 3572,
       "sha256": "fdcaca34229d8582f6d0361cd262fd31ed4aa3127e2cd697fb856b9b9153a470"
+    },
+    {
+      "path": "src/ant_delta_guard_adapter.py",
+      "bytes": 1564,
+      "sha256": "d360480a8293af6c15c814744fe72c9953ae8d996131befaf8c0f91c3419bbe2"
+    },
+    {
+      "path": "src/ant_scene_scope.py",
+      "bytes": 3062,
+      "sha256": "2de2c1e9bf2500d34a822bfe6bf15d64c95a154463e63a3bdd7e3fa55248e76b"
     },
     {
       "path": "src/battle_phase_guard_adapter.py",
@@ -477,14 +817,39 @@
       "sha256": "848d6ff940d89307db0ccf3d5d6081a21411324e9643c302149c4aae746962b1"
     },
     {
+      "path": "src/bridge_crash_analysis.py",
+      "bytes": 7180,
+      "sha256": "a981e408c63d58d765d16fa36a2df2efd3a5b7b3ea3493f11d8507a88c4c1eae"
+    },
+    {
+      "path": "src/bridge_exception_snapshot.py",
+      "bytes": 9449,
+      "sha256": "6b1275c92dece639b3185def33342d2cdf3a3528e193fc14cb323dcf8a42e521"
+    },
+    {
       "path": "src/build_battle_phase_candidate.py",
       "bytes": 6147,
       "sha256": "d01ac53d1c72565ace6434bf6b7c95810ed650c995ceb1f0c5f85e072830ccdf"
     },
     {
+      "path": "src/build_integrated_selected_candidate.py",
+      "bytes": 18818,
+      "sha256": "03a7deec8b6439d079e6433a7b8eb438d274f8142218d2bcd7e57495b5c62a22"
+    },
+    {
+      "path": "src/build_qte_host_candidate.py",
+      "bytes": 7992,
+      "sha256": "f66fa5c796ed7319e1da88eb3311218b83bde79edac71be75e86e4a9836290c0"
+    },
+    {
       "path": "src/build_qte_local_candidate.py",
       "bytes": 4990,
       "sha256": "f0ebd9527e0916ce973e59f1c4f552e9eaa494ba68f6574f06f8cf5b562d9a72"
+    },
+    {
+      "path": "src/build_qte_spawn_candidate.py",
+      "bytes": 6134,
+      "sha256": "fd41fa46e8f20e460c8a547fd92ee2df42668e0a4ee790c5513840004dbdc206"
     },
     {
       "path": "src/build_release_073.py",
@@ -500,6 +865,11 @@
       "path": "src/build_release_076.py",
       "bytes": 3686,
       "sha256": "1e15c88d8b06402eca84ce3f622e16327644db085f921cd0f8758288ec12a186"
+    },
+    {
+      "path": "src/build_release_077_candidate.py",
+      "bytes": 15338,
+      "sha256": "0a9c77657dbc9ed736e4faf9d5479545a73230941cfe7c2b2526b8dd52c4ab43"
     },
     {
       "path": "src/build_test_package.py",
@@ -527,11 +897,6 @@
       "sha256": "472444791662652d0f0851ae71848e638e004d1cfb95ba973f9d50a2e8cb4425"
     },
     {
-      "path": "src/coop_diagnostics.py",
-      "bytes": 16660,
-      "sha256": "e87c8c1dfeec907f5101ed82199c08e9cbf8b41fbc569925339e4554570bff02"
-    },
-    {
       "path": "src/coop_hud_adapter.py",
       "bytes": 2105,
       "sha256": "0fa3888ada5f8fb2b32e8eb876b6abd069f003b82dad58c55ee530031b88ba35"
@@ -543,8 +908,18 @@
     },
     {
       "path": "src/coop_runtime_session.py",
-      "bytes": 5196,
-      "sha256": "6b85b783bada081e151569432bb4bee6513a3ff23bfc1ba5e3dec8432b6ea286"
+      "bytes": 6765,
+      "sha256": "be2890820dc093a98df1135f90f270133a4e2d1ac3512c6363b479b5e42e58e8"
+    },
+    {
+      "path": "src/coop_summary.py",
+      "bytes": 53943,
+      "sha256": "91eb13282f01860120efa93c9d6a67789fd3c951a2f25f7745f3903533b07b82"
+    },
+    {
+      "path": "src/cutscene_ai_adapter.py",
+      "bytes": 24538,
+      "sha256": "787dae81f35d7161078223a6e8c0a4f60d038049363642c6334b2980b759429f"
     },
     {
       "path": "src/empty_standings_adapter.py",
@@ -555,6 +930,11 @@
       "path": "src/gas_ack_timeout_adapter.py",
       "bytes": 3548,
       "sha256": "abe13a70049400c9fa317013ec567d184f7552a4d6188e9b87408e5cae2ed7cb"
+    },
+    {
+      "path": "src/gas_entry_guard_adapter.py",
+      "bytes": 1793,
+      "sha256": "0504457f51d62d1faabfbafc9795a91f460864e037dbcbf15edb15d8e3af6af9"
     },
     {
       "path": "src/gas_unload_ack_adapter.py",
@@ -582,9 +962,39 @@
       "sha256": "7d06ef2f74173190ed3f6a6404cf77b582fda2389e002bf948e13238a639fac8"
     },
     {
+      "path": "src/inspect_cinematic_crash.py",
+      "bytes": 4163,
+      "sha256": "19f9316ecf5186ea6fced3e9b568df8fbc7c4e7dbb7117af5013a6662e42d391"
+    },
+    {
+      "path": "src/inspect_qte_spawn_dump.py",
+      "bytes": 3620,
+      "sha256": "714817c71bc11a9a7841ae0fcae1f5d298114418dee5ae107c64aa0bcd1e7ab0"
+    },
+    {
+      "path": "src/lookup_registry_snapshot.py",
+      "bytes": 1810,
+      "sha256": "73af5b863fd4207aba003197c107a14141157fa38bb18a455363e895a1dde6e9"
+    },
+    {
       "path": "src/manual_retry_mode_adapter.py",
       "bytes": 4789,
       "sha256": "093c4b9126507d38e8192ab9fda14f285d68032cd746f764d9433c00179e6daf"
+    },
+    {
+      "path": "src/minidump_memory.py",
+      "bytes": 4198,
+      "sha256": "83ed24220a95dc8f37f3eadf36671b882e94a1e73a84b2910dfdbd6000fa9359"
+    },
+    {
+      "path": "src/nametag_names_adapter.py",
+      "bytes": 2019,
+      "sha256": "5bb760b4723ece83ab445b993b8b5775245cc3b264be3240b0332cd5d17e4eff"
+    },
+    {
+      "path": "src/offline_test_images.py",
+      "bytes": 2532,
+      "sha256": "ca8a2d0c5376cec80ac90565665ee904c00229eeb73651cbd5e4f6775d3c9924"
     },
     {
       "path": "src/orphan_spawn_release_adapter.py",
@@ -632,6 +1042,11 @@
       "sha256": "ca6975a24a7d834ccb83f61d78fb5af9c9bf6cee00a59eeb1d40d6be0ffe52d9"
     },
     {
+      "path": "src/patch_cutscene_ai.py",
+      "bytes": 6323,
+      "sha256": "4fdbc79d57bd1abfa78e69e8a7d536ec9ce0589f5943ff289504491fa52852e2"
+    },
+    {
       "path": "src/patch_empty_standings.py",
       "bytes": 1379,
       "sha256": "318ebaf904db98b84b389ed606a808e37d86fca52c9390774bba39e1623d57ec"
@@ -640,6 +1055,11 @@
       "path": "src/patch_gas_ack_timeout.py",
       "bytes": 1347,
       "sha256": "4605d40d70c27d1d78fb66905f2a7259f55daca93b18cabe755b859da3d1e6df"
+    },
+    {
+      "path": "src/patch_gas_entry_guard.py",
+      "bytes": 1789,
+      "sha256": "0b89dccf4656194d4fa0422ac21f2e66377d29e6012a0b563337c6cfcd96909c"
     },
     {
       "path": "src/patch_gas_unload_ack.py",
@@ -667,9 +1087,34 @@
       "sha256": "997926767d4279889d8a561acb6d08d5e986f469051f9fe7e1307781a27ad9d0"
     },
     {
+      "path": "src/patch_qte_delta_current.py",
+      "bytes": 1601,
+      "sha256": "0ac0bb7089320f91daf4ae445ee950a3cbcc40733699c74be70df8b21205828d"
+    },
+    {
+      "path": "src/patch_qte_host_milestones.py",
+      "bytes": 2303,
+      "sha256": "804d6efeb209057ebf78306de65dd59232a30fd09ad5a51e2a2d65d34a4c9ce7"
+    },
+    {
       "path": "src/patch_qte_local_binding.py",
       "bytes": 1575,
       "sha256": "989d4bb559e0580b37ae5e26a92f890e4bc3b23b47a19e9965bd6c341cb7d44c"
+    },
+    {
+      "path": "src/patch_qte_spawn_local_bus.py",
+      "bytes": 1511,
+      "sha256": "07e26ba9a1206a9755a3d7b80ba9aaf3554b336ee5ed20c5258bb9e0f4522cfe"
+    },
+    {
+      "path": "src/patch_race_start_teleport.py",
+      "bytes": 1400,
+      "sha256": "b84c438d110c0d700f6e8696b3c8cc264d225234424d19f841f5cf5d61c2b49f"
+    },
+    {
+      "path": "src/patch_release_078.py",
+      "bytes": 1574,
+      "sha256": "cf3a9187ab88ae10549a39ebe986eef365ab9cd959bec84dd3127635b150bdfe"
     },
     {
       "path": "src/patch_server_battle_phase_guard.py",
@@ -707,6 +1152,11 @@
       "sha256": "91f434e572e27729eeb8d71547a24d3e8a62aed75397a0924fc64bcecf39a9c2"
     },
     {
+      "path": "src/patch_team_finish_four.py",
+      "bytes": 1985,
+      "sha256": "bc8dc4f3fde94e3caa4625d23edaf90e037d4b4c0d780de9fcd1102295577150"
+    },
+    {
       "path": "src/patch_test_candidate.py",
       "bytes": 2660,
       "sha256": "0e13ebdb6dd20e13f76c788190ed4a9eda5b28c98b8e1ecb1993aabf05a7e133"
@@ -737,6 +1187,16 @@
       "sha256": "54115b2a2acd305e044d4e896aa87335340534bf4c7bd79e172adc5c33c04b65"
     },
     {
+      "path": "src/qte_host_milestones.py",
+      "bytes": 9609,
+      "sha256": "50c1acfd617f023246acd9f9216fe46c9b798725cbdb302c812ec7a102b44b05"
+    },
+    {
+      "path": "src/qte_host_mirror_adapter.py",
+      "bytes": 3567,
+      "sha256": "605decf942391d9200505e18b19b4d4dcc84054ad205d4a19719b4a7d27e21b5"
+    },
+    {
       "path": "src/qte_hud_scope_adapter.py",
       "bytes": 2976,
       "sha256": "a963e3536d295aa8d401c1f78da03a9515d8688776b498bd58f06fd23255b7a5"
@@ -745,6 +1205,16 @@
       "path": "src/qte_local_event_adapter.py",
       "bytes": 2491,
       "sha256": "2739202e42213b63a0b8ace0c932be7da2784ddd4c3f4958dfe6c80d50bae3d8"
+    },
+    {
+      "path": "src/qte_spawn_local_bus.py",
+      "bytes": 2367,
+      "sha256": "271dbc24876eb20525010a8dcdc3f9dd5451582a901ef03777d44ee1762a06b9"
+    },
+    {
+      "path": "src/race_start_teleport_adapter.py",
+      "bytes": 4275,
+      "sha256": "bf4eefeee6f30ed92e963bf16bc8b6b786aee2d0d98ac181afe76ff67e9e9b5f"
     },
     {
       "path": "src/record_battle_phase_flow.py",
@@ -757,9 +1227,14 @@
       "sha256": "09d8f45c098355fa1b2c7ccb52a2828d20b0a6a348c0d1c3968019afd97671a7"
     },
     {
-      "path": "src/record_teleport_probe.py",
-      "bytes": 5976,
-      "sha256": "4eac4f703663b8ae7680d1f8e96b1c98a489415a70311139da7f5de9ec6b38f2"
+      "path": "src/remote_lights_adapter.py",
+      "bytes": 3820,
+      "sha256": "6331116bb3fa3fe040cea0d4d6720bd14c1fe98176760e4ceadaf66551d4ce94"
+    },
+    {
+      "path": "src/server_ai_reference_guard.py",
+      "bytes": 2053,
+      "sha256": "550ddcc477e659b6e871277bb1dafbc6db7b2b0c3fdda4e9a6e34ef2fa6bdfb9"
     },
     {
       "path": "src/server_battle_phase_guard.py",
@@ -767,9 +1242,14 @@
       "sha256": "0a8e4159d2a556f38c76697ef8a12bc3aa484a7a31d5daedcca471733f55d22b"
     },
     {
-      "path": "src/static_xref.py",
-      "bytes": 4636,
-      "sha256": "27f7838325e53f901c0d9fb3ce5d6d740ef59b3b8f06f322aaab5f4879545616"
+      "path": "src/snapshot_qte_roles.py",
+      "bytes": 4522,
+      "sha256": "0897e438ea18637b30a7da0f1c0dafa560e2964b48ca2ee11bce08e89fb7430b"
+    },
+    {
+      "path": "src/standings_names_adapter.py",
+      "bytes": 2703,
+      "sha256": "31bdf35a9e8398185e2c4ae0a3488a98e5a1eb5182954514ed3265bb3f959eea"
     },
     {
       "path": "src/story_ai_gate_adapter.py",
@@ -802,6 +1282,11 @@
       "sha256": "fbf71355d6ea8622d37dd3a7d79215b68f238e95c7ff9c368eb88b84a753a450"
     },
     {
+      "path": "src/team_finish_four_adapter.py",
+      "bytes": 2818,
+      "sha256": "0f4e368f5b42bc20ddfee912721b8b231856cbadd8a5e398b052c0376e5bf989"
+    },
+    {
       "path": "src/teleport_probe_adapter.py",
       "bytes": 4522,
       "sha256": "5335b4966916386833c7ecfc664e419138ce90d18a2d41dd86f7e3cb127f4972"
@@ -810,6 +1295,11 @@
       "path": "src/teleport_ring_reader.py",
       "bytes": 3552,
       "sha256": "22efce121fb2c1fa2471a2b298cbfcf3c5aeb0521de01ccaf6241107d079c527"
+    },
+    {
+      "path": "src/test_audio_slider_package.py",
+      "bytes": 972,
+      "sha256": "78f03d25336bce54d1841e7f64eebb4359b399e8a0dadab244602e253605aa84"
     },
     {
       "path": "src/test_battle_phase_guard.py",
@@ -827,9 +1317,29 @@
       "sha256": "d6c086572dc85f43127aa297ca392dfac0c26495d857e5b0db97d646765581d5"
     },
     {
+      "path": "src/test_garage_profiles.py",
+      "bytes": 3685,
+      "sha256": "fdd77b770ce62d4366d4367a4e40d45ed5e5883d8a420c31aa0650bdf45fa56d"
+    },
+    {
       "path": "src/test_host_difficulty.py",
       "bytes": 5255,
       "sha256": "b176d833b3033db85a906b6d113e2cfa4d331d93276cffc73f53399c00952da6"
+    },
+    {
+      "path": "src/test_integrated_native.py",
+      "bytes": 5690,
+      "sha256": "d19fee426a28a8c6859e211e063062a45078719c438a6b67ef932b530b76bd41"
+    },
+    {
+      "path": "src/test_integrated_selected.py",
+      "bytes": 5880,
+      "sha256": "2ae06ed05be893ed3dbb3d33cb662430011e7c2fe4de572597255c456bfce9cb"
+    },
+    {
+      "path": "src/test_launcher_diagnostic_summary.py",
+      "bytes": 2373,
+      "sha256": "490be9bec091314dd3653494b2aeb869d6d0248b6d720b93d79bb045402c6e54"
     },
     {
       "path": "src/test_pause_ai_adapter.py",
@@ -837,9 +1347,24 @@
       "sha256": "461e5a71235605b424dd7bbdf3b03334adfe51a83fc7f7c612695b6e877ca54a"
     },
     {
+      "path": "src/test_qte_delta_current.py",
+      "bytes": 4266,
+      "sha256": "29638c8961486d3c119232bf3909a02c0f6ecee8fe746458d51131aec14bd2d4"
+    },
+    {
       "path": "src/test_qte_local_binding.py",
       "bytes": 5336,
       "sha256": "2212348bf028b8162effd6e36f3a1ac6ab389ba95571c1ba131e6ee6542704da"
+    },
+    {
+      "path": "src/test_qte_spawn_local_bus.py",
+      "bytes": 9867,
+      "sha256": "d35249cd3c73e5c7c57d9f77d65b461c9f70b743d9412f5b7cdad3d1384e366d"
+    },
+    {
+      "path": "src/test_repair_selected.py",
+      "bytes": 5391,
+      "sha256": "eb21b97f7267d2644737eed4f5b2278405025f24da4ee0fcc26e150f1e0a7cc1"
     },
     {
       "path": "src/test_server_battle_phase_guard.py",
@@ -847,14 +1372,29 @@
       "sha256": "1e37c853ec0155f6d1de28f749cf9fac962e5cfe08b20477554ea645b6cde739"
     },
     {
+      "path": "src/test_session_config.py",
+      "bytes": 2583,
+      "sha256": "e1d3d44c869addbdd8435063acb2bfb1c75fed45ad1908fdad58d286256a3eb0"
+    },
+    {
+      "path": "src/test_session_tools.py",
+      "bytes": 7457,
+      "sha256": "99b992937761c0c10102055364e8877f2e546464eefeb70d737dfa87395d8fd2"
+    },
+    {
+      "path": "src/test_snapshot_qte_candidate.py",
+      "bytes": 1721,
+      "sha256": "ead2996cf9557d095c6d2046050ee326213591857bdcbadaccc6016750ce095a"
+    },
+    {
       "path": "Start-Cars.json",
-      "bytes": 11540,
-      "sha256": "9280eab1acc7db4f73774eb8915b4d48b367c4e513c0909e060062b1743eab95"
+      "bytes": 11537,
+      "sha256": "b0eea011cedfc29cf9268959f70e387e688211ed73b1034a15186fa60af67e2e"
     },
     {
       "path": "Start-Coop.ps1",
-      "bytes": 8535,
-      "sha256": "0f818e8966150c62195bdd29aaedf35d96a4bf9d9e606d8ceaa3bef526eec992"
+      "bytes": 9661,
+      "sha256": "1e571017186530636541af9d3085d342702e23b3118801740a5965601a240797"
     },
     {
       "path": "Start-CoopWindow.ps1",
@@ -878,23 +1418,28 @@
     },
     {
       "path": "Start-Guest.cmd",
-      "bytes": 138,
-      "sha256": "be4e6eb4bbee02c7936c8fd029f81f6012885af85befa5d52935d5c953089d51"
+      "bytes": 135,
+      "sha256": "cabc6b0a3b7f98cab5992a11dfcc6187c5eebb12b0559e57be9611d35e7d6982"
     },
     {
       "path": "Start-Host.cmd",
-      "bytes": 137,
-      "sha256": "880e2e012bf356a0ed8c65e4685fe411b60850b7a60da17b2a025550ce986186"
+      "bytes": 134,
+      "sha256": "68b7ea24f987eb469e6402509d1dda604072cdfb6f412e36da668b5414ba2458"
+    },
+    {
+      "path": "Start-SessionTools.ps1",
+      "bytes": 5102,
+      "sha256": "68c5ba85efa1bc027dbcee311fe2c085bcf54b2acb667b190c01ba1b86e1d1af"
     },
     {
       "path": "Start-Solo.ps1",
-      "bytes": 4794,
-      "sha256": "a8988682edaec9ccd39f861cd39a751b9c78c9eaa71831a42f647401818744f5"
+      "bytes": 6720,
+      "sha256": "10e84177f61edfe06ade8e9c81295c41e4322bd6ace631feba5be51ea9057b36"
     },
     {
       "path": "STARTAUTO.md",
-      "bytes": 767,
-      "sha256": "def50e2073115045957b82c1cfa04ae91c621487c3b82a7a9339328121eb3928"
+      "bytes": 751,
+      "sha256": "12da73d50e9455d1bbad4b21036ac0e93e4e9810c89a01831239cfd874801e6b"
     },
     {
       "path": "Stop-Coop.cmd",
@@ -909,12 +1454,12 @@
     {
       "path": "Unlock-Coop-Garage.ps1",
       "bytes": 4237,
-      "sha256": "015d7a9f9a646d45987766991446e11ad70a494bd30446efe17b39af50bda9b8"
+      "sha256": "fe084f239440555c68a4675d613cced797c660ce182f7ec4c6663a4f3dc3cc64"
     },
     {
       "path": "Update-Coop.ps1",
-      "bytes": 9120,
-      "sha256": "ac0b356fdcd90ce202e0c747f464ef8412010df936548cce8829b860ce7e1d47"
+      "bytes": 9482,
+      "sha256": "8ab7714f217e66927b2a0cec6deb211d6105070fa57fe2fe5fb197b119c0bfac"
     },
     {
       "path": "UPDATES-DIFFICULTY.md",
@@ -923,11 +1468,12 @@
     },
     {
       "path": "validation.json",
-      "bytes": 226,
-      "sha256": "a71565b282d222a790434e3184361fea41bfdf27c491d8e183bc559a16c9e4d4"
+      "bytes": 512,
+      "sha256": "f88540645194716fb29d418aba620978c9c14ff83f9fc29876b23eea0120a118"
     }
   ],
-  "client_sha256": "df9f70693dd4167440935725174014d1643c284b05d010fe198681d4b322ace5",
-  "server_sha256": "b4dfa348819bcac31872095e6959aa9baf07c143e8543ca8e32bb4cee40ebd0c",
-  "gameplay_verified": false
+  "client_sha256": "17afc86593828f27e54d00d50df59f82d42f381111186963f3956f2146c8c83f",
+  "server_sha256": "6826b87b7b337896c7bf7125475339a458480dbc8699b12850baab9259217bb6",
+  "gameplay_verified": false,
+  "qte_mirror_data": 45727744
 }

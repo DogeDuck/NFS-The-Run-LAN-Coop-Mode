@@ -1,21 +1,32 @@
-# v0.7.7-TEST
+# v0.7.8-TEST
 
-## Deutsch
+DE: Neue gemeinsame Version: HOST-QTE-Spiegel mit automatischem Helferstart,
+Vegas-Schutz gegen negative Animationszeit, Cutscene-KI/Steuerungsrückgabe/Ghost
+mit Nachlauf und Kontrollsignal, Mitspieler-Lichter, echte LAN-Namen über Autos
+und in STANDINGS. Teamwertung2–4 und Stations-OnEnter-Sperre. Garage-Favoriten/Sets,
+Versionsprüfung/Sitzungsübersicht, freiwillige Diagnose (standardmäßig aus),
+Reparatur, persönliche INIs/Einstellungen erhalten, robuster Installer/Updater,
+PowerShell7-Bereitstellung, Schwierigkeit/Grafik/HUD und DE/EN.
+Nur Film-Experience-Reglermix, kein fester25-dB-Boost.
 
-- **Solo mit Mods.** Während einer Solo-Sitzung läuft die Kampagne mit der LAN-Grundversion ohne Koop-Code. Beim Beenden wechselt der Launcher wieder zur Koop-Version. Dieser Wechsel wurde zweimal im Spiel bestätigt.
-- **Grafik im Launcher.** FPS-Limit, Schattenauflösung, Schattensichtweite, Texturfilterung und Sichtfeld lassen sich pro PC einstellen.
-- **Persönlicher Musik-Mix für Solo und Koop.** Die Musikgruppe behält +25 dB. Vorgemischte Filmszenen erhalten +8 dB, einschließlich enthaltener Stimmen und Effekte. Auf der Film-Seite von „Film Experience“ erhält die Rennmusik zusätzlich +6 dB, die betroffenen Fahrzeuggruppen −4 dB. Der Mix lässt sich im Launcher ausschalten. Ein Hörvergleich im Spiel steht aus.
-- **Fensterstart.** Die VBS-Starter für Launcher und Garage funktionieren wieder mit Windows Script Host. Der Launcher öffnet sein sichtbares Fenster ohne dauerhafte Startkonsole.
-- **Installation und Updates.** Der Starter neben der Spiel-EXE öffnet auch nach einem reinen Skript-Update die neue Version. Die Dateiprüfung für Solo und Wiederherstellung funktioniert auch mit Windows PowerShell 5.1. Zum Spielen mit dem Launcher wird PowerShell 7 benötigt.
+Prüfstand: HOST-QTE lokal10.4/erste Mission live bestätigt; Netztransport über
+UDP25214 noch nicht auf zwei PCs bestätigt. Neue Namen/Lichter/Kontrollsignal,
+Stationssperre und vollständige4-PC-Unterstützung sind experimentell. Lichter
+werden am fremden menschlichen Auto gesetzt, noch keine vollständige Lichtzustands-
+Replikation. Gast kann eigene QTE-Tasten weiterhin benutzen. Stick-Richtungen
+werden gespiegelt, keine analoge Stärke. Kein Gast-Autopass.
+Offen: Ziel→Cutscene-Mitnahme, einzelne QTE-Erststarts/Zug-Prompt, Brücke1.51,
+Server-Getter-Absturz2572B58. Keine vollständige Kampagnenfreigabe.
 
-Host-Schwierigkeit, GitHub-Updater, Garage und die Rennfixes aus v0.7.6 sind enthalten. Die nativen Client- und Serverpatches entsprechen v0.7.6. Kamera und Eingabe können in Chicago 10.4 auseinanderlaufen. Die Vegas-QTE kann abstürzen. Für Fahrzeugwechsel bitte die Garage verwenden, da die Tankstelle hängen kann. Ein vollständiger Vier-Spieler-Durchlauf steht aus.
+EN: Shared update: host QTE input mirror with automatic helper startup, negative
+animation-time crash guard, cutscene AI/control return/collision protection and
+control-loss signal, remote human-car lights and real LAN names above cars/in
+STANDINGS. Team results2–4, gas-station entry gate, garage favorites/presets,
+version/session tools, opt-in diagnostics (off by default), repair, personal
+settings preservation, hardened installer/updater, PowerShell7, difficulty,
+graphics/HUD and DE/EN. Only the Film Experience slider audio mix is included.
 
-## English
-
-- **Solo with mods.** Solo sessions run the campaign using the LAN base executable without co-op code. Exiting Solo switches the installation back to co-op. This round trip was confirmed twice in game.
-- **Launcher graphics settings.** Set the frame rate limit, shadow resolution and distance, texture filtering, and field of view on each PC.
-- **Personal music mix for Solo and co-op.** The music group keeps its +25 dB boost. Premixed cinematics gain 8 dB, including their dialogue and effects. On the Film side of Film Experience, race music gains another 6 dB and the affected vehicle groups drop 4 dB. You can turn the mix off in the launcher. An in-game listening comparison is pending.
-- **Window startup.** The launcher and garage VBS entry points work with Windows Script Host again. The launcher opens a visible window without leaving a startup console open.
-- **Installation and updates.** The starter beside the game executable follows the new package even after a scripts-only update. Solo and restoration file checks also work in Windows PowerShell 5.1. The game launcher requires PowerShell 7.
-
-Includes host difficulty, the GitHub updater, the garage and the race fixes from v0.7.6. Native client and server patches match v0.7.6. Camera and input can diverge in Chicago 10.4. The Vegas QTE can crash. Use the garage for vehicle changes because gas stations can softlock. A full four-player campaign run has yet to be verified.
+Host QTE passed local gameplay tests; remote UDP25214 transport, new lights/names/
+control signal and full4-PC gameplay remain experimental. No automatic guest
+success. Known issues: shared finish-to-cutscene transition, some first QTE starts,
+bridge1.51 and the server AI-reference crash. Back up saves; never restore saves.

@@ -1,38 +1,11 @@
-﻿# v0.7.7-TEST
+# Installation — v0.7.8-TEST
 
-[Changes / Änderungen](CHANGELOG.md)
-[Updates and difficulty / Updates und Schwierigkeit](UPDATES-DIFFICULTY.md)
+1. Spiel und Server schließen. Auf jedem PC das eigene unterstützte Originalspiel und die benötigte LAN-Basismod installieren.
+2. TheRun-Coop-v0.7.8-TEST.zip vollständig entpacken. Den ganzen Ordner behalten, nicht nur den Installer.
+3. Install.cmd starten und den Spielordner wählen. Der Installer prüft bekannte Dateihashes, sichert geänderte Installationsdateien und erhält persönliche INIs. PowerShell7 wird bei Bedarf bereitgestellt. Spielstände werden nie zurückgespielt.
+4. Launch-Coop.cmd oder Launch-Coop.vbs starten. Host / Beitreten / Solo wählen; Gäste geben die VPN-IPv4 des Hosts ein. Alle verwenden dieselbe Paketversion: [Radmin-Anleitung](RADMIN-DE.md).
+5. Nur der Host startet die Story. Alle Garage-Fenster geöffnet lassen, damit die Autowahl erhalten bleibt. Der Host-QTE-Helfer startet automatisch. Falls nötig freundbezogene Regeln für TCP25211/25212 und UDP25200/25214 über Enable-HostFirewall.ps1 auf den betreffenden PCs anlegen.
 
-# The Run Story-Koop – Deutsch
+[Funktionen / Vorschau](README.md) · [Sitzung, Garage und Diagnose](SESSION-DE.md) · [Änderungen und bekannte Fehler](CHANGELOG.md)
 
-[English](README-EN.md) · [Radmin einrichten](RADMIN-DE.md) · [Garage](GARAGE-DE.md)
-
-Experimentelles Story-Koop-Testpaket. Jeder benötigt eine eigene unterstützte Spielinstallation und dasselbe Mod-Paket. Der Download enthält Patches, Starter und Mods, keine Spiel- oder Server-EXE. Versionsnummer, genaue Patchauswahl und Prüfgrenzen stehen in `GAMEPLAY-STATUS.json` und den beigefügten Versionshinweisen.
-
-## Installieren und starten
-
-1. ZIP vollständig entpacken. Spiel und Koop-Server schließen.
-2. `Install.cmd` starten (`Install-Coop.cmd` bleibt der bisherige Installer). Den **Spielordner** angeben, in dem `Need For Speed The Run.exe` liegt. Falls verlangt, das eigene entpackte LAN-Grundpaket v1 vom 29.05.2024 angeben. Keine EXE-Dateien umbenennen, um Prüfungen zu umgehen.
-3. Für verschiedene PCs [Radmin einrichten](RADMIN-DE.md).
-4. `Launch-Coop.cmd` öffnen, Sprache wählen, Spielordner und Namen eintragen. `Launch-Coop.vbs` öffnet dieselbe Oberfläche ohne dauerhafte Startkonsole. `Koop-Starten.cmd` bleibt kompatibel.
-5. Einer wählt **Hosten**, die anderen **Beitreten** und die Radmin-IPv4 des Hosts, ohne Port.
-6. Der Host bestätigt im Starter mit Enter, sobald die Spielfenster aller Gäste offen sind. Dann startet der Server. Nur der Host wählt Story/Fortsetzen. Starter- und Garage-Fenster während der Sitzung offen lassen.
-
-**Solo** im Launcher startet den Einzelspieler mit den installierten Mods. Während der Sitzung verwendet der Launcher die LAN-Grund-EXE ohne Koop-Code. Danach aktiviert er wieder die Koop-EXE. Das Spiel speichert weiterhin normal.
-
-PowerShell 7 wird benötigt; vorhandenes geeignetes PowerShell 7 wird verwendet. Es wird in diesem Stand noch nicht automatisch installiert. Hinweise: [Microsoft PowerShell für Windows](https://learn.microsoft.com/powershell/scripting/install/installing-powershell-on-windows).
-
-## Sprache und Einstellungen
-
-Launcher und Garage bieten Deutsch/Englisch. Die persönliche Wahl wird auf diesem PC gespeichert; ohne Wahl gilt Deutsch bei deutscher Windows-UI, sonst Englisch. Name, Host-IP, Spielordner und lokale Fensteroptionen werden gemerkt. Das Auto wählt jeder selbst in seiner [Garage](GARAGE-DE.md).
-
-Der Host kann das vorgesehene Serverlimit 1–4 auswählen. Vollständiger Vier-Spielerbetrieb ist noch nicht live bestätigt; bisherige lokale Tests verwenden höchstens zwei Spielclients. Im Koop wählt der Host die Schwierigkeit im Launcher. Im Solo-Modus gilt die Spieloption. Es gibt keinen Pause-KI-aus-Schalter.
-
-## Grenzen und Sicherungen
-
-- Tankstellenauswahl weiterhin meiden: Vorschau, Laden und Rückkehr können hängen. Garage zwischen Missionen verwenden.
-- Cutscenes, Host-/Gastkamera, QTEs und gescriptete Rennabschlüsse können weiter fehlerhaft sein. Ein bestandener einzelner Test bestätigt keine vollständige Kampagne.
-- Der Installer sichert geänderte Installationsdateien. Koop-Starts sichern den aktuellen Spielstand; sie spielen keinen alten Stand zurück.
-- Eigenes Spielfenster schließen oder `Stop-Coop.cmd` verwenden. `Restore-Installation.cmd` stellt gesicherte Installationsdateien wieder her, keine Spielstände. Musik-Rückstellung ist separat in `ADDONS.md` beschrieben.
-
-**Übersetzungsstand:** Launcher, Garage und diese Anleitungen sind DE/EN. Der bestehende Installer, Wiederherstellung, Firewall-Helfer, Diagnosen und einige Addon-Hinweise enthalten noch deutsche Meldungen. Die englische Anleitung nennt die wichtigen Installer-Abfragen ausdrücklich. Keine vollständige Paketübersetzung behauptet.
+Testversion: Gesamtpaket, QTE-Netztransport, neue Cutscene-/Lichtfunktionen und vollständige Vier-PC-Unterstützung sind noch nicht live bestätigt. Vorher Spielstand sichern. Der alte feste25-dB-Mix wird nicht angeboten.

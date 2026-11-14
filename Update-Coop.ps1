@@ -1,6 +1,7 @@
-#requires -Version 7.0
+﻿#requires -Version 7.0
 param([switch]$CheckOnly,[switch]$Install,[string]$GameDirectory,[string]$CurrentPackageDirectory=$PSScriptRoot,[string]$ResultPath)
 $ErrorActionPreference='Stop'
+. (Join-Path $PSScriptRoot 'Coop-UpdateStage.ps1')
 
 function Save-UpdateResult($Value){
     $json=$Value|ConvertTo-Json -Depth 8
@@ -102,7 +103,8 @@ try{
     $package=Resolve-UpdateChild $extract $folder
     Assert-UpdatePackage $package $latest.Version
     $target=Resolve-UpdateChild $game $folder
-    if(Test-Path -LiteralPath $target){Assert-UpdatePackage $target $latest.Version}else{Copy-Item -LiteralPath $package -Destination $target -Recurse}
+    $published=Publish-CoopUpdatePackage -GameDirectory $game -SourcePackage $package -Version $latest.Version -CurrentPackageDirectory $CurrentPackageDirectory -VerifyPackage {param($directory) Assert-UpdatePackage $directory $latest.Version}
+    $target=$published.PackageDirectory
     Assert-UpdateGameClosed
     # The existing installer validates native deltas/support files before writing
     # and backs up every changed mod file. Never call a save restore here.
@@ -111,7 +113,7 @@ try{
     if($LASTEXITCODE -ne 0){throw ('Installer preflight failed: '+($preflight -join ' '))}
     $backup=Join-Path $stage 'personal-settings-before';[void][IO.Directory]::CreateDirectory($backup)
     $state=Join-Path $env:LOCALAPPDATA 'TheRunStoryCoop'
-    foreach($name in 'launcher.json','language.json','car-preferences.json','settings.json'){
+    foreach($name in 'launcher.json','language.json','car-preferences.json','garage-selection.json','garage-profiles.json','settings.json'){
         $path=Join-Path $state $name;if(Test-Path -LiteralPath $path -PathType Leaf){Copy-Item -LiteralPath $path -Destination (Join-Path $backup $name)}
     }
     Assert-UpdateGameClosed

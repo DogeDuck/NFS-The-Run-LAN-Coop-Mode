@@ -1,5 +1,5 @@
 {
-  "version": "0.7.7-TEST",
+  "version": "0.7.8-TEST",
   "ai": {
     "layout": {
       "adapter": 45629440,
@@ -285,7 +285,7 @@
     "shared_tcp_palette_error_fixed": true,
     "guest_story_auto_release_supported": false
   },
-  "garage_console_free_visible_autostart": false,
+  "garage_console_free_visible_autostart": true,
   "live_evidence_2026_11_07": null,
   "team_result": {
     "sha256": "95ba75bb168b2ffc38c4539e2287d8be31dcc55d2001d53c7c7a60696c839f14",
@@ -350,7 +350,7 @@
     "stats": "CALLS+0, IGNORED_REPEAT+4, ENABLE_RESET+8, GLOBAL_RESET+12, ACCEPTED+24, DECLINED+28",
     "limitations": "Bounded24 authored source/rival pairs per challenge, native fallback if full; verify enable/reset and legitimate repeated rivals in game."
   },
-  "source_package": "TheRun-Coop-v0.7.2-TEST-CANDIDATE",
+  "source_package": "TheRun-Coop-v0.7.7-RACESTART-QTE-HOST-ACTOR-CANDIDATE-R2",
   "multiplayer_target": "2 tested; selected adapters emulated for2-4. Full four-player campaign unverified.",
   "battle_live_evidence": "2.6: repeated HOST/GUEST checkpoint gives no extra point or timer restart; user completed race from start to finish.",
   "bilingual_launcher_garage": "32 targeted checks including existing regressions; newest UI not live-tested with two PCs.",
@@ -407,12 +407,12 @@
   "guest_mute_included": false,
   "guest_qte_synchronization_fixed": false,
   "qte_local_binding_experiment_enabled": false,
-  "cutscene_collision_fix_included": false,
+  "cutscene_collision_fix_included": true,
   "gas_stations_blocked": false,
-  "powershell7_auto_install": false,
-  "current_qte_live": "Chicago 10.4: cameras diverge and progression can stall. Vegas 3.52: host crash observed.",
+  "powershell7_auto_install": true,
+  "current_qte_live": "Host-input mirror passed local10.4 and first-mission gameplay on R2. Combined0.7.8 and remote two-PC transport unverified.",
   "updater_array_fix": true,
-  "native_gameplay_identical_to": "0.7.6-TEST",
+  "native_gameplay_identical_to": null,
   "preserves_addon_checksums": true,
   "solo_without_coop_code": true,
   "solo_hash_cmdlet_independent": true,
@@ -424,5 +424,168 @@
   "installer_starter_follows_updates": true,
   "vsync_controlled_by_launcher": false,
   "solo_roundtrip_confirmed": true,
-  "vegas_negative_delta_guard": false
+  "vegas_negative_delta_guard": true,
+  "race_start_teleport": {
+    "adapter": 45678592,
+    "counter": 45682688,
+    "adapterSize": 304,
+    "sha256": "bcdafbf8db104fb070e093e147e9e3d440daef15f4499c3a2037313a14bc40aa",
+    "site": "0x13e0221",
+    "installed": false
+  },
+  "qte_local_actor": {
+    "adapter": 45686784,
+    "counter": 45690880,
+    "adapterSize": 254,
+    "slot": "0x246f2b4",
+    "native": "0xeda3d0",
+    "sha256": "1e5cab30563ef2da390d70d59efdeb95b3796c7560fb19306206b4ce78025339",
+    "bytes": 254,
+    "experimental": true,
+    "default_enabled": false,
+    "installed": false,
+    "gameplay_verified": false,
+    "scope": "LAN Story OOC local BasicControllable spawn bus",
+    "max_pawns": 16,
+    "frame_hook": false,
+    "adds_network_messages": false,
+    "replays_ant_start": false,
+    "host_only_input": false,
+    "qte_sync_verified": false
+  },
+  "qte_host_milestones": {
+    "adapter": 45686784,
+    "counter": 45690880,
+    "adapterSize": 3088,
+    "sha256": "f2e5a72ccb5d781833e58395715c08e1b7a400c5700e0177b5861ad66f688173",
+    "entries": {
+      "gate": "0x2b92000",
+      "retry": "0x2b92800",
+      "subworld": "0x2b92a00"
+    },
+    "whitelist": [
+      {
+        "guid": "fa70447f-b919-413e-b4af-309c653c4135",
+        "source_group": 1
+      },
+      {
+        "guid": "f6751589-2042-49ab-a421-0918940b2b6d",
+        "source_group": 2
+      }
+    ],
+    "scope": "Story OOC 10.4 kickandrun.OnStarted / herostealscar.OnFinished, verified named HOST among 2-4 humans",
+    "host_milestones_only": true,
+    "loading_acks_untouched": true,
+    "no_timeout": true,
+    "no_fabricated_ready": true,
+    "frame_hook": false,
+    "host_only_input": false,
+    "gameplay_verified": false,
+    "installed": false,
+    "published": false
+  },
+  "host_only_qte_input": false,
+  "native_parts": {
+    "qte_finite_negative_delta": {
+      "adapter": 45694976,
+      "counter": 45699072,
+      "adapterSize": 134,
+      "site": "0xb1491c",
+      "base_sha256": "1e5cab30563ef2da390d70d59efdeb95b3796c7560fb19306206b4ce78025339",
+      "native_assertion_preserved": true,
+      "native_eventsync_preserved": true,
+      "negative_finite_delta_clamped": true,
+      "scope": "Connected LAN only; all roles/2–4 humans, no player-ID assumptions",
+      "guest_world_fixed": false,
+      "qte_sync_fixed": false,
+      "installed": false,
+      "published": false,
+      "gameplay_verified": false
+    },
+    "team_finish_four": {
+      "adapter": 45703168,
+      "counter": 45707264,
+      "adapterSize": 1410,
+      "humans_min": 2,
+      "humans_max": 4,
+      "installed": false,
+      "published": false,
+      "gameplay_verified": false,
+      "scope": "Native mode0 Story result time/rank only",
+      "npc_positions_unchanged": true,
+      "spawns_extended": false,
+      "scripted_qte_finish_fixed": false,
+      "limitation": "Not full4-player support: server start slots and scripted finales still separate."
+    },
+    "cutscene": {
+      "sha256": "881e6e2d47457ae2ff395aa99627d8bee13ceef8761415b3b593bcc9686a147f",
+      "code": "0x2b98000",
+      "data": "0x2b99000",
+      "entries": {
+        "frame": "0x2b98000",
+        "stop": "0x2b988ee",
+        "camera": "0x2b98c46"
+      },
+      "config": 15,
+      "quiet_limit": 15,
+      "sites": [
+        "0xe6072e",
+        "0x2488aa0",
+        "0x2488b54"
+      ],
+      "lan_only": true,
+      "ghost": true,
+      "gameplay_verified": false,
+      "control_loss_signal": true,
+      "lost_ant_stop_failsafe_ms": 120000,
+      "frame_rate_independent_failsafe": true,
+      "pawn_and_sequence_retry_cache_reset": true,
+      "limitations": "AI/controller restore/ghost only act when a ClientAnimationSequence runs or the ANT camera reports active (DEAA09DC). In the helicopter finale neither fired in the older pre-R2 live test (13./14.11.); effect in game unverified. Optional control-loss signal (>=1500ms) is separately enabled for the release candidate. Camera sync of guest scenes is not addressed."
+    },
+    "station_entry": {
+      "adapter": 45694976,
+      "counter": 45699072,
+      "adapterSize": 159,
+      "site": "0x1307968",
+      "target": "0x1306bd0",
+      "gas_data_guid": "a861bb8f-053a-4b02-b664-bbe3a2efcf27",
+      "installed": false,
+      "published": false,
+      "gameplay_verified": false,
+      "server_only": true,
+      "changes_assets": false,
+      "changes_world_collision": false,
+      "scope": "Suppress only gas-prefab SimpleAreaTrigger OnEnter in active driving Story; preserve OOC/intro",
+      "limitation": "Runtime template GUID/type match and actual no-entry need a joint game test."
+    }
+  },
+  "guest_qte_autopass": false,
+  "garage_favorites_presets": true,
+  "version_control_channel": true,
+  "session_overview": true,
+  "diagnostics_opt_in": true,
+  "diagnostics_memory_hooks": false,
+  "repair_verified_sources": true,
+  "personal_ini_preservation": true,
+  "installer_r4_integrated": true,
+  "hud_background_variants": true,
+  "native_team4_candidate": true,
+  "native_station_candidate": true,
+  "native_cutscene_candidate": true,
+  "qte_finite_negative_delta_candidate": true,
+  "server_ai_reference_guard_enabled": false,
+  "full_four_player_support": false,
+  "audio_slider_only": true,
+  "global_music_boost_db": 0,
+  "fixed_music_25db_selectable": false,
+  "user_confirmed_highway20_fixed": true,
+  "user_confirmed_de_autosound_fixed": true,
+  "host_qte_input_mirror": true,
+  "host_qte_remote_live": false,
+  "remote_lights": true,
+  "human_nametags": true,
+  "human_standings_names": true,
+  "cutscene_control_signal": true,
+  "historical_metadata_note": "Older individual adapter hashes/evidence describe their original cohorts; package-manifest.json identifies this release.",
+  "gas_stations_blocked_note": "Entry gate included; actual prevention of native car selection still requires gameplay confirmation."
 }

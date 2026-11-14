@@ -1,4 +1,4 @@
-﻿# Garage – choose your own car
+# Garage – choose your own car
 
 [Deutsch](GARAGE-DE.md) · [Installation and start](README-EN.md)
 

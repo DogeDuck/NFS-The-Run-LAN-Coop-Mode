@@ -1,4 +1,4 @@
-﻿# Play together over Radmin
+# Play together over Radmin
 
 [Deutsch](RADMIN-DE.md) · [Installation](README-EN.md)
 

@@ -17,4 +17,13 @@ if(!(Get-NetFirewallRule -Name $garageRule -ErrorAction SilentlyContinue)){
  Write-Output "Garage-Regel angelegt: $garageRule (nur TCP 25211, nur von $FriendVpnAddress)"
 }
 Write-Output "Spiel-Regel vorhanden: $rule"
-Write-Output "Zum Entfernen: Remove-NetFirewallRule -Name '$rule'; Remove-NetFirewallRule -Name '$garageRule'"
+$sessionRule='TheRunStoryCoop-Session-TCP25212-'+$FriendVpnAddress.Replace('.','-')
+if(!(Get-NetFirewallRule -Name $sessionRule -ErrorAction SilentlyContinue)){
+ New-NetFirewallRule -Name $sessionRule -DisplayName "The Run Story-Coop Session: $FriendVpnAddress" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 25212 -Program (Join-Path $PSHOME 'pwsh.exe') -RemoteAddress $FriendVpnAddress -Profile Any|Out-Null
+}
+Write-Output "Session / Sitzung: TCP 25212, $FriendVpnAddress ($sessionRule)"
+$qteRule='TheRunStoryCoop-QTE-UDP25214-'+$FriendVpnAddress.Replace('.','-')
+if(!(Get-NetFirewallRule -Name $qteRule -ErrorAction SilentlyContinue)){
+ New-NetFirewallRule -Name $qteRule -DisplayName "The Run Host QTE: $FriendVpnAddress" -Direction Inbound -Action Allow -Protocol UDP -LocalPort 25214 -Program (Join-Path $PSHOME 'pwsh.exe') -RemoteAddress $FriendVpnAddress -Profile Any|Out-Null
+}
+Write-Output "Remove / Entfernen: Remove-NetFirewallRule -Name '$rule','$garageRule','$sessionRule','$qteRule'"

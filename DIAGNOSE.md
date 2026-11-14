@@ -1,4 +1,4 @@
-﻿# Optionale Diagnose – Entwicklungskandidat
+# Optionale Diagnose – Entwicklungskandidat
 
 Diese Werkzeuge lesen nur Prozesszustände. Sie ändern weder Fahrzeuge noch
 Spielstände und laden nichts hoch. Python 3.10 oder neuer muss lokal vorhanden

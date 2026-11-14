@@ -5,9 +5,11 @@
     "LICENSE-DefinitiveEdition.txt": "7fe05e5a34881e3befa916fc376c4edc6f95a07738b03623d0a1eef06fab5787",
     "NFSTR_DefinitiveEdition.asi": "21821683c7f0c16436fb1dbbcfc23ecbdd226f59f3bec10d9268b173dabfd5fb",
     "NFSTR_DefinitiveEdition.ini": "c539c2df70fc51f9692d693b7f0d1fcb14313634e02177b2388a47060e91f158",
-    "music25/Lies mich.md": "1671f6a7144d749c55ceb31bf21f5b7cc47b2fe3585195f70a9f419fd924b9ca",
-    "music25/NFS-Audio-Patch.ps1": "3fa04f48f29a7f97963a182a09e8a8f207547dec290fcaa47da0fb6ede049663",
-    "music25/Pruefung.json": "2c57f825a384d099afe7d770e7387e30141373e731a026a09ad7b8a56cb9b21e"
+    "audio-slider/Lies mich.md": "264ffd4d7ab5d8baf745b44d019a9fdcb1c49e75cec7a768ab8c6f217fd3e500",
+    "audio-slider/NFS-Audio-Patch.ps1": "d6ff28f6d1043dac8d4439176bf9092312efe8b23e053c1e44bb7eef93547473",
+    "audio-slider/Pruefung.json": "2c57f825a384d099afe7d770e7387e30141373e731a026a09ad7b8a56cb9b21e",
+    "hudalpha/hud-alpha-plan.json": "afb520915c3b7db10bc4c7ae2df4a3905097305670ecfaa140c2fc7d6238b7ed",
+    "hudalpha/NFS-HUD-Patch.ps1": "48afa1731c5c385b8115b736001dab2a17da0c174b6f4506af81827c1f21cb12"
   },
   "coop_profile": "User defaults: 240 FPS, loading VSync bypass, 4096 shadows / 600 distance; QTE clamp retained"
 }

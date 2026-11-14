@@ -2,6 +2,9 @@
 # Presentation boundary only. Garage-Core and the existing relay protocol stay unchanged.
 . (Join-Path $PSScriptRoot 'Coop-Language.ps1')
 $script:GarageText=@{
+    'Favorit'='Favorite';'Nur Favoriten'='Favorites only';'Set speichern'='Save preset';'Set laden'='Load preset';'Set löschen'='Delete preset'
+    'Fahrzeugset gespeichert.'='Vehicle preset saved.';'Fahrzeugset nicht gefunden.'='Vehicle preset not found.'
+    'Fahrzeugset ausgewählt – mit Übernehmen bestätigen.'='Vehicle preset selected. Confirm with Apply.';'Fahrzeugset gelöscht.'='Vehicle preset deleted.'
     'The Run Koop – Garage'='The Run Co-op – Garage'
     'Suche dein Spiel ...'='Looking for your game ...'; 'Warte auf dein Spiel ...'='Waiting for your game ...'
     'Auto suchen'='Search cars'; 'Paket'='Pack'; 'Variante / Lack'='Variant / paint'

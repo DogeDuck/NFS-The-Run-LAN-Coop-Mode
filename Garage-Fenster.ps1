@@ -11,6 +11,7 @@ trap {
     throw $message
 }
 . (Join-Path $PSScriptRoot 'Garage-Core.ps1')
+. (Join-Path $PSScriptRoot 'Coop-GarageProfiles.ps1')
 Add-Type -AssemblyName System.Windows.Forms,System.Drawing
 [Windows.Forms.Application]::EnableVisualStyles()
 
@@ -30,7 +31,7 @@ function New-Btn([string]$Text,[int]$W=110){
 function Set-On($b,[bool]$on){$b.BackColor=if($on){$C.Accent}else{$C.Panel};$b.ForeColor=if($on){[Drawing.Color]::Black}else{$C.Text}}
 
 $form=New-Object Windows.Forms.Form
-$form.Text=Get-GarageUiText 'The Run Koop – Garage';$form.Size='980,720';$form.MinimumSize='860,640';$form.BackColor=$C.Bg;$form.ForeColor=$C.Text;$form.Font=$font;$form.StartPosition='CenterScreen'
+$form.Text=Get-GarageUiText 'The Run Koop – Garage';$form.Size='980,860';$form.MinimumSize='860,640';$form.BackColor=$C.Bg;$form.ForeColor=$C.Text;$form.Font=$font;$form.StartPosition='CenterScreen'
 
 # Kopfzeile: wer bin ich, wo ist der Server (alles automatisch)
 $top=New-Object Windows.Forms.TableLayoutPanel;$top.Dock='Top';$top.Height=58;$top.Padding='12,6,12,6';$top.BackColor=$C.Panel;$top.ColumnCount=2;$top.RowCount=2
@@ -50,6 +51,11 @@ $left.BackColor=$C.Bg;$left.ForeColor=$C.Text
 $txtSearch=New-Object Windows.Forms.TextBox;$txtSearch.Dock='Top';$txtSearch.PlaceholderText='Auto suchen';$txtSearch.BackColor=$C.Panel;$txtSearch.ForeColor=$C.Text;$txtSearch.BorderStyle='FixedSingle'
 $lst=New-Object Windows.Forms.ListBox;$lst.Dock='Fill';$lst.BackColor=$C.Panel;$lst.ForeColor=$C.Text;$lst.BorderStyle='None';$lst.IntegralHeight=$false;$lst.ItemHeight=22
 $left.Controls.Add($lst);$left.Controls.Add($txtSearch)
+$favoritesBar=[Windows.Forms.FlowLayoutPanel]::new();$favoritesBar.Dock='Top';$favoritesBar.Height=38
+$btnFavorite=New-Btn 'Favorit' 112
+$onlyFavorites=[Windows.Forms.CheckBox]::new();$onlyFavorites.Text='Nur Favoriten';$onlyFavorites.AutoSize=$true;$onlyFavorites.Margin='3,8,3,3'
+$favoritesBar.Controls.AddRange(@($btnFavorite,$onlyFavorites));$left.Controls.Add($favoritesBar)
+$script:GarageProfiles=Read-CoopGarageProfiles
 
 # Rechts: Vorschau + Auswahl
 $right=New-Object Windows.Forms.FlowLayoutPanel;$right.Dock='Fill';$right.FlowDirection='TopDown';$right.WrapContents=$false;$right.Padding='12,8,8,8';$right.AutoScroll=$true
@@ -72,6 +78,15 @@ $lblKey=New-Object Windows.Forms.Label;$lblKey.AutoSize=$true;$lblKey.ForeColor=
 $lblHint=New-Object Windows.Forms.Label;$lblHint.AutoSize=$true;$lblHint.MaximumSize='620,0';$lblHint.ForeColor=$C.Muted
 $lblHint.Text='Du wählst nur dein eigenes Auto. Es kommt beim nächsten Etappenstart und bleibt auch nach Retry, solange dieses Fenster offen ist. Der Host muss sein Garage-Fenster ebenfalls offen haben.'
 $right.Controls.AddRange(@($pic,$lblName,$lblSource,$lblPreview,$lblPack,$packs,$lblVar,$vars,$actions,$lblKey,$lblHint))
+$presetBar=[Windows.Forms.FlowLayoutPanel]::new();$presetBar.AutoSize=$true;$presetBar.MaximumSize='620,0';$presetBar.WrapContents=$true
+$presetName=[Windows.Forms.ComboBox]::new();$presetName.Width=205;$presetName.DropDownStyle='DropDown';$presetName.BackColor=$C.Panel;$presetName.ForeColor=$C.Text
+$btnPresetSave=New-Btn 'Set speichern' 120;$btnPresetLoad=New-Btn 'Set laden' 105;$btnPresetDelete=New-Btn 'Set löschen' 110
+$presetBar.Controls.AddRange(@($presetName,$btnPresetSave,$btnPresetLoad,$btnPresetDelete));$right.Controls.Add($presetBar)
+function Update-GarageProfilesUi{
+ $script:GarageProfiles=Read-CoopGarageProfiles
+ $text=$presetName.Text;$presetName.Items.Clear();foreach($name in @($script:GarageProfiles.Presets.Keys|Sort-Object)){[void]$presetName.Items.Add([string]$name)};$presetName.Text=$text
+ if($state.Car){Set-On $btnFavorite ($script:GarageProfiles.Favorites -ccontains $state.Car.Id)}
+}
 
 $form.Controls.Add($right);$form.Controls.Add($left);$form.Controls.Add($top)
 
@@ -123,12 +138,13 @@ function Select-Car($car,[string]$PackId,[int]$N){
     $lblName.Text=$car.Name
     $lblSource.Text=Get-GarageUiText $(if($car.Category -eq 'fun'){'Spaß (experimentell, nicht offiziell fahrbar) – Liste aus: '+$car.Source}elseif($car.Tier){'Tier '+$car.Tier+' von 6 (Serienversion laut NFS-Wiki)'}else{''})
     Show-Packs;Show-Variants;Show-Preview
+    if($null -ne $btnFavorite){Set-On $btnFavorite ($script:GarageProfiles.Favorites -ccontains $car.Id)}
 }
 
 function Fill-List{
     $q=$txtSearch.Text.Trim()
     $lst.BeginUpdate();$lst.Items.Clear()
-    foreach($car in $catalog.Cars){if(!$q -or $car.Name -like "*$q*"){[void]$lst.Items.Add($car)}}
+    foreach($car in $catalog.Cars){if((!$q -or $car.Name -like "*$q*") -and (!$onlyFavorites.Checked -or $script:GarageProfiles.Favorites -ccontains $car.Id)){[void]$lst.Items.Add($car)}}
     $lst.DisplayMember='Label';$lst.EndUpdate()
     if($state.Car -and $lst.Items.Contains($state.Car)){$lst.SelectedItem=$state.Car}
 }
@@ -190,6 +206,11 @@ function Apply-Key([uint32]$Key,[string]$Label){
 }
 
 $txtSearch.Add_TextChanged({Fill-List})
+$onlyFavorites.Add_CheckedChanged({Fill-List})
+$btnFavorite.Add_Click({try{if($state.Car){Set-CoopGarageFavorite $state.Car.Id (!$script:GarageProfiles.Favorites.Contains($state.Car.Id));Update-GarageProfilesUi;Fill-List}}catch{Set-Status $_.Exception.Message $C.Bad}})
+$btnPresetSave.Add_Click({try{if($state.Variant){Save-CoopGaragePreset $presetName.Text ([ordered]@{CarId=$state.Car.Id;Pack=$state.Pack.Pack;N=$state.Variant.N}) $catalog;Update-GarageProfilesUi;Set-Status 'Fahrzeugset gespeichert.' $C.Ok}}catch{Set-Status $_.Exception.Message $C.Bad}})
+$btnPresetLoad.Add_Click({try{$script:GarageProfiles=Read-CoopGarageProfiles;if(!$script:GarageProfiles.Presets.Contains($presetName.Text)){throw 'Fahrzeugset nicht gefunden.'};$chosen=Resolve-CoopGarageSelection $catalog $script:GarageProfiles.Presets[$presetName.Text];Select-Car $chosen.Car $chosen.Pack.Pack $chosen.Variant.N;$lst.SelectedItem=$chosen.Car;Set-Status 'Fahrzeugset ausgewählt – mit Übernehmen bestätigen.' $C.Ok}catch{Set-Status $_.Exception.Message $C.Bad}})
+$btnPresetDelete.Add_Click({try{Remove-CoopGaragePreset $presetName.Text;$presetName.Text='';Update-GarageProfilesUi;Set-Status 'Fahrzeugset gelöscht.' $C.Ok}catch{Set-Status $_.Exception.Message $C.Bad}})
 $lst.Add_SelectedIndexChanged({if($lst.SelectedItem -and $lst.SelectedItem -ne $state.Car){Select-Car $lst.SelectedItem 'stock' 1}})
 $btnApply.Add_Click({if($state.Variant){Apply-Key ([uint32]$state.Variant.VehicleKey) ($state.Car.Name+' · '+$state.Pack.Label+' '+$state.Variant.N)}})
 $btnStory.Add_Click({Apply-Key 0 'Story-Auto'})
@@ -223,6 +244,8 @@ function Update-GarageLanguage {
     $lblPack.Text=Get-GarageUiText 'Paket';$lblVar.Text=Get-GarageUiText 'Variante / Lack'
     $btnApply.Text=Get-GarageUiText 'Fürs nächste Rennen übernehmen';$btnStory.Text=Get-GarageUiText 'Story-Auto'
     $btnImage.Text=Get-GarageUiText 'Vorschaubild...';$btnShot.Text=Get-GarageUiText 'Foto aus Spiel'
+    $btnFavorite.Text=Get-GarageUiText 'Favorit';$onlyFavorites.Text=Get-GarageUiText 'Nur Favoriten'
+    $btnPresetSave.Text=Get-GarageUiText 'Set speichern';$btnPresetLoad.Text=Get-GarageUiText 'Set laden';$btnPresetDelete.Text=Get-GarageUiText 'Set löschen'
     $lblHint.Text=Get-GarageUiText 'Du wählst nur dein eigenes Auto. Es kommt beim nächsten Etappenstart und bleibt auch nach Retry, solange dieses Fenster offen ist. Der Host muss sein Garage-Fenster ebenfalls offen haben.'
     $lblWho.Text=Get-GarageUiText $script:GarageWhoRaw
     $lblStatus.Text=Get-GarageUiText $script:GarageStatusRaw
@@ -236,6 +259,7 @@ $languageBox.Add_SelectedIndexChanged({
     try{Save-CoopLanguage $script:CoopLanguage}catch{Set-Status $_.Exception.Message $C.Bad}
 })
 Update-GarageLanguage
+Update-GarageProfilesUi
 Fill-List
 $last=Read-GarageLastSelection
 $startCar=if($last){@($catalog.Cars|Where-Object Id -eq $last.CarId)[0]}else{$null}

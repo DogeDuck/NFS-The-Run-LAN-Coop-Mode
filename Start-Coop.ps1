@@ -1,5 +1,5 @@
 ﻿#requires -Version 7.0
-param([ValidateSet('Host','Guest')][string]$Role='Host',[string]$GameDirectory,[string]$HostAddress,[string]$Nickname,[string]$StartCarId,[ValidateRange(1,4)][int]$MaxPlayers=2,[ValidateRange(0,3)][int]$Difficulty=1,[switch]$ShowServerWindow,[switch]$CheckOnly,[ValidateSet('auto','de','en')][string]$Language='auto')
+param([ValidateSet('Host','Guest')][string]$Role='Host',[string]$GameDirectory,[string]$HostAddress,[string]$Nickname,[string]$StartCarId,[ValidateRange(1,4)][int]$MaxPlayers=2,[ValidateRange(0,3)][int]$Difficulty=1,[switch]$ShowServerWindow,[switch]$DiagnosticsEnabled,[switch]$CheckOnly,[ValidateSet('auto','de','en')][string]$Language='auto')
 $ErrorActionPreference='Stop'
 . (Join-Path $PSScriptRoot 'Coop-Language.ps1')
 $script:CoopLanguage=Get-CoopLanguage $Language
@@ -11,6 +11,8 @@ if(!$GameDirectory -and !(Test-Path -LiteralPath (Join-Path $script:CoopStateRoo
 }
 . (Join-Path $PSScriptRoot 'Car-Choice.ps1')
 . (Join-Path $PSScriptRoot 'Car-Preferences.ps1')
+. (Join-Path $PSScriptRoot 'Coop-SessionTools.ps1')
+. (Join-Path $PSScriptRoot 'Coop-SessionConfig.ps1')
 $game=Get-CoopGameDirectory $GameDirectory
 # Abgebrochene Solo-Sitzung (EXE ohne Koop-Code + Marker): Koop-EXE vor der Pruefung zuruecksetzen.
 . (Join-Path $PSScriptRoot 'Coop-SoloExe.ps1')
@@ -31,6 +33,8 @@ $serverArgs='-Server.ServerName StoryCoop -GamePort 25200 -Game.DefaultLayerIncl
 if($MaxPlayers -ne 2){$serverArgs+=" -Game.MaxPlayerCount $MaxPlayers"}
 if($CheckOnly){[ordered]@{Status='verified';Language=$script:CoopLanguage;ShowServerWindow=[bool]$ShowServerWindow;MaxPlayers=$MaxPlayers;DifficultyControlAvailable=$true;HostDifficulty=$(if($Role -eq 'Host'){$Difficulty}else{$null});StartCar=$startCar.Name;StartCarHash=$startCar.HelperHash;Role=$Role;GameDirectory=$game;Nickname=$Nickname;ClientArguments=$clientArgs;ServerArguments=$(if($Role -eq 'Host'){$serverArgs}else{$null})}|ConvertTo-Json;return}
 Assert-CoopClosed
+if($Role -eq 'Guest'){[void](Test-CoopPeerVersion -PackageDirectory $PSScriptRoot -HostAddress $HostAddress -Nickname $Nickname)}
+else{Assert-CoopPeerPortAvailable}
 $stamp=(Get-Date -Format 'yyyyMMdd-HHmmss')+'-'+[Guid]::NewGuid().ToString('N').Substring(0,8)
 $session=Join-Path $script:CoopStateRoot "Sessions\$stamp"
 New-Item -Path $session -ItemType Directory -Force|Out-Null
@@ -49,14 +53,12 @@ if(Test-Path -LiteralPath $profile){
 $configPath=Join-Path $game 'Scripts\NFSTR_LANOnlineHelper.ini'
 $originalConfig=[IO.File]::ReadAllBytes($configPath)
 [IO.File]::WriteAllBytes((Join-Path $session 'LANOnlineHelper-before.ini'),$originalConfig)
-$config=[IO.File]::ReadAllText((Join-Path $PSScriptRoot 'config\NFSTR_LANOnlineHelper.ini'))
-$config=$config -replace '(?m)^ClientName = .*',"ClientName = $Nickname"
-$config=Set-CoopStartCarConfig $config $StartCarId
-if($StartCarId -ne 'story'){$config=$config -replace '(?m)^ForceInitFlow = .*','ForceInitFlow = MainMenu'}
+$config=New-CoopSessionConfig -Original ([IO.File]::ReadAllText($configPath)) -Nickname $Nickname -CarHash $startCar.HelperHash -CustomCar ($StartCarId -ne 'story')
 Save-CoopCarPreference $Role $Nickname $StartCarId
-[IO.File]::WriteAllText($configPath,$config,[Text.Encoding]::ASCII)
+[IO.File]::WriteAllText($configPath,$config,[Text.UTF8Encoding]::new($false))
 $launchConfigHash=Get-CoopFileHash $configPath
-$record=[ordered]@{Version='0.7.7-TEST';Role=$Role;GameDirectory=$game;SessionDirectory=$session;Status='starting';Client=$null;Server=$null;StartCarId=$StartCarId;StartCarHash=$startCar.HelperHash}
+$record=[ordered]@{Version=([string](Get-Content -LiteralPath (Join-Path $PSScriptRoot 'package-manifest.json') -Raw|ConvertFrom-Json).version);Role=$Role;Nickname=$Nickname;HostAddress=$HostAddress;MaxPlayers=$MaxPlayers;Difficulty=$Difficulty;DiagnosticsEnabled=[bool]$DiagnosticsEnabled;GameDirectory=$game;SessionDirectory=$session;Status='starting';Client=$null;Server=$null;StartCarId=$StartCarId;StartCarHash=$startCar.HelperHash}
+$sessionRecord=Join-Path $session 'session.json'
 $active=Join-Path $script:CoopStateRoot 'active-session.json'
 Save-CoopSettings $game
 if($StartCarId -ne 'story'){Write-Host (Get-CoopText StartCar -Values @($startCar.Name));Write-Host (Get-CoopText ViewCars)}
@@ -74,10 +76,15 @@ try {
     $garageJob=Start-Job -ScriptBlock {
         param($worker,$gamePid,$directory,$log)
         & $worker -GameProcessId $gamePid -GameDirectory $directory -LogPath $log
-    } -ArgumentList (Join-Path $PSScriptRoot 'Unlock-Coop-Garage.ps1'),$client.Id,$game,(Join-Path $session 'garage-unlock.log')
+    } -ArgumentList (Join-Path $PSScriptRoot 'Unlock-Coop-Garage.ps1'),$client.Id,$game,$(if($DiagnosticsEnabled){Join-Path $session 'garage-unlock.log'}else{$null})
     $record.Client=Get-CoopProcessRecord $client $clientExe
     $record.Status='client-started'
     $record|ConvertTo-Json -Depth 5|Set-Content -LiteralPath $active -Encoding utf8
+    Write-CoopJsonObjectAtomic $sessionRecord $record
+    $helperInfo=[Diagnostics.ProcessStartInfo]::new((Join-Path $PSHOME 'pwsh.exe'));$helperInfo.UseShellExecute=$false;$helperInfo.CreateNoWindow=$true
+    foreach($arg in @('-NoProfile','-File',(Join-Path $PSScriptRoot 'Start-SessionTools.ps1'),'-SessionFile',$sessionRecord,'-PackageDirectory',$PSScriptRoot)){$helperInfo.ArgumentList.Add($arg)}
+    if($DiagnosticsEnabled){$helperInfo.ArgumentList.Add('-DiagnosticsEnabled')}
+    [void][Diagnostics.Process]::Start($helperInfo)
     if($Role -eq 'Host'){
         $vpn=@(Get-NetIPAddress -AddressFamily IPv4 -ErrorAction SilentlyContinue|Where-Object InterfaceAlias -eq 'Radmin VPN'|Select-Object -ExpandProperty IPAddress)
         if($vpn.Count){Write-Host (Get-CoopText YourIp -Values @(($vpn -join ', ')))}
@@ -100,6 +107,7 @@ try {
         Write-Host (Get-CoopText ServerStarted)
     }else{Write-Host (Get-CoopText GuestWaiting)}
     $record.Status='running'
+    Write-CoopJsonObjectAtomic $sessionRecord $record
     $record|ConvertTo-Json -Depth 5|Set-Content -LiteralPath $active -Encoding utf8
     Write-Host (Get-CoopText Saved -Values @($session))
     Write-Host (Get-CoopText LeaveOpen)
@@ -110,6 +118,7 @@ try {
     if($garageJob){Stop-Job -Job $garageJob -ErrorAction SilentlyContinue;Remove-Job -Job $garageJob -Force -ErrorAction SilentlyContinue}
     if((Test-Path -LiteralPath $configPath) -and (Get-CoopFileHash $configPath) -eq $launchConfigHash){[IO.File]::WriteAllBytes($configPath,$originalConfig)}
     $record.Status='stopped'
+    Write-CoopJsonObjectAtomic $sessionRecord $record
     $record|ConvertTo-Json -Depth 5|Set-Content -LiteralPath $active -Encoding utf8
 }
 

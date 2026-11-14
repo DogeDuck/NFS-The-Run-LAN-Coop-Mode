@@ -7,7 +7,7 @@ folder = fs.GetParentFolderName(WScript.ScriptFullName)
 arguments = " -STA -NoProfile -ExecutionPolicy Bypass -File " & Chr(34) & folder & "\Start-CoopWindow.ps1" & Chr(34)
 sh.CurrentDirectory = folder
 On Error Resume Next
-sh.Run "pwsh.exe" & arguments, 0, False
+sh.Run "powershell.exe -NoProfile -ExecutionPolicy Bypass -File " & Chr(34) & folder & "\Bootstrap-PowerShell7.ps1" & Chr(34) & arguments, 0, False
 launchError = Err.Number
 If launchError <> 0 Then
     Err.Clear

@@ -1,4 +1,4 @@
-﻿# Autoauswahl im Story-Koop
+# Autoauswahl im Story-Koop
 
 Fuer die Story das automatisch gestartete Garage-Fenster verwenden: eigenes Auto,
 Paket und Variante waehlen, dann "Fuers naechste Rennen uebernehmen". Beide

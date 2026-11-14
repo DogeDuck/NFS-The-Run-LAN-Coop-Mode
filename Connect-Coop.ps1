@@ -6,7 +6,10 @@ param([switch]$CheckOnly,[switch]$ValidateForm,[switch]$CarChoiceOnly,[string]$S
 $ErrorActionPreference='Stop'
 . (Join-Path $PSScriptRoot 'Coop-Language.ps1')
 . (Join-Path $PSScriptRoot 'Coop-MusicMix.ps1')
+. (Join-Path $PSScriptRoot 'Coop-HudAlpha.ps1')
 . (Join-Path $PSScriptRoot 'Coop-Graphics.ps1')
+. (Join-Path $PSScriptRoot 'Coop-UserData.ps1')
+. (Join-Path $PSScriptRoot 'Coop-LaunchPreflight.ps1')
 $stateRoot=if($StateDirectory){[IO.Path]::GetFullPath($StateDirectory)}else{Get-CoopPersonalStateRoot}
 $script:CoopLanguage=Get-CoopLanguage $Language $stateRoot
 $starter=Join-Path $PSScriptRoot 'Start-Coop.ps1'
@@ -16,7 +19,7 @@ $launcherFile=Join-Path $stateRoot 'launcher.json'
 
 
 function Read-LauncherState{
-    $s=[ordered]@{Role='Host';Nickname='CoopHost';HostIp='';GameDirectory='';MaxPlayers=2;Difficulty=1;AutoUpdate=$true;ShowServerWindow=$false;MusicMix=$true;MusicMixApplied=''}
+    $s=[ordered]@{Role='Host';Nickname='CoopHost';HostIp='';GameDirectory='';MaxPlayers=2;Difficulty=1;AutoUpdate=$true;ShowServerWindow=$false;MusicMix=$true;MusicMixApplied='';HudAlpha='Original';HudAlphaApplied='';DiagnosticsEnabled=$false}
     foreach($key in $script:CoopGraphicsKeys){$s[$key]=$script:CoopGraphicsDefaults[$key]}
     try{
         if(Test-Path -LiteralPath $launcherFile){
@@ -32,8 +35,11 @@ function Read-LauncherState{
                 $level=0;if([int]::TryParse([string]$j.Difficulty,[ref]$level) -and $level -ge 0 -and $level -le 3){$s.Difficulty=$level}
             }
             if($j.AutoUpdate -is [bool]){$s.AutoUpdate=$j.AutoUpdate}
+            if($j.DiagnosticsEnabled -is [bool]){$s.DiagnosticsEnabled=$j.DiagnosticsEnabled}
             if($j.MusicMix -is [bool]){$s.MusicMix=$j.MusicMix}
             if($j.MusicMixApplied -in @('Target','Original')){$s.MusicMixApplied=[string]$j.MusicMixApplied}
+            if($j.HudAlpha -in @('Original','Dim','Clear')){$s.HudAlpha=[string]$j.HudAlpha}
+            if($j.HudAlphaApplied -in @('Original','Dim','Clear')){$s.HudAlphaApplied=[string]$j.HudAlphaApplied}
             $graphics=ConvertTo-CoopGraphicsSettings $j
             foreach($key in $script:CoopGraphicsKeys){$s[$key]=$graphics[$key]}
         }
@@ -42,19 +48,22 @@ function Read-LauncherState{
     return $s
 }
 function Save-LauncherState($s){
+    $copy=[ordered]@{}
+    if($s -is [System.Collections.IDictionary]){foreach($key in $s.Keys){$copy[$key]=$s[$key]}}else{foreach($property in $s.PSObject.Properties){$copy[$property.Name]=$property.Value}}
+    $s=$copy
     if($null -ne $difficultyBox){$s['Difficulty']=[int]$difficultyBox.SelectedIndex}
     if($null -ne $autoUpdates){$s['AutoUpdate']=[bool]$autoUpdates.Checked}
+    if($null -ne $diagnosticsBox){$s['DiagnosticsEnabled']=[bool]$diagnosticsBox.Checked}
     # Persoenlich: Musik-Mix an/aus und der zuletzt vom Launcher gesetzte Audiozustand.
     if($null -ne $musicMix){$s['MusicMix']=[bool]$musicMix.Checked}
-    $s['MusicMixApplied']=[string]$script:MusicMixApplied
+    if($null -ne $script:MusicMixApplied){$s['MusicMixApplied']=[string]$script:MusicMixApplied}
+    # Persoenlich: HUD-Tacho-Hintergrund (Original/Dim/Clear) und der zuletzt vom Launcher gesetzte UI.sb-Zustand.
+    if($script:HudAlpha -in @('Original','Dim','Clear')){$s['HudAlpha']=[string]$script:HudAlpha}
+    if($script:HudAlphaApplied -in @('Original','Dim','Clear','')){$s['HudAlphaApplied']=[string]$script:HudAlphaApplied}
     # Persoenlich: Grafik-Werte fuer die Definitive-Edition-INI.
     if($null -ne $script:Graphics){foreach($key in $script:CoopGraphicsKeys){$s[$key]=[int]$script:Graphics[$key]}}
     if(!(Test-Path -LiteralPath $stateRoot)){[void](New-Item -ItemType Directory -Path $stateRoot)}
-    $tmp=Join-Path $stateRoot ([IO.Path]::GetRandomFileName())
-    try{
-        [IO.File]::WriteAllText($tmp,($s|ConvertTo-Json),[Text.UTF8Encoding]::new($false))
-        [IO.File]::Move($tmp,$launcherFile,$true)
-    }finally{if(Test-Path -LiteralPath $tmp){Remove-Item -LiteralPath $tmp}}
+    Merge-CoopJsonObject $launcherFile $s
 }
 function Get-LauncherBackground{
     foreach($ext in '.jpg','.jpeg','.png','.bmp'){$p=Join-Path $stateRoot ('launcher-background'+$ext);if(Test-Path -LiteralPath $p){return $p}}
@@ -65,7 +74,7 @@ $state=Read-LauncherState
 # Maschinenlesbare Pruefausgaben (Tools/Tests) immer UTF-8, unabhaengig von der Konsolen-Codepage (z.B. cp850).
 function Set-LauncherCheckOutputEncoding{if([Console]::IsOutputRedirected){try{[Console]::OutputEncoding=[Text.UTF8Encoding]::new($false)}catch{}}}
 if($CheckOnly){Set-LauncherCheckOutputEncoding}
-if($CheckOnly){[ordered]@{Status='configuration-check-only';Language=$script:CoopLanguage;Fields=@('Host','Guest','Solo','HostIp','Nickname','GameDirectory','MaxPlayers','Difficulty','AutoUpdate','ShowServerWindow','MusicMix','Graphics','Language');Preferences=$state;Port=25200;CarChoiceOnly=[bool]$CarChoiceOnly;DifficultyControlAvailable=$true;StartsGame=$false}|ConvertTo-Json -Depth 5;return}
+if($CheckOnly){[ordered]@{Status='configuration-check-only';Language=$script:CoopLanguage;Fields=@('Host','Guest','Solo','HostIp','Nickname','GameDirectory','MaxPlayers','Difficulty','AutoUpdate','ShowServerWindow','MusicMix','Graphics','Language','HudAlpha','DiagnosticsEnabled','SessionOverview','Repair');Preferences=$state;Port=25200;CarChoiceOnly=[bool]$CarChoiceOnly;DifficultyControlAvailable=$true;StartsGame=$false}|ConvertTo-Json -Depth 5;return}
 Add-Type -AssemblyName System.Windows.Forms,System.Drawing
 [Windows.Forms.Application]::EnableVisualStyles()
 $script:Labels=@{}
@@ -96,6 +105,9 @@ $form.Add_Paint({param($s,$e)
 # Halbtransparente Karte rechts: alle Eingaben gut lesbar auf dunklem Grund.
 $card=New-Object Windows.Forms.Panel;$card.Location=New-Object Drawing.Point(380,15);$card.Size=New-Object Drawing.Size(405,560);$card.BackColor=$C.Panel
 $form.Controls.Add($card)
+$sessionButton=[Windows.Forms.Button]::new();$sessionButton.Location='20,235';$sessionButton.Size='210,31';$sessionButton.FlatStyle='Flat';$sessionButton.BackColor=$C.Field;$sessionButton.ForeColor=$C.Text;$form.Controls.Add($sessionButton)
+$repairButton=[Windows.Forms.Button]::new();$repairButton.Location='20,272';$repairButton.Size='210,31';$repairButton.FlatStyle='Flat';$repairButton.BackColor=$C.Field;$repairButton.ForeColor=$C.Text;$form.Controls.Add($repairButton)
+$diagnosticsBox=[Windows.Forms.CheckBox]::new();$diagnosticsBox.Location='20,307';$diagnosticsBox.Size='215,30';$diagnosticsBox.ForeColor=$C.Text;$diagnosticsBox.BackColor=[Drawing.Color]::Transparent;$diagnosticsBox.Checked=[bool]$state.DiagnosticsEnabled;$form.Controls.Add($diagnosticsBox)
 function New-Label([string]$Text,[int]$X,[int]$Y,[int]$W=340,$Color=$C.Muted,[float]$Size=9.5,[switch]$Bold){
     $l=New-Object Windows.Forms.Label;$l.Text=$Text;if($Text -and $script:CoopStrings.en.ContainsKey($Text)){$script:Labels[$Text]=$l;$l.Text=Get-CoopText $Text};$l.Location=New-Object Drawing.Point($X,$Y);$l.Size=New-Object Drawing.Size($W,22)
     $l.ForeColor=$Color;$l.BackColor=[Drawing.Color]::Transparent
@@ -156,6 +168,18 @@ $musicMix=New-Object Windows.Forms.CheckBox;$musicMix.Location=New-Object Drawin
 $musicMix.ForeColor=$C.Text;$musicMix.BackColor=[Drawing.Color]::Transparent;$musicMix.Checked=[bool]$state.MusicMix;$form.Controls.Add($musicMix)
 # Grafik: persoenliche DE-Werte (Standard = ausgeliefertes Profil), Fenster ueber dem Musik-Mix-Schalter.
 $script:Graphics=ConvertTo-CoopGraphicsSettings $state
+# HUD: persoenlicher Asset-Schalter (Standard Original), links ueber dem Grafik-Knopf.
+$script:HudAlpha=[string]$state.HudAlpha;$script:HudAlphaApplied=[string]$state.HudAlphaApplied
+$hudLabel=New-Object Windows.Forms.Label;$hudLabel.Location=New-Object Drawing.Point(20,341);$hudLabel.Size=New-Object Drawing.Size(150,24);$hudLabel.ForeColor=$C.Text;$hudLabel.BackColor=[Drawing.Color]::Transparent;$form.Controls.Add($hudLabel)
+$hudBox=New-Object Windows.Forms.ComboBox;$hudBox.DropDownStyle='DropDownList';$hudBox.Location=New-Object Drawing.Point(170,338);$hudBox.Size=New-Object Drawing.Size(190,28)
+$hudBox.BackColor=$C.Field;$hudBox.ForeColor=$C.Text;$hudBox.FlatStyle='Flat';$form.Controls.Add($hudBox)
+# Kleines Beispielbild der gewaehlten Stufe (hud-previews\<Stufe>.png im Paket; fehlt es, bleibt das Feld leer).
+$hudPreview=New-Object Windows.Forms.PictureBox;$hudPreview.Location=New-Object Drawing.Point(240,240);$hudPreview.Size=New-Object Drawing.Size(120,93);$hudPreview.SizeMode='Zoom';$hudPreview.BackColor=[Drawing.Color]::Transparent;$form.Controls.Add($hudPreview)
+function Update-HudPreview{$file=Join-Path (Join-Path $PSScriptRoot 'hud-previews') ($(if($script:HudAlpha -in @('Dim','Clear')){$script:HudAlpha}else{'Original'})+'.png');$old=$hudPreview.Image;$hudPreview.Image=$null;if($old){$old.Dispose()};if(Test-Path -LiteralPath $file){try{$bytes=[IO.File]::ReadAllBytes($file);$hudPreview.Image=[Drawing.Image]::FromStream([IO.MemoryStream]::new($bytes))}catch{}}}
+function Update-HudChoices{$index=[Math]::Max(0,[Array]::IndexOf([string[]]@('Original','Dim','Clear'),[string]$script:HudAlpha));$hudBox.Items.Clear();foreach($choice in 'HudOriginal','HudDim','HudClear'){[void]$hudBox.Items.Add((Get-CoopText $choice))};$hudBox.SelectedIndex=$index;$hudLabel.Text=Get-CoopText HudAlpha}
+Update-HudChoices
+$hudBox.Add_SelectedIndexChanged({if($hudBox.SelectedIndex -ge 0){$script:HudAlpha=@('Original','Dim','Clear')[$hudBox.SelectedIndex];Update-HudPreview}})
+Update-HudPreview
 $graphicsButton=New-Object Windows.Forms.Button;$graphicsButton.Location=New-Object Drawing.Point(20,374);$graphicsButton.Size=New-Object Drawing.Size(340,32)
 $graphicsButton.FlatStyle='Flat';$graphicsButton.FlatAppearance.BorderColor=$C.Edge;$graphicsButton.BackColor=$C.Field;$graphicsButton.ForeColor=$C.Text;$form.Controls.Add($graphicsButton)
 function Get-GraphicsChoiceText([string]$Key,[int]$Value){
@@ -223,9 +247,10 @@ function Update-Role{
 }
 function Update-Language {
     $form.Text=Get-CoopText Title
+    $sessionButton.Text=Get-CoopText SessionOverview;$repairButton.Text=Get-CoopText RepairFiles;$diagnosticsBox.Text=Get-CoopText DiagnosticsEnabled
     foreach($key in $script:Labels.Keys){$script:Labels[$key].Text=Get-CoopText $key}
     $btnHost.Text=Get-CoopText Host;$btnJoin.Text=Get-CoopText Guest;$btnSolo.Text=Get-CoopText Solo
-    $browse.Text=Get-CoopText Browse;$showServer.Text=Get-CoopText ShowServer;$bgButton.Text=Get-CoopText Background;$musicMix.Text=Get-CoopText MusicMix;Update-GraphicsButton
+    $browse.Text=Get-CoopText Browse;$showServer.Text=Get-CoopText ShowServer;$bgButton.Text=Get-CoopText Background;$musicMix.Text=Get-CoopText MusicMix;Update-HudChoices;Update-GraphicsButton
     $selectedDifficulty=$difficultyBox.SelectedIndex
     $difficultyBox.Items.Clear()
     [void]$difficultyBox.Items.AddRange(@((Get-CoopText DifficultyEasy),(Get-CoopText DifficultyNormal),(Get-CoopText DifficultyHard),(Get-CoopText DifficultyExtreme)))
@@ -343,6 +368,13 @@ function Invoke-LauncherMusicMix([string]$Game){
     catch{[void][Windows.Forms.MessageBox]::Show((Get-CoopText MusicMixFailed -Values @($_.Exception.Message)),(Get-CoopText Title))}
     finally{$form.UseWaitCursor=$false}
 }
+# Vor jedem Start (Spiel geschlossen): HUD-Hintergrund in UI.sb passend setzen. Fehler blockieren den Start nicht.
+function Invoke-LauncherHudAlpha([string]$Game){
+    $form.UseWaitCursor=$true
+    try{$script:HudAlphaApplied=(Invoke-CoopHudAlpha $Game ([string]$script:HudAlpha) ([string]$script:HudAlphaApplied)).State}
+    catch{[void][Windows.Forms.MessageBox]::Show((Get-CoopText HudAlphaFailed -Values @($_.Exception.Message)),(Get-CoopText Title))}
+    finally{$form.UseWaitCursor=$false}
+}
 # Vor jedem Start: persoenliche Grafikwerte in die DE-INI. Fehler blockieren den Start nicht.
 function Invoke-LauncherGraphics([string]$Game){
     try{[void](Set-CoopGraphicsIni $Game $script:Graphics)}
@@ -359,12 +391,14 @@ $start.Add_Click({
     try{
         if($CarChoiceOnly){[Windows.Forms.MessageBox]::Show((Get-CoopText GarageHint),(Get-CoopText GarageTitle))|Out-Null;$form.Close();return}
         if(!$directory.Text.Trim()){throw (Get-CoopText MissingGame)}
-        $game=[IO.Path]::GetFullPath($directory.Text.Trim().Trim('"'))
-        if(!(Test-Path -LiteralPath (Join-Path $game 'Need For Speed The Run.exe'))){throw (Get-CoopText MissingGame)}
+        $readiness=Test-CoopLaunchReadiness -GameDirectory $directory.Text.Trim() -PackageDirectory $PSScriptRoot -Role $script:Mode -HostAddress $ip.Text.Trim() -Language $script:CoopLanguage
+        if(!$readiness.Ready){throw $readiness.Message}
+        $game=$readiness.GameDirectory;$directory.Text=$game
         if($script:Mode -eq 'Solo'){
             # Einzelspieler mit allen Mods (DE, Musik, Debug-Menue); nur LAN-Tweaks fuer die Sitzung aus.
             if(@(Get-Process -Name 'Need For Speed The Run','NFSTR_Server' -ErrorAction SilentlyContinue).Count){throw (Get-CoopText Running)}
             Invoke-LauncherMusicMix $game
+            Invoke-LauncherHudAlpha $game
             Invoke-LauncherGraphics $game
             Save-CoopLanguage $script:CoopLanguage $stateRoot
             Save-LauncherState ([ordered]@{Role='Solo';Nickname=$nickname.Text;HostIp=$ip.Text.Trim();GameDirectory=$game;MaxPlayers=[int]$maxPlayers.Value;ShowServerWindow=$showServer.Checked})
@@ -372,6 +406,8 @@ $start.Add_Click({
             $info=New-Object Diagnostics.ProcessStartInfo
             $info.FileName=Join-Path $PSHOME 'pwsh.exe';$info.UseShellExecute=$false;$info.CreateNoWindow=$true
             foreach($argument in @('-NoProfile','-ExecutionPolicy','Bypass','-File',$solo,'-GameDirectory',$game,'-Language',$script:CoopLanguage,'-ShowErrorDialog')){[void]$info.ArgumentList.Add($argument)}
+            if($diagnosticsBox.Checked){$info.ArgumentList.Add('-DiagnosticsEnabled')}
+            if($nickname.Text -match '^[A-Za-z0-9_-]{1,16}$'){$info.ArgumentList.Add('-Nickname');$info.ArgumentList.Add($nickname.Text)}
             [void][Diagnostics.Process]::Start($info)
             $form.Close();return
         }
@@ -382,12 +418,14 @@ $start.Add_Click({
         $parsed=$null
         if(![Net.IPAddress]::TryParse($address,[ref]$parsed) -or $parsed.AddressFamily -ne [Net.Sockets.AddressFamily]::InterNetwork){throw (Get-CoopText BadIp)}
         Invoke-LauncherMusicMix $game
+        Invoke-LauncherHudAlpha $game
         Invoke-LauncherGraphics $game
         Save-CoopLanguage $script:CoopLanguage $stateRoot
         Save-LauncherState ([ordered]@{Role=$role;Nickname=$nickname.Text;HostIp=$ip.Text.Trim();GameDirectory=$game;MaxPlayers=[int]$maxPlayers.Value;ShowServerWindow=$showServer.Checked})
         $command='& {0} -Role {1} -GameDirectory {2} -HostAddress {3} -Nickname {4} -MaxPlayers {5} -Language {6}' -f (Quote-CoopLiteral $starter),(Quote-CoopLiteral $role),(Quote-CoopLiteral $game),(Quote-CoopLiteral $address),(Quote-CoopLiteral $nickname.Text),[int]$maxPlayers.Value,(Quote-CoopLiteral $script:CoopLanguage)
         if($script:IsHost){$command+=' -Difficulty '+[int]$difficultyBox.SelectedIndex}
         if($script:IsHost -and $showServer.Checked){$command+=' -ShowServerWindow'}
+        if($diagnosticsBox.Checked){$command+=' -DiagnosticsEnabled'}
         $command='try { '+$command+' } catch { Write-Host $_.Exception.Message; Read-Host '+(Quote-CoopLiteral (Get-CoopText StartFailed))+' | Out-Null; exit 1 }'
         $encoded=[Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($command))
         # Konsole bleibt sichtbar: der Host bestaetigt dort, wenn der Gast bereit ist.
@@ -395,13 +433,28 @@ $start.Add_Click({
         $form.Close()
     }catch{[Windows.Forms.MessageBox]::Show((ConvertTo-CoopUserError $_.Exception.Message),(Get-CoopText ConnectionTitle))|Out-Null}
 })
+$sessionButton.Add_Click({
+ $info=[Diagnostics.ProcessStartInfo]::new((Join-Path $PSHOME 'pwsh.exe'));$info.UseShellExecute=$false;$info.CreateNoWindow=$true
+ foreach($arg in @('-NoProfile','-STA','-File',(Join-Path $PSScriptRoot 'Session-Overview.ps1'),'-Language',$script:CoopLanguage,'-StateDirectory',$stateRoot)){$info.ArgumentList.Add($arg)}
+ [void][Diagnostics.Process]::Start($info)
+})
+$repairButton.Add_Click({
+ try{
+  if(!$directory.Text.Trim()){throw (Get-CoopText MissingGame)}
+  $tool=Join-Path $PSScriptRoot 'Repair-Coop.ps1'
+  if(!(Test-Path -LiteralPath $tool)){throw (Get-CoopText MissingStarter)}
+  $form.UseWaitCursor=$true
+  $result=& $tool -GameDirectory $directory.Text.Trim().Trim('"') -PackageDirectory $PSScriptRoot -Apply -Language $script:CoopLanguage
+  [void][Windows.Forms.MessageBox]::Show(($result|ConvertTo-Json -Depth 4),(Get-CoopText RepairFiles))
+ }catch{[void][Windows.Forms.MessageBox]::Show($_.Exception.Message,(Get-CoopText RepairFiles))}finally{$form.UseWaitCursor=$false}
+})
 try{
     if($ValidateForm){
         Set-LauncherCheckOutputEncoding
         $languageStates=[ordered]@{};$originalLanguage=$script:CoopLanguage
         foreach($languageCode in 'de','en'){
             $script:CoopLanguage=$languageCode;Update-Language
-            $languageStates[$languageCode]=[ordered]@{Title=$form.Text;Host=$btnHost.Text;Guest=$btnJoin.Text;Solo=$btnSolo.Text;Nickname=$script:Labels.Nickname.Text;GameDirectory=$script:Labels.GameDirectory.Text;ShowServer=$showServer.Text;MusicMix=$musicMix.Text;Graphics=$graphicsButton.Text;GraphicsTitle=(Get-CoopText GraphicsTitle)}
+            $languageStates[$languageCode]=[ordered]@{Title=$form.Text;Host=$btnHost.Text;Guest=$btnJoin.Text;Solo=$btnSolo.Text;Nickname=$script:Labels.Nickname.Text;GameDirectory=$script:Labels.GameDirectory.Text;ShowServer=$showServer.Text;MusicMix=$musicMix.Text;Graphics=$graphicsButton.Text;GraphicsTitle=(Get-CoopText GraphicsTitle);Session=$sessionButton.Text;Repair=$repairButton.Text;Diagnostics=$diagnosticsBox.Text}
         }
         $script:CoopLanguage=$originalLanguage;Update-Language
         $roleStates=[ordered]@{};$originalMode=$script:Mode
@@ -412,38 +465,12 @@ try{
         $script:Mode=$originalMode;Update-Role
         [ordered]@{Status='form-constructed';Language=$script:CoopLanguage;SelectedLanguage=$languageBox.Text;LanguageStates=$languageStates;Controls=$card.Controls.Count;HostSelected=$script:IsHost;Background=[bool]$form.BackgroundImage;Roles=$roleStates;DifficultyIndex=$difficultyBox.SelectedIndex;DifficultyOptions=@($difficultyBox.Items);AutoUpdate=$autoUpdates.Checked;MusicMix=$musicMix.Checked;Graphics=$script:Graphics;GraphicsDialog=$(try{$probe=New-GraphicsDialog 144;[ordered]@{Boxes=$probe.Boxes.Count;Selected=[ordered]@{FPSLimit=$probe.Boxes.FPSLimit.Text;ForceFov=$probe.Boxes.ForceFov.Text};Hint=$probe.Hint.Text;VsyncHint=$probe.VsyncHint.Text}}finally{if($probe){$probe.Form.Dispose()}});UpdateWorkerStarted=($null -ne $script:UpdateProcess);StartsGame=$false}|ConvertTo-Json -Depth 5
         if($Screenshot){
-            # An unshown Form hides all descendants. Render the detached child panel
-            # separately: it has no top-level window and never takes focus.
-            $bmp=New-Object Drawing.Bitmap($form.Width,$form.Height)
-            $panelBitmap=New-Object Drawing.Bitmap($card.Width,$card.Height)
-            try{
-                $form.DrawToBitmap($bmp,(New-Object Drawing.Rectangle(0,0,$form.Width,$form.Height)))
-                $border=[int](($form.Width-$form.ClientSize.Width)/2)
-                $top=$form.Height-$form.ClientSize.Height-$border
-                $form.Controls.Remove($card)
-                $card.DrawToBitmap($panelBitmap,(New-Object Drawing.Rectangle(0,0,$card.Width,$card.Height)))
-                # Native ComboBox omits its selected text in DrawToBitmap on this
-                # Windows build. Draw the actual control value into the preview.
-                $panelGraphics=[Drawing.Graphics]::FromImage($panelBitmap)
-                try{
-                    foreach($combo in $languageBox,$difficultyBox){
-                        $fieldBrush=[Drawing.SolidBrush]::new($combo.BackColor);$textBrush=[Drawing.SolidBrush]::new($combo.ForeColor)
-                        try{
-                            $panelGraphics.FillRectangle($fieldBrush,$combo.Left+2,$combo.Top+2,$combo.Width-21,$combo.Height-4)
-                            $panelGraphics.DrawString($combo.Text,$combo.Font,$textBrush,$combo.Left+5,$combo.Top+3)
-                        }finally{$textBrush.Dispose();$fieldBrush.Dispose()}
-                    }
-                }finally{$panelGraphics.Dispose()}
-                $graphics=[Drawing.Graphics]::FromImage($bmp)
-                $updateBitmap=New-Object Drawing.Bitmap($updatePanel.Width,$updatePanel.Height)
-                try{
-                    $graphics.DrawImageUnscaled($panelBitmap,$card.Left+$border,$card.Top+$top)
-                    $form.Controls.Remove($updatePanel)
-                    $updatePanel.DrawToBitmap($updateBitmap,(New-Object Drawing.Rectangle(0,0,$updatePanel.Width,$updatePanel.Height)))
-                    $graphics.DrawImageUnscaled($updateBitmap,$updatePanel.Left+$border,$updatePanel.Top+$top)
-                }finally{$form.Controls.Add($updatePanel);$updateBitmap.Dispose();$graphics.Dispose()}
-                $bmp.Save([IO.Path]::GetFullPath($Screenshot),[Drawing.Imaging.ImageFormat]::Png)
-            }finally{$form.Controls.Add($card);$panelBitmap.Dispose();$bmp.Dispose()}
+            # Materialize child handles off-screen. ValidateForm suppresses all workers.
+            $form.ShowInTaskbar=$false;$form.StartPosition='Manual';$form.Location=[Drawing.Point]::new(-20000,-20000)
+            $form.Show();[Windows.Forms.Application]::DoEvents()
+            $bmp=[Drawing.Bitmap]::new($form.Width,$form.Height)
+            try{$form.DrawToBitmap($bmp,[Drawing.Rectangle]::new(0,0,$form.Width,$form.Height));$bmp.Save([IO.Path]::GetFullPath($Screenshot),[Drawing.Imaging.ImageFormat]::Png)}
+            finally{$bmp.Dispose();$form.Hide()}
         }
     }else{$form.ShowDialog()|Out-Null}
 }finally{if($form.BackgroundImage){$form.BackgroundImage.Dispose()};$form.Dispose()}

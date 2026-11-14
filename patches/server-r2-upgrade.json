@@ -1,0 +1,95 @@
+{
+  "FileName": "NFSTR_Server.exe",
+  "OriginalSha256": "f2e5a72ccb5d781833e58395715c08e1b7a400c5700e0177b5861ad66f688173",
+  "PatchedSha256": "6826b87b7b337896c7bf7125475339a458480dbc8699b12850baab9259217bb6",
+  "OriginalLength": 38053888,
+  "PatchedLength": 38054912,
+  "Changes": [
+    {
+      "Offset": 294,
+      "Before": "Iw==",
+      "After": "JQ=="
+    },
+    {
+      "Offset": 317,
+      "Before": "WA==",
+      "After": "Wg=="
+    },
+    {
+      "Offset": 321,
+      "Before": "Hg==",
+      "After": "IA=="
+    },
+    {
+      "Offset": 369,
+      "Before": "QA==",
+      "After": "YA=="
+    },
+    {
+      "Offset": 1936,
+      "Before": "AAAAAAAAAAAA",
+      "After": "Lmdhc2dhdGWf"
+    },
+    {
+      "Offset": 1949,
+      "Before": "AAAA",
+      "After": "QHkC"
+    },
+    {
+      "Offset": 1953,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1957,
+      "Before": "AAAA",
+      "After": "qEQC"
+    },
+    {
+      "Offset": 1972,
+      "Before": "AA==",
+      "After": "IA=="
+    },
+    {
+      "Offset": 1975,
+      "Before": "AAAAAAAAAAA=",
+      "After": "YC5nYXNnc3Q="
+    },
+    {
+      "Offset": 1984,
+      "Before": "AA==",
+      "After": "CA=="
+    },
+    {
+      "Offset": 1989,
+      "Before": "AAAA",
+      "After": "UHkC"
+    },
+    {
+      "Offset": 1993,
+      "Before": "AA==",
+      "After": "Ag=="
+    },
+    {
+      "Offset": 1997,
+      "Before": "AAAA",
+      "After": "qkQC"
+    },
+    {
+      "Offset": 2012,
+      "Before": "AA==",
+      "After": "QA=="
+    },
+    {
+      "Offset": 2015,
+      "Before": "AA==",
+      "After": "wA=="
+    },
+    {
+      "Offset": 15759721,
+      "Before": "Y/L//w==",
+      "After": "k8aIAQ=="
+    }
+  ],
+  "Append": "nGD/BQBQuQKLRCQYhcAPhIQAAACBOKCbWwIPhXgAAACLQBSFwA+EbQAAAIF48I+7YagPhWAAAACBePQ6BQJLD4VTAAAAgXj4tmS74w+FRgAAAIF4/KLvzycPhTkAAAChgFyOAoXAD4QsAAAAgThQbVsCD4UgAAAAi0AQhcAPhBUAAACDeCgDD4QLAAAA/wUEULkCYZ3CBABhnekxK3f+zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+}

@@ -6,11 +6,12 @@
 # siehe Coop-SoloExe.ps1). In der Helper-INI wird nur EnableLANOnlineTweaks auf 0 gesetzt (kein LAN/Koop),
 # EnableDebugModeMenus bleibt 1. Nach Spielende wird die INI byte-genau zurueckgestellt, sofern sie in der
 # Zwischenzeit niemand anders veraendert hat. Spielstand wird nicht angefasst.
-param([Parameter(Mandatory=$true)][string]$GameDirectory,[switch]$CheckOnly,[ValidateSet('auto','de','en')][string]$Language='auto',[switch]$ShowErrorDialog,
+param([Parameter(Mandatory=$true)][string]$GameDirectory,[switch]$CheckOnly,[ValidateSet('auto','de','en')][string]$Language='auto',[switch]$ShowErrorDialog,[switch]$DiagnosticsEnabled,[string]$Nickname='SoloPlayer',
       [string]$DeltaPath=(Join-Path $PSScriptRoot 'patches\client.json'))
 $ErrorActionPreference='Stop'
 . (Join-Path $PSScriptRoot 'Coop-Language.ps1')
 . (Join-Path $PSScriptRoot 'Coop-SoloExe.ps1')
+. (Join-Path $PSScriptRoot 'Coop-SessionTools.ps1')
 $script:CoopLanguage=Get-CoopLanguage $Language
 trap {
     $message=ConvertTo-CoopUserError $_.Exception.Message
@@ -56,7 +57,7 @@ if($CheckOnly){
     return
 }
 
-$soloHash=$null;$swapped=$false;$restoreState=$null
+$soloHash=$null;$swapped=$false;$restoreState=$null;$record=$null;$sessionFile=$null
 try{
     if($null -ne $original){
         if($solo -ne $text){[IO.File]::WriteAllText($ini,$solo,[Text.Encoding]::ASCII)}
@@ -70,10 +71,26 @@ try{
         $base=$null
     }
     $p=Start-Process -FilePath $exe -WorkingDirectory $game -PassThru
+    # Optional launcher metadata must never prevent waiting for the game or
+    # interfere with the verified solo/co-op EXE recovery path.
+    if(Test-Path -LiteralPath (Join-Path $PSScriptRoot 'package-manifest.json')){try{
+    if($Nickname -notmatch '^[A-Za-z0-9_-]{1,16}$'){$Nickname='SoloPlayer'}
+    $stamp=(Get-Date -Format 'yyyyMMdd-HHmmss')+'-'+[Guid]::NewGuid().ToString('N').Substring(0,8)
+    $session=Join-Path $env:LOCALAPPDATA ('TheRunStoryCoop\Sessions\'+$stamp)
+    $sessionFile=Join-Path $session 'session.json'
+    $record=[ordered]@{Version=(Get-CoopCompatibility $PSScriptRoot).Version;Role='Solo';Nickname=$Nickname;MaxPlayers=1;Difficulty=1;GameDirectory=$game;SessionDirectory=$session;Status='running';Client=@{Id=$p.Id;StartTicks=$p.StartTime.ToUniversalTime().Ticks}}
+    Write-CoopJsonObjectAtomic $sessionFile $record
+    Write-CoopJsonObjectAtomic (Join-Path $env:LOCALAPPDATA 'TheRunStoryCoop\active-session.json') $record
+    $helper=[Diagnostics.ProcessStartInfo]::new((Join-Path $PSHOME 'pwsh.exe'));$helper.UseShellExecute=$false;$helper.CreateNoWindow=$true
+    foreach($arg in @('-NoProfile','-File',(Join-Path $PSScriptRoot 'Start-SessionTools.ps1'),'-SessionFile',$sessionFile,'-PackageDirectory',$PSScriptRoot)){$helper.ArgumentList.Add($arg)}
+    if($DiagnosticsEnabled){$helper.ArgumentList.Add('-DiagnosticsEnabled')}
+    [void][Diagnostics.Process]::Start($helper)
+    }catch{Write-Warning ('Session tools unavailable / Sitzungswerkzeuge nicht verfuegbar: '+$_.Exception.Message)}}
     $p.WaitForExit()
     # Auch ein vom Spiel selbst neu gestarteter Prozess muss beendet sein, bevor die Koop-EXE zurueckkommt.
     while(Test-SoloGameRunning){Start-Sleep -Seconds 2}
 }finally{
+    if($record){try{$record.Status='stopped';Write-CoopJsonObjectAtomic $sessionFile $record;Write-CoopJsonObjectAtomic (Join-Path $env:LOCALAPPDATA 'TheRunStoryCoop\active-session.json') $record}catch{Write-Warning $_.Exception.Message}}
     $restoreError=$null
     if($swapped){try{$restoreState=Restore-SoloCoopExe $game $DeltaPath}catch{$restoreError=$_}}
     if($original -and (Test-Path -LiteralPath $ini) -and (Get-FileHash -LiteralPath $ini -Algorithm SHA256).Hash -eq $soloHash){

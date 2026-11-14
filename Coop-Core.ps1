@@ -15,13 +15,17 @@ function Get-CoopGameDirectory([string]$Requested){
     if(!$Requested -and (Test-Path -LiteralPath $settings)){$Requested=(Get-Content -LiteralPath $settings -Raw|ConvertFrom-Json).GameDirectory}
     if(!$Requested){$Requested=Read-Host 'Vollstaendiger Spielordner (enthaelt die Spiel-EXE)'}
     $resolved=[IO.Path]::GetFullPath($Requested.Trim('"')).TrimEnd('\')
+    if((Test-Path -LiteralPath $resolved -PathType Leaf) -and [IO.Path]::GetFileName($resolved) -ieq 'Need For Speed The Run.exe'){$resolved=[IO.Path]::GetDirectoryName($resolved)}
     if($resolved.Split('\') -contains 'THERUNBACKUP'){throw 'THERUNBACKUP wird nicht verwendet.'}
     if(!(Test-Path -LiteralPath (Join-Path $resolved 'Need For Speed The Run.exe') -PathType Leaf)){throw 'Im angegebenen Ordner fehlt die Spiel-EXE.'}
     return $resolved
 }
 function Save-CoopSettings([string]$Directory){
-    New-Item -Path $script:CoopStateRoot -ItemType Directory -Force|Out-Null
-    [ordered]@{GameDirectory=$Directory}|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $script:CoopStateRoot 'settings.json') -Encoding utf8
+    [void][IO.Directory]::CreateDirectory($script:CoopStateRoot)
+    $path=Join-Path $script:CoopStateRoot 'settings.json';$data=[ordered]@{}
+    if(Test-Path -LiteralPath $path){$old=Get-Content -LiteralPath $path -Raw -Encoding utf8|ConvertFrom-Json -ErrorAction Stop;foreach($p in $old.PSObject.Properties){$data[$p.Name]=$p.Value}}
+    $data.GameDirectory=$Directory;$tmp=Join-Path $script:CoopStateRoot ([IO.Path]::GetRandomFileName())
+    try{[IO.File]::WriteAllText($tmp,($data|ConvertTo-Json -Depth 16),[Text.UTF8Encoding]::new($false));if(Test-Path -LiteralPath $path){[IO.File]::Replace($tmp,$path,[NullString]::Value)}else{[IO.File]::Move($tmp,$path)}}finally{if(Test-Path -LiteralPath $tmp){Remove-Item -LiteralPath $tmp}}
 }
 function Assert-CoopClosed {
     if(@(Get-Process -Name 'Need For Speed The Run','NFSTR_Server' -ErrorAction SilentlyContinue).Count){throw 'Bitte Spiel und Testserver zuerst schliessen.'}

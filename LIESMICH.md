@@ -1,18 +1,11 @@
-﻿# v0.7.7-TEST
+# Installation — v0.7.8-TEST
 
-[Changes / Änderungen](CHANGELOG.md)
-[Updates and difficulty / Updates und Schwierigkeit](UPDATES-DIFFICULTY.md)
+1. Spiel und Server schließen. Auf jedem PC das eigene unterstützte Originalspiel und die benötigte LAN-Basismod installieren.
+2. TheRun-Coop-v0.7.8-TEST.zip vollständig entpacken. Den ganzen Ordner behalten, nicht nur den Installer.
+3. Install.cmd starten und den Spielordner wählen. Der Installer prüft bekannte Dateihashes, sichert geänderte Installationsdateien und erhält persönliche INIs. PowerShell7 wird bei Bedarf bereitgestellt. Spielstände werden nie zurückgespielt.
+4. Launch-Coop.cmd oder Launch-Coop.vbs starten. Host / Beitreten / Solo wählen; Gäste geben die VPN-IPv4 des Hosts ein. Alle verwenden dieselbe Paketversion: [Radmin-Anleitung](RADMIN-DE.md).
+5. Nur der Host startet die Story. Alle Garage-Fenster geöffnet lassen, damit die Autowahl erhalten bleibt. Der Host-QTE-Helfer startet automatisch. Falls nötig freundbezogene Regeln für TCP25211/25212 und UDP25200/25214 über Enable-HostFirewall.ps1 auf den betreffenden PCs anlegen.
 
-# The Run Story Co-op / Koop
+[Funktionen / Vorschau](README.md) · [Sitzung, Garage und Diagnose](SESSION-DE.md) · [Änderungen und bekannte Fehler](CHANGELOG.md)
 
-[Deutsch: Installation und Start](README-DE.md) · [English: installation and start](README-EN.md)
-
-[Radmin Deutsch](RADMIN-DE.md) · [Radmin English](RADMIN-EN.md)
-
-[Garage Deutsch](GARAGE-DE.md) · [Garage English](GARAGE-EN.md)
-
-Start: `Launch-Coop.cmd` / `Launch-Coop.vbs` · Installation: `Install.cmd`
-
-Launcher und Garage sind zweisprachig. Der bestehende Installer und weitere Helfer enthalten noch deutsche Meldungen; siehe die Sprach-Anleitungen.
-
-Launcher and garage are bilingual. The existing installer and other helpers still contain German messages; see the language-specific guides.
+Testversion: Gesamtpaket, QTE-Netztransport, neue Cutscene-/Lichtfunktionen und vollständige Vier-PC-Unterstützung sind noch nicht live bestätigt. Vorher Spielstand sichern. Der alte feste25-dB-Mix wird nicht angeboten.

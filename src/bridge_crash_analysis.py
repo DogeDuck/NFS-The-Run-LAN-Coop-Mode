@@ -13,6 +13,8 @@ from minidump_memory import DumpMemory,MissingMemory
 from pe_image_readonly import PE32
 
 CLIENT_HASHES={'2cb4570c34e46cc74ccded44f8f38338c12a0edfbb33a74572b72fc6e11ad249',
+               # v0.7.3: all native lookup/stack CONTRACT bytes verified09.11.
+               'c3fba53c787f6b4edf97b142e2477f3fec4a8bf9ff0c6adacdf7beadd17cc0d6',
                '8140947e9b11cdfa4cac5d3c7f05820a96246f447399ed6adc6187355910d5c6',
                'c9d48e500ef82efc642edf2db848a9072e56fbc114e283173d6e7e58bac634a6',
                # NOGUARD candidate: all native lookup/stack CONTRACT bytes verified.

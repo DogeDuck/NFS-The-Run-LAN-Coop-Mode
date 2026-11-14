@@ -1,4 +1,4 @@
-﻿# Gemeinsam über Radmin spielen
+# Gemeinsam über Radmin spielen
 
 [English](RADMIN-EN.md) · [Installation](README-DE.md)
 

@@ -1,4 +1,4 @@
-﻿# Garage – eigenes Auto wählen
+# Garage – eigenes Auto wählen
 
 [English](GARAGE-EN.md) · [Start und Installation](README-DE.md)
 
