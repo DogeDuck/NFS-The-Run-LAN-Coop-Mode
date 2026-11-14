@@ -9,7 +9,8 @@ function Get-CoopCompatibility {
  $version=[string]$manifest.version
  if(!$version -or $version.Length -gt 128){throw 'Invalid package version / Ungueltige Paketversion.'}
  $text='1|'+$version+'|'+([string]$manifest.client_sha256).ToLowerInvariant()+'|'+([string]$manifest.server_sha256).ToLowerInvariant()
- $hash=[Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes($text))).ToLowerInvariant()
+ $sha=[Security.Cryptography.SHA256]::Create()
+ try{$hash=([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($text)))).Replace('-','').ToLowerInvariant()}finally{$sha.Dispose()}
  return [ordered]@{Protocol=1;Version=$version;Compatibility=$hash;ClientSha256=$manifest.client_sha256;ServerSha256=$manifest.server_sha256}
 }
 function Read-CoopPeerLine {
@@ -77,6 +78,11 @@ function Test-CoopPeerVersion {
   throw ('Host and guest need the same mod package / Host und Gast brauchen dasselbe Modpaket. Host: '+[string]$reply.Version+'; local/lokal: '+$compat.Version)
  }
  return $reply
+}
+function Assert-CoopPeerPortAvailable {
+ param([int]$Port=25212)
+ $listener=[Net.Sockets.TcpListener]::new([Net.IPAddress]::Any,$Port)
+ try{$listener.Start(1)}catch{throw 'Launcher session port already in use (TCP 25212) / Launcher-Sitzungsport ist bereits belegt (TCP 25212).'}finally{$listener.Stop()}
 }
 function Test-CoopSessionProcess {
  param([Parameter(Mandatory)]$Record)

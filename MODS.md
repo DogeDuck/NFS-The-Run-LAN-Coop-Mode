@@ -8,7 +8,7 @@ or source file is not an announcement that its development candidate is released
 | Story Co-op native patches | NPCs, team results, Battle phases, story roles and starts | Published package `patches/`, source under `src/` |
 | Bilingual launcher | Host/Join/Solo, difficulty, graphics, updates | `Connect-Coop.ps1`, language guides |
 | Garage | Own-player car selection and host relay | `Garage-Fenster.ps1`, `Garage-Core.ps1`, GARAGE-DE/EN.md |
-| Music Louder and cinema mix | Reversible changes to mixer values; no songs included | `addons/music25/`, launcher music option |
+| Film Experience slider mix | The only supported audio mix; no global music boost, no songs included | Upcoming packages: `addons/audio-slider/`; in-game Film Experience slider |
 | Speedometer background | Original/Dim/Clear texture-alpha patch | `mods/hud-background/` in this repository; next-package integration pending |
 | QTE local-actor / host milestones | Experimental story actor selection and two10.4 milestones | Development documentation; not a complete QTE sync guarantee |
 | Installer and runtime hardening | Portable PowerShell7, verified staging, safe cleanup and preflight | Development candidate, being integrated |
@@ -17,8 +17,8 @@ or source file is not an announcement that its development candidate is released
 
 ## Music versions
 
-The historical **Music Louder +25dB** edition and the later revised cinema mix are
-different presets. Current development target: Global_Music unchanged, race music
+The fixed **Music Louder +25dB** edition is retired and is not selectable in new
+packages. The only supported target is the slider mix: Global_Music unchanged, race music
 +6dB on the Film Experience film side, premixed scenes +8dB, affected car groups
 rebalanced. Original/earlier known patch states are recognized for safe restoration.
 Use the description shipped with your downloaded version.

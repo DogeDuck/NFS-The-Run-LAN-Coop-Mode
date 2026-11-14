@@ -21,7 +21,7 @@ and a cleaner HUD.
 | **Story Co-op** | LAN story races, restored NPC competition, team results, Battle/Eliminator fixes and improved human starting positions | Included in test builds; individual story scenes still have known issues |
 | **Launcher + Solo with mods** | Host / Join / Solo, saved host IP, host difficulty, personal graphics and music settings, GitHub updates, German / English | In published test build; newer additions are being integrated |
 | **Garage car changer** | Choose your own car, style pack and paint; host relays guest choices; keep the selected car for later events | Included; avoid the native gas-station car selector |
-| **Music Louder / cinema mix** | Our historical +25 dB music patch and later revised race/cinematic mixes, with checked reversible patching | Music option included; versions use different mixes—see MODS.md |
+| **Film Experience slider mix** | Adjust the race music/car balance with the game's slider; checked reversible patching | The only audio mix offered in upcoming builds; no global +25 dB boost |
 | **Speedometer background mod** | Original, 15% opacity or removed backgrounds; preview in the launcher | Locally installed/tested as an asset patch; inclusion in the next public package pending |
 | **QTE / cutscene work** | Local actor selection and host-owned story milestones; work on scene control and shared QTEs | R2 improved visibility in local tests; full synchronized completion remains under test |
 
@@ -50,10 +50,10 @@ It is a visual preference, not a guarantee against OLED image retention.
 
 ![Music mod overview](docs/showcase/music.svg)
 
-The original louder-music edition used **+25 dB**. The later cinema mix was revised
-after some races became too loud: the current development mix uses a Film Experience
-balance with race music +6 dB and premixed scenes +8 dB; those scene streams also
-contain dialogue/effects. The current builder no longer applies a blanket +25 dB.
+Only the **Film Experience slider mix** is offered for upcoming builds. Global
+music gain stays unchanged. The slider changes the race music/car balance; the
+film side uses race music +6 dB and cars −4 dB. Premixed scenes use +8 dB and also
+contain dialogue/effects. The old fixed +25 dB version has been retired.
 No commercial music or game audio is redistributed here.
 
 ## Start playing

@@ -14,6 +14,11 @@ STOP=0x72F6CC1D
 COUNT,STARTS,STOPS=0x00,0x04,0x08
 TABLE,MAX_CAMERAS=0x20,64
 SIZE=0x140
+# Spare fields after the bounded pointer table. GetTickCount is already imported
+# by this exact client. A frame count is unsuitable on 60..240+ Hz displays.
+LAST_TICK,AGE_MS,CLOCK_SET=0x120,0x124,0x128
+GETTICK_IAT=0x2A8B8E4
+LOST_STOP_MS=120000
 
 def make_code(base,data):
     c=Asm(base,data)
@@ -52,7 +57,7 @@ def make_code(base,data):
 def initial():return bytes(SIZE)
 
 def make_combined(base,data,ghost=False):
-    """Offline candidate: resets context on level/entity change, frame-age failsafe.
+    """Offline candidate: resets context on level/entity change, elapsed-time failsafe.
     Still needs leased live controller; same-level Retry is not a verified scene edge.
     ghost (Claude 14.11.): optional native vehicle ghost, default False keeps the bytes unchanged.
     """

@@ -90,7 +90,9 @@ def build(base, config=CONFIG, quiet_limit=15):
                   entries={k: hex(v) for k, v in entries.items()}, config=config, quiet_limit=quiet_limit,
                   sites=[hex(s) for s, _ in expected], lan_only=True, ghost=bool(config & a.CFG_GHOST),
                   gameplay_verified=False,
+                  lost_ant_stop_failsafe_ms=ant.LOST_STOP_MS,frame_rate_independent_failsafe=True,
+                  pawn_and_sequence_retry_cache_reset=True,
                   limitations='AI/controller restore/ghost only act when a ClientAnimationSequence runs or the ANT '
-                              'camera reports active (DEAA09DC). In the helicopter finale neither fired (13./14.11.); '
+                              'camera reports active (DEAA09DC). In the helicopter finale neither fired in the older pre-R2 live test (13./14.11.); '
                               'effect in game unverified. Camera sync of guest scenes is not addressed.')
     return bytes(patched), report

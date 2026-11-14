@@ -150,7 +150,7 @@ def subroutines(c):
 
 
 def clear_ant_scope(c,ant_count,context=False):
-    for offset in ((0,0x0C,0x10,0x14,0x1C) if context else (0,0x14,0x1C)):
+    for offset in ((0,0x0C,0x10,0x14,0x1C,0x120,0x124,0x128) if context else (0,0x14,0x1C,0x120,0x124,0x128)):
         c.emit('c705');c.imm(ant_count+offset);c.imm(0)
     # Clear cached pointer values without dereferencing any camera object.
     c.emit('515733c0bf');c.imm(ant_count+0x20)
@@ -175,17 +175,36 @@ def frame_code(c, ant_count=None, ghost=False):
         c.ld(EAX, ESP, 0x18); c.emit('a3'); c.imm(ant_count+0x0C)
         c.emit('893d'); c.imm(ant_count+0x10)
         c.label('ant_context_ok')
-        # Bounded fallback if a destroyed camera never emits Stop. Frame budget,
-        # deliberately not advertised as a wall-clock duration or complete Retry fix.
+        # Bounded fallback if a destroyed camera never emits Stop. Native
+        # GetTickCount elapsed time, with unsigned subtraction across wraparound.
+        # Never end a long scene early just because the user's FPS are high.
+        from ant_scene_scope import GETTICK_IAT,LOST_STOP_MS,LAST_TICK,AGE_MS,CLOCK_SET
         c.ldg(EAX, ant_count); c.test(EAX); c.branch('0f84', 'ant_age_done')
         c.emit('ff05'); c.imm(ant_count+0x14)
-        c.ldg(EAX,ant_count+0x14); c.emit('3d08070000')  # 1800 client frames
+        c.emit('ff15');c.imm(GETTICK_IAT)
+        c.ldg(EDX,ant_count+CLOCK_SET);c.test(EDX);c.branch('0f85','ant_clock_ready')
+        c.emit('a3');c.imm(ant_count+LAST_TICK)
+        c.emit('c705');c.imm(ant_count+CLOCK_SET);c.imm(1)
+        c.label('ant_clock_ready')
+        c.emit('2b05');c.imm(ant_count+LAST_TICK)
+        c.emit('a3');c.imm(ant_count+AGE_MS)
+        c.emit('3d');c.imm(LOST_STOP_MS)
         c.branch('0f82','ant_age_done')
         c.emit('ff05');c.imm(ant_count+0x18)
         clear_ant_scope(c,ant_count)
         c.label('ant_age_done')
+        # No active camera: the next one gets a fresh time origin, even on
+        # same-level Retry where the engine may reuse its camera pointers.
+        c.ldg(EAX,ant_count);c.test(EAX);c.branch('0f85','ant_clock_done')
+        for off in (LAST_TICK,AGE_MS,CLOCK_SET):
+            c.emit('c705');c.imm(ant_count+off);c.imm(0)
+        c.label('ant_clock_done')
     c.lda(EAX, ENGAGED); c.test(EAX); c.branch('0f84', 'scan')
-    c.cmpr(EAX, EDI); c.branch('0f84', 'scan'); c.seti(ENGAGED, 0)       # vehicle replaced: forget ownership
+    c.cmpr(EAX, EDI); c.branch('0f84', 'scan')
+    # A new pawn is a new local scene context. Do not retain the old pawn's
+    # "already switched" latch or actor membership across a respawn/Retry.
+    # Old pawn pointers are deliberately not dereferenced during cleanup.
+    for off in (ENGAGED,SCENE_LATCH,SEEN_N,PREV):c.seti(off,0)
     c.label('scan')
     if ghost:
         # Replaced vehicle: forget ghost ownership, never touch the new one's flag on its behalf.
@@ -321,7 +340,7 @@ def frame_code(c, ant_count=None, ghost=False):
     c.emit('6a006a006a00'); c.mov(ECX, EDI); c.branch('e8', SET_AI)
     c.branch('e9', 'done')
     c.label('noent')
-    c.seti(ENGAGED, 0)
+    for off in (ENGAGED,SCENE_LATCH,SEEN_N,CUR_N,RUNNING,LOCAL_ACTOR,QUIET):c.seti(off,0)
     if ghost: c.seti(GHOST_VEH, 0)
     if ant_count is not None:clear_ant_scope(c,ant_count,context=True)
     c.label('done')
@@ -378,6 +397,10 @@ def stop_code(c):
     c.inc(RESTORED)
     c.label('p_next')
     c.emit('4383fb08'); c.branch('0f82', 'p_loop')
+    # The engine can stop and restart the same sequence object between frames.
+    # Re-resolve actor membership next frame rather than reusing that object's
+    # pre-Retry classification. Existing AI ownership is reconciled normally.
+    c.seti(SEEN_N,0)
     c.emit('83c44c619dc3')
 
 
