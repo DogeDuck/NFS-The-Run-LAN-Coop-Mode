@@ -10,6 +10,7 @@ $ErrorActionPreference='Stop'
 . (Join-Path $PSScriptRoot 'Coop-Graphics.ps1')
 . (Join-Path $PSScriptRoot 'Coop-UserData.ps1')
 . (Join-Path $PSScriptRoot 'Coop-LaunchPreflight.ps1')
+. (Join-Path $PSScriptRoot 'Coop-RepairDialog.ps1')
 $stateRoot=if($StateDirectory){[IO.Path]::GetFullPath($StateDirectory)}else{Get-CoopPersonalStateRoot}
 $script:CoopLanguage=Get-CoopLanguage $Language $stateRoot
 $starter=Join-Path $PSScriptRoot 'Start-Coop.ps1'
@@ -445,7 +446,8 @@ $repairButton.Add_Click({
   if(!(Test-Path -LiteralPath $tool)){throw (Get-CoopText MissingStarter)}
   $form.UseWaitCursor=$true
   $result=& $tool -GameDirectory $directory.Text.Trim().Trim('"') -PackageDirectory $PSScriptRoot -Apply -Language $script:CoopLanguage
-  [void][Windows.Forms.MessageBox]::Show(($result|ConvertTo-Json -Depth 4),(Get-CoopText RepairFiles))
+  $form.UseWaitCursor=$false
+  Show-CoopRepairResultDialog -Result $result -Owner $form
  }catch{[void][Windows.Forms.MessageBox]::Show($_.Exception.Message,(Get-CoopText RepairFiles))}finally{$form.UseWaitCursor=$false}
 })
 try{

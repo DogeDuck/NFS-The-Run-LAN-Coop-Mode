@@ -6,11 +6,12 @@ and a cleaner HUD.
 
 ![The Run Story Co-op mod collection](docs/showcase/collection.svg)
 
-[Download v0.7.8-TEST](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/releases/tag/v0.7.8-TEST)
+[Download Setup.exe — recommended / empfohlen](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/releases/download/v0.7.9-TEST/TheRun-Coop-v0.7.9-TEST-Setup.exe)
+· [Portable ZIP](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/releases/download/v0.7.9-TEST/TheRun-Coop-v0.7.9-TEST.zip) · [Release notes](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/releases/tag/v0.7.9-TEST)
 · [English setup](README-EN.md) · [Deutsche Anleitung](README-DE.md)
 · [All mods / Alle Mods](MODS.md)
 
-> **v0.7.8-TEST.** Includes the new host QTE mirror, cutscene AI/collision protection,
+> **v0.7.9-TEST.** Includes the new host QTE mirror, cutscene AI/collision protection,
 > player lights/names and launcher improvements. The combined build and remote QTE
 > transport still need gameplay testing. Full campaign/four-player compatibility is unverified.
 
@@ -19,10 +20,10 @@ and a cleaner HUD.
 | Project | What it adds | Status |
 |---|---|---|
 | **Story Co-op** | LAN story races, restored NPC competition, team results, Battle/Eliminator fixes and improved human starting positions | Included in test builds; individual story scenes still have known issues |
-| **Launcher + Solo with mods** | Host / Join / Solo, saved host IP, host difficulty, personal graphics and music settings, GitHub updates, German / English | Included in v0.7.8-TEST; newest combination requires gameplay testing |
+| **Launcher + Solo with mods** | Host / Join / Solo, saved host IP, host difficulty, personal graphics and music settings, GitHub updates, German / English | Included in v0.7.9-TEST; newest combination requires gameplay testing |
 | **Garage car changer** | Choose your own car, style pack and paint; host relays guest choices; keep the selected car for later events | Included; avoid the native gas-station car selector |
 | **Film Experience slider mix** | Adjust the race music/car balance with the game's slider; checked reversible patching | Only slider mix included; no global +25 dB boost |
-| **Speedometer background mod** | Original, 15% opacity or removed backgrounds; preview in the launcher | Included in v0.7.8-TEST; asset patch locally applied |
+| **Speedometer background mod** | Original, 15% opacity or removed backgrounds; preview in the launcher | Included in v0.7.9-TEST; asset patch locally applied |
 | **QTE / cutscene work** | Local actor selection and host-owned story milestones; work on scene control and shared QTEs | Host QTE input passed local10.4; new remote transport and cutscene protection are experimental |
 
 ### Garage and launcher
@@ -35,7 +36,7 @@ the newest garage/launcher combination has been tested offline.*
 ![Launcher development preview](docs/showcase/launcher.png)
 
 *German and English interfaces. Opt-in diagnostics, session overview and repair
-are included in v0.7.8-TEST. These controls do not imply that every native gameplay fix is complete.*
+are included in v0.7.9-TEST. These controls do not imply that every native gameplay fix is complete.*
 
 ### HUD background choices
 
@@ -56,10 +57,18 @@ film side uses race music +6 dB and cars −4 dB. Premixed scenes use +8 dB and 
 contain dialogue/effects. The old fixed +25 dB version has been retired.
 No commercial music or game audio is redistributed here.
 
+## Guided installation
+
+![Guided setup / Geführte Installation](docs/showcase/setup.png)
+
+Download [**TheRun-Coop-v0.7.9-TEST-Setup.exe**](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/releases/download/v0.7.9-TEST/TheRun-Coop-v0.7.9-TEST-Setup.exe) and run it.
+It includes the mod package and prepares the verified LAN base and PowerShell7.
+For portable ZIP users, run **Setup.vbs**.
+
 ## Start playing
 
-1. Own and install the supported PC game and the required LAN base mod.
-2. Download and extract the complete published test package, then run `Install.cmd`.
+1. Install your own supported PC game (The Run1.1.0.0).
+2. Run the linked Setup.exe and select the game folder. The setup obtains/verifies the LAN base and freshly rebuilds the managed mod files. **Use the release installer, not Code → Download ZIP.**
 3. Open `Launch-Coop.cmd` or `Launch-Coop.vbs`; choose Host, Join or Solo.
 4. For remote LAN play, follow [Radmin English](RADMIN-EN.md) / [Radmin Deutsch](RADMIN-DE.md).
 5. Keep the garage open to retain your car choice. Back up your save before testing.
@@ -68,7 +77,7 @@ No commercial music or game audio is redistributed here.
 
 Unser Projekt verbindet Koop-Rennfixes mit Launcher, Garage, Musik-Mix und optional
 reduziertem Tacho-Hintergrund. Die veröffentlichten Downloads sind Testversionen.
-v0.7.8-TEST enthält Favoriten/Sets, Sitzungsübersicht, Reparatur und die HUD-Auswahl.
+v0.7.9-TEST enthält Favoriten/Sets, Sitzungsübersicht, Reparatur und die HUD-Auswahl.
 QTEs/Cutscenes sind weiter in Arbeit; ein lokaler Test mit nur einer Person kann
 den unbedienten zweiten Client durch fehlende Eingaben scheitern lassen.
 

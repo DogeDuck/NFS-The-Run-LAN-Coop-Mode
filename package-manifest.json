@@ -1,5 +1,5 @@
 {
-  "version": "0.7.8-TEST",
+  "version": "0.7.9-TEST",
   "files": [
     {
       "path": "addons/audio-slider/Lies mich.md",
@@ -73,8 +73,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 2153,
-      "sha256": "25c7b3b4d1a26c1a5dff738d23b83d58981a031f91a17b05b16d32c13468bd7c"
+      "bytes": 2398,
+      "sha256": "8be4d626be0862f967c35d741b273626ddeb50ebe1878e42e92c8ba4fd68a2b6"
     },
     {
       "path": "config/chicago-bundle-owner-catalog.json",
@@ -88,8 +88,8 @@
     },
     {
       "path": "Connect-Coop.ps1",
-      "bytes": 39739,
-      "sha256": "6eb69b46af032b7c4dc80a65cbdb570dcaa1d5684f4c1de37a93923326e060dd"
+      "bytes": 39778,
+      "sha256": "1bab90c4b6025512cb2ab12612a71e323017053a7c220dc8ce42d35e75e5b5bd"
     },
     {
       "path": "Coop-Core.ps1",
@@ -117,9 +117,14 @@
       "sha256": "896298333d9d3c8468f0b08162f75d342ae75fb38b472c9c2bf484e8f839b4e3"
     },
     {
+      "path": "Coop-LanDownload.ps1",
+      "bytes": 4224,
+      "sha256": "b837cec42e0fe2f6e6665cf38cb7c8c65a40a5472dd33a843563d4fe2ac4a9fd"
+    },
+    {
       "path": "Coop-Language.ps1",
-      "bytes": 14826,
-      "sha256": "15895a3963dddded2e34bc482d545cb1029d222d7863c6dbb262693837324509"
+      "bytes": 16069,
+      "sha256": "702f79e889ff9fcd3976f35b59438d0a40351ed8fdae7d98f3cc793415f9fbb6"
     },
     {
       "path": "Coop-LaunchPreflight.ps1",
@@ -142,6 +147,11 @@
       "sha256": "aa43cc89adb8fc1ba51c02cea3ab145b351ce1bc6080607a8f789e39c7cf01d6"
     },
     {
+      "path": "Coop-RepairDialog.ps1",
+      "bytes": 5047,
+      "sha256": "5dcd65ceb948eaee9a86b1a93ca822d1be374e1135a7d35cc2500d44a04a1f81"
+    },
+    {
       "path": "Coop-SessionConfig.ps1",
       "bytes": 2355,
       "sha256": "2a96a594cf635ed254fddf91d74903d4bc09c04acfc139631e4be4530d13a679"
@@ -150,6 +160,11 @@
       "path": "Coop-SessionTools.ps1",
       "bytes": 7947,
       "sha256": "7f6b7cfb1a89f1a39a52caa9281b88639814fcc69a69d3e343278e13038bdc7f"
+    },
+    {
+      "path": "Coop-SetupCore.ps1",
+      "bytes": 6592,
+      "sha256": "f9ce27743275f5a2271fb6166b516dc78dfe8ce323b6aeef00c037eefe145c5d"
     },
     {
       "path": "Coop-SoloExe.ps1",
@@ -223,8 +238,8 @@
     },
     {
       "path": "diagnostics_tool/coop_diagnostics.py",
-      "bytes": 16997,
-      "sha256": "69db06ae427d7ca87a8066b1ad44ef13d32e18912d1736ce01c9d1896a09554c"
+      "bytes": 16943,
+      "sha256": "43a3041450b9672ca866d1a67515230794606147defcfc8e670b6b707dd010ab"
     },
     {
       "path": "diagnostics_tool/coop_population.py",
@@ -302,14 +317,19 @@
       "sha256": "d583087fc436836029c6a72aae62b85fb035e4367beac2cd97d4ad06a15939f5"
     },
     {
+      "path": "docs/showcase/setup.png",
+      "bytes": 21774,
+      "sha256": "d56ecd50df6f561134daf91a5751763f03c41f2cb05bbb4d38c34e79761fa152"
+    },
+    {
       "path": "Enable-HostFirewall.ps1",
       "bytes": 2804,
       "sha256": "da4ea4eb597402ab62c4a375e0ae8e8c99786d79efc58f1c2911a64d1fc0fe87"
     },
     {
       "path": "GAMEPLAY-STATUS.json",
-      "bytes": 20825,
-      "sha256": "b805444da23108e7e7f64cdc3437d0ce461d58e408a835f802508d417c00915a"
+      "bytes": 21075,
+      "sha256": "fccaf3def42c29dc7a7a92e00192b6911cbeab792a31c435797903bd032589af"
     },
     {
       "path": "Garage-Cars.json",
@@ -373,18 +393,23 @@
     },
     {
       "path": "Install-Coop.cmd",
-      "bytes": 102,
-      "sha256": "b509f05e9368a8a945679f318c58379b770702fc8e720407c181586d76b33081"
+      "bytes": 221,
+      "sha256": "d05aa0023c101293604d0ac9dd993f34f5370c29d119ff93f028afd9db239d62"
     },
     {
       "path": "Install-Coop.ps1",
-      "bytes": 11538,
-      "sha256": "59d95283a0dd7737600e226e96841cbe7aa9c34aaa43dcf66aa68f60bc5b1588"
+      "bytes": 11969,
+      "sha256": "993356f6e6339913b718aaad2479fb6a65315d4c5df6b943232a741d48b57d61"
     },
     {
       "path": "Install.cmd",
-      "bytes": 109,
-      "sha256": "91e2c6247ba4928c37e0c6572ce68fdf103b204ce57615e85074f654e799e8d7"
+      "bytes": 221,
+      "sha256": "d05aa0023c101293604d0ac9dd993f34f5370c29d119ff93f028afd9db239d62"
+    },
+    {
+      "path": "installer/SetupBootstrap.cs",
+      "bytes": 3812,
+      "sha256": "dee82bc3690c6909d973f33c5013e844a39b565c58b8675edfd7664fedff44f8"
     },
     {
       "path": "INTEGRATED-CANDIDATE.md",
@@ -398,8 +423,8 @@
     },
     {
       "path": "Launch-Coop.cmd",
-      "bytes": 133,
-      "sha256": "12abafd76011cfc2a1b71e8c7f70554b79285f4462f6ef93f3f7a1e5a2dba329"
+      "bytes": 249,
+      "sha256": "7be9cc1f363258b8e4bb8ac15c26fe6bc285c85510bbcb31a2664dc427cecc17"
     },
     {
       "path": "Launch-Coop.vbs",
@@ -418,8 +443,8 @@
     },
     {
       "path": "LIESMICH.md",
-      "bytes": 1375,
-      "sha256": "4524877c7297b17cafd1e888bb207f4ad47620859147ad61f558b3a80f3eb5c9"
+      "bytes": 3989,
+      "sha256": "b1999264b8e146de264b126330524cbaa0524115148ee1997ebf5f9d5e42559a"
     },
     {
       "path": "mods/audio-slider/NFS-Audio-Patch.ps1",
@@ -568,8 +593,8 @@
     },
     {
       "path": "MODS.md",
-      "bytes": 2472,
-      "sha256": "3516db7f9148d7bd31750c6837fdcdf54c6b7a02c2b6df63dfcac568b8a77406"
+      "bytes": 2714,
+      "sha256": "3a4744739ebe37f8dc042c853fd0013f4b7b2d6bc0c4bedd8fc27069ca7cc9ba"
     },
     {
       "path": "patches/client-native-r3-upgrade.json",
@@ -743,18 +768,18 @@
     },
     {
       "path": "README-DE.md",
-      "bytes": 1375,
-      "sha256": "4524877c7297b17cafd1e888bb207f4ad47620859147ad61f558b3a80f3eb5c9"
+      "bytes": 3989,
+      "sha256": "b1999264b8e146de264b126330524cbaa0524115148ee1997ebf5f9d5e42559a"
     },
     {
       "path": "README-EN.md",
-      "bytes": 1220,
-      "sha256": "939d7506fc5db89eed3837c98753aa71eaf12819258fb8db6c4b7015fc95c7e0"
+      "bytes": 3824,
+      "sha256": "44d73b4a8f09425b52be45fddd08f639cdf5927604a9767147131b0f3c0e5ed1"
     },
     {
       "path": "README.md",
-      "bytes": 5131,
-      "sha256": "9c569fc5fe7cf46cedddf28c41c94d0a65500be811d34943e04d6e761ac00412"
+      "bytes": 5927,
+      "sha256": "6e6078b1aaa7a6e48359fba0b14f1422fcefb96061c842f675563ac0524c9c4c"
     },
     {
       "path": "Repair-Coop.ps1",
@@ -785,6 +810,21 @@
       "path": "Session-Overview.ps1",
       "bytes": 3591,
       "sha256": "0a7b82fabf5bcb429ca746afd5289268744ef6d12f105d75753c42de0f62020d"
+    },
+    {
+      "path": "Setup-Coop.ps1",
+      "bytes": 11968,
+      "sha256": "4bec15f565a7623f06d1b4bc651f24a35b8216efd0d21091f40af5e99fb8716a"
+    },
+    {
+      "path": "Setup-CoopWorker.ps1",
+      "bytes": 5635,
+      "sha256": "2e85e02d5bb1b6b4dd87a7238d431bf76b9c8e532e181828bf3b74a6876a73ad"
+    },
+    {
+      "path": "Setup.vbs",
+      "bytes": 332,
+      "sha256": "0b1bc44e631afbbc216dca9e33381edb205a9ffceb1e9b30fc055026f793c711"
     },
     {
       "path": "SPAWN-EVENTS.json",
@@ -1393,8 +1433,8 @@
     },
     {
       "path": "Start-Coop.ps1",
-      "bytes": 9661,
-      "sha256": "1e571017186530636541af9d3085d342702e23b3118801740a5965601a240797"
+      "bytes": 9573,
+      "sha256": "57ccc945a157f533b61ee095dfc6a48b63b7a13001cdd7f5d8e7ae272bd160d3"
     },
     {
       "path": "Start-CoopWindow.ps1",
@@ -1432,6 +1472,11 @@
       "sha256": "68c5ba85efa1bc027dbcee311fe2c085bcf54b2acb667b190c01ba1b86e1d1af"
     },
     {
+      "path": "Start-SetupWindow.ps1",
+      "bytes": 500,
+      "sha256": "9acf744c600d3c00d94cfe4daf8c568bab579736ccae1354049878ab3cd541d2"
+    },
+    {
       "path": "Start-Solo.ps1",
       "bytes": 6720,
       "sha256": "10e84177f61edfe06ade8e9c81295c41e4322bd6ace631feba5be51ea9057b36"
@@ -1458,8 +1503,8 @@
     },
     {
       "path": "Update-Coop.ps1",
-      "bytes": 9482,
-      "sha256": "8ab7714f217e66927b2a0cec6deb211d6105070fa57fe2fe5fb197b119c0bfac"
+      "bytes": 10001,
+      "sha256": "eb74f22238cfb4d81499e72ffbbb6e47a78bac1821ff944efb5df1ea617a72fc"
     },
     {
       "path": "UPDATES-DIFFICULTY.md",

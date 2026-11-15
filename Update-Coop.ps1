@@ -109,15 +109,22 @@ try{
     # The existing installer validates native deltas/support files before writing
     # and backs up every changed mod file. Never call a save restore here.
     $pwsh=Join-Path $PSHOME 'pwsh.exe'
-    $preflight=& $pwsh -NoProfile -File (Join-Path $target 'Install-Coop.ps1') -GameDirectory $game -CheckOnly 2>&1
-    if($LASTEXITCODE -ne 0){throw ('Installer preflight failed: '+($preflight -join ' '))}
+    . (Join-Path $target 'Coop-LanDownload.ps1')
+    $originalArchive=Get-CoopOriginalLanArchive (Join-Path $env:LOCALAPPDATA 'TheRunStoryCoop\LANBase')
+    $freshSource=Join-Path $stage 'original-LAN'
+    Expand-CoopOriginalLanArchive $originalArchive $freshSource
+    $freshArguments=@('-NonInteractive','-FreshBase','-LanPackageDirectory',$freshSource)
+    $preflight=& $pwsh -NoProfile -File (Join-Path $target 'Install-Coop.ps1') -GameDirectory $game -CheckOnly @freshArguments 2>&1
+    $preflightCode=$LASTEXITCODE
+    $preflight|Set-Content -LiteralPath (Join-Path $stage 'preflight.txt') -Encoding utf8
+    if($preflightCode -ne 0){throw ('Installer preflight failed: '+($preflight -join ' '))}
     $backup=Join-Path $stage 'personal-settings-before';[void][IO.Directory]::CreateDirectory($backup)
     $state=Join-Path $env:LOCALAPPDATA 'TheRunStoryCoop'
     foreach($name in 'launcher.json','language.json','car-preferences.json','garage-selection.json','garage-profiles.json','settings.json'){
         $path=Join-Path $state $name;if(Test-Path -LiteralPath $path -PathType Leaf){Copy-Item -LiteralPath $path -Destination (Join-Path $backup $name)}
     }
     Assert-UpdateGameClosed
-    $log=& $pwsh -NoProfile -File (Join-Path $target 'Install-Coop.ps1') -GameDirectory $game 2>&1
+    $log=& $pwsh -NoProfile -File (Join-Path $target 'Install-Coop.ps1') -GameDirectory $game @freshArguments 2>&1
     $log|Set-Content -LiteralPath (Join-Path $stage 'installer.log') -Encoding utf8
     if($LASTEXITCODE -ne 0){throw ('Installer failed; backups retained: '+$stage)}
     Save-UpdateResult @{Status='installed';Version=$latest.Version;PackageDirectory=$target;BackupDirectory=$stage;SaveRestore=$false}

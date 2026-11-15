@@ -61,7 +61,7 @@ $record=[ordered]@{Version=([string](Get-Content -LiteralPath (Join-Path $PSScri
 $sessionRecord=Join-Path $session 'session.json'
 $active=Join-Path $script:CoopStateRoot 'active-session.json'
 Save-CoopSettings $game
-if($StartCarId -ne 'story'){Write-Host (Get-CoopText StartCar -Values @($startCar.Name));Write-Host (Get-CoopText ViewCars)}
+Write-Host (Get-CoopText GarageHint)
 $client=$null;$server=$null
 $garageJob=$null
 try {

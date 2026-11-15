@@ -1,5 +1,5 @@
 {
-  "version": "0.7.8-TEST",
+  "version": "0.7.9-TEST",
   "ai": {
     "layout": {
       "adapter": 45629440,
@@ -412,7 +412,7 @@
   "powershell7_auto_install": true,
   "current_qte_live": "Host-input mirror passed local10.4 and first-mission gameplay on R2. Combined0.7.8 and remote two-PC transport unverified.",
   "updater_array_fix": true,
-  "native_gameplay_identical_to": null,
+  "native_gameplay_identical_to": "0.7.8-TEST",
   "preserves_addon_checksums": true,
   "solo_without_coop_code": true,
   "solo_hash_cmdlet_independent": true,
@@ -587,5 +587,12 @@
   "human_standings_names": true,
   "cutscene_control_signal": true,
   "historical_metadata_note": "Older individual adapter hashes/evidence describe their original cohorts; package-manifest.json identifies this release.",
-  "gas_stations_blocked_note": "Entry gate included; actual prevention of native car selection still requires gameplay confirmation."
+  "gas_stations_blocked_note": "Entry gate included; actual prevention of native car selection still requires gameplay confirmation.",
+  "guided_setup": true,
+  "standalone_setup": true,
+  "fresh_lan_base_reconstruction": true,
+  "lan_config_reset_with_backup": true,
+  "setup_lan_download": true,
+  "repair_dialog_readable": true,
+  "remote_black_screen_fixed": false
 }

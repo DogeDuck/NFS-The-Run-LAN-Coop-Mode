@@ -1,4 +1,4 @@
-﻿param([string]$GameDirectory,[string]$LanPackageDirectory,[switch]$CheckOnly)
+﻿param([string]$GameDirectory,[string]$LanPackageDirectory,[switch]$CheckOnly,[switch]$NonInteractive,[switch]$FreshBase)
 . (Join-Path $PSScriptRoot 'Coop-Core.ps1')
 $game=Get-CoopGameDirectory $GameDirectory
 if(!$CheckOnly){Assert-CoopClosed}
@@ -7,7 +7,7 @@ $deltas=@(foreach($name in @('client.json','server.json')){Get-Content -LiteralP
 $deltas=@(foreach($entry in $deltas){
     $selected=$entry
     $current=Join-Path $game $entry.FileName
-    if(Test-Path -LiteralPath $current){
+    if(!$FreshBase -and (Test-Path -LiteralPath $current)){
         $hash=Get-CoopFileHash $current
         $stem=if($entry.FileName -eq 'NFSTR_Server.exe'){'server'}else{'client'}
         foreach($suffix in @('-upgrade','-research-upgrade','-v0_3-upgrade','-v0_4-upgrade','-v0_5-upgrade','-v0_6-upgrade','-v0_7_1-upgrade','-v0_7_2-upgrade','-v0_7_3-upgrade','-v0_7_3-marcus-upgrade','-v0_7_7-upgrade','-r2-upgrade','-native-r3-upgrade')){
@@ -28,6 +28,7 @@ if(!$LanPackageDirectory -and !$CheckOnly){
         if(!(Test-Path -LiteralPath $path) -or (Get-CoopFileHash $path) -notin @($delta.OriginalSha256,$delta.PatchedSha256)){$missingBase=$true}
     }
     foreach($file in $support){$path=Join-Path $game $file.RelativePath;if(!(Test-Path -LiteralPath $path) -or (Get-CoopFileHash $path) -ne $file.Sha256){$missingBase=$true}}
+    if($missingBase -and $NonInteractive){throw 'LAN_BASE_REQUIRED: use Setup.vbs / Setup.vbs fuer die LAN-Einrichtung starten.'}
     if($missingBase){$LanPackageDirectory=Read-Host 'Ordner des entpackten eigenen LAN-Grundpakets v1 vom 29.05.2024'}
 }
 $addonRoot=Join-Path $PSScriptRoot 'addons'
@@ -46,6 +47,7 @@ function Read-BaseFile([string]$Relative,[string[]]$AllowedHashes){
         if($source.Split('\') -contains 'THERUNBACKUP'){throw 'THERUNBACKUP wird nicht verwendet.'}
         $candidates+=Join-Path $source $Relative
     }
+    if($FreshBase){if(!$LanPackageDirectory){throw 'Fresh setup needs the verified LAN base'};$candidates=@((Join-Path $source $Relative))}
     foreach($candidate in $candidates){
         if(Test-Path -LiteralPath $candidate -PathType Leaf){
             $bytes=[IO.File]::ReadAllBytes($candidate)
@@ -66,6 +68,7 @@ foreach($name in @('NFSTR_DefinitiveEdition.asi','NFSTR_DefinitiveEdition.ini'))
 # Personal INIs are preserved byte-exactly; defaults are used only when missing.
 foreach($relative in @('Scripts\NFSTR_LANOnlineHelper.ini','Scripts\NFSTR_DefinitiveEdition.ini')){
  $existing=Join-Path $game $relative
+ if($FreshBase -and $relative -eq 'Scripts\NFSTR_LANOnlineHelper.ini'){continue}
  if(Test-Path -LiteralPath $existing -PathType Leaf){$staged[$relative]=[IO.File]::ReadAllBytes($existing)}
 }
 foreach($name in @('launcher.json','settings.json')){
@@ -85,7 +88,7 @@ if(Test-Path -LiteralPath $specialK){
 $changes=@(foreach($relative in $staged.Keys|Sort-Object){
     $target=Join-Path $game $relative
     $after=Get-CoopHash $staged[$relative]
-    if(!(Test-Path -LiteralPath $target) -or (Get-CoopFileHash $target) -ne $after){[ordered]@{RelativePath=$relative;AfterSha256=$after;AfterExists=$true}}
+    if($FreshBase -or !(Test-Path -LiteralPath $target) -or (Get-CoopFileHash $target) -ne $after){[ordered]@{RelativePath=$relative;AfterSha256=$after;AfterExists=$true}}
 })
 if($removeSpecialK){$changes += [ordered]@{RelativePath='d3d11.dll';AfterSha256=$null;AfterExists=$false}}
 if($CheckOnly){[ordered]@{Status='verified';GameDirectory=$game;Changes=$changes;ContainsGameExecutables=$false}|ConvertTo-Json -Depth 5;return}
@@ -139,7 +142,7 @@ foreach($entry in $changes){
         if((Get-CoopFileHash $copy) -ne $entry.BeforeSha256){throw 'Originalsicherung konnte nicht verifiziert werden.'}
     }
 }
-$manifest=[ordered]@{Version='0.7.8-TEST';GameDirectory=$game;BackupDirectory=$backup;Timestamp=(Get-Date).ToString('o');Status='backed-up';Files=$changes}
+$manifest=[ordered]@{Version='0.7.9-TEST';GameDirectory=$game;BackupDirectory=$backup;Timestamp=(Get-Date).ToString('o');Status='backed-up';Files=$changes}
 $manifestPath=Join-Path $backup 'install-manifest.json'
 $manifest|ConvertTo-Json -Depth 6|Set-Content -LiteralPath $manifestPath -Encoding utf8
 $applied=@()

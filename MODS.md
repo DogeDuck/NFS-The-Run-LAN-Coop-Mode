@@ -5,15 +5,16 @@ or source file is not an announcement that its development candidate is released
 
 | Mod / tool | Purpose | Where to find it |
 |---|---|---|
+| Guided Setup.exe | Automatic verified LAN base, PowerShell7, fresh mod installation, settings/save preservation | [Recommended download](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/releases/download/v0.7.9-TEST/TheRun-Coop-v0.7.9-TEST-Setup.exe) |
 | Story Co-op native patches | NPCs, team results, Battle phases, story roles and starts | Published package `patches/`, source under `src/` |
 | Bilingual launcher | Host/Join/Solo, difficulty, graphics, updates | `Connect-Coop.ps1`, language guides |
 | Garage | Own-player car selection and host relay | `Garage-Fenster.ps1`, `Garage-Core.ps1`, GARAGE-DE/EN.md |
-| Film Experience slider mix | The only supported audio mix; no global music boost, no songs included | Upcoming packages: `addons/audio-slider/`; in-game Film Experience slider |
-| Speedometer background | Original/Dim/Clear texture-alpha patch | `mods/hud-background/` in this repository; next-package integration pending |
+| Film Experience slider mix | The only supported audio mix; no global music boost, no songs included | Included: `addons/audio-slider/`; in-game Film Experience slider |
+| Speedometer background | Original/Dim/Clear texture-alpha patch | `mods/hud-background/` in this repository; included in0.7.9 |
 | QTE local-actor / host milestones | Experimental story actor selection and two10.4 milestones | Development documentation; not a complete QTE sync guarantee |
-| Installer and runtime hardening | Portable PowerShell7, verified staging, safe cleanup and preflight | Development candidate, being integrated |
-| Garage favorites / presets | Personal favorites and named car/pack/paint combinations | Development preview; not yet public release |
-| Session / diagnostics / repair | Version check, launcher peers and opt-in bounded local logs | Development preview; no automatic log upload |
+| Installer and runtime hardening | Portable PowerShell7, verified staging, safe cleanup and preflight | Included in0.7.9; guided fresh Setup.exe |
+| Garage favorites / presets | Personal favorites and named car/pack/paint combinations | Included in0.7.9 |
+| Session / diagnostics / repair | Version check, launcher peers and opt-in bounded local logs | Included in0.7.9; no automatic log upload |
 
 ## Music versions
 
