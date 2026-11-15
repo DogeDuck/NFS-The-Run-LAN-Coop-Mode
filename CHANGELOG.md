@@ -1,6 +1,6 @@
-# v0.7.9-TEST — Guided setup / Geführte Installation
+# v0.7.10-TEST — Guided setup / Geführte Installation
 
-DE: Neues eigenständiges Setup-EXE mit DE/EN-Oberfläche. Spielordnerwahl,
+DE: OneDrive-Sicherung korrigiert: Cloud-Dateien werden kopiert und geprüft, echte Symlinks/Junctions weiterhin abgelehnt. Neues eigenständiges Setup-EXE mit DE/EN-Oberfläche. Spielordnerwahl,
 automatischer Bezug der geprüften originalen LAN-Basis (ca.16MB), ZIP/7z-/Ordnerimport,
 PowerShell7-Bereitstellung, Fortschritt und vollständige Fehlerdetails. Jede
 Setup-Installation baut Client/Server und unsere Moddateien frisch aus der bekannten
@@ -18,7 +18,7 @@ ihre bisherigen Grenzen. Zwei lokale Clients zeigten im aktuellen Test das Menü
 Schwarzbild bei zwei PCs (auch mit Yasin als Host) weiter ungeklärt. Neuinstallation
 ist kein behaupteter Fix dafür. Kein neuer vollständiger Kampagnen-/Vier-PC-Nachweis.
 
-EN: New standalone bilingual Setup EXE: choose the game folder, download the verified
+EN: Fixed OneDrive backup: cloud placeholders are copied and checked, actual symbolic links/junctions remain rejected. New standalone bilingual Setup EXE: choose the game folder, download the verified
 original LAN base (about16MB) or import it, prepare PowerShell7, see progress and
 full error details. Every setup reconstructs and rewrites managed mod files from
 the known original LAN base. The technical LAN configuration is regenerated and
@@ -30,6 +30,6 @@ legacy starting-car instructions. Host Enter prompt remains until the lobby rede
 Native patches unchanged from0.7.8. Remote black-screen issue remains unresolved;
 fresh setup is not claimed to fix it. Existing experimental gameplay limits apply.
 
-Download TheRun-Coop-v0.7.9-TEST-Setup.exe for the guided installer. The ZIP remains
+Download TheRun-Coop-v0.7.10-TEST-Setup.exe for the guided installer. The ZIP remains
 available for portable/manual use. No complete game/server executables are included;
 the original LAN base is fetched separately and checked against pinned SHA256.

@@ -1,5 +1,5 @@
 {
-  "version": "0.7.9-TEST",
+  "version": "0.7.10-TEST",
   "files": [
     {
       "path": "addons/audio-slider/Lies mich.md",
@@ -73,8 +73,8 @@
     },
     {
       "path": "CHANGELOG.md",
-      "bytes": 2398,
-      "sha256": "8be4d626be0862f967c35d741b273626ddeb50ebe1878e42e92c8ba4fd68a2b6"
+      "bytes": 2635,
+      "sha256": "27785331459dae11bee16d69abb44f4b74ab941465c3ccb0ed9a43c9440b42fc"
     },
     {
       "path": "config/chicago-bundle-owner-catalog.json",
@@ -163,8 +163,8 @@
     },
     {
       "path": "Coop-SetupCore.ps1",
-      "bytes": 6592,
-      "sha256": "f9ce27743275f5a2271fb6166b516dc78dfe8ce323b6aeef00c037eefe145c5d"
+      "bytes": 6970,
+      "sha256": "0cfd5aa118658c02e9219b73309b9183a7b875bf9d2c513f9e39cf346fda185f"
     },
     {
       "path": "Coop-SoloExe.ps1",
@@ -328,8 +328,8 @@
     },
     {
       "path": "GAMEPLAY-STATUS.json",
-      "bytes": 21075,
-      "sha256": "fccaf3def42c29dc7a7a92e00192b6911cbeab792a31c435797903bd032589af"
+      "bytes": 21076,
+      "sha256": "9a5ff7754ec707d4f0dbf6ed135dcff9a69f12099764f8b58294c28ad065baef"
     },
     {
       "path": "Garage-Cars.json",
@@ -398,8 +398,8 @@
     },
     {
       "path": "Install-Coop.ps1",
-      "bytes": 11969,
-      "sha256": "993356f6e6339913b718aaad2479fb6a65315d4c5df6b943232a741d48b57d61"
+      "bytes": 11970,
+      "sha256": "653b3ada18be50fb2bbb1cfa11eae7c63acf91bc3a1d1651ee9091c6060fc077"
     },
     {
       "path": "Install.cmd",
@@ -443,8 +443,8 @@
     },
     {
       "path": "LIESMICH.md",
-      "bytes": 3989,
-      "sha256": "b1999264b8e146de264b126330524cbaa0524115148ee1997ebf5f9d5e42559a"
+      "bytes": 4231,
+      "sha256": "119be93e800948248ee6d95e6e7bcb3a5fb94d45a45dab7fde69a61a5f0f41c3"
     },
     {
       "path": "mods/audio-slider/NFS-Audio-Patch.ps1",
@@ -593,8 +593,8 @@
     },
     {
       "path": "MODS.md",
-      "bytes": 2714,
-      "sha256": "3a4744739ebe37f8dc042c853fd0013f4b7b2d6bc0c4bedd8fc27069ca7cc9ba"
+      "bytes": 2716,
+      "sha256": "da92ce8f0be146b7ef72fa45f05bcf7880a233cd2ac34a5ff82dd3e62eba1900"
     },
     {
       "path": "patches/client-native-r3-upgrade.json",
@@ -768,18 +768,18 @@
     },
     {
       "path": "README-DE.md",
-      "bytes": 3989,
-      "sha256": "b1999264b8e146de264b126330524cbaa0524115148ee1997ebf5f9d5e42559a"
+      "bytes": 4231,
+      "sha256": "119be93e800948248ee6d95e6e7bcb3a5fb94d45a45dab7fde69a61a5f0f41c3"
     },
     {
       "path": "README-EN.md",
-      "bytes": 3824,
-      "sha256": "44d73b4a8f09425b52be45fddd08f639cdf5927604a9767147131b0f3c0e5ed1"
+      "bytes": 4066,
+      "sha256": "c729b19b90d51eb9083248914e30d0ee29c57cac8c628b7df431a12ce866036b"
     },
     {
       "path": "README.md",
-      "bytes": 5927,
-      "sha256": "6e6078b1aaa7a6e48359fba0b14f1422fcefb96061c842f675563ac0524c9c4c"
+      "bytes": 5940,
+      "sha256": "7488376658e76025fa6f676e470526dfb666c6644a551d120c30887fd09b0d7a"
     },
     {
       "path": "Repair-Coop.ps1",

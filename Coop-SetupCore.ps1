@@ -1,4 +1,10 @@
 ﻿# Setup helpers. PS7 for execution, Windows PowerShell5.1 for presentation/bootstrap.
+function Test-CoopSetupFilesystemLink {
+ param([Parameter(Mandatory)]$Item)
+ # Cloud Files placeholders also have ReparsePoint. They are not directory
+ # junctions/symlinks; normal Copy-Item/ReadAllBytes hydrates and verifies them.
+ return ($Item.LinkType -in @('SymbolicLink','Junction') -or ![string]::IsNullOrEmpty([string]$Item.LinkTarget))
+}
 function Write-CoopSetupResult {
  param([string]$Path,$Value)
  $parent=[IO.Path]::GetDirectoryName([IO.Path]::GetFullPath($Path))
@@ -55,13 +61,13 @@ function Find-CoopSetupBaseFolder {
  while($queue.Count){
   $entry=$queue.Dequeue();$directory=[string]$entry[0];$depth=[int]$entry[1]
   $info=Get-Item -LiteralPath $directory -Force
-  if($info.Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Import links unsupported / Importverknuepfungen nicht erlaubt.'}
+  if(Test-CoopSetupFilesystemLink $info){throw 'Import links unsupported / Importverknuepfungen nicht erlaubt.'}
   $ok=$true
   foreach($row in $Requirements){
    $path=[IO.Path]::GetFullPath((Join-Path $directory $row.RelativePath))
    if(!$path.StartsWith($directory+'\',[StringComparison]::OrdinalIgnoreCase)){throw 'Invalid requirement path'}
    $cursor=$path
-   while($cursor -and $cursor.Length -ge $directory.Length){if((Test-Path -LiteralPath $cursor) -and ((Get-Item -LiteralPath $cursor -Force).Attributes -band [IO.FileAttributes]::ReparsePoint)){throw 'Import links unsupported'};$cursor=[IO.Path]::GetDirectoryName($cursor)}
+   while($cursor -and $cursor.Length -ge $directory.Length){if((Test-Path -LiteralPath $cursor) -and (Test-CoopSetupFilesystemLink (Get-Item -LiteralPath $cursor -Force))){throw 'Import links unsupported'};$cursor=[IO.Path]::GetDirectoryName($cursor)}
    if(!(Test-Path -LiteralPath $path -PathType Leaf) -or (Get-FileHash -LiteralPath $path).Hash -notin $row.Hashes){$ok=$false;break}
   }
   if($ok){return $directory}
@@ -77,8 +83,9 @@ function Backup-CoopSetupSaves {
   if($target -ieq $source -or $target.StartsWith($source+'\',[StringComparison]::OrdinalIgnoreCase)){throw 'Save backup must be outside saves'}
   if(Test-Path -LiteralPath $target){throw 'Save backup destination exists'}
   $pending=[Collections.Generic.Queue[string]]::new();$pending.Enqueue($source);$entries=[Collections.Generic.List[object]]::new()
-  while($pending.Count){$directory=$pending.Dequeue();foreach($item in @(Get-ChildItem -LiteralPath $directory -Force)){
-   if($item.Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'Save backup links unsupported'}
+  $visited=0
+  while($pending.Count){$directory=$pending.Dequeue();$visited++;if($visited -gt 10000){throw 'Save backup folder bound exceeded'};foreach($item in @(Get-ChildItem -LiteralPath $directory -Force)){
+   if(Test-CoopSetupFilesystemLink $item){throw 'Save backup links unsupported'}
    if($item.PSIsContainer){$pending.Enqueue($item.FullName)}else{$entries.Add($item)}
    if($entries.Count+$pending.Count -gt 10000){throw 'Save backup exceeds bound'}
   }}

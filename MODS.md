@@ -5,7 +5,7 @@ or source file is not an announcement that its development candidate is released
 
 | Mod / tool | Purpose | Where to find it |
 |---|---|---|
-| Guided Setup.exe | Automatic verified LAN base, PowerShell7, fresh mod installation, settings/save preservation | [Recommended download](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/releases/download/v0.7.9-TEST/TheRun-Coop-v0.7.9-TEST-Setup.exe) |
+| Guided Setup.exe | Automatic verified LAN base, PowerShell7, fresh mod installation, settings/save preservation | [Recommended download](https://github.com/DogeDuck/NFS-The-Run-LAN-Coop-Mode/releases/download/v0.7.10-TEST/TheRun-Coop-v0.7.10-TEST-Setup.exe) |
 | Story Co-op native patches | NPCs, team results, Battle phases, story roles and starts | Published package `patches/`, source under `src/` |
 | Bilingual launcher | Host/Join/Solo, difficulty, graphics, updates | `Connect-Coop.ps1`, language guides |
 | Garage | Own-player car selection and host relay | `Garage-Fenster.ps1`, `Garage-Core.ps1`, GARAGE-DE/EN.md |
